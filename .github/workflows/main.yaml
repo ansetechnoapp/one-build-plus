@@ -1,0 +1,34 @@
+name: Upload to FTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Transfer public folder
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+          server-dir: "./"
+          exclude: "index.php"
+          local-dir: "./public/"
+
+      - name: Setup FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+          server-dir: "./one build plus/"
+          exclude: "public/**, one build plus/public"
+          local-dir: "./"
+          clean: true

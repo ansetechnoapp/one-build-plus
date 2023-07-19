@@ -1,0 +1,15 @@
+sur le site a ce liens: https://github.com/ansetechnoapp/jeae_wood/settings/secrets/actions, on
+rajoute les clés secrets qui sont les informations de connection ftp(SERVER, USERNAME, PASSWORD)
+
+prompt chatGPT : "Grâce a un ficher YAML,j'aimerais fais la configuration de la github action qui dès qu'un commit arrive sur le main,
+j'aimerais que le code dans main soit uploadé sur mon server par ftp avec dans la
+configuration:
+server: ${{ secrets.FTP_SERVER_b_jeae }}
+username: ${{ secrets.FTP_USERNAME_b_jeae }}
+password: ${{ secrets.FTP_PASSWORD_b_jeae }}
+serveur-dir:'/public_html/b-jeae/'
+et j'aimerais exclure le dossier public du transfer ensuite le dossier public sera envoyer vers un autre chemin toujour sur le même serveur
+et que le dossier monpremier soit supprimer."
+
+Grâce a un ficher YAML,j'aimerais fais la configuration de la github action qui dès qu'un commit arrive sur le main,
+j'aimerais que le code dans main soit uploadé sur mon server et que le dossier monpremier soit supprimer.

@@ -17,5 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/well', function () {
-    return view('well');
+    return view('reactJS/reactjs');
+});
+Route::get('/index-two', function () {
+    return view('index-two');
 });

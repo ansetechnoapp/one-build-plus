@@ -1,0 +1,7 @@
+se connecter par ssh sur hostinger pour installer les dépendances d'une application sans installer une clé SSH:
+-aller sur hostinger et activer l'access ssh
+-ouvrir le terminal
+-tapez les informations de connexion exemple : ssh -p 65002 u212330119@89.117.9.183
+-tapez le mot de passe pour se connecter par ssh: 
+-spécifier un chemin pour l'installation de composer : domains/
+-tapez composer2 install

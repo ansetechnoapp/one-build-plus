@@ -18,7 +18,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./"
+          server-dir: "./one build plus/"
           exclude: "index.php"
           local-dir: "./public/"
 
@@ -28,7 +28,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./one build plus/"
-          exclude: "public/**, one build plus/public"
+          server-dir: "./one build plus/one build plus/"
+          exclude: "public/**, one build plus/one build plus/public"
           local-dir: "./"
           clean: true

@@ -15,20 +15,20 @@ jobs:
       - name: Transfer public folder
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./one build plus/"
+          server: ${{ secrets.FTP_SERVER_OBP }}
+          username: ${{ secrets.FTP_USERNAME_OBP }}
+          password: ${{ secrets.FTP_PASSWORD_OBP }}
+          server-dir: "./OBP/"
           exclude: "index.php"
           local-dir: "./public/"
 
       - name: Setup FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./one build plus/one build plus/"
-          exclude: "public/**, one build plus/one build plus/public"
+          server: ${{ secrets.FTP_SERVER_OBP }}
+          username: ${{ secrets.FTP_USERNAME_OBP }}
+          password: ${{ secrets.FTP_PASSWORD_OBP }}
+          server-dir: "./OBP/OBP/"
+          exclude: "public/**, OBP/OBP/public"
           local-dir: "./"
           clean: true

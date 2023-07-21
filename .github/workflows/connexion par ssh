@@ -2,6 +2,12 @@ se connecter par ssh sur hostinger pour installer les dépendances d'une applica
 -aller sur hostinger et activer l'access ssh
 -ouvrir le terminal
 -tapez les informations de connexion exemple : ssh -p 65002 u212330119@89.117.9.183
--tapez le mot de passe pour se connecter par ssh: 
--spécifier un chemin pour l'installation de composer : domains/
+-tapez le mot de passe pour se connecter par ssh:
+-spécifier un chemin pour l'installation de composer :
+Etape:
+>ls : 	Afficher le contenu du répertoire (lister les noms des fichiers).
+>mkdir hi : pour vérifier la ou le dossier hi a été créer sur le serveur
+>cd domains : ce déplacer dans le dossier domains
+>cd txbest.online/public_html/obp/ : ce déplacer dans le dossier txbest.online/public_html/obp/
+>pwd : Afficher le répertoire actuel (chemin complet vers l'endroit où vous vous trouvez actuellement).
 -tapez composer2 install

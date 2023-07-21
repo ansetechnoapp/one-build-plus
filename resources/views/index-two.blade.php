@@ -12,7 +12,7 @@
         <meta name="website" content="https://shreethemes.in/" />
         <meta name="email" content="support@shreethemes.in" />
         <meta name="version" content="1.4.0" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 
         <!-- favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico" />
@@ -816,6 +816,7 @@
                     </div>
                 </div><!--en grid-->
             </div><!--end container-->
+            
         </section><!--end section-->
 
         <!-- Start CTA -->
@@ -1174,11 +1175,11 @@
         <!-- Back to top -->
 
         <!-- JAVASCRIPTS -->
-        {{-- <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
+        <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
         <script src="assets/libs/tobii/js/tobii.min.js"></script>
         <script src="assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
         <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <script src="assets/js/plugins.init.js"></script> --}}
+        <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
         <!-- JAVASCRIPTS -->
     </body>

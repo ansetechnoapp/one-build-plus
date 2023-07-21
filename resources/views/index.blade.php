@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
-    
+
 <!-- Mirrored from shreethemes.in/hously/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:51:58 GMT -->
 <head>
         <meta charset="UTF-8" />
@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="assets/css/tailwind.css" />
 
     </head>
-    
+
     <body class="dark:bg-slate-900">
         <!-- Loader Start -->
         <!-- <div id="preloader">
@@ -43,9 +43,9 @@
         <nav id="topnav" class="defaultscroll is-sticky">
             <div class="container">
                 <!-- Logo container-->
-                <a class="logo" href="index.html">
-                    <img src="assets/images/logo-dark.png" class="inline-block dark:hidden" alt="">
-                    <img src="assets/images/logo-light.png" class="hidden dark:inline-block" alt="">
+                <a class="logo" href="index.html" style="width: 15%;">
+                    <img src="assets/images/logo-dark.png"  class="inline-block dark:hidden" alt="">
+                    <img src="assets/images/logo-light.png"  class="hidden dark:inline-block" alt="">
                 </a>
                 <!-- End Logo container-->
 
@@ -62,7 +62,6 @@
                     </div>
                 </div>
                 <!-- End Mobile Toggle -->
-
                 <!--Login button Start-->
                 <ul class="buy-button list-none mb-0">
                     <li class="inline mb-0">
@@ -75,7 +74,7 @@
                 <!--Login button End-->
 
                 <div id="navigation">
-                    <!-- Navigation Menu-->   
+                    <!-- Navigation Menu-->
                     <ul class="navigation-menu justify-end">
                         <li class="has-submenu parent-menu-item">
                             <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
@@ -87,9 +86,10 @@
                                 <li><a href="index-five.html" class="sub-menu-item">Hero Five </a></li>
                             </ul>
                         </li>
-                
+
+
                         <li><a href="buy.html" class="sub-menu-item">Buy</a></li>
-                
+
                         <li><a href="sell.html" class="sub-menu-item">Sell</a></li>
 
                         <li class="has-submenu parent-parent-menu-item">
@@ -100,19 +100,19 @@
                                         <li><a href="grid.html" class="sub-menu-item">Grid Listing</a></li>
                                         <li><a href="grid-sidebar.html" class="sub-menu-item">Grid Sidebar </a></li>
                                         <li><a href="grid-map.html" class="sub-menu-item">Grid With Map</a></li>
-                                    </ul> 
+                                    </ul>
                                 </li>
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> List View </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="list.html" class="sub-menu-item">List Listing</a></li>
                                         <li><a href="list-sidebar.html" class="sub-menu-item">List Sidebar </a></li>
                                         <li><a href="list-map.html" class="sub-menu-item">List With Map</a></li>
-                                    </ul>  
+                                    </ul>
                                 </li>
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Property Detail </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="property-detail.html" class="sub-menu-item">Property Detail</a></li>
-                                    </ul>  
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
@@ -129,31 +129,31 @@
                                         <li><a href="auth-login.html" class="sub-menu-item">Login</a></li>
                                         <li><a href="auth-signup.html" class="sub-menu-item">Signup</a></li>
                                         <li><a href="auth-re-password.html" class="sub-menu-item">Reset Password</a></li>
-                                    </ul>  
+                                    </ul>
                                 </li>
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
                                         <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
-                                    </ul>  
+                                    </ul>
                                 </li>
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
                                         <li><a href="blog-sidebar.html" class="sub-menu-item"> Blog Sidebar</a></li>
                                         <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
-                                    </ul> 
+                                    </ul>
                                 </li>
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Special </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="comingsoon.html" class="sub-menu-item">Comingsoon</a></li>
                                         <li><a href="maintenance.html" class="sub-menu-item">Maintenance</a></li>
                                         <li><a href="404.html" class="sub-menu-item">404! Error</a></li>
-                                    </ul>  
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
-                
+
                         <li><a href="contact.html" class="sub-menu-item">Contact</a></li>
                     </ul><!--end navigation menu-->
                 </div><!--end navigation-->
@@ -210,7 +210,7 @@
                                                         <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search your keaywords">
                                                     </div>
                                                 </div>
-                                                
+
 
                                                 <div>
                                                     <label for="buy-properties" class="form-label font-medium text-slate-900 dark:text-white">Select Categories:</label>
@@ -224,7 +224,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div>
                                                     <label for="buy-min-price" class="form-label font-medium text-slate-900 dark:text-white">Min Price :</label>
                                                     <div class="filter-search-form relative filter-border mt-2">
@@ -241,7 +241,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div>
                                                     <label for="buy-max-price" class="form-label font-medium text-slate-900 dark:text-white">Max Price :</label>
                                                     <div class="filter-search-form relative mt-2">
@@ -291,7 +291,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div>
                                                     <label for="buy-min-price" class="form-label font-medium text-slate-900 dark:text-white">Min Price :</label>
                                                     <div class="filter-search-form relative filter-border mt-2">
@@ -308,7 +308,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div>
                                                     <label for="buy-max-price" class="form-label font-medium text-slate-900 dark:text-white">Max Price :</label>
                                                     <div class="filter-search-form relative mt-2">
@@ -358,7 +358,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div>
                                                     <label for="buy-min-price" class="form-label font-medium text-slate-900 dark:text-white">Min Price :</label>
                                                     <div class="filter-search-form relative filter-border mt-2">
@@ -375,7 +375,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div>
                                                     <label for="buy-max-price" class="form-label font-medium text-slate-900 dark:text-white">Max Price :</label>
                                                     <div class="filter-search-form relative mt-2">
@@ -424,7 +424,7 @@
                         <div class="lg:ms-4">
                             <h4 class="mb-6 md:text-3xl text-2xl lg:leading-normal leading-normal font-semibold">Efficiency. Transparency. <br> Control.</h4>
                             <p class="text-slate-400 max-w-xl">Hously developed a platform for the Real Estate marketplace that allows buyers and sellers to easily execute a transaction on their own. The platform drives efficiency, cost transparency and control into the hands of the consumers. Hously is Real Estate Redefined.</p>
-                            
+
                             <div class="mt-4">
                                 <a href="#" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md mt-3">Learn More </a>
                             </div>
@@ -490,7 +490,6 @@
                     <!-- Content -->
                 </div><!--end grid-->
             </div><!--end container-->
-
             <div class="container lg:mt-24 mt-16">
                 <div class="grid grid-cols-1 pb-8 text-center">
                     <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Featured Properties</h3>
@@ -498,6 +497,333 @@
                     <p class="text-slate-400 max-w-xl mx-auto">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
                 </div><!--end grid-->
 
+                <div class="grid grid-cols-1 mt-8 relative">
+                    <div class="tns-outer" id="tns2-ow"><div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button" data-controls="prev" tabindex="-1" aria-controls="tns2"><i class="mdi mdi-chevron-left "></i></button><button type="button" data-controls="next" tabindex="-1" aria-controls="tns2"><i class="mdi mdi-chevron-right"></i></button></div><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">2 to 4</span>  of 6</div><div id="tns2-mw" class="tns-ovh"><div class="tns-inner" id="tns2-iw"><div class="tiny-home-slide-three  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" id="tns2" style="transform: translate3d(-16.6667%, 0px, 0px);">
+                        <div class="tiny-slide tns-item" id="tns2-item0" aria-hidden="true" tabindex="-1">
+                            <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                <div class="relative">
+                                    <img src="assets/images/property/1.jpg" alt="">
+    
+                                    <div class="absolute top-4 end-4">
+                                        <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i class="mdi mdi-heart mdi-18px"></i></a>
+                                    </div>
+                                </div>
+    
+                                <div class="p-6">
+                                    <div class="pb-6">
+                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765 Hillshire Ave, Baton Rouge, LA 70810, USA</a>
+                                    </div>
+    
+                                    <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                            <span>8000sqf</span>
+                                        </li>
+    
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                            <span>4 Beds</span>
+                                        </li>
+    
+                                        <li class="flex items-center">
+                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                            <span>4 Baths</span>
+                                        </li>
+                                    </ul>
+    
+                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                        <li>
+                                            <span class="text-slate-400">Price</span>
+                                            <p class="text-lg font-medium">$5000</p>
+                                        </li>
+    
+                                        <li>
+                                            <span class="text-slate-400">Rating</span>
+                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline text-black dark:text-white">5.0(30)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--end property content-->
+                        </div>
+    
+                        <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
+                            <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                <div class="relative">
+                                    <img src="assets/images/property/2.jpg" alt="">
+    
+                                    <div class="absolute top-4 end-4">
+                                        <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i class="mdi mdi-heart mdi-18px"></i></a>
+                                    </div>
+                                </div>
+    
+                                <div class="p-6">
+                                    <div class="pb-6">
+                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">59345 STONEWALL DR, Plaquemine, LA 70764, USA</a>
+                                    </div>
+    
+                                    <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                            <span>8000sqf</span>
+                                        </li>
+    
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                            <span>4 Beds</span>
+                                        </li>
+    
+                                        <li class="flex items-center">
+                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                            <span>4 Baths</span>
+                                        </li>
+                                    </ul>
+    
+                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                        <li>
+                                            <span class="text-slate-400">Price</span>
+                                            <p class="text-lg font-medium">$5000</p>
+                                        </li>
+    
+                                        <li>
+                                            <span class="text-slate-400">Rating</span>
+                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline text-black dark:text-white">5.0(30)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--end property content-->
+                        </div>
+    
+                        <div class="tiny-slide tns-item tns-slide-active" id="tns2-item2">
+                            <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                <div class="relative">
+                                    <img src="assets/images/property/3.jpg" alt="">
+    
+                                    <div class="absolute top-4 end-4">
+                                        <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i class="mdi mdi-heart mdi-18px"></i></a>
+                                    </div>
+                                </div>
+    
+                                <div class="p-6">
+                                    <div class="pb-6">
+                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">3723 SANDBAR DR, Addis, LA 70710, USA</a>
+                                    </div>
+    
+                                    <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                            <span>8000sqf</span>
+                                        </li>
+    
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                            <span>4 Beds</span>
+                                        </li>
+    
+                                        <li class="flex items-center">
+                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                            <span>4 Baths</span>
+                                        </li>
+                                    </ul>
+    
+                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                        <li>
+                                            <span class="text-slate-400">Price</span>
+                                            <p class="text-lg font-medium">$5000</p>
+                                        </li>
+    
+                                        <li>
+                                            <span class="text-slate-400">Rating</span>
+                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline text-black dark:text-white">5.0(30)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--end property content-->
+                        </div>
+    
+                        <div class="tiny-slide tns-item tns-slide-active" id="tns2-item3">
+                            <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                <div class="relative">
+                                    <img src="assets/images/property/4.jpg" alt="">
+    
+                                    <div class="absolute top-4 end-4">
+                                        <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i class="mdi mdi-heart mdi-18px"></i></a>
+                                    </div>
+                                </div>
+    
+                                <div class="p-6">
+                                    <div class="pb-6">
+                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">Lot 21 ROYAL OAK DR, Prairieville, LA 70769, USA</a>
+                                    </div>
+    
+                                    <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                            <span>8000sqf</span>
+                                        </li>
+    
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                            <span>4 Beds</span>
+                                        </li>
+    
+                                        <li class="flex items-center">
+                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                            <span>4 Baths</span>
+                                        </li>
+                                    </ul>
+    
+                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                        <li>
+                                            <span class="text-slate-400">Price</span>
+                                            <p class="text-lg font-medium">$5000</p>
+                                        </li>
+    
+                                        <li>
+                                            <span class="text-slate-400">Rating</span>
+                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline text-black dark:text-white">5.0(30)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--end property content-->
+                        </div>
+    
+                        <div class="tiny-slide tns-item" id="tns2-item4" aria-hidden="true" tabindex="-1">
+                            <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                <div class="relative">
+                                    <img src="assets/images/property/5.jpg" alt="">
+    
+                                    <div class="absolute top-4 end-4">
+                                        <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i class="mdi mdi-heart mdi-18px"></i></a>
+                                    </div>
+                                </div>
+    
+                                <div class="p-6">
+                                    <div class="pb-6">
+                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA</a>
+                                    </div>
+    
+                                    <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                            <span>8000sqf</span>
+                                        </li>
+    
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                            <span>4 Beds</span>
+                                        </li>
+    
+                                        <li class="flex items-center">
+                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                            <span>4 Baths</span>
+                                        </li>
+                                    </ul>
+    
+                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                        <li>
+                                            <span class="text-slate-400">Price</span>
+                                            <p class="text-lg font-medium">$5000</p>
+                                        </li>
+    
+                                        <li>
+                                            <span class="text-slate-400">Rating</span>
+                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline text-black dark:text-white">5.0(30)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--end property content-->
+                        </div>
+    
+                        <div class="tiny-slide tns-item" id="tns2-item5" aria-hidden="true" tabindex="-1">
+                            <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                <div class="relative">
+                                    <img src="assets/images/property/6.jpg" alt="">
+    
+                                    <div class="absolute top-4 end-4">
+                                        <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i class="mdi mdi-heart mdi-18px"></i></a>
+                                    </div>
+                                </div>
+    
+                                <div class="p-6">
+                                    <div class="pb-6">
+                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">5133 MCLAIN WAY, Baton Rouge, LA 70809, USA</a>
+                                    </div>
+    
+                                    <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                            <span>8000sqf</span>
+                                        </li>
+    
+                                        <li class="flex items-center me-4">
+                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                            <span>4 Beds</span>
+                                        </li>
+    
+                                        <li class="flex items-center">
+                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                            <span>4 Baths</span>
+                                        </li>
+                                    </ul>
+    
+                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                        <li>
+                                            <span class="text-slate-400">Price</span>
+                                            <p class="text-lg font-medium">$5000</p>
+                                        </li>
+    
+                                        <li>
+                                            <span class="text-slate-400">Rating</span>
+                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline text-black dark:text-white">5.0(30)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--end property content-->
+                        </div>
+                    </div></div></div></div>
+                </div><!--en grid-->
                 <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
                     <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
@@ -810,7 +1136,7 @@
                             </ul>
                         </div>
                     </div><!--end property content-->
-                </div><!--en grid-->
+                </div><!--en grid-->    
             </div><!--end container-->
 
             <div class="container lg:mt-24 mt-16">
@@ -960,7 +1286,7 @@
                     <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-medium text-black dark:text-white">Have Question ? Get in touch!</h3>
 
                     <p class="text-slate-400 max-w-xl mx-auto">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
-                
+
                     <div class="mt-6">
                         <a href="contact.html" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md"><i class="uil uil-phone align-middle me-2"></i> Contact us</a>
                     </div>
@@ -1006,9 +1332,9 @@
                                         <img src="assets/images/logo-light.png" alt="">
                                     </a>
                                     <p class="mt-6 text-gray-300">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
-                            
+
                                 </div><!--end col-->
-                        
+
                                 <div class="lg:col-span-2 md:col-span-4">
                                     <h5 class="tracking-[1px] text-gray-100 font-semibold">Company</h5>
                                     <ul class="list-none footer-list mt-6">
@@ -1019,7 +1345,7 @@
                                         <li class="mt-[10px]"><a href="auth-login.html" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>
                                     </ul>
                                 </div><!--end col-->
-                        
+
                                 <div class="lg:col-span-3 md:col-span-4">
                                     <h5 class="tracking-[1px] text-gray-100 font-semibold">Usefull Links</h5>
                                     <ul class="list-none footer-list mt-6">
@@ -1029,11 +1355,11 @@
                                         <li class="mt-[10px]"><a href="contact.html" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Contact</a></li>
                                     </ul>
                                 </div><!--end col-->
-    
+
                                 <div class="lg:col-span-3 md:col-span-4">
                                     <h5 class="tracking-[1px] text-gray-100 font-semibold">Contact Details</h5>
-                            
-                            
+
+
                                     <div class="flex mt-6">
                                         <i data-feather="map-pin" class="w-5 h-5 text-green-600 me-3"></i>
                                         <div class="">
@@ -1048,7 +1374,7 @@
                                             <a href="mailto:contact@example.com" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">contact@example.com</a>
                                         </div>
                                     </div>
-                            
+
                                     <div class="flex mt-6">
                                         <i data-feather="phone" class="w-5 h-5 text-green-600 me-3"></i>
                                         <div class="">

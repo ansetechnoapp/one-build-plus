@@ -76,24 +76,16 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu justify-end">
-                        <li class="has-submenu parent-menu-item">
-                            <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="index.html" class="sub-menu-item">Hero One</a></li>
-                                <li><a href="index-two.html" class="sub-menu-item">Hero Two</a></li>
-                                <li><a href="index-three.html" class="sub-menu-item">Hero Three</a></li>
-                                <li><a href="index-four.html" class="sub-menu-item">Hero Four</a></li>
-                                <li><a href="index-five.html" class="sub-menu-item">Hero Five </a></li>
-                            </ul>
-                        </li>
+                        
+                        <li><a href="buy.html" class="sub-menu-item">Acceuil</a></li>
 
 
-                        <li><a href="buy.html" class="sub-menu-item">Buy</a></li>
+                        <li><a href="buy.html" class="sub-menu-item">Achat</a></li>
 
-                        <li><a href="sell.html" class="sub-menu-item">Sell</a></li>
+                        <li><a href="sell.html" class="sub-menu-item">Vendre</a></li>
 
                         <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Listing</a><span class="menu-arrow"></span>
+                            <a href="javascript:void(0)">Liste</a><span class="menu-arrow"></span>
                             <ul class="submenu">
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Grid View </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
@@ -170,8 +162,8 @@
                     <div class="container">
                         <div class="grid grid-cols-1">
                             <div class="ltr:md:text-left rtl:md:text-right text-center">
-                                <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6">We will help you find <br> your <span class="text-green-600">Wonderful</span> home</h1>
-                                <p class="text-white/70 text-xl max-w-xl">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
+                                <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6">Nous vous aiderons à trouver <br> votre <span class="text-green-600">Merveilleuse</span> maison</h1>
+                                <p class="text-white/70 text-xl max-w-xl">Une excellente plateforme pour acheter, vendre vos propriétés .</p>
                             </div>
                         </div><!--end grid-->
                     </div><!--end container-->

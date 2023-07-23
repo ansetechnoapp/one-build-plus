@@ -19,6 +19,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
           server-dir: "./obp/"
+          args: --exclude ./index.php
           exclude: "index.php"
           local-dir: "./public/"
 

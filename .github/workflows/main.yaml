@@ -13,24 +13,22 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Transfer public folder
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
           server-dir: "./obp/"
-          args: --exclude ./index.php
           exclude: "index.php"
           local-dir: "./public/"
 
       - name: Setup FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
           server-dir: "./obp/OBP/"
-          args: --exclude ./public/
           exclude: "./public/**, ./obp/OBP/public/"
           local-dir: "./"  # Correction : Changement de "./" à "./public/"
           clean: true

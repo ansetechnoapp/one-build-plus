@@ -13,3 +13,6 @@ et que le dossier monpremier soit supprimer."
 
 Grâce a un ficher YAML,j'aimerais fais la configuration de la github action qui dès qu'un commit arrive sur le main,
 j'aimerais que le code dans main soit uploadé sur mon server et que le dossier monpremier soit supprimer.
+
+
+important : sur github la compatibilité des actions avec Node.js version 16

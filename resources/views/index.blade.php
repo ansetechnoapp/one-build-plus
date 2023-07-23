@@ -25,6 +25,7 @@
         <link href="assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
         <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="assets/css/tailwind.css" />
+        <link rel="stylesheet" href="assets/css/style.css" />
 
     </head>
 
@@ -65,10 +66,10 @@
                 <!--Login button Start-->
                 <ul class="buy-button list-none mb-0">
                     <li class="inline mb-0">
-                        <a href="auth-login.html" class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i data-feather="user" class="h-4 w-4 stroke-[3]"></i></a>
+                        <a href="auth-login.html" class="btn btn-icon bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i data-feather="user" class="h-4 w-4 stroke-[3]"></i></a>
                     </li>
                     <li class="sm:inline ps-1 mb-0 hidden">
-                        <a href="auth-signup.html" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
+                        <a href="auth-signup.html" class="btn bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
                     </li>
                 </ul>
                 <!--Login button End-->
@@ -77,7 +78,16 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu justify-end">
                         
-                        <li><a href="buy.html" class="sub-menu-item">Acceuil</a></li>
+                        <li class="has-submenu parent-menu-item active">
+                            <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li class="active"><a href="index.html" class="sub-menu-item active">Hero One</a></li>
+                                <li><a href="index-two.html" class="sub-menu-item">Hero Two</a></li>
+                                <li><a href="index-three.html" class="sub-menu-item">Hero Three</a></li>
+                                <li><a href="index-four.html" class="sub-menu-item">Hero Four</a></li>
+                                <li><a href="index-five.html" class="sub-menu-item">Hero Five </a></li>
+                            </ul>
+                        </li>
 
 
                         <li><a href="buy.html" class="sub-menu-item">Achat</a></li>
@@ -252,7 +262,7 @@
                                                 </div>
 
                                                 <div class="lg:mt-6">
-                                                    <input type="submit" id="search-buy" name="search" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
+                                                    <input type="submit" id="search-buy" name="search" class="btn bg-red-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
                                                 </div>
                                             </div><!--end grid-->
                                         </div><!--end container-->
@@ -319,7 +329,7 @@
                                                 </div>
 
                                                 <div class="lg:mt-6">
-                                                    <input type="submit" id="search-sell" name="search" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
+                                                    <input type="submit" id="search-sell" name="search" class="btn bg-red-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
                                                 </div>
                                             </div><!--end grid-->
                                         </div><!--end container-->
@@ -386,7 +396,7 @@
                                                 </div>
 
                                                 <div class="lg:mt-6">
-                                                    <input type="submit" id="search-rent" name="search" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
+                                                    <input type="submit" id="search-rent" name="search" class="btn bg-red-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
                                                 </div>
                                             </div><!--end grid-->
                                         </div><!--end container-->
@@ -418,7 +428,7 @@
                             <p class="text-slate-400 max-w-xl">Hously developed a platform for the Real Estate marketplace that allows buyers and sellers to easily execute a transaction on their own. The platform drives efficiency, cost transparency and control into the hands of the consumers. Hously is Real Estate Redefined.</p>
 
                             <div class="mt-4">
-                                <a href="#" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md mt-3">Learn More </a>
+                                <a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md mt-3">Learn More </a>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -1280,7 +1290,7 @@
                     <p class="text-slate-400 max-w-xl mx-auto">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
 
                     <div class="mt-6">
-                        <a href="contact.html" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md"><i class="uil uil-phone align-middle me-2"></i> Contact us</a>
+                        <a href="contact.html" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md"><i class="uil uil-phone align-middle me-2"></i> Contact us</a>
                     </div>
                 </div><!--end grid-->
             </div><!--end container-->
@@ -1304,7 +1314,7 @@
                                     <div class="subcribe-form z-1">
                                         <form class="relative max-w-lg md:ms-auto">
                                             <input type="email" id="subcribe" name="email" class="rounded-full bg-white dark:bg-slate-900 shadow dark:shadow-gray-700" placeholder="Enter your email :">
-                                            <button type="submit" class="btn bg-green-600 hover:bg-green-700 text-white rounded-full">Subscribe</button>
+                                            <button type="submit" class="btn bg-red-600 hover:bg-green-700 text-white rounded-full">Subscribe</button>
                                         </form><!--end form-->
                                     </div>
                                 </div>
@@ -1389,15 +1399,15 @@
                         </div>
 
                         <ul class="list-none ltr:md:text-right rtl:md:text-left text-center">
-                            <li class="inline"><a href="https://1.envato.market/hously" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="shopping-cart" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="https://dribbble.com/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="dribbble" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="https://www.behance.net/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i class="uil uil-behance align-baseline"></i></a></li>
-                            <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="twitter" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="mailto:support@shreethemes.in" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="mail" class="h-4 w-4"></i></a></li>
-                            <li class="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"><i data-feather="file-text" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="https://1.envato.market/hously" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="shopping-cart" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="https://dribbble.com/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="dribbble" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="https://www.behance.net/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i class="uil uil-behance align-baseline"></i></a></li>
+                            <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="twitter" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="mailto:support@shreethemes.in" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="mail" class="h-4 w-4"></i></a></li>
+                            <li class="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank" class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i data-feather="file-text" class="h-4 w-4"></i></a></li>
                         </ul><!--end icon-->
                     </div><!--end grid-->
                 </div><!--end container-->
@@ -1427,7 +1437,7 @@
         <!-- LTR & RTL Mode Code -->
 
         <!-- Back to top -->
-        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-green-600 text-white justify-center items-center"><i class="uil uil-arrow-up"></i></a>
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 text-center bg-red-600 text-white justify-center items-center"><i class="uil uil-arrow-up"></i></a>
         <!-- Back to top -->
 
         <!-- JAVASCRIPTS -->

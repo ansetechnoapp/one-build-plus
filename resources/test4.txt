@@ -1,5 +1,5 @@
 zfmpnx1
 ooooooooo
  git add *
- git commit -m 'test6'
+ git commit -m 'test7'
  git push

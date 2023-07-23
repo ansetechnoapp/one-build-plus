@@ -23,17 +23,5 @@ jobs:
           exclude: "index.php"
           local-dir: "./public/"
 
-      - name: Setup FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with:
-          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./obp/OBP/"
-          args: --exclude public/
-          exclude: "public/**, obp/OBP/public"
-          local-dir: "./"
-          clean: true
-
       - name: Remove directory "public"
         run: rm -rf public

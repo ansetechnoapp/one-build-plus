@@ -29,8 +29,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./obp/OBP"
-          args: --exclude public/
-          exclude: "public/**, obp/OBP/public"
+          server-dir: "./obp/OBP/"
+          args: --exclude ./public/
+          exclude: "./public/**, ./obp/OBP/public/"
           local-dir: "./"  # Correction : Changement de "./" à "./public/"
           clean: true

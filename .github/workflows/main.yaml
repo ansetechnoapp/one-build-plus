@@ -31,4 +31,3 @@ jobs:
           server-dir: "./obp/OBP/"
           exclude: "./public/**, ./obp/OBP/public/"
           local-dir: "./"  # Correction : Changement de "./" à "./public/"
-          clean: true

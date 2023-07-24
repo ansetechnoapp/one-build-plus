@@ -17,3 +17,9 @@
   :is(.dark .dark\:hover\:bg-red-600:hover){
     background-color: rgb(229, 62, 62, 1 ) !important;
   }
+  .news1tyle_button{
+    background-color: rgb(229, 62, 62, 1 )
+  }
+  .news1tyle_button :hover{
+    color: chartreuse !important;
+  }

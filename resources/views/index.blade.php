@@ -16,7 +16,8 @@
 
         <!-- favicon -->
         <script type="text/javascript" nonce="e4272451ad0148a59866b6d9867" src="//injections.adguard.org?ts=1690132580611&amp;type=content-script&amp;dmn=txbest.online&amp;url=https%3A%2F%2Ftxbest.online%2Fobp%2F&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-wrtc&amp;st-push&amp;st-loc&amp;st-dnt"></script>
-<script type="text/javascript" nonce="e4272451ad0148a59866b6d9867" src="//injections.adguard.org?ts=1690132580611&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script><link rel="shortcut icon" href="assets/images/favicon.ico" />
+<script type="text/javascript" nonce="e4272451ad0148a59866b6d9867" src="//injections.adguard.org?ts=1690132580611&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script>
+<link rel="shortcut icon" href="assets/images/logo-dark.ico" />
 
         <!-- Css -->
         <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
@@ -32,20 +33,20 @@
 
     <body class="dark:bg-slate-900">
         <!-- Loader Start -->
-        <!-- <div id="preloader">
+         <div id="preloader">
             <div id="status">
                 <div class="spinner">
                     <div class="double-bounce1"></div>
                     <div class="double-bounce2"></div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- Loader End -->
         <!-- Start Navbar -->
         <nav id="topnav" class="defaultscroll is-sticky">
             <div class="container">
                 <!-- Logo container-->
-                <a class="logo" href="index.html" style="width: 15%;">
+                <a class="logo" href="index.html" style="max-width: 15%;">
                     <img src="assets/images/logo-dark.png"  class="inline-block dark:hidden" alt="">
                     <img src="assets/images/logo-light.png"  class="hidden dark:inline-block" alt="">
                 </a>
@@ -90,64 +91,16 @@
                                 <li><a href="sell" class="sub-menu-item">Vendre</a></li>
                             </ul>
                         </li>
-
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Liste</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Grid View </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="grid.html" class="sub-menu-item">Grid Listing</a></li>
-                                        <li><a href="grid-sidebar.html" class="sub-menu-item">Grid Sidebar </a></li>
-                                        <li><a href="grid-map.html" class="sub-menu-item">Grid With Map</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> List View </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="list.html" class="sub-menu-item">List Listing</a></li>
-                                        <li><a href="list-sidebar.html" class="sub-menu-item">List Sidebar </a></li>
-                                        <li><a href="list-map.html" class="sub-menu-item">List With Map</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Property Detail </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="property-detail" class="sub-menu-item">Property Detail</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
+                        <li><a href="aboutus" class="sub-menu-item">A propos</a></li>
                         <li class="has-submenu parent-parent-menu-item">
                             <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
                             <ul class="submenu">
-                                <li><a href="aboutus" class="sub-menu-item">About Us</a></li>
                                 <li><a href="features.html" class="sub-menu-item">Featues</a></li>
-                                <li><a href="pricing.html" class="sub-menu-item">Pricing</a></li>
                                 <li><a href="faqs.html" class="sub-menu-item">Faqs</a></li>
-                                {{-- <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="auth-login" class="sub-menu-item">Login</a></li>
-                                        <li><a href="auth-signup" class="sub-menu-item">Signup</a></li>
-                                        <li><a href="auth-re-password.html" class="sub-menu-item">Reset Password</a></li>
-                                    </ul>
-                                </li> --}}
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
                                         <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
-                                    </ul>
-                                </li>
-                                {{-- <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
-                                        <li><a href="blog-sidebar.html" class="sub-menu-item"> Blog Sidebar</a></li>
-                                        <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
-                                    </ul>
-                                </li> --}}
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Special </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="comingsoon.html" class="sub-menu-item">Comingsoon</a></li>
-                                        <li><a href="maintenance.html" class="sub-menu-item">Maintenance</a></li>
-                                        <li><a href="404.html" class="sub-menu-item">404! Error</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -187,13 +140,10 @@
                         <div class="grid grid-cols-1">
                             <ul class="inline-block sm:w-fit w-full flex-wrap justify-center text-center p-4 bg-white dark:bg-slate-900 rounded-t-xl border-b dark:border-gray-800" id="myTab" data-tabs-toggle="#StarterContent" role="tablist">
                                 <li role="presentation" class="inline-block">
-                                    <button class="px-6 py-2 text-base font-medium rounded-md w-full hover:text-green-600 transition-all duration-500 ease-in-out" id="buy-home-tab" data-tabs-target="#buy-home" type="button" role="tab" aria-controls="buy-home" aria-selected="true">Buy</button>
+                                    <button class="px-6 py-2 text-base font-medium rounded-md w-full hover:text-green-600 transition-all duration-500 ease-in-out news1tyle_button" id="buy-home-tab" data-tabs-target="#buy-home" type="button" role="tab" aria-controls="buy-home" aria-selected="true">Buy</button>
                                 </li>
                                 <li role="presentation" class="inline-block">
                                     <button class="px-6 py-2 text-base font-medium rounded-md w-full transition-all duration-500 ease-in-out" id="sell-home-tab" data-tabs-target="#sell-home" type="button" role="tab" aria-controls="sell-home" aria-selected="false">Sell</button>
-                                </li>
-                                <li role="presentation" class="inline-block">
-                                    <button class="px-6 py-2 text-base font-medium rounded-md w-full transition-all duration-500 ease-in-out" id="rent-home-tab" data-tabs-target="#rent-home" type="button" role="tab" aria-controls="rent-home" aria-selected="false">Rent</button>
                                 </li>
                             </ul>
 
@@ -327,73 +277,6 @@
 
                                                 <div class="lg:mt-6">
                                                     <input type="submit" id="search-sell" name="search" class="btn bg-red-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
-                                                </div>
-                                            </div><!--end grid-->
-                                        </div><!--end container-->
-                                    </form>
-                                </div>
-
-                                <div class="hidden" id="rent-home" role="tabpanel" aria-labelledby="rent-home-tab">
-                                    <form action="#">
-                                        <div class="registration-form text-dark ltr:text-start rtl:text-end">
-                                            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
-                                                <div>
-                                                    <label class="form-label font-medium text-slate-900 dark:text-white">Search : <span class="text-red-600">*</span></label>
-                                                    <div class="filter-search-form relative filter-border mt-2">
-                                                        <i class="uil uil-search icons"></i>
-                                                        <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search your keaywords">
-                                                    </div>
-                                                </div>
-
-                                                <div>
-                                                    <label for="buy-properties" class="form-label font-medium text-slate-900 dark:text-white">Select Categories:</label>
-                                                    <div class="filter-search-form relative filter-border mt-2">
-                                                        <i class="uil uil-estate icons"></i>
-                                                        <select class="form-select z-2" data-trigger name="choices-catagory" id="choices-catagory-rent" aria-label="Default select example">
-                                                            <option>Houses</option>
-                                                            <option>Apartment</option>
-                                                            <option>Offices</option>
-                                                            <option>Townhome</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div>
-                                                    <label for="buy-min-price" class="form-label font-medium text-slate-900 dark:text-white">Min Price :</label>
-                                                    <div class="filter-search-form relative filter-border mt-2">
-                                                        <i class="uil uil-usd-circle icons"></i>
-                                                        <select class="form-select" data-trigger name="choices-min-price" id="choices-min-price-rent" aria-label="Default select example">
-                                                            <option>Min Price</option>
-                                                            <option>500</option>
-                                                            <option>1000</option>
-                                                            <option>2000</option>
-                                                            <option>3000</option>
-                                                            <option>4000</option>
-                                                            <option>5000</option>
-                                                            <option>6000</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div>
-                                                    <label for="buy-max-price" class="form-label font-medium text-slate-900 dark:text-white">Max Price :</label>
-                                                    <div class="filter-search-form relative mt-2">
-                                                        <i class="uil uil-usd-circle icons"></i>
-                                                        <select class="form-select" data-trigger name="choices-max-price" id="choices-max-price-rent" aria-label="Default select example">
-                                                            <option>Max Price</option>
-                                                            <option>500</option>
-                                                            <option>1000</option>
-                                                            <option>2000</option>
-                                                            <option>3000</option>
-                                                            <option>4000</option>
-                                                            <option>5000</option>
-                                                            <option>6000</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="lg:mt-6">
-                                                    <input type="submit" id="search-rent" name="search" class="btn bg-red-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
                                                 </div>
                                             </div><!--end grid-->
                                         </div><!--end container-->

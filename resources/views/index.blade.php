@@ -15,7 +15,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" />
+        <script type="text/javascript" nonce="e4272451ad0148a59866b6d9867" src="//injections.adguard.org?ts=1690132580611&amp;type=content-script&amp;dmn=txbest.online&amp;url=https%3A%2F%2Ftxbest.online%2Fobp%2F&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-wrtc&amp;st-push&amp;st-loc&amp;st-dnt"></script>
+<script type="text/javascript" nonce="e4272451ad0148a59866b6d9867" src="//injections.adguard.org?ts=1690132580611&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script><link rel="shortcut icon" href="assets/images/favicon.ico" />
 
         <!-- Css -->
         <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
@@ -66,10 +67,10 @@
                 <!--Login button Start-->
                 <ul class="buy-button list-none mb-0">
                     <li class="inline mb-0">
-                        <a href="auth-login.html" class="btn btn-icon bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i data-feather="user" class="h-4 w-4 stroke-[3]"></i></a>
+                        <a href="auth-login" class="btn btn-icon bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i data-feather="user" class="h-4 w-4 stroke-[3]"></i></a>
                     </li>
                     <li class="sm:inline ps-1 mb-0 hidden">
-                        <a href="auth-signup.html" class="btn bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
+                        <a href="auth-signup" class="btn bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
                     </li>
                 </ul>
                 <!--Login button End-->
@@ -78,21 +79,17 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu justify-end">
                         
+                        
+
+                        <li class="active"><a href="/" class="sub-menu-item">Acceuil</a></li>
+
                         <li class="has-submenu parent-menu-item active">
-                            <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                            <a href="javascript:void(0)">Activités commerciales</a><span class="menu-arrow"></span>
                             <ul class="submenu">
-                                <li class="active"><a href="index.html" class="sub-menu-item active">Hero One</a></li>
-                                <li><a href="index-two.html" class="sub-menu-item">Hero Two</a></li>
-                                <li><a href="index-three.html" class="sub-menu-item">Hero Three</a></li>
-                                <li><a href="index-four.html" class="sub-menu-item">Hero Four</a></li>
-                                <li><a href="index-five.html" class="sub-menu-item">Hero Five </a></li>
+                                <li class="active"><a href="buy" class="sub-menu-item active">Achat</a></li>
+                                <li><a href="sell" class="sub-menu-item">Vendre</a></li>
                             </ul>
                         </li>
-
-
-                        <li><a href="buy.html" class="sub-menu-item">Achat</a></li>
-
-                        <li><a href="sell.html" class="sub-menu-item">Vendre</a></li>
 
                         <li class="has-submenu parent-parent-menu-item">
                             <a href="javascript:void(0)">Liste</a><span class="menu-arrow"></span>
@@ -113,7 +110,7 @@
                                 </li>
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Property Detail </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
-                                        <li><a href="property-detail.html" class="sub-menu-item">Property Detail</a></li>
+                                        <li><a href="property-detail" class="sub-menu-item">Property Detail</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -122,30 +119,30 @@
                         <li class="has-submenu parent-parent-menu-item">
                             <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
                             <ul class="submenu">
-                                <li><a href="aboutus.html" class="sub-menu-item">About Us</a></li>
+                                <li><a href="aboutus" class="sub-menu-item">About Us</a></li>
                                 <li><a href="features.html" class="sub-menu-item">Featues</a></li>
                                 <li><a href="pricing.html" class="sub-menu-item">Pricing</a></li>
                                 <li><a href="faqs.html" class="sub-menu-item">Faqs</a></li>
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
+                                {{-- <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
-                                        <li><a href="auth-login.html" class="sub-menu-item">Login</a></li>
-                                        <li><a href="auth-signup.html" class="sub-menu-item">Signup</a></li>
+                                        <li><a href="auth-login" class="sub-menu-item">Login</a></li>
+                                        <li><a href="auth-signup" class="sub-menu-item">Signup</a></li>
                                         <li><a href="auth-re-password.html" class="sub-menu-item">Reset Password</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
                                         <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span class="submenu-arrow"></span>
+                                {{-- <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
                                         <li><a href="blog-sidebar.html" class="sub-menu-item"> Blog Sidebar</a></li>
                                         <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Special </a><span class="submenu-arrow"></span>
                                     <ul class="submenu">
                                         <li><a href="comingsoon.html" class="sub-menu-item">Comingsoon</a></li>
@@ -513,7 +510,7 @@
     
                                 <div class="p-6">
                                     <div class="pb-6">
-                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765 Hillshire Ave, Baton Rouge, LA 70810, USA</a>
+                                        <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765 Hillshire Ave, Baton Rouge, LA 70810, USA</a>
                                     </div>
     
                                     <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -567,7 +564,7 @@
     
                                 <div class="p-6">
                                     <div class="pb-6">
-                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">59345 STONEWALL DR, Plaquemine, LA 70764, USA</a>
+                                        <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">59345 STONEWALL DR, Plaquemine, LA 70764, USA</a>
                                     </div>
     
                                     <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -621,7 +618,7 @@
     
                                 <div class="p-6">
                                     <div class="pb-6">
-                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">3723 SANDBAR DR, Addis, LA 70710, USA</a>
+                                        <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">3723 SANDBAR DR, Addis, LA 70710, USA</a>
                                     </div>
     
                                     <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -675,7 +672,7 @@
     
                                 <div class="p-6">
                                     <div class="pb-6">
-                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">Lot 21 ROYAL OAK DR, Prairieville, LA 70769, USA</a>
+                                        <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">Lot 21 ROYAL OAK DR, Prairieville, LA 70769, USA</a>
                                     </div>
     
                                     <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -729,7 +726,7 @@
     
                                 <div class="p-6">
                                     <div class="pb-6">
-                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA</a>
+                                        <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA</a>
                                     </div>
     
                                     <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -783,7 +780,7 @@
     
                                 <div class="p-6">
                                     <div class="pb-6">
-                                        <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">5133 MCLAIN WAY, Baton Rouge, LA 70809, USA</a>
+                                        <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">5133 MCLAIN WAY, Baton Rouge, LA 70809, USA</a>
                                     </div>
     
                                     <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -838,7 +835,7 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765 Hillshire Ave, Baton Rouge, LA 70810, USA</a>
+                                <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765 Hillshire Ave, Baton Rouge, LA 70810, USA</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -890,7 +887,7 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">59345 STONEWALL DR, Plaquemine, LA 70764, USA</a>
+                                <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">59345 STONEWALL DR, Plaquemine, LA 70764, USA</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -942,7 +939,7 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">3723 SANDBAR DR, Addis, LA 70710, USA</a>
+                                <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">3723 SANDBAR DR, Addis, LA 70710, USA</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -994,7 +991,7 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">Lot 21 ROYAL OAK DR, Prairieville, LA 70769, USA</a>
+                                <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">Lot 21 ROYAL OAK DR, Prairieville, LA 70769, USA</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -1046,7 +1043,7 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA</a>
+                                <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -1098,7 +1095,7 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">5133 MCLAIN WAY, Baton Rouge, LA 70809, USA</a>
+                                <a href="property-detail" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">5133 MCLAIN WAY, Baton Rouge, LA 70809, USA</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -1340,11 +1337,11 @@
                                 <div class="lg:col-span-2 md:col-span-4">
                                     <h5 class="tracking-[1px] text-gray-100 font-semibold">Company</h5>
                                     <ul class="list-none footer-list mt-6">
-                                        <li><a href="aboutus.html" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> About us</a></li>
+                                        <li><a href="aboutus" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> About us</a></li>
                                         <li class="mt-[10px]"><a href="features.html" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Services</a></li>
                                         <li class="mt-[10px]"><a href="pricing.html" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Pricing</a></li>
                                         <li class="mt-[10px]"><a href="blog.html" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Blog</a></li>
-                                        <li class="mt-[10px]"><a href="auth-login.html" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>
+                                        <li class="mt-[10px]"><a href="auth-login" class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>
                                     </ul>
                                 </div><!--end col-->
 

@@ -16,11 +16,14 @@ Route::get('/well', function () {
     return view('reactJS/reactjs');
 });
 Route::get('/', function () {
-    return view('index');
-});
+    return view('home.index');
+})->name('home');
+Route::get('/faqs', function () {
+    return view('faqs.index');
+})->name('faqs');
 Route::get('/buy', function () {
-    return view('buy');
-});
+    return view('buy.index');
+})->name('buy');
 Route::get('/property-detail', function () {
     return view('property-detail');
 });
@@ -35,9 +38,6 @@ Route::get('/aboutus', function () {
 });
 Route::get('/features', function () {
     return view('features');
-});
-Route::get('/faqs', function () {
-    return view('faqs');
 });
 Route::get('/auth-login', function () {
     return view('auth-login');

@@ -85,17 +85,7 @@
                             <h5 class="tracking-[1px] text-gray-100 font-semibold">Coordonnées</h5>
 
 
-                            <div class="flex mt-6">
-                                <i data-feather="map-pin" class="w-5 h-5 text-green-600 me-3"></i>
-                                <div class="">
-                                    <h6 class="text-gray-300 mb-2">C/54 Northwest Freeway, <br> Suite 558, <br>
-                                        Houston, USA 485</h6>
-                                    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"
-                                        data-type="iframe"
-                                        class="text-green-600 hover:text-green-700 duration-500 ease-in-out lightbox">View
-                                        on Google map</a>
-                                </div>
-                            </div>
+                           
 
                             <div class="flex mt-6">
                                 <i data-feather="mail" class="w-5 h-5 text-green-600 me-3"></i>
@@ -131,7 +121,7 @@
                     <p class="mb-0 text-gray-300">©
                         <script>
                             document.write(new Date().getFullYear())
-                        </script>ONE <i class="mdi mdi-heart text-red-600"></i> BUILD PLUS
+                        </script> <i class="mdi mdi-heart text-red-600"></i> ONE BUILD PLUS
                         <a href="#" target="_blank" class="text-reset">OBP</a>.
                     </p>
                 </div>
@@ -140,30 +130,6 @@
                     <li class="inline"><a href="#" target="_blank"
                         class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
                             data-feather="facebook" class="h-4 w-4"></i></a></li>
-                    {{-- <li class="inline"><a href="https://1.envato.market/hously" target="_blank"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                data-feather="shopping-cart" class="h-4 w-4"></i></a></li>
-                    <li class="inline"><a href="https://dribbble.com/shreethemes" target="_blank"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                data-feather="dribbble" class="h-4 w-4"></i></a></li>
-                    <li class="inline"><a href="https://www.behance.net/shreethemes" target="_blank"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                class="uil uil-behance align-baseline"></i></a></li>
-                    <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                    <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                data-feather="instagram" class="h-4 w-4"></i></a></li>
-                    <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                data-feather="twitter" class="h-4 w-4"></i></a></li>
-                    <li class="inline"><a href="mailto:support@shreethemes.in"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                data-feather="mail" class="h-4 w-4"></i></a></li>
-                    <li class="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank"
-                            class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-red-600 dark:hover:bg-red-600"><i
-                                data-feather="file-text" class="h-4 w-4"></i></a></li> --}}
                 </ul>
                 <!--end icon-->
             </div>

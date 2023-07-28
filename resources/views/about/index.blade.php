@@ -60,19 +60,19 @@
                             
                             <div class="counter-box text-center">
                                 <h1 class="text-white lg:text-5xl text-4xl font-semibold mb-2"><span class="counter-value" data-target="1548">1010</span>+</h1>
-                                <h5 class="counter-head text-white text-lg font-medium">Properties Sell</h5>
+                                <h5 class="counter-head text-white text-lg font-medium">Les propriétés se vendent</h5>
                             </div><!--end counter box-->
         
                             
                             <div class="counter-box text-center">
                                 <h1 class="text-white lg:text-5xl text-4xl font-semibold mb-2"><span class="counter-value" data-target="25">2</span>+</h1>
-                                <h5 class="counter-head text-white text-lg font-medium">Award Gained</h5>
+                                <h5 class="counter-head text-white text-lg font-medium">Prix obtenu</h5>
                             </div><!--end counter box-->
         
                             
                             <div class="counter-box text-center">
                                 <h1 class="text-white lg:text-5xl text-4xl font-semibold mb-2"><span class="counter-value" data-target="9">0</span>+</h1>
-                                <h5 class="counter-head text-white text-lg font-medium">Years Experience</h5>
+                                <h5 class="counter-head text-white text-lg font-medium">Années d'expérience</h5>
                             </div><!--end counter box-->
                         </div>
                     </div>
@@ -85,9 +85,9 @@
         <section class="relative lg:py-24 py-16">
             <div class="container">
                 <div class="grid grid-cols-1 pb-8 text-center">
-                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Meet The Agent Team</h3>
+                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Rencontrez l'équipe des agents</h3>
 
-                    <p class="text-slate-400 max-w-xl mx-auto">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
+                    <p class="text-slate-400 max-w-xl mx-auto">Une grande plateforme pour acheter, vendre.</p>
                 </div><!--end grid-->
 
                 <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px]">
@@ -175,9 +175,9 @@
 
             <div class="container lg:mt-24 mt-16">
                 <div class="grid grid-cols-1 pb-8 text-center">
-                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">What Our Client Say ?</h3>
+                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Ce que disent nos clients ?</h3>
 
-                    <p class="text-slate-400 max-w-xl mx-auto">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
+                    <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter, vendre.</p>
                 </div><!--end grid-->
 
                 <div class="flex justify-center relative mt-8">

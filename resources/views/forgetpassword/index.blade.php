@@ -1,29 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
     
-<!-- Mirrored from shreethemes.in/hously/layouts/auth-re-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:53:32 GMT -->
-<head>
-        <meta charset="UTF-8" />
-        <title>Hously - Tailwind CSS Real Estate Website Landing Page Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta content="Real Estate Website Landing Page" name="description" />
-        <meta content="Real Estate, buy, sell, Rent, tailwind Css" name="keywords" />
-        <meta name="author" content="Shreethemes" />
-        <meta name="website" content="https://shreethemes.in/" />
-        <meta name="email" content="support@shreethemes.in" />
-        <meta name="version" content="1.4.0" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" />
-
-        <!-- Css -->
-        <!-- Main Css -->
-        <link href="assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
-        <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="assets/css/tailwind.css" />
-
-    </head>
+<x-head></x-head>
     
     <body class="dark:bg-slate-900">
         <!-- Loader Start -->

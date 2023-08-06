@@ -28,21 +28,29 @@
                             <h5 class="my-6 text-xl font-semibold">connexion</h5>
                         </div>
                         
-                        <form class="ltr:text-left rtl:text-right">
+                        <form method="POST" action="{{ route('login') }}" class="ltr:text-left rtl:text-right">
+                            @csrf
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Adresse électronique:</label>
-                                    <input id="LoginEmail" type="email" class="form-input mt-3" placeholder="name@example.com">
+                                    <input id="LoginEmail" type="email" name="email" class="form-input mt-3" placeholder="name@example.com">
+                                    @if ($errors->has('email'))
+                <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+            @endif
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Mot de passe:</label>
-                                    <input id="LoginPassword" type="password" class="form-input mt-3" placeholder="Password:">
+                                    <input id="LoginPassword" type="password" name="password" class="form-input mt-3" placeholder="Password:">
+                                    @if ($errors->has('password'))
+            <div class="alert alert-danger">{{ $errors->first('password') }}</div>
+        @endif
                                 </div>
 
                                 <div class="flex justify-between mb-4">
                                     <div class="inline-flex items-center">
                                         <input class="form-checkbox accent-green-600 rounded w-4 h-4 me-2 border border-inherit" type="checkbox" value="" id="RememberMe">
+                                        
                                         <label class="form-check-label text-slate-400" for="RememberMe">Se souvenir de moi</label>
                                     </div>
                                     
@@ -50,7 +58,8 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <a href="#" class="btn bg-red-600 rounded-md w-full">Se connecter / S'inscrire</a>
+                                    {{-- <a href="{{route('dashboard.home')}}" class="btn bg-red-600 rounded-md w-full">Se connecter</a> --}}
+                                    <button class="btn bg-red-600 rounded-md w-full" type="submit" >Se connecter</button>
                                 </div>
 
                             </div>
@@ -94,5 +103,5 @@
         <!-- JAVASCRIPTS -->
     </body>
 
-<!-- Mirrored from shreethemes.in/hously/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:06 GMT -->
+<!-- Mirrored from shreethemes.in/OBP/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:06 GMT -->
 </html>

@@ -44,7 +44,7 @@
                             <a href="#" class="text-[22px] focus:outline-none">
                                 <img src="assets/images/logo-light.png" alt="">
                             </a>
-                            <p class="mt-6 text-gray-300">Une plateforme idéale pour acheter, vendre .</p>
+                            <p class="mt-6 text-gray-300">Une plateforme idéale pour acheter vos terrain.</p>
 
                         </div>
                         <!--end col-->

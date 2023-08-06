@@ -1,0 +1,30 @@
+php artisan make:migration create_prod_table
+php artisan make:migration create_payment_instalments_table
+php artisan make:migration create_payment_cash_table
+php artisan make:migration create_additional_option_table
+php artisan migrate
+
+
+
+......................................................info
+php artisan migrate 
+
+php artisan migrate:fresh --seed
+
+php artisan make:migration info_city
+
+php artisan migrate:reset
+
+php artisan migrate:rollback
+
+php artisan migrate:refresh --seed
+
+
+
+
+
+
+
+
+
+

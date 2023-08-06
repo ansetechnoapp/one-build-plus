@@ -23,7 +23,7 @@
         <!--Login button Start-->
         <ul class="buy-button list-none mb-0">
             <li class="sm:inline ps-1 mb-0 hidden">
-                <a href="auth-login"
+                <a href="{{route('auth-login')}}"
                     class="btn bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i
                     data-feather="user" class="h-4 w-4 stroke-[3]" style="    margin-right: 5px; margin-bottom: 5px;"></i>connexion</a>
             </li>

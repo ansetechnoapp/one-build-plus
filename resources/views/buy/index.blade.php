@@ -260,42 +260,42 @@
                             <img src="assets/images/svg/Agent_Monochromatic.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Lettre d'approbation préalable</h5>
-                                <p class="text-slate-400 mt-3">La plupart des acheteurs pensent que la première étape consiste à trouver la maison de leurs rêves. la maison de leurs rêves, mais la vérité est que la recherche du financement est la première étape. Hously rationalise le processus de le processus de préapprobation de prêt grâce à notre écosystème de partenaires de premier plan ou simplement en téléchargeant votre propre lettre de préapprobation. télécharger votre propre lettre de préapprobation.</p>
+                                <p class="text-slate-400 mt-3">La plupart des acheteurs pensent que la première étape consiste à trouver la maison de leurs rêves. la maison de leurs rêves, mais la vérité est que la recherche du financement est la première étape. OBP rationalise le processus de le processus de préapprobation de prêt grâce à notre écosystème de partenaires de premier plan ou simplement en téléchargeant votre propre lettre de préapprobation. télécharger votre propre lettre de préapprobation.</p>
                             </div>
                         </div>
                         <div class="hidden " id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
                             <img src="assets/images/svg/presentation_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Planifier une visite</h5>
-                                <p class="text-slate-400 mt-3">Hously permet à un acheteur de planifier une visite instantanée et d'obtenir une visite privée sans avoir besoin d'impliquer plusieurs parties. et d'obtenir une visite privée sans que plusieurs parties ne soient impliquées. Vous choisissez l'heure qui vous convient !</p>
+                                <p class="text-slate-400 mt-3">OBP permet à un acheteur de planifier une visite instantanée et d'obtenir une visite privée sans avoir besoin d'impliquer plusieurs parties. et d'obtenir une visite privée sans que plusieurs parties ne soient impliquées. Vous choisissez l'heure qui vous convient !</p>
                             </div>
                         </div>
                         <div class="hidden " id="offer" role="tabpanel" aria-labelledby="offer-tab">
                             <img src="assets/images/svg/session_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Soumettre une offre</h5>
-                                <p class="text-slate-400 mt-3">Hously accompagne l'acheteur tout au long du processus de en donnant l'impression que la paperasserie se fait sans effort. Grâce à nos flux de travail personnalisés et d'analyse de la progression, vous saurez toujours où en est votre achat. Fini le téléphone de téléphone et de courriels sans réponse !</p>
+                                <p class="text-slate-400 mt-3">OBP accompagne l'acheteur tout au long du processus de en donnant l'impression que la paperasserie se fait sans effort. Grâce à nos flux de travail personnalisés et d'analyse de la progression, vous saurez toujours où en est votre achat. Fini le téléphone de téléphone et de courriels sans réponse !</p>
                             </div>
                         </div>
                         <div class="hidden " id="inspection" role="tabpanel" aria-labelledby="inspection-tab">
                             <img src="assets/images/svg/Startup_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Inspection des biens</h5>
-                                <p class="text-slate-400 mt-3">Personne ne veut acheter un citron. Réservez une inspection auprès d'un inspecteur agréé, puis soumettre les demandes de réparation via la plateforme Hously..</p>
+                                <p class="text-slate-400 mt-3">Personne ne veut acheter un citron. Réservez une inspection auprès d'un inspecteur agréé, puis soumettre les demandes de réparation via la plateforme OBP..</p>
                             </div>
                         </div>
                         <div class="hidden " id="appraisal" role="tabpanel" aria-labelledby="appraisal-tab">
                             <img src="assets/images/svg/team_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Évaluation</h5>
-                                <p class="text-slate-400 mt-3">Hously surveille le processus d'évaluation en s'assurant que la maison  que vous achetez correspond ou dépasse le prix que vous payez.</p>
+                                <p class="text-slate-400 mt-3">OBP surveille le processus d'évaluation en s'assurant que la maison  que vous achetez correspond ou dépasse le prix que vous payez.</p>
                             </div>
                         </div>
                         <div class="hidden " id="closing" role="tabpanel" aria-labelledby="closing-tab">
                             <img src="assets/images/svg/Team_meeting_Two.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Conclusion de l'affaire</h5>
-                                <p class="text-slate-400 mt-3">Enfin, le dossier de clôture est envoyé au bureau des titres, et le jour est arrivé... Vous avez Hously la maison de vos rêves !</p>
+                                <p class="text-slate-400 mt-3">Enfin, le dossier de clôture est envoyé au bureau des titres, et le jour est arrivé... Vous avez OBP la maison de vos rêves !</p>
                             </div>
                         </div>
                     </div>

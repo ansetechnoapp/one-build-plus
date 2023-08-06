@@ -185,7 +185,7 @@
                         <div class="tiny-three-item">
                             <div class="tiny-slide">
                                 <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " Hously made the processes so easy. Hously instantly increased the amount of interest and ultimately saved us over $10,000. " </p>
+                                    <p class="text-lg text-slate-400 italic"> " OBP made the processes so easy. OBP instantly increased the amount of interest and ultimately saved us over $10,000. " </p>
 
                                     <div class="text-center mt-5">
                                         <ul class="text-xl font-medium text-amber-400 list-none mb-2">
@@ -205,7 +205,7 @@
 
                             <div class="tiny-slide">
                                 <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " I highly recommend Hously as the new way to sell your home "by owner". My home sold in 24 hours for the asking price. Best $400 you could spend to sell your home. " </p>
+                                    <p class="text-lg text-slate-400 italic"> " I highly recommend OBP as the new way to sell your home "by owner". My home sold in 24 hours for the asking price. Best $400 you could spend to sell your home. " </p>
 
                                     <div class="text-center mt-5">
                                         <ul class="text-xl font-medium text-amber-400 list-none mb-2">
@@ -265,7 +265,7 @@
 
                             <div class="tiny-slide">
                                 <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " Hously made selling my home easy and stress free. They went above and beyond what is expected. " </p>
+                                    <p class="text-lg text-slate-400 italic"> " OBP made selling my home easy and stress free. They went above and beyond what is expected. " </p>
 
                                     <div class="text-center mt-5">
                                         <ul class="text-xl font-medium text-amber-400 list-none mb-2">
@@ -285,7 +285,7 @@
 
                             <div class="tiny-slide">
                                 <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " Hously is fair priced, quick to respond, and easy to use. I highly recommend their services! " </p>
+                                    <p class="text-lg text-slate-400 italic"> " OBP is fair priced, quick to respond, and easy to use. I highly recommend their services! " </p>
 
                                     <div class="text-center mt-5">
                                         <ul class="text-xl font-medium text-amber-400 list-none mb-2">
@@ -351,5 +351,5 @@
         <!-- JAVASCRIPTS -->
     </body>
 
-<!-- Mirrored from shreethemes.in/hously/layouts/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:53:11 GMT -->
+<!-- Mirrored from shreethemes.in/OBP/layouts/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:53:11 GMT -->
 </html>

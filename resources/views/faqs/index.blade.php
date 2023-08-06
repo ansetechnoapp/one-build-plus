@@ -75,7 +75,7 @@
                                 <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden mt-4">
                                     <h2 class="text-lg font-medium" id="accordion-collapse-heading-2">
                                         <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-left" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
-                                            <span>Ai-je besoin d'un designer pour utiliser Hously ?</span>
+                                            <span>Ai-je besoin d'un designer pour utiliser OBP ?</span>
                                             <svg data-accordion-icon class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                             </svg>
@@ -145,7 +145,7 @@
                                 <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden mt-4">
                                     <h2 class="text-lg font-medium" id="accordion-collapse-heading-6">
                                         <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-left" data-accordion-target="#accordion-collapse-body-6" aria-expanded="false" aria-controls="accordion-collapse-body-6">
-                                            <span>Ai-je besoin d'un designer pour utiliser Hously ?</span>
+                                            <span>Ai-je besoin d'un designer pour utiliser OBP ?</span>
                                             <svg data-accordion-icon class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                             </svg>
@@ -215,7 +215,7 @@
                                 <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden mt-4">
                                     <h2 class="text-lg font-medium" id="accordion-collapse-heading-10">
                                         <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-left" data-accordion-target="#accordion-collapse-body-10" aria-expanded="false" aria-controls="accordion-collapse-body-10">
-                                            <span>Ai-je besoin d'un designer pour utiliser Hously ?</span>
+                                            <span>Ai-je besoin d'un designer pour utiliser OBP ?</span>
                                             <svg data-accordion-icon class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                             </svg>
@@ -285,7 +285,7 @@
                                 <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden mt-4">
                                     <h2 class="text-lg font-medium" id="accordion-collapse-heading-14">
                                         <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-left" data-accordion-target="#accordion-collapse-body-14" aria-expanded="false" aria-controls="accordion-collapse-body-14">
-                                            <span>Ai-je besoin d'un designer pour utiliser Hously ?</span>
+                                            <span>Ai-je besoin d'un designer pour utiliser OBP ?</span>
                                             <svg data-accordion-icon class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                             </svg>

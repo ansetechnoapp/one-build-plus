@@ -46,8 +46,11 @@ class resetpassword extends Controller
                 // Validation des données envoyées dans la requête
 
                 try {
+                    
                     $request->validate($rules, $messages, $customAttributes);
+                    
                     if (User::where('email', $request->email)->first() === null) {
+                        dd('vvv');
                         return redirect()->route('auth-re-password');
                     } else {
                         Mail::to($email)

@@ -4,3 +4,5 @@ php artisan make:controller Auth/FormLogin
 php artisan make:controller Auth/FormRegister
 php artisan make:controller Auth/Logout
 php artisan make:controller Auth/resetpassword
+php artisan make:controller save/account
+php artisan make:controller facture_des_services/devis

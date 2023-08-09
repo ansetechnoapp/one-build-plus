@@ -97,13 +97,7 @@
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
                     <div class="container-xl px-4 mt-4">
-                        <!-- Account page navigation-->
-                        <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="account-profile.html">Profile</a>
-                            <a class="nav-link" href="account-billing.html">Historique de la facturation</a>
-                            <a class="nav-link" href="account-security.html">Sécurité</a>
-                            {{-- <a class="nav-link" href="account-notifications.html">Notifications</a> --}}
-                        </nav>
+                        @include('include.dashboard.account.navdashboardaccount')
                         <hr class="mt-0 mb-4">
                         <div class="row">
                             <div class="col-xl-4">
@@ -123,60 +117,63 @@
                             <div class="col-xl-8">
                                 <!-- Account details card-->
                                 <div class="card mb-4">
-                                    <div class="card-header">Account Details</div>
+                                    <div class="card-header">Détails du compte</div>
                                     <div class="card-body">
-                                        <form>
+                                        <form method="POST" action="{{route('saveprofilandupdate')}}">
+                                            @csrf
+                                            @foreach ($donnees as $donnee)
                                             <!-- Form Group (username)-->
                                             <div class="mb-3">
-                                                <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                                <label class="small mb-1" for="inputUsername">Nom d'utilisateur (comment votre nom apparaîtra aux autres utilisateurs du site)</label>
                                                 <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
                                             </div>
                                             <!-- Form Row-->
                                             <div class="row gx-3 mb-3">
                                                 <!-- Form Group (first name)-->
                                                 <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputFirstName">First name</label>
-                                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+                                                    <label class="small mb-1" for="inputFirstName">Prénom</label>
+                                                    <input class="form-control" name="firstName" id="inputFirstName" type="text" placeholder="Enter your first name" value="{{ $donnee->firstName }}">
                                                 </div>
                                                 <!-- Form Group (last name)-->
                                                 <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputLastName">Last name</label>
-                                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                                                    <label class="small mb-1" for="inputLastName">Nom de famille</label>
+                                                    <input class="form-control" name="lastName" id="inputLastName" type="text" placeholder="Enter your last name" value="{{ $donnee->lastName }}">
                                                 </div>
                                             </div>
                                             <!-- Form Row        -->
                                             <div class="row gx-3 mb-3">
                                                 <!-- Form Group (organization name)-->
                                                 <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputOrgName">Organization name</label>
+                                                    <label class="small mb-1" for="inputOrgName">Nom de l'organisation :</label>
                                                     <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">
                                                 </div>
                                                 <!-- Form Group (location)-->
                                                 <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputLocation">Location</label>
+                                                    <label class="small mb-1" for="inputLocation">Localisation</label>
                                                     <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
                                                 </div>
                                             </div>
                                             <!-- Form Group (email address)-->
                                             <div class="mb-3">
-                                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
+                                                <label class="small mb-1" for="inputEmailAddress">Adresse électronique</label>
+                                                <input class="form-control" id="inputEmailAddress" name="email" type="email" placeholder="Enter your email address" value="{{ $donnee->email }}">
                                             </div>
                                             <!-- Form Row-->
                                             <div class="row gx-3 mb-3">
                                                 <!-- Form Group (phone number)-->
                                                 <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputPhone">Phone number</label>
-                                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                                                    <label class="small mb-1" for="inputPhone">Numéro de téléphone</label>
+                                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="{{ $donnee->phone }}">
                                                 </div>
                                                 <!-- Form Group (birthday)-->
                                                 <div class="col-md-6">
-                                                    <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                                    <label class="small mb-1" for="inputBirthday">Jour de naissance</label>
+                                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="{{ $donnee->birthday }}">
                                                 </div>
                                             </div>
                                             <!-- Save changes button-->
-                                            <button class="btn btn-primary" type="button">Save changes</button>
+                                            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                                        @endforeach
                                         </form>
                                     </div>
                                 </div>
@@ -218,15 +215,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Prêt à partir ?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                    <a class="btn btn-primary" href="login.html">Déconnexion</a>
                 </div>
             </div>
         </div>

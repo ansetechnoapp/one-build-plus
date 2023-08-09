@@ -1,1 +1,2 @@
 php artisan make:mail sendpasswordreset --markdown=emails.sendpasswordreset
+php artisan make:mail sendregisteruser --markdown=emails.sendregisteruser

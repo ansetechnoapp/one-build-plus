@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
     
-<!-- Mirrored from shreethemes.in/hously/layouts/auth-signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:06 GMT -->
-<head>
-        <meta charset="UTF-8" />
-        <title>Hously - Tailwind CSS Real Estate Website Landing Page Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta content="Real Estate Website Landing Page" name="description" />
-        <meta content="Real Estate, buy, sell, Rent, tailwind Css" name="keywords" />
-        <meta name="author" content="Shreethemes" />
-        <meta name="website" content="https://shreethemes.in/" />
-        <meta name="email" content="support@shreethemes.in" />
-        <meta name="version" content="1.4.0" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" />
-
-        <!-- Css -->
-        <!-- Main Css -->
-        <link href="assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
-        <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="assets/css/tailwind.css" />
+<x-head></x-head>
 
     </head>
     
@@ -42,41 +22,63 @@
             <div class="container z-3">
                 <div class="flex justify-center">
                     <div class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
-                        <a href="index.html"><img src="assets/images/logo-icon-64.png" class="mx-auto" alt=""></a>
-                        <h5 class="my-6 text-xl font-semibold">Signup</h5>
-                        <form class="ltr:text-left rtl:text-right">
+                        <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
+                        
+                        <div class="text-center">
+                            <h5 class="my-6 text-xl font-semibold">consulter votre courriel electronique {{ $email}}</h5>
+                        </div>
+                        
+                        {{-- <form class="ltr:text-left rtl:text-right" action="{{route('sign.up')}}" method="POST">
+                            @csrf
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
-                                    <label class="font-semibold" for="RegisterName">Your Name:</label>
-                                    <input id="RegisterName" type="text" class="form-input mt-3" placeholder="Harry">
+                                    <label class="font-medium" for="LoginEmail">Montant:</label>
+                                    <input id="LoginEmail" type="number" class="form-input mt-3" placeholder="montant">
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="font-semibold" for="LoginEmail">Email Address:</label>
-                                    <input id="LoginEmail" type="email" class="form-input mt-3" placeholder="name@example.com">
+                                    <label class="font-medium" for="LoginPassword">Nom:</label>
+                                    <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom">
                                 </div>
-
                                 <div class="mb-4">
-                                    <label class="font-semibold" for="LoginPassword">Password:</label>
-                                    <input id="LoginPassword" type="password" class="form-input mt-3" placeholder="Password:">
+                                    <label class="font-medium" for="LoginPassword">prénom:</label>
+                                    <input id="LoginPassword" type="text" class="form-input mt-3" placeholder="prénom">
                                 </div>
-
                                 <div class="mb-4">
-                                    <div class="flex items-center w-full mb-0">
-                                        <input class="form-checkbox accent-green-600 rounded w-4 h-4 me-2 border border-inherit" type="checkbox" value="" id="AcceptT&C">
-                                        <label class="form-check-label text-slate-400" for="AcceptT&C">I Accept <a href="#" class="text-green-600">Terms And Condition</a></label>
+                                    <label class="font-medium" for="LoginEmail">Email:</label>
+                                    <input id="LoginEmail" type="email" name="email" class="form-input mt-3" placeholder="Email">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="font-medium" for="LoginPassword">Mot de passe:</label>
+                                    <input id="LoginPassword" type="password" name="password" class="form-input mt-3" placeholder="Mot de passe">
+                                </div>
+                                <div class="mb-4">
+                                    <label><h1>option supplémentaire</h1></label>
+                                </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox"> <span> Enrégistrement ANDF </span></label>
+                                </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox"> <span> Frais de formalité </span></label>
+                                </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox"> <span> Frais notarié </span></label>
+                                </div>
+                                {{-- <div class="flex justify-between mb-4">
+                                    <div class="inline-flex items-center">
+                                        <input class="form-checkbox accent-green-600 rounded w-4 h-4 me-2 border border-inherit" type="checkbox" value="" id="RememberMe">
+                                        <label class="form-check-label text-slate-400" for="RememberMe">Se souvenir de moi</label>
                                     </div>
-                                </div>
-
+                                    
+                                    <p class="text-slate-400 mb-0"><a href="{{route('auth-re-password')}}" class="text-slate-400">Mot de passe oublié ?</a></p>
+                                </div> 
                                 <div class="mb-4">
-                                    <a href="#" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Register</a>
+                                    <a href="{{route('dashboard.home')}}" class="btn bg-red-600 rounded-md w-full">Valider</a>
+                                    <button type="submit" class="btn bg-red-600 rounded-md w-full">Valider</button>
                                 </div>
 
-                                <div class="text-center">
-                                    <span class="text-slate-400 me-2">Already have an account ? </span> <a href="auth-login.html" class="text-black dark:text-white font-bold">Sign in</a>
-                                </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
             </div>
@@ -116,5 +118,5 @@
         <!-- JAVASCRIPTS -->
     </body>
 
-<!-- Mirrored from shreethemes.in/hously/layouts/auth-signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:06 GMT -->
+<!-- Mirrored from shreethemes.in/OBP/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:06 GMT -->
 </html>

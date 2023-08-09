@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [\App\Http\Controllers\Auth\FormLogin::class, 'authenticate'])->name('login');
-Route::match(array('GET', 'POST'), '/Logout', [\App\Http\Controllers\Auth\Logout::class, 'logout'])->name('Logout');
+
+
 
 
 
@@ -23,20 +23,8 @@ Route::get('/well', function () {
     return view('reactJS/reactjs');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.home.index');
-})->name('dashboard.home');
-Route::get('/dashboard.account.profil', function () {
-    return view('dashboard.profil.index');
-})->name('dashboard.profil');
-Route::get('/dashboard.billing.history', function () {
-    return view('dashboard.billing_history.index');
-})->name('dashboard.billing.history');
-Route::get('/dashboard.account_security', function () {
-    return view('dashboard.account_security.index');
-})->name('dashboard.security');
 
-Route::post('/save_info_prod', [\App\Http\Controllers\prod\insert::class, 'store'])->name('save.prod');
+
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
 Route::post('/search_info_prod', [\App\Http\Controllers\search\prod::class, 'selectsearch'])->name('search.prod');
 
@@ -53,7 +41,7 @@ Route::get('/buy', function () {
 Route::get('/auth-login', function () {
     return view('auth-login.index');
 })->name('auth-login');
-
+Route::post('/login', [\App\Http\Controllers\Auth\FormLogin::class, 'authenticate'])->name('login');
 
 
 
@@ -68,6 +56,15 @@ Route::get('/formupdatepassword/{email}', function ($email) {
 Route::get('/updatePassword', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->middleware('guest')->name('password.update');
 
 
+Route::get('/auth-signup', function () {
+    return view('payment.index');
+})->name('payment');
+
+Route::get('/email-envoyer-pour-confirmation-enregistrement-utilisateur', function () {
+    return view('payment.index');
+})->name('email.send.for.confirmation.user.registration');
+
+Route::post('/signup', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveRegister'])->name('sign.up');
 
 Route::get('/contact', function () {
     return view('contact.index');
@@ -83,27 +80,57 @@ Route::get('/grid', function () {
 })->name('grid');
 /* ..............................................................................  @other */
 Route::get('/property-detail', function () {
-    return view('property-detail');
+    return view('property-detail.index');
 })->name('property_detail');
 
-Route::get('/payment', function () {
-    return view('payment.index');
-})->name('payment');
+
 
 Route::get('/list', function () {
     return view('list');
 });
-
 Route::get('/features', function () {
     return view('features');
 });
-Route::get('/auth-signup', function () {
-    return view('auth-signup');
-});
+
 
 Route::get('/maintenance', function () {
     return view('maintenance');
 });
 Route::get('/404', function () {
     return view('404');
+});
+
+Route::get('/devis', [\App\Http\Controllers\facture_des_services\devis::class, 'genererDevis'])->name('devis');
+/*
+|--------------------------------------------------------------------------
+| Web Routes for dashboard
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth',])->group(function () {
+    Route::match(array('GET', 'POST'), '/Logout', [\App\Http\Controllers\Auth\Logout::class, 'logout'])->name('Logout');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard.home.index');
+    // })->name('dashboard.home');
+    Route::get('/dashboard.account.profil', [\App\Http\Controllers\save\account::class, 'getaccountprofil'])->name('dashboard.profil');
+    Route::post('/saveprofilandupdate', [\App\Http\Controllers\save\account::class, 'saveprofilandupdate'])->name('saveprofilandupdate');
+    Route::get('/dashboard.billing.history', function () {
+        return view('dashboard.billing_history.index');
+    })->name('dashboard.billing.history');
+    Route::get('/dashboard.account_security', function () {
+        return view('dashboard.account_security.index');
+    })->name('dashboard.security');
+    Route::post('/ChangePassword', [\App\Http\Controllers\save\account::class, 'ChangePassword'])->name('account.security.ChangePassword');
+    Route::post('/save_info_prod', [\App\Http\Controllers\prod\insert::class, 'store'])->name('save.prod');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes for dashboard for admin
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['admin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard.home.index');
+    })->name('dashboard.home');
 });

@@ -98,63 +98,65 @@
                     </div>
                     <div class="container-xl px-4 mt-4">
                         <!-- Account page navigation-->
-                        @include('include.dashboard.navdashboard')
+                        @include('include.dashboard.account.navdashboardaccount')
                         <hr class="mt-0 mb-4">
                         <div class="row">
                             <div class="col-lg-8">
                                 <!-- Change password card-->
                                 <div class="card mb-4">
-                                    <div class="card-header">Change Password</div>
+                                    <div class="card-header">Modification du mot de passe</div>
                                     <div class="card-body">
-                                        <form data-bitwarden-watching="1">
+                                        <form data-bitwarden-watching="1" method="POST" action="{{route('account.security.ChangePassword')}}">
+                                            @csrf
                                             <!-- Form Group (current password)-->
                                             <div class="mb-3">
-                                                <label class="small mb-1" for="currentPassword">Current Password</label>
-                                                <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
+                                                <label class="small mb-1" for="currentPassword">Mot de passe actuel</label>
+                                                <input class="form-control" id="currentPassword" name="password type="password" placeholder="Enter current password">
                                             </div>
                                             <!-- Form Group (new password)-->
                                             <div class="mb-3">
-                                                <label class="small mb-1" for="newPassword">New Password</label>
-                                                <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
+                                                <label class="small mb-1" for="newPassword">Nouveau mot de passe</label>
+                                                <input class="form-control" id="newPassword" name="newPassword" type="password" placeholder="Enter new password">
                                             </div>
                                             <!-- Form Group (confirm password)-->
                                             <div class="mb-3">
-                                                <label class="small mb-1" for="confirmPassword">Confirm Password</label>
-                                                <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
+                                                <label class="small mb-1" for="confirmPassword">Confirmer le mot de passe</label>
+                                                <input class="form-control" id="confirmPassword" name="oldPassword" type="password" placeholder="Confirm new password">
                                             </div>
-                                            <button class="btn btn-primary" type="button">Save</button>
+                                            <button class="btn btn-primary" type="submit">Enrégistrer</button>
                                         </form>
                                     </div>
                                 </div>
                                 <!-- Security preferences card-->
                                 <div class="card mb-4">
-                                    <div class="card-header">Security Preferences</div>
+                                    <div class="card-header">Préférences de sécurité</div>
                                     <div class="card-body">
                                         <!-- Account privacy optinos-->
-                                        <h5 class="mb-1">Account Privacy</h5>
-                                        <p class="small text-muted">By setting your account to private, your profile information and posts will not be visible to users outside of your user groups.</p>
+                                        <h5 class="mb-1">Confidentialité du compte</h5>
+                                        <p class="small text-muted">En réglant votre compte sur privé, les informations de votre profil et vos messages ne seront pas visibles par les utilisateurs en dehors de vos groupes d'utilisateurs.</p>
                                         <form>
                                             <div class="form-check">
                                                 <input class="form-check-input" id="radioPrivacy1" type="radio" name="radioPrivacy" checked="">
-                                                <label class="form-check-label" for="radioPrivacy1">Public (posts are available to all users)</label>
+                                                <label class="form-check-label" for="radioPrivacy1">Public (les messages sont accessibles à tous les utilisateurs)</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" id="radioPrivacy2" type="radio" name="radioPrivacy">
-                                                <label class="form-check-label" for="radioPrivacy2">Private (posts are available to only users in your groups)</label>
+                                                <label class="form-check-label" for="radioPrivacy2">Privé (les messages ne sont accessibles qu'aux utilisateurs de votre groupe)</label>
                                             </div>
                                         </form>
                                         <hr class="my-4">
                                         <!-- Data sharing options-->
-                                        <h5 class="mb-1">Data Sharing</h5>
-                                        <p class="small text-muted">Sharing usage data can help us to improve our products and better serve our users as they navigation through our application. When you agree to share usage data with us, crash reports and usage analytics will be automatically sent to our development team for investigation.</p>
+                                        <h5 class="mb-1">Partage des données</h5>
+                                        <p class="small text-muted">Le partage des données d'utilisation peut nous aider à améliorer nos produits et à mieux servir nos utilisateurs lorsqu'ils naviguent dans notre application. 
+                                            Lorsque vous acceptez de partager vos données d'utilisation avec nous, les rapports de crash et les analyses d'utilisation seront automatiquement envoyés à notre équipe de développement pour investigation.</p>
                                         <form>
                                             <div class="form-check">
                                                 <input class="form-check-input" id="radioUsage1" type="radio" name="radioUsage" checked="">
-                                                <label class="form-check-label" for="radioUsage1">Yes, share data and crash reports with app developers</label>
+                                                <label class="form-check-label" for="radioUsage1">Oui, partager les données et les rapports d'accidents avec les développeurs d'applications</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" id="radioUsage2" type="radio" name="radioUsage">
-                                                <label class="form-check-label" for="radioUsage2">No, limit my data sharing with app developers</label>
+                                                <label class="form-check-label" for="radioUsage2">Non, limiter le partage de mes données avec les développeurs d'applications</label>
                                             </div>
                                         </form>
                                     </div>
@@ -163,9 +165,9 @@
                             <div class="col-lg-4">
                                 <!-- Two factor authentication card-->
                                 <div class="card mb-4">
-                                    <div class="card-header">Two-Factor Authentication</div>
+                                    <div class="card-header">Authentification à deux facteurs</div>
                                     <div class="card-body">
-                                        <p>Add another level of security to your account by enabling two-factor authentication. We will send you a text message to verify your login attempts on unrecognized devices and browsers.</p>
+                                        <p>Ajoutez un niveau de sécurité supplémentaire à votre compte en activant l'authentification à deux facteurs. Nous vous enverrons un message texte pour vérifier vos tentatives de connexion sur des appareils et des navigateurs non reconnus..</p>
                                         <form>
                                             <div class="form-check">
                                                 <input class="form-check-input" id="twoFactorOn" type="radio" name="twoFactor" checked="">
@@ -176,7 +178,7 @@
                                                 <label class="form-check-label" for="twoFactorOff">Off</label>
                                             </div>
                                             <div class="mt-3">
-                                                <label class="small mb-1" for="twoFactorSMS">SMS Number</label>
+                                                <label class="small mb-1" for="twoFactorSMS">Numéro SMS</label>
                                                 <input class="form-control" id="twoFactorSMS" type="tel" placeholder="Enter a phone number" value="555-123-4567">
                                             </div>
                                         </form>
@@ -184,10 +186,10 @@
                                 </div>
                                 <!-- Delete account card-->
                                 <div class="card mb-4">
-                                    <div class="card-header">Delete Account</div>
+                                    <div class="card-header">Supprimer le compte</div>
                                     <div class="card-body">
-                                        <p>Deleting your account is a permanent action and cannot be undone. If you are sure you want to delete your account, select the button below.</p>
-                                        <button class="btn btn-danger-soft text-danger" type="button">I understand, delete my account</button>
+                                        <p>La suppression de votre compte est une action permanente qui ne peut être annulée. Si vous êtes sûr de vouloir supprimer votre compte, sélectionnez le bouton ci-dessous.</p>
+                                        <button class="btn btn-danger-soft text-danger" type="button">Je comprends, supprimer mon compte</button>
                                     </div>
                                 </div>
                             </div>
@@ -228,15 +230,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Prêt à partir ?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                    <a class="btn btn-primary" href="login.html">Déconnexion</a>
                 </div>
             </div>
         </div>

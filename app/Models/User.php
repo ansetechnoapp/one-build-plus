@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function isAdmin()
+    {
+        return $this->role === 'admin'; // Modifier en fonction de votre logique de rôle
+    }
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -19,9 +23,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'lastName',
+        'firstName',
         'email',
+        'phone',
         'password',
+        'birthday',
+        'role',
+        'isactive',
     ];
 
     /**

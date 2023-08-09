@@ -91,32 +91,27 @@
                                 {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
                                 stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> --}}
                             </div>
-                            Account Settings - Profile
+                            Paramètres du compte - Profil
                         </h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
                     <div class="container-xl px-4 mt-4">
                         <!-- Account page navigation-->
-                        <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="account-profile.html">Profile</a>
-                            <a class="nav-link" href="account-billing.html">Historique de la facturation</a>
-                            <a class="nav-link" href="account-security.html">Sécurité</a>
-                            {{-- <a class="nav-link" href="account-notifications.html">Notifications</a> --}}
-                        </nav>
+                        @include('include.dashboard.account.navdashboardaccount')
                         <hr class="mt-0 mb-4">
                         <div class="card mb-4">
-                            <div class="card-header">Billing History</div>
+                            <div class="card-header">Historique de la facturation</div>
                             <div class="card-body p-0">
                                 <!-- Billing history table-->
                                 <div class="table-responsive table-billing-history">
                                     <table class="table mb-0">
                                         <thead>
                                             <tr>
-                                                <th class="border-gray-200" scope="col">Transaction ID</th>
+                                                <th class="border-gray-200" scope="col">Identification de la transaction</th>
                                                 <th class="border-gray-200" scope="col">Date</th>
-                                                <th class="border-gray-200" scope="col">Amount</th>
-                                                <th class="border-gray-200" scope="col">Status</th>
+                                                <th class="border-gray-200" scope="col">Montant</th>
+                                                <th class="border-gray-200" scope="col">Statut</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -129,18 +124,6 @@
                                             <tr>
                                                 <td>#38594</td>
                                                 <td>05/15/2021</td>
-                                                <td>$29.99</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#38223</td>
-                                                <td>04/15/2021</td>
-                                                <td>$29.99</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#38125</td>
-                                                <td>03/15/2021</td>
                                                 <td>$29.99</td>
                                                 <td><span class="badge bg-success">Paid</span></td>
                                             </tr>

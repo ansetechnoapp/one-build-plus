@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class FormLogin extends Controller
 {
@@ -25,5 +26,15 @@ class FormLogin extends Controller
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+    public function isactive($email){
+
+        $isactive = '1';
+        if (User::where('email', $email)->first() !== null) {
+            User::where('email', $email)->first()->update([
+                'isactive' => $isactive,
+            ]);
+            return redirect()->route('auth-login');
+        }
     }
 }

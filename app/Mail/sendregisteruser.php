@@ -29,11 +29,11 @@ class sendregisteruser extends Mailable
     {
         $donnees = $this->datas;
         return new Envelope(
-            from: new Address('contact@b-jeae.com', 'JOAO ERIC ADRIEN EMMANUEL'),
+            from: new Address('info@txbest.online', 'OBP'),
             replyTo: [
-                  new Address($donnees['email'], $donnees['name']),
+                  new Address($donnees['email'], $donnees['lastName']),
             ],
-            subject: 'Sendregisteruser',
+            subject: 'Confirmation de l\'enregistrement de l\'utilisateur',
         );
     }
 

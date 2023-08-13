@@ -25,7 +25,11 @@
                         <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                         
                         <div class="text-center">
-                            <h5 class="my-6 text-xl font-semibold">consulter votre courriel electronique {{ $email}}</h5>
+                            <h5 class="my-6 text-xl font-semibold">consulter votre courriel electronique <br>
+                                pour confimer votre inscription <br>
+                                @isset($email)
+                                    {{ $email }}
+                                    @endisset</h5>
                         </div>
                         
                         {{-- <form class="ltr:text-left rtl:text-right" action="{{route('sign.up')}}" method="POST">

@@ -3,7 +3,7 @@
 
 The body of your message.
 
-<x-mail::button :url="''">
+<x-mail::button :url="route('activateaccount', ['email' => $datas['email']])">
 Button Text
 </x-mail::button>
 

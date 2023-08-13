@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\sendregisteruser;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
@@ -16,12 +17,21 @@ class FormRegister extends Controller
     {
 
         $company_name = 'Bois de JOAO ERIC A.E';
-        $email = 'contact@b-jeae.com';
+        $email = 'info@txbest.online';
         $tel = '+33 7 80 97 99 74';
-        Mail::to('contact@b-jeae.com')
+        Mail::to($email)
             ->send(new sendregisteruser($request->all()));
         return View('view_response_mail.fr.devis.index', $request, compact('company_name', 'email', 'tel'));
     }
+    /* public function testmodelrequest(Request $request)
+    {
+
+        dd(Auth::user()->isactive);
+        $isactive = User::where('email', 'lola@mail.com')
+        ->where('isactive', '1')
+        ->first();
+        dd($isactive->isactive);
+    } */
     public function SaveRegister(Request $request)
     {
 
@@ -69,7 +79,7 @@ class FormRegister extends Controller
 
                 try {
                     $request->validate($rules, $messages, $customAttributes);
-                    if (User::where('email', $request->input('email'))->first() === null) {
+                    if (User::where('email', $request->email)->first() === null) {
                         // dd('eee');
                         User::create([
                             /* 'civility' => $civility,
@@ -78,9 +88,10 @@ class FormRegister extends Controller
                             'lastName' => $lastName,
                             'email' => $email,
                             'password' => $password,
+                            'isactive' => '0',
 
                         ]);
-                        // dd('validate');
+                         dd('validate');
                         Mail::to($email)
             ->send(new sendregisteruser($request->all()));
         // return View('view_response_mail.fr.devis.index', $request, compact('company_name', 'email', 'tel'));

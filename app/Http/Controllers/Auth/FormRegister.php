@@ -91,7 +91,7 @@ class FormRegister extends Controller
                             'isactive' => '0',
 
                         ]);
-                         dd('validate');
+                        //  dd('validate');
                         Mail::to($email)
             ->send(new sendregisteruser($request->all()));
         // return View('view_response_mail.fr.devis.index', $request, compact('company_name', 'email', 'tel'));

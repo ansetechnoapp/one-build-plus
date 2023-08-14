@@ -113,4 +113,10 @@ class FormRegister extends Controller
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
     }
+
+    public function receptiondata(Request $request){
+            $prix = $request->prix;
+            $param2 = $request->param2;
+            return view('payment.index', compact('prix', 'param2'));
+    }
 }

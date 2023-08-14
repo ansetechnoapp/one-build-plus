@@ -28,7 +28,7 @@ Route::get('/well', function () {
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
 Route::post('/search_info_prod', [\App\Http\Controllers\search\prod::class, 'selectsearch'])->name('search.prod');
 
-Route::get('/', [\App\Http\Controllers\search\prod::class, 'selectsearchcommune'])->name('home');
+Route::get('/', [\App\Http\Controllers\search\prod::class, 'allselecttable'])->name('home');
 Route::get('/faqs', function () {
     return view('faqs.index');
 })->name('faqs');
@@ -64,9 +64,7 @@ Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::cl
 
 
 
-Route::get('/auth-signup', function () {
-    return view('payment.index');
-})->name('payment');
+Route::get('/auth-signup', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('payment');
 
 Route::get('/email-envoyer-pour-confirmation-enregistrement-utilisateur', function () {
     return view('payment.index');
@@ -87,9 +85,7 @@ Route::get('/grid', function () {
     return view('grid.index');
 })->name('grid');
 /* ..............................................................................  @other */
-Route::get('/property-detail', function () {
-    return view('property-detail.index');
-})->name('property_detail');
+Route::get('/property-detail',[\App\Http\Controllers\prod\insert::class,'receptiondata'])->name('property_detail');
 
 
 
@@ -118,7 +114,7 @@ Route::get('/emailsendforconfirmationuserregistration', function () {
 | Web Routes for dashboard
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth','isActive'])->group(function () { 
+Route::middleware(['auth', 'isActive'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.home.index');
     })->name('dashboard.home');
@@ -140,8 +136,8 @@ Route::middleware(['auth','isActive'])->group(function () {
 | Web Routes for dashboard for admin
 |--------------------------------------------------------------------------
 */
-Route::middleware(['admin','isActive'])->group(function () {
-    Route::get('/dashboard/admin', function () {
+Route::middleware(['admin', 'isActive'])->group(function () {
+    Route::get('/dashboard.admin', function () {
         return view('dashboard.admin.home.index');
     })->name('dashboard.admin');
 });

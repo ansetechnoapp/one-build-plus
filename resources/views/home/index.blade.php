@@ -28,11 +28,11 @@
                 <div class="container">
                     <div class="grid grid-cols-1">
                         <div class="ltr:md:text-left rtl:md:text-right text-center">
-                            <h1
-                                class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6">
-                                Nous vous aiderons à trouver <br> votre <span
-                                    class="text-green-600">Merveilleuse</span> terrain</h1>
-                            <p class="text-white/70 text-xl max-w-xl">Une excellente plateforme pour acheter vos propriétés .</p>
+                            <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6">
+                                Nous vous aiderons à trouver <br> votre <span class="text-green-600">Merveilleuse</span>
+                                terrain</h1>
+                            <p class="text-white/70 text-xl max-w-xl">Une excellente plateforme pour acheter vos
+                                propriétés .</p>
                         </div>
                     </div>
                     <!--end grid-->
@@ -46,17 +46,17 @@
     <!-- Hero End -->
 
     <!-- Start -->
-    <section class="relative md:pb-24 pb-16">   
+    <section class="relative md:pb-24 pb-16">
         @include('include.formsearch')
         <!--end container-->
 
-        <div class="container lg:mt-24 mt-16"> 
+        <div class="container lg:mt-24 mt-16">
             <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
                 @include('include.1sectioncontainer')
             </div>
             <!--end grid-->
         </div>
-        
+
         <!--end container-->
 
         <div class="container lg:mt-24 mt-16">
@@ -75,9 +75,8 @@
                 <div class="tns-outer" id="tns2-ow">
                     <div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button"
                             data-controls="prev" tabindex="-1" aria-controls="tns2"><i
-                                class="mdi mdi-chevron-left "></i></button><button type="button"
-                            data-controls="next" tabindex="-1" aria-controls="tns2"><i
-                                class="mdi mdi-chevron-right"></i></button></div>
+                                class="mdi mdi-chevron-left "></i></button><button type="button" data-controls="next"
+                            tabindex="-1" aria-controls="tns2"><i class="mdi mdi-chevron-right"></i></button></div>
                     <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span
                             class="current">2 to 4</span> of 6</div>
                     <div id="tns2-mw" class="tns-ovh">
@@ -169,18 +168,21 @@
                                             <ul
                                                 class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                                 <li class="flex items-center me-4">
-                                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                    <i
+                                                        class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                     <span>8000sqf</span>
                                                 </li>
 
                                                 <li class="flex items-center me-4">
-                                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                    <i
+                                                        class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                     {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
                                                     <span>4 Beds</span>
                                                 </li>
 
                                                 <li class="flex items-center">
-                                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                    <i
+                                                        class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                     {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
                                                     <span>4 Baths</span>
                                                 </li>
@@ -231,18 +233,21 @@
                                             <ul
                                                 class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                                 <li class="flex items-center me-4">
-                                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                    <i
+                                                        class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                     <span>8000sqf</span>
                                                 </li>
 
                                                 <li class="flex items-center me-4">
-                                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                    <i
+                                                        class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                     {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
                                                     <span>4 Beds</span>
                                                 </li>
 
                                                 <li class="flex items-center">
-                                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                    <i
+                                                        class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                     {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
                                                     <span>4 Baths</span>
                                                 </li>
@@ -400,180 +405,71 @@
             </div>
             <!--en grid-->
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                <div
-                    class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
-                    <div class="relative">
-                        <img src="assets/images/property/1.jpg" alt="">
 
-                        <div class="absolute top-4 end-4">
-                            <a href="javascript:void(0)"
-                                class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                    class="mdi mdi-heart mdi-18px"></i></a>
-                        </div>
-                    </div>
+                @isset($posts)
 
-                    <div class="p-6">
-                        <div class="pb-6">
-                            <a href="property-detail"
-                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765
-                                Hillshire Ave, Baton Rouge, LA 70810, USA</a>
-                        </div>
+                    @foreach ($posts as $data)
+                        <div
+                            class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
+                            <div class="relative">
+                                <img src="assets/images/property/1.jpg" alt="">
 
-                        <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
-                            <li class="flex items-center me-4">
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>8000sqf</span>
-                            </li>
+                                <div class="absolute top-4 end-4">
+                                    <a href="javascript:void(0)"
+                                        class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
+                                            class="mdi mdi-heart mdi-18px"></i></a>
+                                </div>
+                            </div>
 
-                            <li class="flex items-center me-4">
-                                {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>4 Beds</span>
-                            </li>
+                            <div class="p-6">
+                                <div class="pb-6">
+                                    <a href="{{ route('property_detail', ['id' => $data->id, 'param2' => 'valeur2']) }}"
+                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                </div>
 
-                            <li class="flex items-center">
-                                {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>4 Baths</span>
-                            </li>
-                        </ul>
+                                <ul
+                                    class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                    <li class="flex items-center me-4">
+                                        <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                        <span>8000sqf</span>
+                                    </li>
 
-                        <ul class="pt-6 flex justify-between items-center list-none">
-                            <li>
-                                <span class="text-slate-400">Price</span>
-                                <p class="text-lg font-medium">fcfa5000</p>
-                            </li>
+                                    <li class="flex items-center me-4">
+                                        {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
+                                        <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                        <span>4 Beds</span>
+                                    </li>
 
-                            <li>
-                                <span class="text-slate-400">Rating</span>
-                                <ul class="text-lg font-medium text-amber-400 list-none">
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline text-black dark:text-white">5.0(30)</li>
+                                    <li class="flex items-center">
+                                        {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
+                                        <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                        <span>4 Baths</span>
+                                    </li>
                                 </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div
-                    class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
-                    <div class="relative">
-                        <img src="assets/images/property/1.jpg" alt="">
 
-                        <div class="absolute top-4 end-4">
-                            <a href="javascript:void(0)"
-                                class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                    class="mdi mdi-heart mdi-18px"></i></a>
-                        </div>
-                    </div>
+                                <ul class="pt-6 flex justify-between items-center list-none">
+                                    <li>
+                                        <span class="text-slate-400">Price</span>
+                                        <p class="text-lg font-medium">fcfa5000</p>
+                                    </li>
 
-                    <div class="p-6">
-                        <div class="pb-6">
-                            <a href="property-detail"
-                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765
-                                Hillshire Ave, Baton Rouge, LA 70810, USA</a>
-                        </div>
-
-                        <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
-                            <li class="flex items-center me-4">
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>8000sqf</span>
-                            </li>
-
-                            <li class="flex items-center me-4">
-                                {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>4 Beds</span>
-                            </li>
-
-                            <li class="flex items-center">
-                                {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>4 Baths</span>
-                            </li>
-                        </ul>
-
-                        <ul class="pt-6 flex justify-between items-center list-none">
-                            <li>
-                                <span class="text-slate-400">Price</span>
-                                <p class="text-lg font-medium">fcfa5000</p>
-                            </li>
-
-                            <li>
-                                <span class="text-slate-400">Rating</span>
-                                <ul class="text-lg font-medium text-amber-400 list-none">
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline text-black dark:text-white">5.0(30)</li>
+                                    <li>
+                                        <span class="text-slate-400">Rating</span>
+                                        <ul class="text-lg font-medium text-amber-400 list-none">
+                                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                                            <li class="inline text-black dark:text-white">5.0(30)</li>
+                                        </ul>
+                                    </li>
                                 </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div
-                    class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
-                    <div class="relative">
-                        <img src="assets/images/property/1.jpg" alt="">
-
-                        <div class="absolute top-4 end-4">
-                            <a href="javascript:void(0)"
-                                class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                    class="mdi mdi-heart mdi-18px"></i></a>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <div class="p-6">
-                        <div class="pb-6">
-                            <a href="property-detail"
-                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">10765
-                                Hillshire Ave, Baton Rouge, LA 70810, USA</a>
-                        </div>
-
-                        <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
-                            <li class="flex items-center me-4">
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>8000sqf</span>
-                            </li>
-
-                            <li class="flex items-center me-4">
-                                {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>4 Beds</span>
-                            </li>
-
-                            <li class="flex items-center">
-                                {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
-                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                <span>4 Baths</span>
-                            </li>
-                        </ul>
-
-                        <ul class="pt-6 flex justify-between items-center list-none">
-                            <li>
-                                <span class="text-slate-400">Price</span>
-                                <p class="text-lg font-medium">fcfa5000</p>
-                            </li>
-
-                            <li>
-                                <span class="text-slate-400">Rating</span>
-                                <ul class="text-lg font-medium text-amber-400 list-none">
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    <li class="inline text-black dark:text-white">5.0(30)</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                @endisset
                 <!--end property content-->
             </div>
             <!--en grid-->
@@ -582,7 +478,8 @@
 
         <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Ce qu'en disent nos clients ?</h3>
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Ce qu'en disent
+                    nos clients ?</h3>
 
                 <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
             </div>
@@ -602,7 +499,8 @@
                         <div class="tiny-slide">
                             <div class="text-center">
                                 <p class="text-xl text-slate-400 italic"> " OBP made the processes so easy. OBP
-                                    instantly increased the amount of interest and ultimately saved us over fcfa10,000. "
+                                    instantly increased the amount of interest and ultimately saved us over fcfa10,000.
+                                    "
                                 </p>
 
                                 <div class="text-center mt-5">
@@ -626,7 +524,8 @@
                         <div class="tiny-slide">
                             <div class="text-center">
                                 <p class="text-xl text-slate-400 italic"> " I highly recommend OBP as the new way to
-                                    sell your home "by owner". My home sold in 24 hours for the asking price. Best fcfa400
+                                    sell your home "by owner". My home sold in 24 hours for the asking price. Best
+                                    fcfa400
                                     you could spend to sell your home. " </p>
 
                                 <div class="text-center mt-5">
@@ -794,4 +693,5 @@
     <!-- JAVASCRIPTS -->
     <x-script></x-script>
 </body>
+
 </html>

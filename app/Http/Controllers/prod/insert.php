@@ -5,11 +5,17 @@ namespace App\Http\Controllers\prod;
 
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
-use App\Models\prod\insert as insertion;
+use App\Models\prod\insert as prod;
 use Illuminate\Http\Request;
 
 class insert extends Controller
 {
+    public function receptiondata (Request $request) {
+        $id = $request->id;
+        $query = prod::where('id', $id)
+        ->get();
+        return view('property-detail.index', ['data' => $query]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +38,7 @@ class insert extends Controller
     public function store(Request $request): RedirectResponse
     {
     //    dd($request);
-        $flight = new insertion;
+        $flight = new prod;
 
         $flight->land_owner = $request->land_owner;
         $flight->address = $request->address;
@@ -60,7 +66,7 @@ class insert extends Controller
      */
     public function show()
     {
-        $posts = insertion::all();
+        $posts = prod::all();
         return view('show_all_product.index', ['posts' => $posts]);
     }
 

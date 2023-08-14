@@ -33,7 +33,7 @@
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>
-                                    <input id="LoginEmail" type="number" class="form-input mt-3" placeholder="montant">
+                                    <input id="LoginEmail" type="number" class="form-input mt-3" placeholder="montant" value="{{$prix}}">
                                 </div>
 
                                 <div class="mb-4">

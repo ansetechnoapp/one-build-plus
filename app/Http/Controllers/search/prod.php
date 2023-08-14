@@ -22,13 +22,14 @@ public function selectsearch(Request $request)
         ->where('communes', $communes)
         ->wherebetween('price', [$priceMin, $priceMax])
         ->get();
-        dd($query);
-        return view('home.index', ['results' => $query]);
+        return view('show_all_product.index', ['posts' => $query]);
     }
 
-    public function selectsearchcommune()
+    public function allselecttable()
     {
-        $posts = insertion::all();
-        return view('home.index', ['posts' => $posts]);
+        $selectsearchcommune = insertion::all();
+        // $selectsearchprod = insertion::all();
+        return view('home.index', ['posts' => $selectsearchcommune]);
     }
+
 }

@@ -19,8 +19,14 @@ class FormLogin extends Controller
         if (Auth::attempt($credentials)) {
             
             $request->session()->regenerate();
+
+            if (Auth::user()->role === 'admin'){
+                return redirect()->intended('dashboard.admin');
+            }else{
+                return redirect()->intended('dashboard');
+            }
             
-            return redirect()->intended('dashboard');
+            
         }
         
         return back()->withErrors([

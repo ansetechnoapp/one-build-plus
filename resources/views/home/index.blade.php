@@ -151,11 +151,11 @@
                                         <div class="relative">
                                             <img src="assets/images/property/1.jpg" alt="">
 
-                                            <div class="absolute top-4 end-4">
+                                            {{-- <div class="absolute top-4 end-4">
                                                 <a href="javascript:void(0)"
                                                     class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
                                                         class="mdi mdi-heart mdi-18px"></i></a>
-                                            </div>
+                                            </div> --}}
                                         </div>
 
                                         <div class="p-6">
@@ -431,26 +431,26 @@
                                     class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                     <li class="flex items-center me-4">
                                         <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                        <span>8000sqf</span>
+                                        <span>{{ $data->borough }}</span>
                                     </li>
 
                                     <li class="flex items-center me-4">
                                         {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
                                         <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                        <span>4 Beds</span>
+                                        <span>{{ $data->department }}</span>
                                     </li>
 
                                     <li class="flex items-center">
                                         {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
                                         <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                        <span>4 Baths</span>
+                                        <span>{{ $data->communes }}</span>
                                     </li>
                                 </ul>
 
                                 <ul class="pt-6 flex justify-between items-center list-none">
                                     <li>
-                                        <span class="text-slate-400">Price</span>
-                                        <p class="text-lg font-medium">fcfa5000</p>
+                                        <span class="text-slate-400">Prix</span>
+                                        <p class="text-lg font-medium">{{ $data->price }}</p>
                                     </li>
 
                                     <li>

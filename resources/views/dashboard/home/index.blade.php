@@ -119,7 +119,7 @@
                                         </div>
                                     </div>
                                     <!-- Wizard tab pane item 2-->
-                                    <div class="tab-pane py-5 py-xl-10 fade" id="wizard2" role="tabpanel" aria-labelledby="wizard2-tab">
+                                    {{-- <div class="tab-pane py-5 py-xl-10 fade" id="wizard2" role="tabpanel" aria-labelledby="wizard2-tab">
                                         <div class="row justify-content-center">
                                             <div class="col-xxl-6 col-xl-8">
                                                 <h3 class="text-primary">Step 2</h3>
@@ -157,9 +157,9 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- Wizard tab pane item 3-->
-                                    <div class="tab-pane py-5 py-xl-10 fade" id="wizard3" role="tabpanel" aria-labelledby="wizard3-tab">
+                                    {{-- <div class="tab-pane py-5 py-xl-10 fade" id="wizard3" role="tabpanel" aria-labelledby="wizard3-tab">
                                         <div class="row justify-content-center">
                                             <div class="col-xxl-6 col-xl-8">
                                                 <h3 class="text-primary">Step 3</h3>
@@ -197,9 +197,9 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- Wizard tab pane item 4-->
-                                    <div class="tab-pane py-5 py-xl-10 fade" id="wizard4" role="tabpanel" aria-labelledby="wizard4-tab">
+                                    {{-- <div class="tab-pane py-5 py-xl-10 fade" id="wizard4" role="tabpanel" aria-labelledby="wizard4-tab">
                                         <div class="row justify-content-center">
                                             <div class="col-xxl-6 col-xl-8">
                                                 <h3 class="text-primary">Step 4</h3>
@@ -247,7 +247,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

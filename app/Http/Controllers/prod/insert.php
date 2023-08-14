@@ -36,7 +36,12 @@ class insert extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
-    {
+    {   
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $imagePath = $request->file('image')->store('images', 'public');
+        
     //    dd($request);
         $flight = new prod;
 

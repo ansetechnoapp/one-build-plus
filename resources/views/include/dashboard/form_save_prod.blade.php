@@ -73,6 +73,10 @@
             </select>
         </div>
     </div>
+    <div class="mb-3 col-md-6">
+        <label class="small mb-1" for="inputimage">Entrer une image</label>
+        <input class="form-control" id="inputimage" type="file"  name="image">
+    </div>
     <hr class="my-4">
     <div class="d-flex justify-content-between">
         <button class="btn btn-primary" type="submit">Valider</button>

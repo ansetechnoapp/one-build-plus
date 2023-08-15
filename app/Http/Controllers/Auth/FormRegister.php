@@ -45,7 +45,6 @@ class FormRegister extends Controller
         $lastName = $request->lastName;
         $firstName = $request->firstName;
         $id_prod = $request->id;
-        dd($id_prod);
         $registration_andf = $request->registration_andf;
         $formality_fees = $request->formality_fees;
         $notary_fees = $request->notary_fees;

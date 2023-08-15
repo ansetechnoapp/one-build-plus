@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('additional_option', function (Blueprint $table) {
             $table->id();
-            $table->string('registration_andf');
-            $table->string('formality_fees');
-            $table->string('notary_fees');
+            $table->string('registration_andf')->nullable();
+            $table->string('formality_fees')->nullable();
+            $table->string('notary_fees')->nullable();
+            $table->string('email_users');
             $table->timestamps();
         });
     }

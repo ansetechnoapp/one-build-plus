@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\additional_option;
 use Illuminate\Http\Request;
 use App\Mail\sendregisteruser;
 use App\Http\Controllers\Controller;
@@ -36,16 +37,24 @@ class FormRegister extends Controller
     {
 
 
+
         /* $civility = $request->input('civility');
         $firstName = $request->input('firstName');
         $lastName = $request->input('lastName'); */
+        $price = $request->price;
         $lastName = $request->lastName;
+        $firstName = $request->firstName;
+        $id_prod = $request->id;
+        dd($id_prod);
+        $registration_andf = $request->registration_andf;
+        $formality_fees = $request->formality_fees;
+        $notary_fees = $request->notary_fees;
         $email = $request->email;
         $password = bcrypt($request->password);
 
 
-        if (isset($email) || isset($password)) {
-            if ($lastName == '' || $email == '' || $password == '') {
+        if (isset($price) || isset($lastName)|| isset($firstName)|| isset($id_prod)|| isset($email)|| isset($password)) {
+            if ($price == '' || $lastName == '' || $firstName == ''|| $id_prod == '' || $email == ''|| $password == '') {
                 echo "S'il vous plaît, remplissez tous les champs";
             } else {
 
@@ -81,20 +90,25 @@ class FormRegister extends Controller
                     $request->validate($rules, $messages, $customAttributes);
                     if (User::where('email', $request->email)->first() === null) {
                         // dd('eee');
+                        additional_option::create([
+                            'registration_andf' => $registration_andf,
+                            'formality_fees' => $formality_fees,
+                            'notary_fees' => $notary_fees,
+                            'email_users' => $email,
+
+                        ]);
                         User::create([
-                            /* 'civility' => $civility,
-                            'firstName' => $firstName,
-                            'lastName' => $lastName, */
+                            /* 'civility' => $civility, */
                             'lastName' => $lastName,
+                            'firstName' => $firstName,
                             'email' => $email,
                             'password' => $password,
-                            'isactive' => '0',
 
                         ]);
                         //  dd('validate');
                         Mail::to($email)
-            ->send(new sendregisteruser($request->all()));
-        // return View('view_response_mail.fr.devis.index', $request, compact('company_name', 'email', 'tel'));
+                            ->send(new sendregisteruser($request->all()));
+                        // return View('view_response_mail.fr.devis.index', $request, compact('company_name', 'email', 'tel'));
                         return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
                     } else {
                         return redirect()->route('payment');
@@ -114,9 +128,32 @@ class FormRegister extends Controller
         }
     }
 
-    public function receptiondata(Request $request){
-            $prix = $request->prix;
-            $param2 = $request->param2;
-            return view('payment.index', compact('prix', 'param2'));
+    public function receptiondata(Request $request)
+    {
+        $price = $request->price;
+        $lastName = $request->lastName;
+        $firstName = $request->firstName;
+        $id = $request->id;
+        return view('payment.index', compact('price', 'lastName', 'firstName', 'id'));
+    }
+    public function receptiondata1(Request $request)
+    {
+        $price = $request->price;
+        $lastName = $request->lastName;
+        $firstName = $request->firstName;
+        $id = $request->id;
+        return view('payment.suite', compact('price', 'lastName', 'firstName', 'id'));
+    }
+    public function receptiondata2(Request $request)
+    {
+        $price = $request->price;
+        $lastName = $request->lastName;
+        $firstName = $request->firstName;
+        $id = $request->id;
+        $registration_andf = $request->registration_andf;
+        $formality_fees = $request->formality_fees;
+        $notary_fees = $request->notary_fees;
+
+        return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees'));
     }
 }

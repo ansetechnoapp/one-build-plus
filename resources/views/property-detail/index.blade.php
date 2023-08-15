@@ -135,7 +135,7 @@
 
                                 <li class="flex justify-between items-center mt-2">
                                     <span class="text-slate-400 text-sm">Price per sq ft</span>
-                                    <span class="font-medium text-sm">fcfa 186</span>
+                                    <span class="font-medium text-sm">fcfa {{$item->price}}</span>
                                 </li>
 
                                 <li class="flex justify-between items-center mt-2">
@@ -147,7 +147,7 @@
 
                         <div class="flex">
                             <div class="p-1 w-1/2">
-                                <a href="{{ route('payment', ['prix' => '186', 'param2' => 'valeur2']) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a>
+                                <a href="{{ route('paymnt', ['id'=>$item->id,'price'=>$item->price]) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a>
                             </div>
                             {{-- <div class="p-1 w-1/2">
                                 <a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">par tranche</a>

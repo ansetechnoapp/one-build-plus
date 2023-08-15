@@ -64,11 +64,12 @@ Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::cl
 
 
 
-Route::get('/auth-signup', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('payment');
-
-Route::get('/email-envoyer-pour-confirmation-enregistrement-utilisateur', function () {
+Route::match(array('GET', 'POST'),'/auth-signup.{id}.{price}', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('paymnt');
+Route::match(array('GET', 'POST'), '/auth-signup_form',[\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata1'])->name('paymnt.form');
+Route::match(array('GET', 'POST'), '/auth_signup_form_2',[\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata2'])->name('paymnt.form2');
+/* Route::get('/email-envoyer-pour-confirmation-enregistrement-utilisateur', function () {
     return view('payment.index');
-})->name('email.send.for.confirmation.user.registration');
+})->name('email.send.for.confirmation.user.registration'); */
 
 Route::post('/signup', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveRegister'])->name('sign.up');
 

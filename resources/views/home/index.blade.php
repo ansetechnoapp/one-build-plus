@@ -423,7 +423,7 @@
 
                             <div class="p-6">
                                 <div class="pb-6">
-                                    <a href="{{ route('property_detail', ['id' => $data->id, 'param2' => 'valeur2']) }}"
+                                    <a href="{{ route('property_detail', ['id' => $data->id, 'param2' => 'valeur2']) }}" 
                                         class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
                                 </div>
 

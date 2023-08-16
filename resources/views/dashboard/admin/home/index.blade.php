@@ -26,7 +26,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        
+
         @include('include.dashboard.sidebar')
 
         <!-- Content Wrapper -->
@@ -50,8 +50,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -95,7 +94,8 @@
                         <div class="card">
                             <div class="card-header border-bottom">
                                 <!-- Wizard navigation-->
-                                <div class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard" id="cardTab" role="tablist">
+                                <div class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard"
+                                    id="cardTab" role="tablist">
                                     <!-- Wizard navigation item 1-->
                                     <a class="nav-item nav-link active" href="#wizard1">
                                         {{-- <div class="wizard-step-icon">1</div> --}}
@@ -109,11 +109,13 @@
                             <div class="card-body">
                                 <div class="tab-content" id="cardTabContent">
                                     <!-- Wizard tab pane item 1-->
-                                    <div class="tab-pane py-5 py-xl-10 fade show active" id="wizard1" role="tabpanel" aria-labelledby="wizard1-tab">
+                                    <div class="tab-pane py-5 py-xl-10 fade show active" id="wizard1" role="tabpanel"
+                                        aria-labelledby="wizard1-tab">
                                         <div class="row justify-content-center">
                                             <div class="col-xxl-6 col-xl-8">
                                                 {{-- <h3 class="text-primary">Step 1</h3> --}}
-                                                <h1 class="card-title mb-4">Saisir les informations relatives au bien</h1>
+                                                <h1 class="card-title mb-4">Saisir les informations relatives au bien
+                                                </h1>
                                                 @include('include.dashboard.form_save_prod')
                                             </div>
                                         </div>
@@ -295,7 +297,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{route('Logout')}}">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('Logout') }}">Logout</a>
                 </div>
             </div>
         </div>

@@ -34,16 +34,16 @@
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>
-                                    <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{$price}}" readonly>
+                                    <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{$price}}" readonly required>
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Nom:</label>
-                                    <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}">
+                                    <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}" required>
                                 </div>
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">prénom:</label>
-                                    <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom" value="{{$firstName}}">
+                                    <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom" value="{{$firstName}}" required>
                                 </div> 
                                 <div class="flex">
                                     <div class="p-1 w-1/2">

@@ -33,7 +33,7 @@
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Adresse électronique:</label>
-                                    <input id="LoginEmail" type="email" name="email" class="form-input mt-3" placeholder="name@example.com">
+                                    <input id="LoginEmail" type="email" name="email" class="form-input mt-3" placeholder="name@example.com" required>
                                     @if ($errors->has('email'))
                 <div class="alert alert-danger">{{ $errors->first('email') }}</div>
             @endif
@@ -41,7 +41,7 @@
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Mot de passe:</label>
-                                    <input id="LoginPassword" type="password" name="password" class="form-input mt-3" placeholder="Password:">
+                                    <input id="LoginPassword" type="password" name="password" class="form-input mt-3" placeholder="Password:" required>
                                     @if ($errors->has('password'))
             <div class="alert alert-danger">{{ $errors->first('password') }}</div>
         @endif

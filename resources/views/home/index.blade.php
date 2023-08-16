@@ -60,17 +60,11 @@
         <!--end container-->
 
         <div class="container lg:mt-24 mt-16">
-            @include('include.2sectioncontainer')
-        </div>
-        <!--end container-->
-        <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Propriétés</h3>
 
                 <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
             </div>
-            <!--end grid-->
-
             <div class="grid grid-cols-1 mt-8 relative">
                 <div class="tns-outer" id="tns2-ow">
                     <div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button"
@@ -403,6 +397,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="container lg:mt-24 mt-16">
+            @include('include.2sectioncontainer')
+        </div>
+        <!--end container-->
+        <div class="container lg:mt-24 mt-16">
+            <div class="grid grid-cols-1 pb-8 text-center">
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Propriétés</h3>
+
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
+            </div>
+            <!--end grid-->
             <!--en grid-->
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
 
@@ -423,7 +429,7 @@
 
                             <div class="p-6">
                                 <div class="pb-6">
-                                    <a href="{{ route('property_detail', ['id' => $data->id, 'param2' => 'valeur2']) }}" 
+                                    <a href="{{ route('property_detail', ['id' => $data->id,'price'=>$data->price]) }}"
                                         class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
                                 </div>
 
@@ -475,6 +481,7 @@
             <!--en grid-->
         </div>
         <!--end container-->
+        
 
         <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">

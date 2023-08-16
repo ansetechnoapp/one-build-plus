@@ -1,28 +1,31 @@
-<form action="{{route('save.prod')}}" method="POST">
+<form action="{{ route('save.prod') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="mb-3">     
+    <div class="mb-3">
 
 
-        <label class="small mb-1" for="inputaddress">Entrer les détaille sur la  localisation de la propiété</label>
-        <input class="form-control" id="inputaddress" type="text" placeholder="entrer l'addresse de la propiété" name="address">
+        <label class="small mb-1" for="inputaddress">Entrer les détaille sur la localisation de la propiété</label>
+        <input class="form-control" id="inputaddress" type="text" placeholder="entrer l'addresse de la propiété"
+            name="address" required>
     </div>
     <div class="row gx-3">
         <div class="mb-3 col-md-6">
             <label class="small mb-1" for="inputland_owner">Entrer le nom complet</label>
-            <input class="form-control" id="inputland_owner" type="text" placeholder="Enter your first name" value="xora Valerie" name="land_owner">
+            <input class="form-control" id="inputland_owner" type="text" placeholder="Enter your first name"
+                value="xora Valerie" name="land_owner" required>
         </div>
         <div class="mb-3 col-md-6">
             <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
-            <input class="form-control" id="inputarea" type="text" placeholder="Supéficie" value="1ha" name="area">
+            <input class="form-control" id="inputarea" type="text" placeholder="Supéficie" value="1ha"
+                name="area" required>
         </div>
     </div>
     <div class="row gx-3">
         <div class="mb-3 col-md-6">
             <label class="small mb-1" for="departement">Département</label>
-            <select class="form-control" id="departement" name="department" onchange="afficherCommunes()">
+            <select class="form-control" id="departement" name="department" onchange="afficherCommunes()" required>
                 <!-- Option par défaut -->
                 <option value="" disabled selected>Sélectionnez un département</option>
-        
+
                 <!-- Liste des départements -->
                 <option value="Alibori">Département de l'Alibori</option>
                 <option value="Atacora">Département de l'Atacora</option>
@@ -40,42 +43,44 @@
         </div>
         <div class="mb-3 col-md-6">
             <label class="small mb-1" for="communes">Commune</label>
-            <select class="form-control" id="communes" name="communes">
+            <select class="form-control" id="communes" name="communes" required>
                 <option value="">Sélectionnez un département</option>
             </select>
         </div>
-        
+
     </div>
     <div class="mb-3">
         <label class="small mb-1" for="inputdescription">Desription</label>
-        <input class="form-control" id="inputdescription" type="text" placeholder="Desription" value="Desription" name="description">
+        <input class="form-control" id="inputdescription" type="text" placeholder="Desription" value="Desription"
+            name="description" required>
     </div>
     <div class="row gx-3">
         <div class="col-md-6 mb-md-0">
             <label class="small mb-1" for="inputprice">prix</label>
-            <input class="form-control" id="inputprice" type="number" placeholder="prix" name="price">
+            <input class="form-control" id="inputprice" type="number" placeholder="prix" name="price" required>
         </div>
         <div class="col-md-6 mb-0">
             <label class="small mb-1" for="inputprice_min">prix min</label>
-            <input class="form-control" id="inputprice_min" type="number"placeholder="price min" name="price_min">
+            <input class="form-control" id="inputprice_min" type="number"placeholder="price min" name="price_min" required>
         </div>
     </div>
-    
+
     <div class="row gx-3">
         <div class="mb-3 col-md-6">
             <label class="small mb-1" for="inputborough">Arrondissement</label>
-            <input class="form-control" id="inputborough" type="text" placeholder="Arrondissement" name="borough">
+            <input class="form-control" id="inputborough" type="text" placeholder="Arrondissement" name="borough" required>
         </div>
         <div class="mb-3 col-md-6">
             <labeL class="small mb-1" for="inputground_type">Type de terre</labeL>
-            <select class="form-control" id="inputground_type" name="ground_type">
+            <select class="form-control" id="inputground_type" name="ground_type" required>
                 <option>choix</option>
+                <option>yyy</option>
             </select>
         </div>
     </div>
     <div class="mb-3 col-md-6">
         <label class="small mb-1" for="inputimage">Entrer une image</label>
-        <input class="form-control" id="inputimage" type="file"  name="image">
+        <input class="form-control" id="inputimage" type="file" name="main_image" required>
     </div>
     <hr class="my-4">
     <div class="d-flex justify-content-between">
@@ -84,42 +89,46 @@
 </form>
 <script>
     const communesParDepartement = {
-            "Alibori": ["Banikoara", "Gogounou", "Kandi", "Karimama", "Malanville", "Ségbana"],
-            "Atacora": ["Boukoumbé", "Cobly", "Kérou", "Kouandé", "Matéri", "Natitingou", "Pehonko", "Tanguiéta", "Toucountouna"],
-            "Atlantique": ["Abomey-Calavi", "Allada", "Kpomassè", "Ouidah", "Sô-Ava", "Toffo", "Tori-Bossito", "Zè"],
-            "Borgou": ["Bembéréké", "Kalalé", "N'Dali", "Nikki", "Parakou", "Pèrèrè", "Sinendé", "Tchaourou"],
-            "Collines": ["Bantè", "Dassa-Zoumè", "Glazoué", "Ouèssè", "Savalou", "Savè"],
-            "Couffo": ["Aplahoué", "Djakotomey", "Dogbo-Tota", "Klouékanmè", "Lalo", "Toviklin"],
-            "Donga": ["Bassila", "Copargo", "Djougou", "Ouaké"],
-            "Littoral": ["Cotonou", "Godomey", "Sèmè-Kpodji"],
-            "Mono": ["Athiémé", "Bopa", "Comé", "Grand-Popo", "Houéyogbé"],
-            "Ouémé": ["Adjarra", "Adjohoun", "Aguégués", "Akpro-Missérété", "Avrankou", "Bonou", "Dangbo", "Porto-Novo", "Sèmè-Podji", "Zangnanado"],
-            "Plateau": ["Ifangni", "Kétou", "Pobè", "Sakété"],
-            "Zou": ["Abomey", "Agbangnizoun", "Bohicon", "Covè", "Djidja", "Ouinhi", "Za-Kpota"]
-        };
+        "Alibori": ["Banikoara", "Gogounou", "Kandi", "Karimama", "Malanville", "Ségbana"],
+        "Atacora": ["Boukoumbé", "Cobly", "Kérou", "Kouandé", "Matéri", "Natitingou", "Pehonko", "Tanguiéta",
+            "Toucountouna"
+        ],
+        "Atlantique": ["Abomey-Calavi", "Allada", "Kpomassè", "Ouidah", "Sô-Ava", "Toffo", "Tori-Bossito", "Zè"],
+        "Borgou": ["Bembéréké", "Kalalé", "N'Dali", "Nikki", "Parakou", "Pèrèrè", "Sinendé", "Tchaourou"],
+        "Collines": ["Bantè", "Dassa-Zoumè", "Glazoué", "Ouèssè", "Savalou", "Savè"],
+        "Couffo": ["Aplahoué", "Djakotomey", "Dogbo-Tota", "Klouékanmè", "Lalo", "Toviklin"],
+        "Donga": ["Bassila", "Copargo", "Djougou", "Ouaké"],
+        "Littoral": ["Cotonou", "Godomey", "Sèmè-Kpodji"],
+        "Mono": ["Athiémé", "Bopa", "Comé", "Grand-Popo", "Houéyogbé"],
+        "Ouémé": ["Adjarra", "Adjohoun", "Aguégués", "Akpro-Missérété", "Avrankou", "Bonou", "Dangbo", "Porto-Novo",
+            "Sèmè-Podji", "Zangnanado"
+        ],
+        "Plateau": ["Ifangni", "Kétou", "Pobè", "Sakété"],
+        "Zou": ["Abomey", "Agbangnizoun", "Bohicon", "Covè", "Djidja", "Ouinhi", "Za-Kpota"]
+    };
 
-        function afficherCommunes() {
-            const departementSelect = document.getElementById("departement");
-            const communesSelect = document.getElementById("communes");
-            const departementSelectionne = departementSelect.value;
+    function afficherCommunes() {
+        const departementSelect = document.getElementById("departement");
+        const communesSelect = document.getElementById("communes");
+        const departementSelectionne = departementSelect.value;
 
-            // Efface les options actuelles de la liste des communes
-            communesSelect.innerHTML = "";
+        // Efface les options actuelles de la liste des communes
+        communesSelect.innerHTML = "";
 
-            // Affiche les communes du département sélectionné
-            if (departementSelectionne && communesParDepartement.hasOwnProperty(departementSelectionne)) {
-                communesParDepartement[departementSelectionne].forEach(commune => {
-                    const option = document.createElement("option");
-                    option.text = commune;
-                    communesSelect.add(option);
-                });
-            } else {
-                const optionDefaut = document.createElement("option");
-                optionDefaut.value = "";
-                optionDefaut.disabled = true;
-                optionDefaut.selected = true;
-                optionDefaut.text = "Sélectionnez un département";
-                communesSelect.add(optionDefaut);
-            }
+        // Affiche les communes du département sélectionné
+        if (departementSelectionne && communesParDepartement.hasOwnProperty(departementSelectionne)) {
+            communesParDepartement[departementSelectionne].forEach(commune => {
+                const option = document.createElement("option");
+                option.text = commune;
+                communesSelect.add(option);
+            });
+        } else {
+            const optionDefaut = document.createElement("option");
+            optionDefaut.value = "";
+            optionDefaut.disabled = true;
+            optionDefaut.selected = true;
+            optionDefaut.text = "Sélectionnez un département";
+            communesSelect.add(optionDefaut);
         }
+    }
 </script>

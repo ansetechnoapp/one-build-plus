@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\prod as insertion;
+use App\Models\prod;
 use Illuminate\Http\Request;
 
-class InsertController extends Controller
+class ProdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class InsertController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(insertion $insert)
+    public function show(prod $prod)
     {
         //
     }
@@ -42,7 +42,7 @@ class InsertController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(insertion $insert)
+    public function edit(prod $prod)
     {
         //
     }
@@ -50,7 +50,7 @@ class InsertController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, insertion $insert)
+    public function update(Request $request, prod $prod)
     {
         //
     }
@@ -58,7 +58,7 @@ class InsertController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(insertion $insert)
+    public function destroy(prod $prod)
     {
         //
     }

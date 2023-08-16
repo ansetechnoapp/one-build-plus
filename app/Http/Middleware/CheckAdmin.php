@@ -16,9 +16,8 @@ class CheckAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {      $emailRecherche = Auth::user()->role;
-        // $donnees = User::where('email', $emailRecherche)->get();
-        if ($emailRecherche === 'admin') { 
+    {      $user_admin = Auth::user()->role;
+        if ($user_admin === 'admin') { 
             return $next($request);
         }else{
             // return redirect()->back()->with('error', 'Accès non autorisé.');

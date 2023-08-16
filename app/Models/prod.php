@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\prod;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\img;
 
-class insert extends Model
+class prod extends Model
 {
     use HasFactory;
 
@@ -26,11 +26,6 @@ class insert extends Model
         'area',
         'price',
         'price_min',
-        'main_image',
-        'imag1',
-        'img2',
-        'img3',
-        'img4',
         'description',
         'ground_type',
     ];

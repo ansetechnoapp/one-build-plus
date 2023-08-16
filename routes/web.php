@@ -24,9 +24,9 @@ Route::get('/well', function () {
 });
 
 // Route::get('/testmodelrequest', [\App\Http\Controllers\Auth\FormRegister::class, 'testmodelrequest']);
-
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
 Route::post('/search_info_prod', [\App\Http\Controllers\search\prod::class, 'selectsearch'])->name('search.prod');
+
 
 Route::get('/', [\App\Http\Controllers\search\prod::class, 'allselecttable'])->name('home');
 Route::get('/faqs', function () {
@@ -137,8 +137,9 @@ Route::middleware(['auth', 'isActive'])->group(function () {
 | Web Routes for dashboard for admin
 |--------------------------------------------------------------------------
 */
-Route::middleware(['admin', 'isActive'])->group(function () {
+Route::middleware(['auth','isActive','admin'])->group(function () {
     Route::get('/dashboard.admin', function () {
         return view('dashboard.admin.home.index');
     })->name('dashboard.admin');
+    Route::get('/list_prod', [\App\Http\Controllers\prod\select::class, 'show'])->name('list_prod');
 });

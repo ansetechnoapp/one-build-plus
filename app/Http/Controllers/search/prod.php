@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\search;
 
 use App\Http\Controllers\Controller;
-use App\Models\prod\insert as insertion;
+use App\Models\prod as insertion;
 use Illuminate\Http\Request;
 
 class prod extends Controller

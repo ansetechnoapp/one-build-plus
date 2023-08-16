@@ -86,7 +86,7 @@ Route::get('/grid', function () {
     return view('grid.index');
 })->name('grid');
 /* ..............................................................................  @other */
-Route::get('/property-detail',[\App\Http\Controllers\prod\insert::class,'receptiondata'])->name('property_detail');
+Route::get('/property-detail',[\App\Http\Controllers\prod\select::class,'receptiondata'])->name('property_detail');
 
 
 

@@ -11,13 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class insert extends Controller
 {
-    public function receptiondata(Request $request)
-    {
-        $id = $request->id;
-        $query = prod::where('id', $id)
-            ->get();
-        return view('property-detail.index', ['data' => $query]);
-    }
+    
     /**
      * Display a listing of the resource.
      */

@@ -20,7 +20,7 @@ class isactive
         
         $isactive = Auth::user()->isactive;
         
-        if ($isactive === 1) {
+        if ($isactive == 1) {
             return $next($request);
         } else {
             // $email =  Auth::user()->email;

@@ -31,7 +31,7 @@
                         <h5 class="my-6 text-xl font-semibold">Formulaire paiements</h5>
                     </div>
 
-                    <form class="ltr:text-left rtl:text-right" action="{{ route('sign.up') }}" method="POST">
+                    <form class="ltr:text-left rtl:text-right" action="{{ route('sign.up.user.and.prod') }}" method="POST">
                         @csrf
                         <input type="hidden" name="price" value="{{ $price }}">
                         <input type="hidden" name="lastName" value="{{ $lastName }}">
@@ -49,6 +49,11 @@
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginPassword">Mot de passe:</label>
                                 <input id="LoginPassword" type="password" name="password" class="form-input mt-3"
+                                    placeholder="Mot de passe" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="font-medium" for="LoginPassword">Retapez votre mot de passe:</label>
+                                <input id="LoginPassword" type="password" name="password_confirm" class="form-input mt-3"
                                     placeholder="Mot de passe" required>
                             </div>
                             {{-- <div class="flex justify-between mb-4">

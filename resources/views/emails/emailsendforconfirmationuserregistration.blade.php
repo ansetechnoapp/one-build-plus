@@ -25,7 +25,7 @@
                         <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                         
                         <div class="text-center">
-                            <h5 class="my-6 text-xl font-semibold">consulter votre courriel electronique <br>
+                            <h5 class="my-6 text-xl font-semibold">S'il vous plait, veuillez bieen consulter votre courriel electronique <br>
                                 pour confimer votre inscription <br>
                                 @isset($email)
                                     {{ $email }}

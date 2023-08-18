@@ -43,13 +43,13 @@
 
                                 
                                 <div class="mb-4">
-                                    <label><input type="checkbox" name="registration_andf" value="1"> <span> Enrégistrement ANDF </span></label>
+                                    <label><input type="checkbox" name="registration_andf" value="oui"> <span> Enrégistrement ANDF </span></label>
                                 </div>
                                 <div class="mb-4">
-                                    <label><input type="checkbox" name="formality_fees" value="1"> <span> Frais de formalité </span></label>
+                                    <label><input type="checkbox" name="formality_fees" value="oui"> <span> Frais de formalité </span></label>
                                 </div>
                                 <div class="mb-4">
-                                    <label><input type="checkbox" name="notary_fees" value="1"> <span> Frais notarié </span></label>
+                                    <label><input type="checkbox" name="notary_fees" value="oui"> <span> Frais notarié </span></label>
                                 </div>
                                 <div class="flex">
                                     <div class="p-1 w-1/2">

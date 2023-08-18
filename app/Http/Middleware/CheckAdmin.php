@@ -21,7 +21,7 @@ class CheckAdmin
             return $next($request);
         }else{
             // return redirect()->back()->with('error', 'Accès non autorisé.');
-            return redirect()->route('home')->with('error', 'Accès non autorisé.');
+            return redirect()->route('auth-login')->with('error', 'Accès non autorisé.');
         }
         
     }

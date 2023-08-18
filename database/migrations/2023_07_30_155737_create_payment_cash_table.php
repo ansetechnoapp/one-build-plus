@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('payment_cash', function (Blueprint $table) {
             $table->id();
-            $table->string('amount');
+            $table->Integer('amount');
             $table->Date('date');
             $table->string('user_id');
             $table->timestamps();

@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class additional_option extends Model
+class devis extends Model
 {
     use HasFactory;
-
-    protected $table = 'additional_option';
+    protected $table = 'devis';
 
     /**
      * The attributes that are mass assignable.
@@ -17,23 +16,19 @@ class additional_option extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'registration_andf',
-        'formality_fees',
-        'notary_fees',
-        'users_id',
+        'montant',
+        'dateDevis',
+        'dateExpiration',
         'prod_id',
+        'additional_option_id',
+        'users_id',
     ];
-
-    public function devis()
-    {
-        return $this->hasOne(devis::class, 'additional_option_id');
-    }
     public function user()
     {
         return $this->belongsTo(User::class, 'users_id');
     }
-    public function prod()
+    public function additional_option()
     {
-        return $this->belongsTo(Prod::class, 'prod_id');
+        return $this->belongsTo(User::class, 'additional_option_id');
     }
 }

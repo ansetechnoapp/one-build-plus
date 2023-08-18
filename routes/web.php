@@ -49,6 +49,9 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/auth-login', function () {
         return view('auth-login.index');
     })->name('auth-login');
+    Route::get('/sign-up', function () {
+        return view('auth-signup.index');
+    })->name('sign.up');
     Route::get('/updatePassword', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->name('password.update');
 });
 Route::get('/formupdatepassword/{email}', function ($email) {
@@ -71,7 +74,9 @@ Route::match(array('GET', 'POST'), '/auth_signup_form_2',[\App\Http\Controllers\
     return view('payment.index');
 })->name('email.send.for.confirmation.user.registration'); */
 
-Route::post('/signup', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveRegister'])->name('sign.up');
+Route::post('/sign_up_user_and_prod', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveRegisterUserAndProd'])->name('sign.up.user.and.prod');
+Route::post('/signup', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveRegister'])->name('save.user');
+
 
 Route::get('/contact', function () {
     return view('contact.index');
@@ -105,7 +110,7 @@ Route::get('/404', function () {
     return view('404');
 });
 
-Route::get('/devis', [\App\Http\Controllers\facture_des_services\devis::class, 'genererDevis'])->name('devis');
+Route::post('/devis', [\App\Http\Controllers\facture_des_services\devis::class, 'genererDevis'])->name('devis');
 Route::get('/emailsendforconfirmationuserregistration', function () {
     return view('emails.emailsendforconfirmationuserregistration');
 })->name('url.confirmation.user.registration');
@@ -116,9 +121,7 @@ Route::get('/emailsendforconfirmationuserregistration', function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'isActive'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.home.index');
-    })->name('dashboard.home');
+    Route::get('/dashboard', [\App\Http\Controllers\facture_des_services\devis::class, 'listDevisForUser'])->name('dashboard.home');
     Route::get('/dashboard.account.profil', [\App\Http\Controllers\save\account::class, 'getaccountprofil'])->name('dashboard.profil');
     Route::post('/saveprofilandupdate', [\App\Http\Controllers\save\account::class, 'saveprofilandupdate'])->name('saveprofilandupdate');
     Route::get('/dashboard.billing.history', function () {

@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('additional_option', function (Blueprint $table) {
+        Schema::create('devis', function (Blueprint $table) {
             $table->id();
-            $table->string('registration_andf')->nullable();
-            $table->string('formality_fees')->nullable();
-            $table->string('notary_fees')->nullable();
+            $table->Integer('montant');
+            $table->date('dateDevis');
+            $table->date('dateExpiration');
+            $table->Integer('prod_id');
+            $table->unsignedBigInteger('additional_option_id'); // Clé étrangère
             $table->unsignedBigInteger('users_id'); // Clé étrangère
-            $table->unsignedBigInteger('prod_id'); // Clé étrangère
             $table->timestamps();
-            
+
+            $table->foreign('additional_option_id')->references('id')->on('additional_option');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('prod_id')->references('id')->on('prod');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('additional_option');
+        Schema::dropIfExists('devis');
     }
 };

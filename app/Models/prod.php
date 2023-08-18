@@ -33,4 +33,8 @@ class prod extends Model
     {
         return $this->hasOne(Img::class, 'prod_id');
     }
+    public function additional_option()
+    {
+        return $this->hasOne(additional_option::class, 'prod_id');
+    }
 }

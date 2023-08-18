@@ -2,3 +2,4 @@ php artisan make:model prod/insert --resource
 php artisan make:model additional_option --resource
 php artisan make:model img --resource
 php artisan make:model prod --resource
+php artisan make:model devis --resource

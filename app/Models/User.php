@@ -51,4 +51,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function additional_option()
+    {
+        return $this->hasOne(additional_option::class, 'users_id');
+    }
+    public function devis()
+    {
+        return $this->hasOne(devis::class, 'users_id');
+    }
 }

@@ -30,7 +30,7 @@ class FormLogin extends Controller
         }
         
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Entrer votre email',
         ])->onlyInput('email');
     }
     public function isactive($email){

@@ -182,10 +182,18 @@
                                     </div>
 
                                     <div class="flex">
+                                        @if (Auth::check())
+                                        <div class="p-1 w-1/2">
+                                            <a href="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
+                                                class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a>
+                                        </div>
+                                        @else
                                         <div class="p-1 w-1/2">
                                             <a href="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
                                                 class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a>
                                         </div>
+                                        @endif
+                                        
                                         {{-- <div class="p-1 w-1/2">
                                 <a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">par tranche</a>
                             </div> --}}

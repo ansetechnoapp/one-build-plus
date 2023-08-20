@@ -58,7 +58,9 @@
                                             <textarea name="comments" id="comments" class="form-input mt-2 textarea" placeholder="Message :"></textarea>
                                         </div>
                                     </div>
-                                    <button type="submit" id="submit" name="send" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md">Envoyer le message</button>
+                                    <div class="mb-4">
+                                        <button class="btn bg-red-600 rounded-md w-full" type="submit">Envoyer le message</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

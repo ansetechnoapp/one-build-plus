@@ -28,7 +28,7 @@ Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->nam
 Route::post('/search_info_prod', [\App\Http\Controllers\search\prod::class, 'selectsearch'])->name('search.prod');
 
 
-Route::get('/', [\App\Http\Controllers\search\prod::class, 'allselecttable'])->name('home');
+Route::get('/', [\App\Http\Controllers\search\prod::class, 'allselecttableProdForHome'])->name('home');
 Route::get('/faqs', function () {
     return view('faqs.index');
 })->name('faqs');
@@ -45,15 +45,7 @@ Route::get('/buy', function () {
 
 
 Route::post('/login', [\App\Http\Controllers\Auth\FormLogin::class, 'authenticate'])->name('login');
-Route::middleware(['guest'])->group(function () {
-    Route::get('/auth-login', function () {
-        return view('auth-login.index');
-    })->name('auth-login');
-    Route::get('/sign-up', function () {
-        return view('auth-signup.index');
-    })->name('sign.up');
-    Route::get('/updatePassword', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->name('password.update');
-});
+
 Route::get('/formupdatepassword/{email}', function ($email) {
     return view('forgetpassword.updatepassword', ['email' => $email]);
 })->name('formupdatepassword');
@@ -67,9 +59,9 @@ Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::cl
 
 
 
-Route::match(array('GET', 'POST'),'/auth-signup.{id}.{price}', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('paymnt');
-Route::match(array('GET', 'POST'), '/auth-signup_form',[\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata1'])->name('paymnt.form');
-Route::match(array('GET', 'POST'), '/auth_signup_form_2',[\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata2'])->name('paymnt.form2');
+Route::match(array('GET', 'POST'), '/auth-signup.{id}.{price}', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('paymnt');
+Route::match(array('GET', 'POST'), '/auth-signup_form', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata1'])->name('paymnt.form');
+Route::match(array('GET', 'POST'), '/auth_signup_form_2', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata2'])->name('paymnt.form2');
 /* Route::get('/email-envoyer-pour-confirmation-enregistrement-utilisateur', function () {
     return view('payment.index');
 })->name('email.send.for.confirmation.user.registration'); */
@@ -91,7 +83,7 @@ Route::get('/grid', function () {
     return view('grid.index');
 })->name('grid');
 /* ..............................................................................  @other */
-Route::get('/property-detail',[\App\Http\Controllers\prod\select::class,'receptiondata'])->name('property_detail');
+Route::get('/property-detail', [\App\Http\Controllers\prod\select::class, 'receptiondata'])->name('property_detail');
 
 
 
@@ -124,14 +116,18 @@ Route::middleware(['auth', 'isActive'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\facture_des_services\devis::class, 'listDevisForUser'])->name('dashboard.home');
     Route::get('/dashboard.account.profil', [\App\Http\Controllers\save\account::class, 'getaccountprofil'])->name('dashboard.profil');
     Route::post('/saveprofilandupdate', [\App\Http\Controllers\save\account::class, 'saveprofilandupdate'])->name('saveprofilandupdate');
-    Route::get('/dashboard.billing.history', function () {
+    /* Route::get('/dashboard.billing.history', function () {
         return view('dashboard.billing_history.index');
-    })->name('dashboard.billing.history');
+    })->name('dashboard.billing.history'); */
     Route::get('/dashboard.account_security', function () {
         return view('dashboard.account_security.index');
     })->name('dashboard.security');
-    Route::post('/ChangePassword', [\App\Http\Controllers\save\account::class, 'ChangePassword'])->name('account.security.ChangePassword');
+    Route::match(array('GET', 'POST'),'/ChangePassword', [\App\Http\Controllers\save\account::class, 'ChangePassword'])->name('account.security.ChangePassword');
     Route::post('/save_info_prod', [\App\Http\Controllers\prod\insert::class, 'store'])->name('save.prod');
+
+    Route::match(array('GET', 'POST'), '/dashboard-payment.{id}.{price}', [\App\Http\Controllers\prod\select::class, 'receptiondata1'])->name('dashboard.paymnt');
+    Route::post('/dashboard-paymnt', [\App\Http\Controllers\prod\insert::class, 'generateDevisForProperty'])->name('generateDevisForProperty');
+
     Route::match(array('GET', 'POST'), '/Logout', [\App\Http\Controllers\Auth\Logout::class, 'logout'])->name('Logout');
 });
 
@@ -140,9 +136,23 @@ Route::middleware(['auth', 'isActive'])->group(function () {
 | Web Routes for dashboard for admin
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth','isActive','admin'])->group(function () {
+Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::get('/dashboard.admin', function () {
         return view('dashboard.admin.home.index');
     })->name('dashboard.admin');
     Route::get('/list_prod', [\App\Http\Controllers\prod\select::class, 'show'])->name('list_prod');
+});
+/*
+|--------------------------------------------------------------------------
+| Web Routes for 
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['guest'])->group(function () {
+    Route::get('/auth-login', function () {
+        return view('auth-login.index');
+    })->name('auth-login');
+    Route::get('/sign-up', function () {
+        return view('auth-signup.index');
+    })->name('sign.up');
+    Route::get('/updatePassword', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->name('password.update');
 });

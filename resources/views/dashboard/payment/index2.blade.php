@@ -35,24 +35,15 @@
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>
                                     <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{$price}}" readonly required>
-                                    @if ($errors->has('price'))
-                                    <div class="alert alert-danger">{{ $errors->first('price') }}</div>
-                                @endif
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Nom:</label>
                                     <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}" required>
-                                    @if ($errors->has('lastName'))
-                                    <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
-                                @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">prénom:</label>
                                     <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom" value="{{$firstName}}" required>
-                                    @if ($errors->has('firstName'))
-                                    <div class="alert alert-danger">{{ $errors->first('firstName') }}</div>
-                                @endif
                                 </div> 
                                 <div class="flex">
                                     <div class="p-1 w-1/2">

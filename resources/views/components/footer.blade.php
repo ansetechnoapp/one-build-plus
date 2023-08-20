@@ -122,7 +122,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script> <i class="mdi mdi-heart text-red-600"></i> ONE BUILD PLUS
-                        <a href="#" target="_blank" class="text-reset">OBP</a>.
+                        <a href="#" target="_blank" class="text-reset">(OBP)</a>
                     </p>
                 </div>
 

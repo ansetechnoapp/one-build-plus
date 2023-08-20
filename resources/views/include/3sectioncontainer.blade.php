@@ -6,7 +6,7 @@
     <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter, vendre.</p>
 
     <div class="mt-6">
-        <a href="contact.html" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md"><i
+        <a href="contact" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md"><i
                 class="uil uil-phone align-middle me-2"></i> Contactez-nous</a>
     </div>
 </div>

@@ -31,4 +31,12 @@ class select extends Controller
         $posts = prod::all();
         return view('dashboard.admin.list_prod.index', ['allprod' => $posts]);
     }
+    public function receptiondata1(Request $request)
+    {
+        // dd('ee');
+        $price = $request->price;
+        $id = $request->id;
+        // dd($price,$id);
+        return view('dashboard.payment.index', compact('price', 'id'));
+    }
 }

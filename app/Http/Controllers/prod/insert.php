@@ -3,15 +3,85 @@
 namespace App\Http\Controllers\prod;
 
 use App\Models\img;
-use Illuminate\Http\Request;
 use App\Models\prod;
+use App\Models\devis;
+use Illuminate\Http\Request;
+use App\Models\additional_option;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class insert extends Controller
 {
-    
+
+    public function generateDevisForProperty(Request $request)
+    {
+
+        $price = $request->price;
+        $prod_id = $request->id;
+        $user_id = $request->user_id;
+        $registration_andf = $request->registration_andf;
+        $formality_fees = $request->formality_fees;
+        $notary_fees = $request->notary_fees;
+
+        if (isset($price)  || isset($prod_id) || isset($user_id)) {
+            if ($price == ''  || $prod_id == ''|| $user_id == '' ) {
+                echo "S'il vous plaît, remplissez tous les champs";
+            } else {
+                // Définition des règles de validation
+                $rules = [
+                    'price' => ['required', 'string', 'max:11'],
+                ];
+
+                // Définition des messages d'erreur personnalisés
+                $messages = [
+                    'price.priceregister' => "L'adresse email n'est pas valide.",
+                ];
+
+                // Définition des noms de champs personnalisés
+                $customAttributes = [
+                    'priceregister' => 'price non defini',
+                ];
+
+                // Validation des données envoyées dans la requête
+
+                try {
+                    $request->validate($rules, $messages, $customAttributes);
+                    // dd('eee');
+
+                    $insert = additional_option::create([
+                        'registration_andf' => $registration_andf,
+                        'formality_fees' => $formality_fees,
+                        'notary_fees' => $notary_fees,
+                        'users_id' => $user_id,
+                        'prod_id' => $prod_id,
+                    ]);
+                    
+                    $devis = new devis();
+                    $devis->montant = $price;
+                    $devis->prod_id = $prod_id;
+                    $devis->users_id = $user_id;
+                    $devis->dateDevis = now()->format('Y-m-d');
+                    $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');                   
+                    $devis->additional_option()->associate($insert); // Associe le modèle additional_option à la relation
+                    $devis->save();                   
+                    return redirect()->route('dashboard.home');
+
+                } catch (ValidationException $e) {
+                    // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
+                    // Récupération des messages d'erreur de validation
+                    $errors = $e->validator->errors();
+
+                    // Redirection vers la page de formulaire avec les messages d'erreur
+                    return redirect()->route('property_detail', ['id' => $prod_id,'price' => $price])->withErrors($errors);
+                }
+            }
+        } else {
+
+            echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+        }
+    }
     /**
      * Display a listing of the resource.
      */
@@ -78,7 +148,6 @@ class insert extends Controller
         $img->main_image = $path;
         $img->prod()->associate($insert); // Associe le modèle Prod à la relation
         $img->save();
-
 
         return redirect()->route('list_prod');
     }

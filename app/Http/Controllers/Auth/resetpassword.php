@@ -24,48 +24,43 @@ class resetpassword extends Controller
         // dd($email);
 
         if (isset($email)) {
-            if ($email == '') {
-                echo "S'il vous plaît, remplissez tous les champs";
-            } else {
+            // Définition des règles de validation
+            $rules = [
+                'email' => ['required', 'string', 'email', 'max:255'],
+            ];
 
-                // Définition des règles de validation
-                $rules = [
-                    'email' => ['required', 'string', 'email', 'max:255'],
-                ];
+            // Définition des messages d'erreur personnalisés
+            $messages = [
+                'emailregister' => "L'adresse email n'est pas valide.",
+            ];
 
-                // Définition des messages d'erreur personnalisés
-                $messages = [
-                    'email.emailregister' => "L'adresse email n'est pas valide.",
-                ];
+            // Définition des noms de champs personnalisés
+            $customAttributes = [
+                'emailregister' => 'Adresse email',
+            ];
 
-                // Définition des noms de champs personnalisés
-                $customAttributes = [
-                    'emailregister' => 'Adresse email',
-                ];
+            // Validation des données envoyées dans la requête
 
-                // Validation des données envoyées dans la requête
-
-                try {
+            try {
+                
+                $request->validate($rules, $messages, $customAttributes);
+                
+                if (User::where('email', $request->email)->first() === null) {
+                    dd('vvv');
+                    return redirect()->route('auth-re-password');
+                } else {
+                    Mail::to($email)
+                        ->send(new sendpasswordreset($request->all()));
+                        return view('home.index');
                     
-                    $request->validate($rules, $messages, $customAttributes);
-                    
-                    if (User::where('email', $request->email)->first() === null) {
-                        dd('vvv');
-                        return redirect()->route('auth-re-password');
-                    } else {
-                        Mail::to($email)
-                            ->send(new sendpasswordreset($request->all()));
-                            return view('home.index');
-                        
-                    }
-                } catch (ValidationException $e) {
-                    // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                    // Récupération des messages d'erreur de validation
-                    $errors = $e->validator->errors();
-
-                    // Redirection vers la page de formulaire avec les messages d'erreur
-                    return redirect()->to('/sendEmail')->withErrors($errors);
                 }
+            } catch (ValidationException $e) {
+                // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
+                // Récupération des messages d'erreur de validation
+                $errors = $e->validator->errors();
+
+                // Redirection vers la page de formulaire avec les messages d'erreur
+                return redirect()->to('/sendEmail')->withErrors($errors);
             }
         } else {
 

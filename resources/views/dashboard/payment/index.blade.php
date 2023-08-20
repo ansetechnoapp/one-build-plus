@@ -28,47 +28,43 @@
                             <h5 class="my-6 text-xl font-semibold">Formulaire paiements</h5>
                         </div>
                         
-                        <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('paymnt.form') }}">
+                        <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('generateDevisForProperty') }}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$id}}">
                             <div class="grid grid-cols-1">
+                                
+                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}" required>
+                                <input type="hidden" name="id" value="{{$id}}" required>
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>
                                     <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{$price}}" readonly required>
-                                    @if ($errors->has('price'))
-                                    <div class="alert alert-danger">{{ $errors->first('price') }}</div>
-                                @endif
+                                </div>
+                                <div class="mb-4">
+                                    <label><h1>option supplémentaire</h1></label>
+                                </div>                             
+                                <div class="mb-4">
+                                    <label><input type="checkbox" name="registration_andf" value="oui"> <span> Enrégistrement ANDF </span></label>
+                                </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox" name="formality_fees" value="oui"> <span> Frais de formalité </span></label>
+                                </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox" name="notary_fees" value="oui"> <span> Frais notarié </span></label>
+                                </div>
+                                <div class="mb-4">
+                                    <button type="submit" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Valider</button>
+                                </div>
+                                
                                 </div>
 
-                                <div class="mb-4">
-                                    <label class="font-medium" for="LoginPassword">Nom:</label>
-                                    <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}" required>
-                                    @if ($errors->has('lastName'))
-                                    <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
-                                @endif
-                                </div>
-                                <div class="mb-4">
-                                    <label class="font-medium" for="LoginPassword">prénom:</label>
-                                    <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom" value="{{$firstName}}" required>
-                                    @if ($errors->has('firstName'))
-                                    <div class="alert alert-danger">{{ $errors->first('firstName') }}</div>
-                                @endif
-                                </div> 
-                                <div class="flex">
-                                    <div class="p-1 w-1/2">
-                                        <a href="{{ route('property_detail', ['id' =>$id, 'param2' => 'valeur2']) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
-                                    </div>
-                                    <div class="p-1 w-1/2">
-                                        <button type="submit" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">suivant</button>
-                                    </div>
-                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section><!--end section -->
-
+        
+        
+        
         <div class="fixed bottom-3 end-3 z-10">
             <a href="#" class="back-button btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full"><i data-feather="arrow-left" class="h-4 w-4"></i></a>
         </div>

@@ -28,40 +28,59 @@
                             <h5 class="my-6 text-xl font-semibold">Formulaire paiements</h5>
                         </div>
                         
-                        <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('paymnt.form') }}">
+                        <form class="ltr:text-left rtl:text-right" action="{{route('sign.up')}}" method="POST">
                             @csrf
-                            <input type="hidden" name="id" value="{{$id}}">
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>
-                                    <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{$price}}" readonly required>
-                                    @if ($errors->has('price'))
-                                    <div class="alert alert-danger">{{ $errors->first('price') }}</div>
-                                @endif
+                                    <input id="LoginEmail" type="number" class="form-input mt-3" placeholder="montant" value="{{$prix}}">
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Nom:</label>
-                                    <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}" required>
-                                    @if ($errors->has('lastName'))
-                                    <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
-                                @endif
+                                    <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom">
                                 </div>
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">prénom:</label>
-                                    <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom" value="{{$firstName}}" required>
-                                    @if ($errors->has('firstName'))
-                                    <div class="alert alert-danger">{{ $errors->first('firstName') }}</div>
-                                @endif
+                                    <input id="LoginPassword" type="text" class="form-input mt-3" placeholder="prénom">
                                 </div> 
-                                <div class="flex">
-                                    <div class="p-1 w-1/2">
-                                        <a href="{{ route('property_detail', ['id' =>$id, 'param2' => 'valeur2']) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
-                                    </div>
-                                    <div class="p-1 w-1/2">
-                                        <button type="submit" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">suivant</button>
-                                    </div>
+                                <div class="mb-4">
+                                    <label><h1>option supplémentaire</h1></label>
                                 </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox"> <span> Enrégistrement ANDF </span></label>
+                                </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox"> <span> Frais de formalité </span></label>
+                                </div>
+                                <div class="mb-4">
+                                    <label><input type="checkbox"> <span> Frais notarié </span></label>
+                                </div>
+
+
+                                
+                                <div class="mb-4">
+                                    <label class="font-medium" for="LoginEmail">Email:</label>
+                                    <input id="LoginEmail" type="email" name="email" class="form-input mt-3" placeholder="Email">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="font-medium" for="LoginPassword">Mot de passe:</label>
+                                    <input id="LoginPassword" type="password" name="password" class="form-input mt-3" placeholder="Mot de passe">
+                                </div>
+                                {{-- <div class="flex justify-between mb-4">
+                                    <div class="inline-flex items-center">
+                                        <input class="form-checkbox accent-green-600 rounded w-4 h-4 me-2 border border-inherit" type="checkbox" value="" id="RememberMe">
+                                        <label class="form-check-label text-slate-400" for="RememberMe">Se souvenir de moi</label>
+                                    </div>
+                                    
+                                    <p class="text-slate-400 mb-0"><a href="{{route('auth-re-password')}}" class="text-slate-400">Mot de passe oublié ?</a></p>
+                                </div> --}}
+
+                                <div class="mb-4">
+                                    {{-- <a href="{{route('dashboard.home')}}" class="btn bg-red-600 rounded-md w-full">Valider</a> --}}
+                                    <button type="submit" class="btn bg-red-600 rounded-md w-full">Valider</button>
+                                </div>
+
                             </div>
                         </form>
                     </div>

@@ -19,7 +19,7 @@
     </li> --}}
 
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard.home')}}">
+        <a class="nav-link" href="{{ route('list_prod')}}"> 
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Liste des devis</span></a>
     </li>
@@ -33,7 +33,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('dashboard.profil')}}">Profile</a>
-                <a class="collapse-item" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a>
+                {{-- <a class="collapse-item" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a> --}}
                 <a class="collapse-item" href="{{route('dashboard.security')}}">Sécurité</a>
             </div>
         </div>

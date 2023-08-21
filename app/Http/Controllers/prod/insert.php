@@ -26,7 +26,7 @@ class insert extends Controller
         $notary_fees = $request->notary_fees;
 
         if (isset($price)  || isset($prod_id) || isset($user_id)) {
-            if ($price == ''  || $prod_id == ''|| $user_id == '' ) {
+            if ($price == ''  || $prod_id == '' || $user_id == '') {
                 echo "S'il vous plaît, remplissez tous les champs";
             } else {
                 // Définition des règles de validation
@@ -57,24 +57,23 @@ class insert extends Controller
                         'users_id' => $user_id,
                         'prod_id' => $prod_id,
                     ]);
-                    
+
                     $devis = new devis();
                     $devis->montant = $price;
                     $devis->prod_id = $prod_id;
                     $devis->users_id = $user_id;
                     $devis->dateDevis = now()->format('Y-m-d');
-                    $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');                   
+                    $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
                     $devis->additional_option()->associate($insert); // Associe le modèle additional_option à la relation
-                    $devis->save();                   
+                    $devis->save();
                     return redirect()->route('dashboard.home');
-
                 } catch (ValidationException $e) {
                     // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                     // Récupération des messages d'erreur de validation
                     $errors = $e->validator->errors();
 
                     // Redirection vers la page de formulaire avec les messages d'erreur
-                    return redirect()->route('property_detail', ['id' => $prod_id,'price' => $price])->withErrors($errors);
+                    return redirect()->route('property_detail', ['id' => $prod_id, 'price' => $price])->withErrors($errors);
                 }
             }
         } else {
@@ -103,13 +102,137 @@ class insert extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Définition des règles de validation
+        $rules = [
+            'land_owner' => 'required|string|max:100|min:2',
+            'address' => 'required|string|max:100|min:2',
+            'department' => 'required|string|max:100|min:2',
+            'communes' => 'required|string|max:100|min:2',
+            'borough' => 'required|string|max:100|min:2',
+            'area' => 'required|string|max:100|min:2',
+            'price' => 'required|integer',
+            'price_min' => 'required|integer',
+            'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img4' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string',
+            'ground_type' => 'required|string',
+        ];
 
+        // Définition des messages d'erreur personnalisés
+        $messages = [
+            'land_owner' => 'Entrer une bonne valeur',
+            'address' => 'Entrer une bonne valeur',
+            'department' => 'Entrer une bonne valeur',
+            'communes' => 'Entrer une bonne valeur',
+            'borough' => 'Entrer une bonne valeur',
+            'area' => 'Entrer une bonne valeur',
+            'price' => 'pris',
+            'price_min' => 'prix minimal',
+            'main_image' => 'image important',
+            'img1' => 'image',
+            'img2' => 'image',
+            'img3' => 'image',
+            'img4' => 'image',
+            'description' => 'Entrer un texte',
+            'ground_type' => 'Entrer un texte',
+        ];
+
+        // Définition des noms de champs personnalisés
+        $customAttributes = [
+            'land_owner' => 'Entrer une bonne valeur',
+            'address' => 'Entrer une bonne valeur',
+            'department' => 'Entrer une bonne valeur',
+            'communes' => 'Entrer une bonne valeur',
+            'borough' => 'Entrer une bonne valeur',
+            'area' => 'Entrer une bonne valeur',
+            'price' => 'pris',
+            'price_min' => 'prix minimal',
+            'main_image' => 'image important',
+            'img1' => 'image',
+            'img2' => 'image',
+            'img3' => 'image',
+            'img4' => 'image',
+            'description' => 'Entrer un texte',
+            'ground_type' => 'Entrer un texte',
+        ];
+
+        // Validation des données envoyées dans la requête
+
+        try {
+            $request->validate($rules, $messages, $customAttributes);
+
+            $land_owner = $request->land_owner;
+            $address = $request->address;
+            $department = $request->department;
+            $communes = $request->communes;
+            $borough = $request->borough;
+            $area = $request->area;
+            $price = $request->price;
+            $price_min = $request->price_min;
+            $description = $request->description;
+            $ground_type = $request->ground_type;
+
+            $insert = prod::create([
+                'land_owner' => $land_owner,
+                'address' => $address,
+                'department' => $department,
+                'communes' => $communes,
+                'borough' => $borough,
+                'area' => $area,
+                'price' => $price,
+                'price_min' => $price_min,
+                'description' => $description,
+                'ground_type' => $ground_type,
+            ]);
+
+            $img = new img();
+            $filename = time() . '.' . $request->main_image->extension();
+            $path = $request->file('main_image')->storeAs(
+                'imageprod',
+                $filename,
+                'public'
+            );
+            $img->main_image = $path;
+            $img->img1 = null; // Initialize to null
+            $img->img2 = null; // Initialize to null
+            $img->img3 = null; // Initialize to null
+            $img->img4 = null; // Initialize to null
+            $img->prod()->associate($insert);
+            $img->save();
+
+            // Ajout des images supplémentaires
+            for ($i = 1; $i <= 4; $i++) {
+                $imgField = 'img' . $i;
+                if ($request->hasFile($imgField)) {
+                    $imgFilename = time() . '_img' . $i . '.' . $request->$imgField->extension();
+                    $imgPath = $request->file($imgField)->storeAs(
+                        'imageprod',
+                        $imgFilename,
+                        'public'
+                    );
+
+                    $img->$imgField = $imgPath;
+                    $img->save();
+                }
+            }
+
+            return redirect()->route('list_prod');
+        } catch (ValidationException $e) {
+            // Gestion de l'exception ValidationException ici
+            $errors = $e->validator->errors();
+            return redirect()
+                ->back()
+                ->withErrors($errors);
+        }
 
         // $request->validate([
         //     'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         // ]);
 
-        $filename = time() . '.' . $request->main_image->extension();
+        /* $filename = time() . '.' . $request->main_image->extension();
         $path = $request->file('main_image')->storeAs(
             'imageprod',
             $filename,
@@ -131,7 +254,6 @@ class insert extends Controller
         $ground_type = $request->ground_type;
 
         $insert = prod::create([
-            /* 'civility' => $civility, */
             'land_owner' => $land_owner,
             'address' => $address,
             'department' => $department,
@@ -149,7 +271,7 @@ class insert extends Controller
         $img->prod()->associate($insert); // Associe le modèle Prod à la relation
         $img->save();
 
-        return redirect()->route('list_prod');
+        return redirect()->route('list_prod'); */
     }
 
     /**

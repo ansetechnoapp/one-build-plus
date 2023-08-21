@@ -2,4 +2,5 @@ php artisan make:component head
 php artisan make:component navbar
 php artisan make:component form
 php artisan make:component footer
-php artisan make:component dashboard/NomDuComposant
+php artisan make:component dashboard/pageheadingdashboard
+php artisan make:component dashboard/head

@@ -36,35 +36,29 @@
                                         <thead>
                                             <tr>
                                                 <th class="border-gray-200" scope="col">N</th>
-                                                <th class="border-gray-200" scope="col">propriétaire</th>
+                                                <th class="border-gray-200" scope="col">Nom</th>
+                                                <th class="border-gray-200" scope="col">Prénom</th>
+                                                <th class="border-gray-200" scope="col">email</th>
+                                                <th class="border-gray-200" scope="col">Numéro</th>
                                                 <th class="border-gray-200" scope="col">addresse</th>
-                                                <th class="border-gray-200" scope="col">département</th>
-                                                <th class="border-gray-200" scope="col">commune</th>
-                                                <th class="border-gray-200" scope="col">arrondissement</th>
-                                                <th class="border-gray-200" scope="col">superficie</th>
-                                                <th class="border-gray-200" scope="col">prix</th>
-                                                <th class="border-gray-200" scope="col">prix promo</th>                                                
-                                                <th class="border-gray-200" scope="col">type de terre</th>
+                                                <th class="border-gray-200" scope="col">Date de naissance</th>
                                                 <th class="border-gray-200" scope="col">option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @isset($allprod)
+                                            @isset($alluser)
 
-                                                @foreach ($allprod as $post)
+                                                @foreach ($alluser as $post)
                                                     <tr>
                                                         <td>{{ $post->id }}</td>
-                                                        <td>{{ $post->land_owner }}</td>
+                                                        <td>{{ $post->lastName }}</td>
+                                                        <td>{{ $post->firstName }}</td>
+                                                        <td>{{ $post->email }}</td>
+                                                        <td>{{ $post->phone }}</td>
                                                         <td>{{ $post->address }}</td>
-                                                        <td>{{ $post->department }}</td>
-                                                        <td>{{ $post->communes }}</td>
-                                                        <td>{{ $post->borough }}</td>
-                                                        <td>{{ $post->area }}</td>
-                                                        <td>{{ $post->price }}</td>
-                                                        <td>{{ $post->price_min }}</td>
-                                                        <td>{{ $post->ground_type }}</td>
-                                                        <td><a href="{{ route('property_detail', ['id' => $post->id,'price'=>$post->price]) }}" class="badge text-dark"
-                                                                style="background-color: rgb(14 165 233)">voir</a></td>
+                                                        <td>{{ $post->birthday }}</td>
+                                                        <td><a href="#" class="badge text-dark"
+                                                                style="background-color: rgb(14 165 233)">supprimer</a></td>
                                                     </tr>
                                                 @endforeach
 

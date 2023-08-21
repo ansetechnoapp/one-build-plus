@@ -23,13 +23,7 @@ class devis extends Controller
         $user_id = Auth::user()->id;
         $user = User::find($user_id);
         if ($user_id !== null && $prod_id !== null) {
-            dd('dd');
-        } else {
-            # code...
-        }
-        
-
-        $additionalOption = Additional_option::where('prod_id', $prod_id)
+            $additionalOption = Additional_option::where('prod_id', $prod_id)
             ->where('users_id', $user_id)
             ->first();
 
@@ -58,6 +52,12 @@ class devis extends Controller
             // Gérez le cas où les modèles n'ont pas été trouvés
             // Par exemple, redirigez avec un message d'erreur
         }
+        } else {
+            return redirect()->route('home');
+        }
+        
+
+        
     }
 
     public function listDevisForUser()

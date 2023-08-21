@@ -49,10 +49,6 @@ Route::post('/login', [\App\Http\Controllers\Auth\FormLogin::class, 'authenticat
 Route::get('/formupdatepassword/{email}', function ($email) {
     return view('forgetpassword.updatepassword', ['email' => $email]);
 })->name('formupdatepassword');
-Route::get('/sendEmail', function () {
-    return view('forgetpassword.sendEmail');
-})->name('auth-re-password');
-Route::post('/updatePasswordSendEmail', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePasswordSendEmail'])->name('password.updateSendEmail');
 Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::class, 'isactive'])->name('activate.account');
 
 
@@ -141,6 +137,7 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
         return view('dashboard.admin.home.index');
     })->name('dashboard.admin');
     Route::get('/list_prod', [\App\Http\Controllers\prod\select::class, 'show'])->name('list_prod');
+    Route::get('/list_user', [\App\Http\Controllers\Auth\FormLogin::class, 'show_list_user'])->name('list_user');
 });
 /*
 |--------------------------------------------------------------------------
@@ -155,4 +152,6 @@ Route::middleware(['guest'])->group(function () {
         return view('auth-signup.index');
     })->name('sign.up');
     Route::get('/updatePassword', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->name('password.update');
+    Route::get('/sendEmail', [\App\Http\Controllers\Auth\resetpassword::class, 'authrepassword'])->name('auth-re-password');
+    Route::post('/updatePasswordSendEmail', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePasswordSendEmail'])->name('password.updateSendEmail');
 });

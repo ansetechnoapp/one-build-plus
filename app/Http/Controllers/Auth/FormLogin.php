@@ -33,6 +33,12 @@ class FormLogin extends Controller
             'email' => 'Entrer votre email',
         ])->onlyInput('email');
     }
+
+    public function show_list_user(){
+        $posts = User::all();
+        return view('dashboard.admin.list_user.index', ['alluser' => $posts]);
+    }
+
     public function isactive($email){
 
         $isactive = '1';

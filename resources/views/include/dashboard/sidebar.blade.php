@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home')}}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon">
             <img src="assets/images/logo-dark.png" alt="one build plus obp" style="max-width: 100%;">
         </div>
@@ -18,26 +18,61 @@
             <span>Dashboard</span></a>
     </li> --}}
 
+    @if (Auth::user()->role == 'admin')
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('list_prod')}}"> 
+        <a class="nav-link" href="{{ route('dashboard.admin') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Liste des devis</span></a>
+            <span>Enrégistrement des produits</span></a>
     </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('list_prod') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Liste des produits</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('list_user') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Liste des utilisateurs</span></a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>compte</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('dashboard.profil')}}">Profile</a>
-                {{-- <a class="collapse-item" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a> --}}
-                <a class="collapse-item" href="{{route('dashboard.security')}}">Sécurité</a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>compte</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('dashboard.profil') }}">Profile</a>
+                    {{-- <a class="collapse-item" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a> --}}
+                    <a class="collapse-item" href="{{ route('dashboard.security') }}">Sécurité</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    @else
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('dashboard.home') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Liste des devis</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>compte</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('dashboard.profil') }}">Profile</a>
+                    {{-- <a class="collapse-item" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a> --}}
+                    <a class="collapse-item" href="{{ route('dashboard.security') }}">Sécurité</a>
+                </div>
+            </div>
+        </li>
+    @endif
+
+
 
     <!-- Divider -->
     {{-- <hr class="sidebar-divider"> --}}

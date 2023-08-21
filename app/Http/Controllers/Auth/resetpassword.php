@@ -31,12 +31,12 @@ class resetpassword extends Controller
 
             // Définition des messages d'erreur personnalisés
             $messages = [
-                'emailregister' => "L'adresse email n'est pas valide.",
+                'email' => "L'adresse email n'est pas valide.",
             ];
 
             // Définition des noms de champs personnalisés
             $customAttributes = [
-                'emailregister' => 'Adresse email',
+                'email' => 'Adresse email',
             ];
 
             // Validation des données envoyées dans la requête
@@ -46,8 +46,10 @@ class resetpassword extends Controller
                 $request->validate($rules, $messages, $customAttributes);
                 
                 if (User::where('email', $request->email)->first() === null) {
-                    dd('vvv');
-                    return redirect()->route('auth-re-password');
+                    $forerror = [
+                        'parm1' => 'Votre email actuel n\'est pas correct',
+                    ];
+                    return redirect()->route('auth-re-password',$forerror);
                 } else {
                     Mail::to($email)
                         ->send(new sendpasswordreset($request->all()));
@@ -63,8 +65,10 @@ class resetpassword extends Controller
                 return redirect()->to('/sendEmail')->withErrors($errors);
             }
         } else {
-
-            echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+            $forerror = [
+                'parm1' => 'Entrer un Email correcte et verifier que tous les champs soit remplir',
+            ];
+            return redirect()->route('auth-re-password',$forerror);
         }
     }
     public function updatePassword(Request $request)
@@ -129,5 +133,10 @@ class resetpassword extends Controller
         } else {
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
+    }
+    public function authrepassword(Request $request){
+        $parm1 = $request->parm1;
+        return view('forgetpassword.sendEmail',['parm1' => $parm1   ]);
+
     }
 }

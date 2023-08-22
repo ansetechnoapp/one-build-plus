@@ -31,6 +31,11 @@ class select extends Controller
         $posts = prod::all();
         return view('dashboard.admin.list_prod.index', ['allprod' => $posts]);
     }
+    public function showbuyallprod()
+    {
+        $posts = prod::all();
+        return view('buy.index', ['allprod' => $posts]);
+    }
     
     public function receptiondata1(Request $request)
     {

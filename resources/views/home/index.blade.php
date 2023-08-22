@@ -103,21 +103,21 @@
                                                         <li class="flex items-center me-4">
                                                             <i
                                                                 class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                                            <span>8000sqf</span>
+                                                            <span>{{ $data->communes }}</span>
                                                         </li>
 
                                                         <li class="flex items-center me-4">
                                                             <i
                                                                 class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                             {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
-                                                            <span>4 Beds</span>
+                                                            <span>{{ $data->borough }}</span>
                                                         </li>
 
                                                         <li class="flex items-center">
                                                             <i
                                                                 class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                             {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
-                                                            <span>4 Baths</span>
+                                                            <span>{{ $data->area }}</span>
                                                         </li>
                                                     </ul>
 

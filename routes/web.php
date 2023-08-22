@@ -35,9 +35,7 @@ Route::get('/faqs', function () {
 Route::get('/aboutus', function () {
     return view('about.index');
 })->name('about');
-Route::get('/buy', function () {
-    return view('buy.index');
-})->name('buy');
+Route::get('/buy', [\App\Http\Controllers\search\prod::class, 'showbuyallprod'])->name('buy');
 
 
 

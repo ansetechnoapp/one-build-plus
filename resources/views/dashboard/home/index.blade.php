@@ -45,9 +45,9 @@
                                             @isset($listDevis)
                                             @foreach ($listDevis as $item)
                                             <tr>
-                                                <td>#39201</td>
+                                                <td>{{ $item->id}}</td>
                                                 <td>{{ $item->dateDevis}}</td>
-                                                <td>29.99 FCFA</td>
+                                                <td>{{ $item->prod->price }} FCFA</td>
                                                 <td>
                                                     <form action="{{ route('devis') }}" method="POST" >
                                                         @csrf <!-- Ajoutez le jeton CSRF pour la protection -->

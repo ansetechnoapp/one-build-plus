@@ -26,7 +26,7 @@ class additional_option extends Model
 
     public function devis()
     {
-        return $this->hasOne(devis::class, 'additional_option_id');
+        return $this->hasMany(devis::class, 'additional_option_id');
     }
     public function user()
     {
@@ -36,4 +36,10 @@ class additional_option extends Model
     {
         return $this->belongsTo(Prod::class, 'prod_id');
     }
+    /* public function devis()
+    {
+        return $this->hasOne(devis::class, 'additional_option_id');
+    } */
 }
+
+

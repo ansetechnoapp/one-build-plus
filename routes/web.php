@@ -138,6 +138,8 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     })->name('dashboard.admin');
     Route::get('/list_prod', [\App\Http\Controllers\prod\select::class, 'show'])->name('list_prod');
     Route::get('/list_user', [\App\Http\Controllers\Auth\FormLogin::class, 'show_list_user'])->name('list_user');
+    Route::get('/view_prod_update', [\App\Http\Controllers\prod\update::class, 'show'])->name('view.prod.update');
+    Route::post('/updade_prod', [\App\Http\Controllers\prod\update::class, 'updateprod'])->name('updade.prod');
 });
 /*
 |--------------------------------------------------------------------------

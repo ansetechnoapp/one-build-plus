@@ -31,4 +31,8 @@ class devis extends Model
     {
         return $this->belongsTo(User::class, 'additional_option_id');
     }
+    public function prod()
+    {
+        return $this->belongsTo(Prod::class, 'prod_id');
+    }
 }

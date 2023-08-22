@@ -196,10 +196,10 @@ class insert extends Controller
                 'public'
             );
             $img->main_image = $path;
-            $img->img1 = null; // Initialize to null
-            $img->img2 = null; // Initialize to null
-            $img->img3 = null; // Initialize to null
-            $img->img4 = null; // Initialize to null
+            $img->img1 = null;
+            $img->img2 = null;
+            $img->img3 = null;
+            $img->img4 = null;
             $img->prod()->associate($insert);
             $img->save();
 
@@ -227,51 +227,6 @@ class insert extends Controller
                 ->back()
                 ->withErrors($errors);
         }
-
-        // $request->validate([
-        //     'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        // ]);
-
-        /* $filename = time() . '.' . $request->main_image->extension();
-        $path = $request->file('main_image')->storeAs(
-            'imageprod',
-            $filename,
-            'public'
-        );
-        $land_owner = $request->land_owner;
-        $address = $request->address;
-        $department = $request->department;
-        $communes = $request->communes;
-        $borough = $request->borough;
-        $area = $request->area;
-        $price = $request->price;
-        $price_min = $request->price_min;
-        $img1 = $request->img1;
-        $img2 = $request->img2;
-        $img3 = $request->img3;
-        $img4 = $request->img4;
-        $description = $request->description;
-        $ground_type = $request->ground_type;
-
-        $insert = prod::create([
-            'land_owner' => $land_owner,
-            'address' => $address,
-            'department' => $department,
-            'communes' => $communes,
-            'borough' => $borough,
-            'area' => $area,
-            'price' => $price,
-            'price_min' => $price_min,
-            'description' => $description,
-            'ground_type' => $ground_type,
-
-        ]);
-        $img = new img();
-        $img->main_image = $path;
-        $img->prod()->associate($insert); // Associe le modèle Prod à la relation
-        $img->save();
-
-        return redirect()->route('list_prod'); */
     }
 
     /**

@@ -45,7 +45,8 @@
                                                 <th class="border-gray-200" scope="col">prix</th>
                                                 <th class="border-gray-200" scope="col">prix promo</th>                                                
                                                 <th class="border-gray-200" scope="col">type de terre</th>
-                                                <th class="border-gray-200" scope="col">option</th>
+                                                <th class="border-gray-200" scope="col">voir</th>
+                                                <th class="border-gray-200" scope="col">Modifier</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -64,7 +65,9 @@
                                                         <td>{{ $post->price_min }}</td>
                                                         <td>{{ $post->ground_type }}</td>
                                                         <td><a href="{{ route('property_detail', ['id' => $post->id,'price'=>$post->price]) }}" class="badge text-dark"
-                                                                style="background-color: rgb(14 165 233)">voir</a></td>
+                                                                style="background-color: rgb(14 165 233)">Afficher</a></td>
+                                                                <td><a href="{{ route('view.prod.update', ['id' => $post->id]) }}" class="badge text-dark"
+                                                                    style="background-color: rgb(14 165 233)">Modifier</a></td>
                                                     </tr>
                                                 @endforeach
 

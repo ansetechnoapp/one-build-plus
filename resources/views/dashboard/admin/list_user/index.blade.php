@@ -42,7 +42,7 @@
                                                 <th class="border-gray-200" scope="col">Numéro</th>
                                                 <th class="border-gray-200" scope="col">addresse</th>
                                                 <th class="border-gray-200" scope="col">Date de naissance</th>
-                                                <th class="border-gray-200" scope="col">option</th>
+                                                {{-- <th class="border-gray-200" scope="col">option</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -57,8 +57,8 @@
                                                         <td>{{ $post->phone }}</td>
                                                         <td>{{ $post->address }}</td>
                                                         <td>{{ $post->birthday }}</td>
-                                                        <td><a href="#" class="badge text-dark"
-                                                                style="background-color: rgb(14 165 233)">supprimer</a></td>
+                                                        {{-- <td><a href="#" class="badge text-dark"
+                                                                style="background-color: rgb(14 165 233)">Désactiver</a></td> --}}
                                                     </tr>
                                                 @endforeach
 

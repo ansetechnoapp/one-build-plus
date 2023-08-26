@@ -35,8 +35,8 @@
                             method="POST">
                             @csrf
                             @isset($parm1)
-                            <h5 class="my-6 text-xl font-semibold">{{ $parm1 }}</h5>
-                                    @endisset
+                                <h5 class="my-6 text-xl font-semibold">{{ $parm1 }}</h5>
+                            @endisset
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Adresse électronique:</label>
@@ -45,7 +45,7 @@
                                     @if ($errors->has('email'))
                                         <div class="alert alert-danger">{{ $errors->first('email') }}</div>
                                     @endif
-                                    
+
                                 </div>
                                 <div class="mb-4">
                                     {{-- <a href="{{route('dashboard.home')}}" class="btn bg-red-600 rounded-md w-full">Se connecter</a> --}}

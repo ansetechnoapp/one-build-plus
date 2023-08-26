@@ -34,7 +34,7 @@ class sendpasswordreset extends Mailable
             replyTo: [
                   new Address($donnees['email'], ''),
             ],
-            subject: 'modification mot de passe',
+            subject: 'Modification Mot De Passe',
         );
     }
 

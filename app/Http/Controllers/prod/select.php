@@ -33,7 +33,7 @@ class select extends Controller
     }
     public function showbuyallprod()
     {
-        $posts = prod::all();
+        $posts = prod::orderBy('id', 'desc')->get();
         return view('buy.index', ['allprod' => $posts]);
     }
     

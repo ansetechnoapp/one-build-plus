@@ -22,63 +22,68 @@
         <div class="container z-3">
             <div class="flex justify-center">
                 <div
-                    class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
-                    <a href="{{ route('home') }}"><img src="assets/images/logo-dark.png" class="mx-auto"
-                            alt=""></a>
+                    class="{{-- max-w-[400px] --}} w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
+                    <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                     <div class="text-center">
                         <h5 class="my-6 text-xl font-semibold">Inscription</h5>
                     </div>
-                    <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('sign.up.step2') }}">
+                    <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('save.user') }}">
                         @csrf
-                        <div class="grid grid-cols-1">
-                            <div class="mb-4">
+
+                        <div class="grid lg:grid-cols-12 lg:gap-6">
+                            <div class="lg:col-span-6 mb-5">
                                 <label class="font-medium" for="LoginPassword">Nom:</label>
-                                <input id="LoginPassword" name="lastName" type="text" class="form-input mt-2"
-                                    placeholder="Nom" value="{{ Session::get('user_lastName') }}" required>
-                                    @if ($errors->has('lastName'))
-                                    <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
-                                @endif
+                                <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-2" placeholder="Nom"  required>
                             </div>
 
-                            <div class="mb-4">
+                            <div class="lg:col-span-6 mb-5">
                                 <label class="font-medium" for="LoginPassword">prénom:</label>
-                                <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3"
-                                    placeholder="prénom" value="{{ Session::get('user_firstName') }}" required>
-                                    @if ($errors->has('firstName'))
-                                    <div class="alert alert-danger">{{ $errors->first('firstName') }}</div>
-                                @endif
+                                <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom"  required>
                             </div>
+                        </div>
+
+                        <div class="grid grid-cols-1">
                             <div class="mb-4">
                                 <label class="font-semibold" for="LoginEmail">Adresse électronique:</label>
                                 <input id="LoginEmail" type="email" class="form-input mt-3"
-                                    placeholder="name@example.com" name="email"
-                                    value="{{ Session::get('user_email') }}" required>
-                                    @if ($errors->has('email'))
-                                    <div class="alert alert-danger">{{ $errors->first('email') }}</div>
-                                @endif
+                                    placeholder="name@example.com" name="email" required>
                             </div>
-                            {{-- <div class="mb-4">
-                                 <div class="flex items-center w-full mb-0">
+                            <div class="mb-4">
+                                <label class="font-semibold" for="LoginEmail">numéro de téléphone:</label>
+                                <input id="LoginEmail" type="number" class="form-input mt-3"
+                                    placeholder="000000000"  {{-- required --}}>
+                            </div>
+                        </div>
+                        <div class="grid lg:grid-cols-12 lg:gap-6">
+                            <div class="lg:col-span-6 mb-5">
+                                <label class="font-semibold" for="LoginPassword">Mot de passe:</label>
+                                <input id="LoginPassword" type="password" name="password" class="form-input mt-2"
+                                    placeholder="Password:" required>
+                            </div>
+
+                            <div class="lg:col-span-6 mb-5">
+                                <label class="font-medium" for="LoginPassword">Retapez votre mot de passe:</label>
+                                <input id="LoginPassword" type="password" name="password_confirm" class="form-input mt-2"
+                                    placeholder="Mot de passe" required>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1">
+                            <div class="mb-4">
+                                <div class="flex items-center w-full mb-0">
                                     <input
                                         class="form-checkbox accent-green-600 rounded w-4 h-4 me-2 border border-inherit"
                                         type="checkbox" value="" id="AcceptT&C">
                                     <label class="form-check-label text-slate-400" for="AcceptT&C">I Accept <a
                                             href="#" class="text-green-600">Terms And Condition</a></label>
-                                </div> 
-                            </div> --}}
-                            <div class="flex">
-                                <div class="p-1 w-1/2">
-                                    <a href="#" class="btn bg-red-600 rounded-md w-full">précédant</a>
-                                </div>
-                                <div class="p-1 w-1/2">
-                                    <button type="submit"
-                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">suivant</button>
                                 </div>
                             </div>
+                            <div class="mb-4">
+                                <button class="btn bg-red-600 rounded-md {{-- w-full --}}" type="submit" style="width: 25%">S'inscrire</button>
+                            </div>
+
                             <div class="text-center">
                                 <span class="text-slate-400 me-2">vous avez déja un compte ? </span> <a
-                                    href="{{ route('auth-login') }}"
-                                    class="text-black dark:text-white font-bold">Connexion</a>
+                                    href="auth-login.html" class="text-black dark:text-white font-bold">Connexion</a>
                             </div>
                         </div>
                     </form>

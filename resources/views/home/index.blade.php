@@ -85,16 +85,16 @@
                                                 <div class="relative">
                                                     <img src="assets/images/property/1.jpg" alt="">
 
-                                                    <div class="absolute top-4 end-4">
+                                                    {{-- <div class="absolute top-4 end-4">
                                                         <a href="javascript:void(0)"
                                                             class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
                                                                 class="mdi mdi-heart mdi-18px"></i></a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
 
                                                 <div class="p-6">
                                                     <div class="pb-6">
-                                                        <a href="property-detail"
+                                                        <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
                                                             class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
                                                     </div>
 
@@ -153,16 +153,16 @@
                                                 <div class="relative">
                                                     <img src="assets/images/property/2.jpg" alt="">
 
-                                                    <div class="absolute top-4 end-4">
+                                                    {{-- <div class="absolute top-4 end-4">
                                                         <a href="javascript:void(0)"
                                                             class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
                                                                 class="mdi mdi-heart mdi-18px"></i></a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
 
                                                 <div class="p-6">
                                                     <div class="pb-6">
-                                                        <a href="property-detail"
+                                                        <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
                                                             class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
                                                     </div>
 
@@ -171,24 +171,24 @@
                                                         <li class="flex items-center me-4">
                                                             <i
                                                                 class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                                            <span>8000sqf</span>
+                                                            <span>{{ $data->borough }}</span>
                                                         </li>
 
                                                         <li class="flex items-center me-4">
                                                             <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
-                                                            <span>4 Beds</span>
+                                                            <span>{{ $data->department }}</span>
                                                         </li>
 
                                                         <li class="flex items-center">
                                                             <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
-                                                            <span>4 Baths</span>
+                                                            <span>{{ $data->communes }}</span>
                                                         </li>
                                                     </ul>
 
                                                     <ul class="pt-6 flex justify-between items-center list-none">
                                                         <li>
                                                             <span class="text-slate-400">Prix</span>
-                                                            <p class="text-lg font-medium">fcfa {{ $data->price }}</p>
+                                                            <p class="text-lg font-medium">{{ $data->price }} fcfa </p>
                                                         </li>
 
                                                         <li>
@@ -240,11 +240,11 @@
                             <div class="relative">
                                 <img src="assets/images/property/1.jpg" alt="">
 
-                                <div class="absolute top-4 end-4">
+                                {{-- <div class="absolute top-4 end-4">
                                     <a href="javascript:void(0)"
                                         class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
                                             class="mdi mdi-heart mdi-18px"></i></a>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="p-6">
@@ -299,6 +299,12 @@
                 <!--end property content-->
             </div>
             <!--en grid-->
+            <div class="md:flex justify-center text-center mt-6">
+                <div class="md:w-full">
+                    <a href="{{ route('buy') }}" class="btn btn-link text-green-600 hover:text-green-600 after:bg-green-600 transition duration-500">Voir
+                        plus de propriétés <i class="uil uil-arrow-right ms-1"></i></a>
+                </div>
+            </div>
         </div>
         <!--end container-->
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\contact;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class sendregisteruser extends Mailable
+class emailcontact extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,23 +29,23 @@ class sendregisteruser extends Mailable
     {
         $donnees = $this->datas;
         return new Envelope(
-            from: new Address(env('MAIL_USERNAME'), env('APP_NAME')),
+            from: new Address($donnees['email'], ''),
             replyTo: [
-                  new Address($donnees['email'], $donnees['lastName']),
+                  new Address($donnees['email'], ''),
             ],
-            subject: 'Confirmation De L\'enregistrement De L\'utilisateur',
+            subject: 'Formulaire contacte',
         );
     }
 
     /**
-     * Get the message content definition.
+     * Get the message content definition.  
      */
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.sendregisteruser',
+            markdown: 'emails.contact',
             with: [
-                'contact' => $this->datas,
+                'datas' => $this->datas,
             ],
         );
     }

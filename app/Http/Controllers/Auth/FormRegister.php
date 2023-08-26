@@ -10,6 +10,8 @@ use App\Models\additional_option;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 
@@ -138,13 +140,11 @@ class FormRegister extends Controller
     }
     public function SaveRegister(Request $request)
     {
-
-
-
         /* $civility = $request->input('civility'); */
         $lastName = $request->lastName;
         $firstName = $request->firstName;
         $email = $request->email;
+        $phone = $request->phone;
         $password1 = $request->password;
         $password2 = $request->password_confirm;
         $password = bcrypt($request->password);
@@ -154,9 +154,9 @@ class FormRegister extends Controller
             if ($password1 == $password2) {
                 // Définition des règles de validation
                 $rules = [
-                    /* 'firstName' => ['required', 'string', 'max:100', 'min:2'],
-                'lastName' => ['required', 'string', 'max:100', 'min:2'], */
                     'lastName' => ['required', 'string', 'max:100', 'min:2'],
+                    'firstName' => ['required', 'string', 'max:100', 'min:2'],
+                    'phone' => ['required', 'regex:/^\d{8}$/'],
                     'email' => ['required', 'string', 'email', 'max:255'],
                     'password' => ['required', 'string', 'max:255', Password::min(5)],
                     /* 'password' => ['required', 'string', 'max:255', Password::min(8)
@@ -168,14 +168,22 @@ class FormRegister extends Controller
 
                 // Définition des messages d'erreur personnalisés
                 $messages = [
-                    'email.emailregister' => "L'adresse email n'est pas valide.",
-                    'password.minregister' => 'Le mot de passe doit contenir au moins 8 caractères.',
+                    'lastName' => 'Votre nom n\'est pas valide.',
+                    'firstName' => 'Votre prénom n\'est pas valide.',
+                    'phone.required' => "Le numéro de téléphone est requis.",
+                    'phone.regex' => "Entrer un numéro de téléphone valide (08 chiffres).",
+                    'email' => 'Votre addresse email n\'est pas correcte.',
+                    'password' => "le mots de passe doit contenir plus de 5 caractére.",
                 ];
 
                 // Définition des noms de champs personnalisés
                 $customAttributes = [
-                    'emailregister' => 'Adresse email',
-                    'minregister' => 'mot de passe',
+                    'lastName' => 'Votre nom n\'est pas valide.',
+                    'firstName' => 'Votre prénom n\'est pas valide.',
+                    'phone' => "Numéro de téléphone",
+                    'email' => 'Votre addresse email n\'est pas correcte.',
+                    'password' => "le mots de passe doit contenir plus de 5 caractére.",
+
                 ];
 
                 // Validation des données envoyées dans la requête
@@ -189,6 +197,7 @@ class FormRegister extends Controller
                             /* 'civility' => $civility, */
                             'lastName' => $lastName,
                             'firstName' => $firstName,
+                            'phone' => $phone,
                             'email' => $email,
                             'password' => $password,
 
@@ -196,9 +205,10 @@ class FormRegister extends Controller
                         //  dd('validate');
                         Mail::to($email)
                             ->send(new sendregisteruser($request->all()));
+                        Session::flush();
                         return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
                     } else {
-                        return redirect()->route('save.user');
+                        return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
                     }
                 } catch (ValidationException $e) {
                     // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
@@ -227,7 +237,7 @@ class FormRegister extends Controller
             return view('payment.index', compact('price', 'lastName', 'firstName', 'id'));
         } else {
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
-        } 
+        }
     }
     public function receptiondata1(Request $request)
     {
@@ -262,14 +272,13 @@ class FormRegister extends Controller
             try {
                 $request->validate($rules, $messages, $customAttributes);
                 return view('payment.suite', compact('price', 'lastName', 'firstName', 'id'));
-                
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
                 $errors = $e->validator->errors();
 
                 // Redirection vers la page de formulaire avec les messages d'erreur
-                return view('payment.index', ['id' => $id, 'price' => $price, 'lastName' => $lastName, 'firstName' => $firstName,'errors' => $errors]);
+                return view('payment.index', ['id' => $id, 'price' => $price, 'lastName' => $lastName, 'firstName' => $firstName, 'errors' => $errors]);
             }
         } else {
             // dd('rr');
@@ -312,18 +321,72 @@ class FormRegister extends Controller
             try {
                 $request->validate($rules, $messages, $customAttributes);
                 return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees'));
-                
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
                 $errors = $e->validator->errors();
 
                 // Redirection vers la page de formulaire avec les messages d'erreur
-                return view('payment.suite', ['id' => $id, 'price' => $price, 'lastName' => $lastName, 'firstName' => $firstName, 'registration_andf'=> $registration_andf, 'formality_fees'=> $formality_fees, 'notary_fees'=> $notary_fees,'errors' => $errors]);
+                return view('payment.suite', ['id' => $id, 'price' => $price, 'lastName' => $lastName, 'firstName' => $firstName, 'registration_andf' => $registration_andf, 'formality_fees' => $formality_fees, 'notary_fees' => $notary_fees, 'errors' => $errors]);
             }
         } else {
             // dd('rr');
             return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees'));
         }
+    }
+    public function SaveSignupOneStep(Request $request)
+    {
+        $lastName = $request->lastName;
+        $firstName = $request->firstName;
+        $email = $request->email;
+        
+        if (isset($lastName) || isset($firstName) || isset($email)) {
+            // Définition des règles de validation
+            $rules = [
+                'lastName' => ['required', 'string', 'max:100', 'min:2'],
+                'firstName' => ['required', 'string', 'max:100', 'min:2'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+            ];
+
+            // Définition des messages d'erreur personnalisés
+            $messages = [   
+                'lastName' => 'Votre nom n\'est pas valide.',
+                'firstName' => 'Votre prénom n\'est pas valide.',
+                'email' => "L'adresse email n'est pas valide.",
+            ];
+
+            // Définition des noms de champs personnalisés
+            $customAttributes = [
+                'lastName' => 'Nom',
+                'firstName' => 'Prénom',
+                'email' => "Email",
+            ];
+
+            // Validation des données envoyées dans la requête
+
+            try {
+                // dd($email);
+                $request->validate($rules, $messages, $customAttributes);
+                if (User::where('email', $request->email)->first() === null) {
+                    Session::put('user_lastName', $lastName);
+                    Session::put('user_firstName', $firstName);
+                    Session::put('user_email', $email);
+                    
+                    return view('auth-signup.step2');
+                } else {
+                    return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
+                }
+            } catch (ValidationException $e) {
+                // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
+                // Récupération des messages d'erreur de validation
+                $errors = $e->validator->errors();
+                // dd('dd');
+                // Redirection vers la page de formulaire avec les messages d'erreur
+                return redirect()->to('/sign-up')->withErrors($errors);
+            }
+        } else {
+            echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+        }
+
     }
 }

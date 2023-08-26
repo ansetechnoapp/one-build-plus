@@ -25,11 +25,19 @@
                         <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                         
                         <div class="text-center">
-                            <h5 class="my-6 text-xl font-semibold">S'il vous plait, veuillez bieen consulter votre courriel electronique <br>
+                            <h5 class="my-6 text-xl font-semibold">S'il vous plait, veuillez bien consulter votre courriel electronique <br> (@isset($email)
+                                {{ $email }}
+                                @endisset) <br>
                                 pour confimer votre inscription <br>
-                                @isset($email)
-                                    {{ $email }}
-                                    @endisset</h5>
+                                <br> 
+                                </h5>
+
+                                    <br>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-slate-400 me-2">Si vous avez déja confirmer votre incription alors connécter vous </span> <a
+                                href="{{ route('auth-login') }}"
+                                class="text-black dark:text-white font-bold">Connexion</a>
                         </div>
                         
                         {{-- <form class="ltr:text-left rtl:text-right" action="{{route('sign.up')}}" method="POST">

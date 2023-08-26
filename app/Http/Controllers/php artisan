@@ -8,3 +8,4 @@ php artisan make:controller save/account
 php artisan make:controller facture_des_services/devis
 php artisan make:controller prod/select
 php artisan make:controller prod/update
+php artisan make:controller contact/envoiemail

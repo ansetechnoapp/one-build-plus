@@ -35,8 +35,7 @@ Route::get('/faqs', function () {
 Route::get('/aboutus', function () {
     return view('about.index');
 })->name('about');
-Route::get('/buy', [\App\Http\Controllers\search\prod::class, 'showbuyallprod'])->name('buy');
-
+Route::get('/buy', [\App\Http\Controllers\prod\select::class, 'showbuyallprod'])->name('buy');
 
 
 
@@ -67,6 +66,7 @@ Route::post('/signup', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveReg
 Route::get('/contact', function () {
     return view('contact.index');
 })->name('contact');
+Route::post('/contactform', [\App\Http\Controllers\contact\envoiemail::class, 'envoiemail'])->name('form.contact');
 Route::get('/privacy', function () {
     return view('privacy.index');
 })->name('privacy');
@@ -148,9 +148,12 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/auth-login', function () {
         return view('auth-login.index');
     })->name('auth-login');
+
     Route::get('/sign-up', function () {
         return view('auth-signup.index');
     })->name('sign.up');
+    Route::post('/sign-up-step2', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveSignupOneStep'])->name('sign.up.step2');
+
     Route::get('/updatePassword', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->name('password.update');
     Route::get('/sendEmail', [\App\Http\Controllers\Auth\resetpassword::class, 'authrepassword'])->name('auth-re-password');
     Route::post('/updatePasswordSendEmail', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePasswordSendEmail'])->name('password.updateSendEmail');

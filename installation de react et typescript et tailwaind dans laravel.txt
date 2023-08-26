@@ -1,3 +1,9 @@
+APP_NAME=OBP
+APP_URL=http://localhost/Projet_Laravel/obp/public
+APP_TEL="+229 98272716/69684705"
+APP_ADDRESS_WORK="Bénin - Cotonou, Akpakpa Sodjèatinmè immeuble vert en face de la station de bénin pétro"
+MAIL_USERNAME=info@txbest.online
+
 1-npm create vite@latest 
 -after choice name projet and react and typescript
 -cd name projet

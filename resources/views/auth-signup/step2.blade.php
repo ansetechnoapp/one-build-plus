@@ -28,53 +28,47 @@
                     <div class="text-center">
                         <h5 class="my-6 text-xl font-semibold">Inscription</h5>
                     </div>
-                    <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('sign.up.step2') }}">
+                    <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('save.user') }}">
                         @csrf
+                        <input type="hidden" name="lastName" value="{{ Session::get('user_lastName') }}" required>
+                        <input type="hidden" name="firstName" value="{{ Session::get('user_firstName') }}" required>
+                        <input type="hidden" name="email" value="{{ Session::get('user_email') }}" required>
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
-                                <label class="font-medium" for="LoginPassword">Nom:</label>
-                                <input id="LoginPassword" name="lastName" type="text" class="form-input mt-2"
-                                    placeholder="Nom" value="{{ Session::get('user_lastName') }}" required>
-                                    @if ($errors->has('lastName'))
-                                    <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
-                                @endif
+                                <label class="font-semibold" for="LoginEmail">numéro de téléphone:</label>
+                                <input id="LoginEmail" type="number" name="phone" class="form-input mt-3" placeholder="000000000"
+                                    required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="font-semibold" for="LoginPassword">Mot de passe:</label>
+                                <input id="LoginPassword" type="password" name="password" class="form-input mt-2"
+                                    placeholder="Password:" required>
                             </div>
 
                             <div class="mb-4">
-                                <label class="font-medium" for="LoginPassword">prénom:</label>
-                                <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3"
-                                    placeholder="prénom" value="{{ Session::get('user_firstName') }}" required>
-                                    @if ($errors->has('firstName'))
-                                    <div class="alert alert-danger">{{ $errors->first('firstName') }}</div>
-                                @endif
+                                <label class="font-medium" for="LoginPassword">Retapez votre mot de passe:</label>
+                                <input id="LoginPassword" type="password" name="password_confirm"
+                                    class="form-input mt-2" placeholder="Mot de passe" required>
                             </div>
                             <div class="mb-4">
-                                <label class="font-semibold" for="LoginEmail">Adresse électronique:</label>
-                                <input id="LoginEmail" type="email" class="form-input mt-3"
-                                    placeholder="name@example.com" name="email"
-                                    value="{{ Session::get('user_email') }}" required>
-                                    @if ($errors->has('email'))
-                                    <div class="alert alert-danger">{{ $errors->first('email') }}</div>
-                                @endif
-                            </div>
-                            {{-- <div class="mb-4">
-                                 <div class="flex items-center w-full mb-0">
+                                {{-- <div class="flex items-center w-full mb-0">
                                     <input
                                         class="form-checkbox accent-green-600 rounded w-4 h-4 me-2 border border-inherit"
                                         type="checkbox" value="" id="AcceptT&C">
                                     <label class="form-check-label text-slate-400" for="AcceptT&C">I Accept <a
                                             href="#" class="text-green-600">Terms And Condition</a></label>
-                                </div> 
-                            </div> --}}
+                                </div> --}}
+                            </div>
                             <div class="flex">
                                 <div class="p-1 w-1/2">
-                                    <a href="#" class="btn bg-red-600 rounded-md w-full">précédant</a>
+                                    <a href="{{ route('sign.up') }}"
+                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                 </div>
                                 <div class="p-1 w-1/2">
-                                    <button type="submit"
-                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">suivant</button>
+                                    <button type="submit" class="btn bg-red-600 rounded-md w-full">suivant</button>
                                 </div>
                             </div>
+
                             <div class="text-center">
                                 <span class="text-slate-400 me-2">vous avez déja un compte ? </span> <a
                                     href="{{ route('auth-login') }}"

@@ -20,43 +20,31 @@ class envoiemail extends Controller
 
 
         if (isset($name) || isset($email) || isset($subject) || isset($comments)) {
-            // Définition des règles de validation
             $rules = [
                 'name' => ['required', 'string', 'max:100', 'min:2'],
-                'subject' => ['required', 'string', 'max:100', 'min:15'],
+                'subject' => ['required', 'string', 'max:100', 'min:10'],
                 'email' => ['required', 'string', 'email', 'max:255'],
-                'comments' => ['required', 'string', 'max:100', 'min:15'],
+                'comments' => ['required'],
             ];
-
-            // Définition des messages d'erreur personnalisés
             $messages = [
                 'name' => 'Votre nom n\'est pas valide.',
-                'subject' => 'Votre prénom n\'est pas valide.',
+                'subject' => 'Votre question n\'est pas valide.',
                 'email' => 'Votre addresse email n\'est pas correcte.',
-                'comments' => 'Voous devez au moins écrit une phrase.',
+                'comments' => 'Vous devez au moins écrit une phrase.',
             ];
-
-            // Définition des noms de champs personnalisés
             $customAttributes = [
                 'name' => 'Votre nom n\'est pas valide.',
-                'subject' => 'Votre prénom n\'est pas valide.',
+                'subject' => 'Votre sujet.',
                 'email' => 'Votre addresse email n\'est pas correcte.',
                 'comments' => 'Votre commentaire.',
             ];
-
-            // Validation des données envoyées dans la requête
-
             try {
                 $request->validate($rules, $messages, $customAttributes);
-                Mail::to(env('MAIL_USERNAM'))
+                Mail::to(env('MAIL_USERNAME'))
                     ->send(new emailcontact($request->all()));
                 return view('contact.index', ['message' => 'Votre Message a été envoyé avec sucess']);
             } catch (ValidationException $e) {
-                // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                // Récupération des messages d'erreur de validation
                 $errors = $e->validator->errors();
-
-                // Redirection vers la page de formulaire avec les messages d'erreur
                 return redirect()->to('/contact')->withErrors($errors);
             }
         } else {

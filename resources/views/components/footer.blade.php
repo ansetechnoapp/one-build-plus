@@ -99,8 +99,7 @@
                                 <i data-feather="phone" class="w-5 h-5 text-green-600 me-3"></i>
                                 <div class="">
                                     <a href="tel:+152534-468-854"
-                                        class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">+152
-                                        534-468-854</a>
+                                        class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">{{env('APP_TEL')}}</a>
                                 </div>
                             </div>
                         </div>

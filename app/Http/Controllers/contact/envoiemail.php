@@ -23,7 +23,7 @@ class envoiemail extends Controller
             // Définition des règles de validation
             $rules = [
                 'name' => ['required', 'string', 'max:100', 'min:2'],
-                'subject' => ['required', 'string', 'max:100', 'min:50'],
+                'subject' => ['required', 'string', 'max:100', 'min:15'],
                 'email' => ['required', 'string', 'email', 'max:255'],
                 'comments' => ['required', 'string', 'max:100', 'min:15'],
             ];
@@ -42,22 +42,15 @@ class envoiemail extends Controller
                 'subject' => 'Votre prénom n\'est pas valide.',
                 'email' => 'Votre addresse email n\'est pas correcte.',
                 'comments' => 'Votre commentaire.',
-
             ];
 
             // Validation des données envoyées dans la requête
 
             try {
                 $request->validate($rules, $messages, $customAttributes);
-                if (User::where('email', $request->email)->first() === null) {
-
-                    Mail::to($email)
-                        ->send(new emailcontact($request->all()));
-                    return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
-                    
-                } else {
-                    return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
-                }
+                Mail::to(env('MAIL_USERNAM'))
+                    ->send(new emailcontact($request->all()));
+                return view('contact.index', ['message' => 'Votre Message a été envoyé avec sucess']);
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation

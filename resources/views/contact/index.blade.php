@@ -31,21 +31,37 @@
                         <div class="bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-700 p-6">
                             <h3 class="mb-6 text-2xl leading-normal font-medium">Prenez contact avec nous !</h3>
 
-                            <form method="POST" name="{{route('form.contact')}}" name="myForm" id="myForm"{{--  onsubmit="return validateForm()" --}}>
-                                <p class="mb-0" id="error-msg"></p>
+                            <form method="POST" action="{{ route('form.contact') }}" name="myForm"
+                                id="myForm"{{--  onsubmit="return validateForm()" --}}>
+                                @csrf
+                                @if (isset($message))
+                                    <p class="mb-0" id="error-msg" style="opacity: 1;">
+                                    <div class="alert alert-warning error_message"
+                                        style="background-color: rgb(22 163 74 / 12%) !important;color: #000000d9;">
+                                        {{ $message }}</div>
+                                    </p>
+                                @else
+                                @endif
+                                {{-- <p class="mb-0" id="error-msg"></p> --}}
                                 <div id="simple-msg"></div>
                                 <div class="grid lg:grid-cols-12 lg:gap-6">
                                     <div class="lg:col-span-6 mb-5">
                                         <label for="name" class="font-medium">Votre nom :
                                         </label>
                                         <input name="name" id="name" type="text" class="form-input mt-2"
-                                            placeholder="Name :">
+                                            placeholder="votre nom complet :">
+                                        @if ($errors->has('name'))
+                                            <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                                        @endif
                                     </div>
 
                                     <div class="lg:col-span-6 mb-5">
                                         <label for="email" class="font-medium">Votre Email :</label>
                                         <input name="email" id="email" type="email" class="form-input mt-2"
-                                            placeholder="Email :">
+                                            placeholder="Votre Email :">
+                                        @if ($errors->has('email'))
+                                            <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -53,12 +69,18 @@
                                     <div class="mb-5">
                                         <label for="subject" class="font-medium">Votre question :</label>
                                         <input name="subject" id="subject" class="form-input mt-2"
-                                            placeholder="Subject :">
+                                            placeholder="Sujet :">
+                                        @if ($errors->has('subject'))
+                                            <div class="alert alert-danger">{{ $errors->first('subject') }}</div>
+                                        @endif
                                     </div>
 
                                     <div class="mb-5">
                                         <label for="comments" class="font-medium">Votre commentaire : </label>
                                         <textarea name="comments" id="comments" class="form-input mt-2 textarea" placeholder="Message :"></textarea>
+                                        @if ($errors->has('comments'))
+                                            <div class="alert alert-danger">{{ $errors->first('comments') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="mb-4">

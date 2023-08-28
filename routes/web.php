@@ -100,7 +100,9 @@ Route::post('/devis', [\App\Http\Controllers\facture_des_services\devis::class, 
 Route::get('/emailsendforconfirmationuserregistration', function () {
     return view('emails.emailsendforconfirmationuserregistration');
 })->name('url.confirmation.user.registration');
-
+Route::get('/user_disable', function () {
+    return view('user_disable.index');
+})->name('view.user.disable');
 /*
 |--------------------------------------------------------------------------
 | Web Routes for dashboard
@@ -116,7 +118,7 @@ Route::middleware(['auth', 'isActive'])->group(function () {
     Route::get('/dashboard.account_security', function () {
         return view('dashboard.account_security.index');
     })->name('dashboard.security');
-    Route::match(array('GET', 'POST'),'/ChangePassword', [\App\Http\Controllers\save\account::class, 'ChangePassword'])->name('account.security.ChangePassword');
+    Route::match(array('GET', 'POST'), '/ChangePassword', [\App\Http\Controllers\save\account::class, 'ChangePassword'])->name('account.security.ChangePassword');
     Route::post('/save_info_prod', [\App\Http\Controllers\prod\insert::class, 'store'])->name('save.prod');
 
     Route::match(array('GET', 'POST'), '/dashboard-payment.{id}.{price}', [\App\Http\Controllers\prod\select::class, 'receptiondata1'])->name('dashboard.paymnt');
@@ -124,7 +126,6 @@ Route::middleware(['auth', 'isActive'])->group(function () {
 
     Route::match(array('GET', 'POST'), '/Logout', [\App\Http\Controllers\Auth\Logout::class, 'logout'])->name('Logout');
 });
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes for dashboard for admin
@@ -138,7 +139,10 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::get('/list_user', [\App\Http\Controllers\Auth\FormLogin::class, 'show_list_user'])->name('list_user');
     Route::get('/view_prod_update', [\App\Http\Controllers\prod\update::class, 'show'])->name('view.prod.update');
     Route::post('/updade_prod', [\App\Http\Controllers\prod\update::class, 'updateprod'])->name('updade.prod');
+    Route::get('/user_disable{user_id}', [\App\Http\Controllers\save\account::class, 'userDisable'])->name('user.disable');
+    Route::get('/user_activate{user_id}', [\App\Http\Controllers\save\account::class, 'userActivate'])->name('user.activate');
 });
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes for 

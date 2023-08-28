@@ -34,7 +34,8 @@ class select extends Controller
     public function showbuyallprod()
     {
         $posts = prod::orderBy('id', 'desc')->get();
-        return view('buy.index', ['allprod' => $posts]);
+        $commune = prod::all();
+        return view('buy.index', ['allprod' => $posts,'posts' => $commune]);
     }
     
     public function receptiondata1(Request $request)

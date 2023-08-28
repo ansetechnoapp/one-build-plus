@@ -1,2 +1,3 @@
 php artisan make:middleware CheckAdmin
 php artisan make:middleware isactive
+php artisan make:middleware user_disable

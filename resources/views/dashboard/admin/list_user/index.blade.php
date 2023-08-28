@@ -42,7 +42,8 @@
                                                 <th class="border-gray-200" scope="col">Numéro</th>
                                                 <th class="border-gray-200" scope="col">addresse</th>
                                                 <th class="border-gray-200" scope="col">Date de naissance</th>
-                                                {{-- <th class="border-gray-200" scope="col">option</th> --}}
+                                                <th class="border-gray-200" scope="col" style="width: 5%">Activation
+                                                    ou Désactivation</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -57,6 +58,25 @@
                                                         <td>{{ $post->phone }}</td>
                                                         <td>{{ $post->address }}</td>
                                                         <td>{{ $post->birthday }}</td>
+
+                                                        @if ($post->isactive === '2')
+                                                            <td>
+                                                                <a
+                                                                    href="{{ route('user.activate', ['user_id' => $post->id]) }}">Activer</a>
+                                                            </td>
+                                                        @endif
+                                                        @if ($post->isactive === '1')
+                                                            <td>
+                                                                <a
+                                                                    href="{{ route('user.disable', ['user_id' => $post->id]) }}">Désativer</a>
+                                                            </td>
+                                                        @endif
+                                                        @if ($post->isactive === '0')
+                                                            <td>
+                                                                <a href="#">Compte Non Activer</a>
+                                                            </td>
+                                                        @endif
+
                                                         {{-- <td><a href="#" class="badge text-dark"
                                                                 style="background-color: rgb(14 165 233)">Désactiver</a></td> --}}
                                                     </tr>

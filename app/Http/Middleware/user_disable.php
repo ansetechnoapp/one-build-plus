@@ -2,13 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class isactive
+class user_disable
 {
     /**
      * Handle an incoming request.
@@ -20,24 +19,17 @@ class isactive
         
         $isactive = Auth::user()->isactive;
         
-        if ($isactive == 1) {
-            return $next($request);
-        }elseif ($isactive == 2) {
+        if ($isactive == 2) {
             Auth::logout();
 
             $request->session()->invalidate();
 
             $request->session()->regenerateToken();
 
-            return redirect()->route('view.user.disable')->with('error', 'Accès non autorisé.');
+            return redirect()->route('user.disable')->with('error', 'Accès non autorisé.');
+   
         } else {
-            Auth::logout();
-
-            $request->session()->invalidate();
-
-            $request->session()->regenerateToken();
-
-            return redirect()->route('url.confirmation.user.registration')->with('error', 'Accès non autorisé.');
+            return $next($request);    
         }
     }
 }

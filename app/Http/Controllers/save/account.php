@@ -159,7 +159,6 @@ class account extends Controller
                 'parametre1' => 'Verifier que tous les champs soit remplir',
             ];
             return view('dashboard.account_security.index', $champVide);
-            
         }
     }
     public function getaccountprofil()
@@ -168,6 +167,29 @@ class account extends Controller
         $donnees = User::where('email', $emailRecherche)->get();
         if ($donnees) {
             return view('dashboard.profil.index', ['donnees' => $donnees]);
+        }
+    }
+    public function userDisable($user_id)
+    {
+        $isactive = '2';
+        $donnees = User::where('id', $user_id)
+            ->update([
+                'isactive' => $isactive,
+            ]);
+        if ($donnees) {
+            return redirect()->route('list_user');
+        }
+    }
+    public function userActivate($user_id)
+    {
+        $isactive = '1';
+        $donnees = User::where('id', $user_id)
+            ->update([
+                'isactive' => $isactive,
+            ]);
+        return redirect()->route('list_user');
+        if ($donnees) {
+            return redirect()->route('list_user');
         }
     }
 }

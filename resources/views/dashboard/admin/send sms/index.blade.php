@@ -38,7 +38,7 @@
                                         {{-- <div class="wizard-step-icon">1</div> --}}
                                         <div class="wizard-step-text">
                                             {{-- <div class="wizard-step-text-name">Account Setup</div> --}}
-                                            <div class="wizard-step-text-details">Enrégistrement</div>
+                                            <div class="wizard-step-text-details">Formulaire SMS</div>
                                         </div>
                                     </a>
                                 </div>
@@ -51,9 +51,9 @@
                                         <div class="row justify-content-center">
                                             <div class="col-xxl-6 col-xl-8">
                                                 {{-- <h3 class="text-primary">Step 1</h3> --}}
-                                                <h1 class="card-title mb-4">Saisir les informations relatives au produit
+                                                <h1 class="card-title mb-4">Envoie de SMS au client
                                                 </h1>
-                                                @include('include.dashboard.form_save_prod')
+                                                @include('include.dashboard.admin.form_send_sms')
                                             </div>
                                         </div>
                                     </div>

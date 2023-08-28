@@ -1,5 +1,5 @@
 <x-mail::message>
-    # one build plus (OBP)
+    # One Build Plus (OBP)
 
     {{-- yes <br><br> --}}
     {{-- @dd(route('formupdatepassword', ['email' => $datas['email']])) --}}
@@ -8,7 +8,7 @@
         Button Text
     </x-mail::button> --}}
     <x-mail::button :url="route('formupdatepassword', ['email' => $datas['email']])">
-        cliquer pour changer le mot de passe
+        Cliquer Pour Changer Le Mot de Passe
     </x-mail::button>
 
     Merci,<br>

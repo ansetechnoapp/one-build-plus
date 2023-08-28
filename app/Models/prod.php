@@ -28,6 +28,7 @@ class prod extends Model
         'price_min',
         'description',
         'ground_type',
+        'status',
     ];
     public function img()
     {

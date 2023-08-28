@@ -174,6 +174,7 @@ class insert extends Controller
             $price_min = $request->price_min;
             $description = $request->description;
             $ground_type = $request->ground_type;
+            $status = $request->status;
 
             $insert = prod::create([
                 'land_owner' => $land_owner,
@@ -186,6 +187,7 @@ class insert extends Controller
                 'price_min' => $price_min,
                 'description' => $description,
                 'ground_type' => $ground_type,
+                'status' => $status,
             ]);
 
             $img = new img();

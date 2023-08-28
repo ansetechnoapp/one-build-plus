@@ -23,6 +23,7 @@ return new class extends Migration
             $table->Integer('price_min');
             $table->text('description')->nullable();
             $table->string('ground_type');
+            $table->string('status')->default('disponible');
             $table->timestamps();
         });
     }

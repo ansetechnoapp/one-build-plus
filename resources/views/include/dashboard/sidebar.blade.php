@@ -34,6 +34,11 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Liste des utilisateurs</span></a>
         </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('form.send.sms') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Envoie SMS</span></a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"

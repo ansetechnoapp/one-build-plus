@@ -96,6 +96,7 @@ class update extends Controller
                 'price_min' => $request->price_min,
                 'description' => $request->description,
                 'ground_type' => $request->ground_type,
+                'status' => $request->status,
             ]);
             
             $img = $prod->img;

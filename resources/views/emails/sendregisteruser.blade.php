@@ -1,10 +1,10 @@
 <x-mail::message>
     # one build plus (OBP)
 
-Bienvenue a {{ $datas['lastName'] }}, vous êtes maintenant inscrit à one build plus (OBP).
+Bienvenue a {{ $datas['lastName'] }}, Vous êtes Maintenant Inscrit à One Build Plus (OBP).
 
 <x-mail::button :url="route('activate.account', ['email' => $datas['email']])">
-activer votre compte
+Activer Votre Compte
 </x-mail::button>
 
 Merci,<br>

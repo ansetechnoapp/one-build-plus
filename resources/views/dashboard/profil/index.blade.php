@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-dashboard.head title="SB Admin 2 - Dashboard"></x-dashboard.head>
+<x-dashboard.head title="One Build Plus - Dashboard"></x-dashboard.head>
 
 <body id="page-top">
 

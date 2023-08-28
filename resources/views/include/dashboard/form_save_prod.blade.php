@@ -65,14 +65,6 @@
             </div>
 
         </div>
-        <div class="mb-3">
-            <label class="small mb-1" for="inputdescription">Desription</label>
-            <input class="form-control" id="inputdescription" type="text" value="{{ $allprodupdate->description }}"
-                value="Desription" name="description" required>
-            @if ($errors->has('description'))
-                <div class="alert alert-danger">{{ $errors->first('description') }}</div>
-            @endif
-        </div>
         <div class="row gx-3">
             <div class="col-md-6 mb-md-0">
                 <label class="small mb-1" for="inputprice">prix</label>
@@ -120,6 +112,19 @@
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
+                <label class="small mb-1" for="inputborough">Statut du produit</label>
+                <select class="form-control" name="status" id="">
+                    <option> choix</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="vendu">Vendu</option>
+                </select>
+                @if ($errors->has('status'))
+                    <div class="alert alert-danger">{{ $errors->first('status') }}</div>
+                @endif
+            </div>
+        </div>
+        <div class="row gx-3">
+            <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputimage">Entrer une l'image principale</label>
                 <input type="file" name="main_image" required>
                 @if ($errors->has('main_image'))
@@ -154,6 +159,17 @@
                     <div class="alert alert-danger">{{ $errors->first('img4') }}</div>
                 @endif
             </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="small mb-1" for="inputdescription">Desription</label>
+            <textarea class="form-control" id="inputdescription"
+                placeholder="mettre tous les informations supplémentaire concernant le produit" name="description" required
+                cols="10" rows="10"></textarea>
+            @if ($errors->has('description'))
+                <div class="alert alert-danger">{{ $errors->first('description') }}</div>
+            @endif
         </div>
         <hr class="my-4">
         <div class="d-flex justify-content-between">
@@ -229,14 +245,6 @@
             </div>
 
         </div>
-        <div class="mb-3">
-            <label class="small mb-1" for="inputdescription">Desription</label>
-            <input class="form-control" id="inputdescription" type="text" placeholder="Desription"
-                value="Desription" name="description" required>
-            @if ($errors->has('description'))
-                <div class="alert alert-danger">{{ $errors->first('description') }}</div>
-            @endif
-        </div>
         <div class="row gx-3">
             <div class="col-md-6 mb-md-0">
                 <label class="small mb-1" for="inputprice">prix</label>
@@ -281,6 +289,20 @@
                 @endif
             </div>
         </div>
+
+        <div class="row gx-3">
+            <div class="mb-3 col-md-6">
+                <label class="small mb-1" for="inputborough">Statut du produit</label>
+                <select class="form-control" name="status" id="">
+                    <option> choix</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="vendu">Vendu</option>
+                </select>
+                @if ($errors->has('status'))
+                    <div class="alert alert-danger">{{ $errors->first('status') }}</div>
+                @endif
+            </div>
+        </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputimage">Entrer une l'image principale</label>
@@ -317,6 +339,17 @@
                     <div class="alert alert-danger">{{ $errors->first('img4') }}</div>
                 @endif
             </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="small mb-1" for="inputdescription">Desription</label>
+            <textarea class="form-control" id="inputdescription"
+                placeholder="mettre tous les informations supplémentaire concernant le produit" name="description" required
+                cols="10" rows="10"></textarea>
+            @if ($errors->has('description'))
+                <div class="alert alert-danger">{{ $errors->first('description') }}</div>
+            @endif
         </div>
         <hr class="my-4">
         <div class="d-flex justify-content-between">

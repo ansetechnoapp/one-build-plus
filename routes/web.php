@@ -135,6 +135,9 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::get('/dashboard.admin', function () {
         return view('dashboard.admin.home.index');
     })->name('dashboard.admin');
+    Route::get('/form_send_sms', function () {
+        return view('dashboard.admin.send sms.index');
+    })->name('form.send.sms');
     Route::get('/list_prod', [\App\Http\Controllers\prod\select::class, 'show'])->name('list_prod');
     Route::get('/list_user', [\App\Http\Controllers\Auth\FormLogin::class, 'show_list_user'])->name('list_user');
     Route::get('/view_prod_update', [\App\Http\Controllers\prod\update::class, 'show'])->name('view.prod.update');

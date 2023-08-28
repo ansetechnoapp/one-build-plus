@@ -1,5 +1,5 @@
 <x-mail::message>
-# Demande Formulaire de contacte,<br>
+# Demande Formulaire de Contacte,<br>
 
 Nom: {{ $datas['name'] }}<br>
 Email: {{ $datas['email'] }}<br>

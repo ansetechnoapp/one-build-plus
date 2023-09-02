@@ -9,7 +9,7 @@
 
     <script>
         easy_background("#home", {
-            slide: ["assets/images/bg/01.jpg", "assets/images/bg/02.jpg", "assets/images/bg/03.jpg"],
+            slide: ["assets/images/bg/01.png", "assets/images/bg/02.png", "assets/images/bg/03.png"],
             delay: [4000, 4000, 4000]
         });
     </script>

@@ -1,25 +1,33 @@
-.bg-red-600{
-    background-color: rgb(229, 62, 62, 1 ) !important;
-  }
- .bg-red-600\/10{
-    background-color: rgba(229, 62, 62, 0.1) !important;
-  }
-    .bg-red-600\/5{
-    background-color: rgba(229, 62, 62, 0.05) !important;
-  }
-  .after\:bg-red-600::after{
-  content: var(--tw-content) !important;
-  background-color: rgb(229, 62, 62, 1 ) !important;
+.bg-red-600 {
+    background-color: rgb(229, 62, 62, 1) !important;
 }
-.hover\:bg-red-600:hover{
-    background-color: rgb(229, 62, 62, 1 ) !important;
-  }
-  :is(.dark .dark\:hover\:bg-red-600:hover){
-    background-color: rgb(229, 62, 62, 1 ) !important;
-  }
-  .news1tyle_button{
-    background-color: rgb(229, 62, 62, 1 )
-  }
-  .news1tyle_button :hover{
+.bg-red-600\/10 {
+    background-color: rgba(229, 62, 62, 0.1) !important;
+}
+.bg-red-600\/5 {
+    background-color: rgba(229, 62, 62, 0.05) !important;
+}
+.after\:bg-red-600::after {
+    content: var(--tw-content) !important;
+    background-color: rgb(229, 62, 62, 1) !important;
+}
+.hover\:bg-red-600:hover {
+    background-color: rgb(229, 62, 62, 1) !important;
+}
+:is(.dark .dark\:hover\:bg-red-600:hover) {
+    background-color: rgb(229, 62, 62, 1) !important;
+}
+.news1tyle_button {
+    background-color: rgb(229, 62, 62, 1);
+}
+.news1tyle_button :hover {
     color: chartreuse !important;
-  }
+}
+.style-padding {
+    padding-top: 21rem !important;
+    padding-bottom: 17rem !important;
+    @media (max-width: 991px) {
+        padding-top: 0rem !important;
+        padding-bottom: 9rem !important;
+    }
+}

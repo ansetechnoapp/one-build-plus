@@ -20,19 +20,19 @@
     <!-- End Navbar -->
 
     <!-- Hero Start -->
-    <section class="relative mt-20">
+    <section class="relative {{-- mt-20 --}}" style="margin-top: 10rem">
         <div class="container-fluid md:mx-4 mx-2">
-            <div class="relative pt-40 pb-52 table w-full rounded-2xl shadow-md overflow-hidden" id="home">
-                <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative {{-- pt-40 pb-52 --}} table w-full rounded-2xl shadow-md overflow-hidden style-padding" id="home">
+                {{-- <div class="absolute inset-0 bg-black/60"></div> --}}
 
                 <div class="container">
                     <div class="grid grid-cols-1">
                         <div class="ltr:md:text-left rtl:md:text-right text-center">
-                            <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6">
+                            {{-- <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6">
                                 Nous vous aiderons à trouver <br> votre <span class="text-green-600">Merveilleuse</span>
                                 terrain</h1>
                             <p class="text-white/70 text-xl max-w-xl">Une excellente plateforme pour acheter vos
-                                propriétés .</p>
+                                propriétés .</p> --}}
                         </div>
                     </div>
                     <!--end grid-->

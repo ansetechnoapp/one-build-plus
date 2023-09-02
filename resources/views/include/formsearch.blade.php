@@ -38,7 +38,7 @@
 
 <div class="container">
     <div class="grid grid-cols-1 justify-center">
-        <div class="relative -mt-32">
+        <div class="relative {{-- -mt-32 --}}" style="margin-top: -4rem !important">
             <div class="grid grid-cols-1">
                 <ul class="inline-block sm:w-fit w-full flex-wrap justify-center text-center p-4 bg-white dark:bg-slate-900 rounded-t-xl border-b dark:border-gray-800"
                     id="myTab" data-tabs-toggle="#StarterContent" role="tablist">

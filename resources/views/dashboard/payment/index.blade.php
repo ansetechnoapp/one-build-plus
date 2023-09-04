@@ -34,6 +34,7 @@
                                 
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}" required>
                                 <input type="hidden" name="id" value="{{$id}}" required>
+                                <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>
                                     <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{$price}}" readonly required>

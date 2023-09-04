@@ -33,6 +33,7 @@
                         <input type="hidden" name="lastName" value="{{ Session::get('user_lastName') }}" required>
                         <input type="hidden" name="firstName" value="{{ Session::get('user_firstName') }}" required>
                         <input type="hidden" name="email" value="{{ Session::get('user_email') }}" required>
+                        <input type="hidden" name="payment_frequency" value="{{ Session::get('payment_frequency') }}" required>
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
                                 <label class="font-semibold" for="LoginEmail">numéro de téléphone:</label>

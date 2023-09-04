@@ -35,6 +35,7 @@
                                 <input type="hidden" name="price" value="{{$price}}">
                                 <input type="hidden" name="lastName" value="{{$lastName}}">
                                 <input type="hidden" name="firstName" value="{{$firstName}}">
+                                <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
                                 <input type="hidden" name="id" value="{{$id}}">
                                 <div class="mb-4">
                                     <label><h1>option supplémentaire</h1></label>
@@ -53,7 +54,7 @@
                                 </div>
                                 <div class="flex">
                                     <div class="p-1 w-1/2">
-                                        <a href="{{ route('paymnt', ['price'=>$price,'lastName'=>$lastName,'firstName'=>$firstName,'id'=>$id]) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
+                                        <a href="{{ route('paymnt', ['price'=>$price,'lastName'=>$lastName,'firstName'=>$firstName,'payment_frequency'=>$payment_frequency,'id'=>$id]) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                     </div>
                                     <div class="p-1 w-1/2">
                                         <button class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">suivant</button>

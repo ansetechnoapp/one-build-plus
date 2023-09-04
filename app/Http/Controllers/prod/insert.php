@@ -24,6 +24,7 @@ class insert extends Controller
         $registration_andf = $request->registration_andf;
         $formality_fees = $request->formality_fees;
         $notary_fees = $request->notary_fees;
+        $payment_frequency = $request->payment_frequency;
 
         if (isset($price)  || isset($prod_id) || isset($user_id)) {
             if ($price == ''  || $prod_id == '' || $user_id == '') {
@@ -54,6 +55,7 @@ class insert extends Controller
                         'registration_andf' => $registration_andf,
                         'formality_fees' => $formality_fees,
                         'notary_fees' => $notary_fees,
+                        'payment_frequency' => $payment_frequency,
                         'users_id' => $user_id,
                         'prod_id' => $prod_id,
                     ]);

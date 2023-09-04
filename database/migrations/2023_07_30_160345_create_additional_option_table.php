@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('registration_andf')->nullable();
             $table->string('formality_fees')->nullable();
             $table->string('notary_fees')->nullable();
+            $table->string('payment_frequency')->default('cash');
             $table->unsignedBigInteger('users_id'); // Clé étrangère
             $table->unsignedBigInteger('prod_id'); // Clé étrangère
             $table->timestamps();

@@ -43,7 +43,8 @@ class select extends Controller
         // dd('ee');
         $price = $request->price;
         $id = $request->id;
+        $payment_frequency = $request->payment_frequency;
         // dd($price,$id);
-        return view('dashboard.payment.index', compact('price', 'id'));
+        return view('dashboard.payment.index', compact('price', 'payment_frequency', 'id'));
     }
 }

@@ -25,11 +25,10 @@
 
                 @isset($imgdata)
 
-                @foreach ($imgdata as $item)
+                    @foreach ($imgdata as $item)
+                        <div class="lg:w-1/2 md:w-1/2 p-1">
+                            <div class="group relative overflow-hidden">
 
-                <div class="lg:w-1/2 md:w-1/2 p-1">
-                    <div class="group relative overflow-hidden">
-                        
                                 <img src="{{ env('APP_URL') . Storage::url($item->main_image) }}" alt="">
                                 <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out"></div>
                                 <div
@@ -38,75 +37,75 @@
                                         class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
                                             class="uil uil-camera"></i></a>
                                 </div>
-                            
-                    </div>
-                </div>
 
-                <div class="lg:w-1/2 md:w-1/2">
-                    <div class="flex">
-                        <div class="w-1/2 p-1">
-                            <div class="group relative overflow-hidden">
-                                <img src="{{ env('APP_URL') . Storage::url($item->img1) }}" alt="">
-                                <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
-                                </div>
-                                <div
-                                    class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
-                                    <a href="{{ env('APP_URL') . Storage::url($item->img1) }}"
-                                        class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
-                                            class="uil uil-camera"></i></a>
-                                </div>
                             </div>
                         </div>
 
-                        <div class="w-1/2 p-1">
-                            <div class="group relative overflow-hidden">
-                                <img src="{{ env('APP_URL') . Storage::url($item->img2) }}" alt="">
-                                <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
+                        <div class="lg:w-1/2 md:w-1/2">
+                            <div class="flex">
+                                <div class="w-1/2 p-1">
+                                    <div class="group relative overflow-hidden">
+                                        <img src="{{ env('APP_URL') . Storage::url($item->img1) }}" alt="">
+                                        <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
+                                        </div>
+                                        <div
+                                            class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
+                                            <a href="{{ env('APP_URL') . Storage::url($item->img1) }}"
+                                                class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
+                                                    class="uil uil-camera"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div
-                                    class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
-                                    <a href="{{ env('APP_URL') . Storage::url($item->img2) }}"
-                                        class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
-                                            class="uil uil-camera"></i></a>
+
+                                <div class="w-1/2 p-1">
+                                    <div class="group relative overflow-hidden">
+                                        <img src="{{ env('APP_URL') . Storage::url($item->img2) }}" alt="">
+                                        <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
+                                        </div>
+                                        <div
+                                            class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
+                                            <a href="{{ env('APP_URL') . Storage::url($item->img2) }}"
+                                                class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
+                                                    class="uil uil-camera"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="flex">
-                        <div class="w-1/2 p-1">
-                            <div class="group relative overflow-hidden">
-                                <img src="{{ env('APP_URL') . Storage::url($item->img3) }}" alt="">
-                                <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
+                            <div class="flex">
+                                <div class="w-1/2 p-1">
+                                    <div class="group relative overflow-hidden">
+                                        <img src="{{ env('APP_URL') . Storage::url($item->img3) }}" alt="">
+                                        <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
+                                        </div>
+                                        <div
+                                            class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
+                                            <a href="{{ env('APP_URL') . Storage::url($item->img3) }}"
+                                                class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
+                                                    class="uil uil-camera"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div
-                                    class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
-                                    <a href="{{ env('APP_URL') . Storage::url($item->img3) }}"
-                                        class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
-                                            class="uil uil-camera"></i></a>
+
+                                <div class="w-1/2 p-1">
+                                    <div class="group relative overflow-hidden">
+                                        <img src="{{ env('APP_URL') . Storage::url($item->img4) }}" alt="">
+                                        <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
+                                        </div>
+                                        <div
+                                            class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
+                                            <a href="{{ env('APP_URL') . Storage::url($item->img4) }}"
+                                                class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
+                                                    class="uil uil-camera"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="w-1/2 p-1">
-                            <div class="group relative overflow-hidden">
-                                <img src="{{ env('APP_URL') . Storage::url($item->img4) }}" alt="">
-                                <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out">
-                                </div>
-                                <div
-                                    class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center invisible group-hover:visible">
-                                    <a href="{{ env('APP_URL') . Storage::url($item->img4) }}"
-                                        class="btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full lightbox"><i
-                                            class="uil uil-camera"></i></a>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    
-                </div>
-                @endforeach
+                    @endforeach
 
-                        @endisset
+                @endisset
             </div><!--end flex-->
         </div><!--end container fluid-->
         @isset($data)
@@ -145,51 +144,113 @@
 
                         <div class="lg:w-1/3 md:w-1/2 md:p-4 px-3 mt-8 md:mt-0">
                             <div class="sticky top-20">
-                                <div class="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
-                                    <div class="p-6">
-                                        <h5 class="text-2xl font-medium">Price:</h5>
+                                @if (Auth::check())
+                                    <div class="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+                                        <div class="p-6">
+                                            <h5 class="text-2xl font-medium">Price:</h5>
 
-                                        <div class="flex justify-between items-center mt-4">
-                                            <span class="text-xl font-medium">{{ $item->price }} fcfa </span>
+                                            <div class="flex justify-between items-center mt-4">
+                                                <span class="text-xl font-medium">{{ $item->price }} fcfa </span>
 
-                                            <span
-                                                class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">For
-                                                Sale</span>
+                                                <span
+                                                    class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">{{ $item->status }}</span>
+                                            </div>
+                                            <form
+                                            action="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
+                                            method="POST">
+                                            <ul class="list-none mt-4">
+
+                                                <li class="flex justify-between items-center mt-2">
+                                                    <span class="text-slate-400 text-sm">Fréquence de paiement</span>
+
+                                                    <select name="payment_frequency" class="form-input">
+                                                        <option value="cash">choisir</option>
+                                                        <option value="cash">cash</option>
+                                                        <option value="Hebdomadaire">Hebdomadaire</option>
+                                                        <option value="Bimensuel">Bimensuel</option>
+                                                        <option value="Mensuel">Mensuel</option>
+                                                        <option value="Trimestriel">Trimestriel</option>
+                                                        <option value="Semestriel">Semestriel</option>
+                                                        <option value="Échéance">Échéance</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
                                         </div>
 
-                                        <ul class="list-none mt-4">
-
-                                            <li class="flex justify-between items-center mt-2">
-                                                <span class="text-slate-400 text-sm">Paiement mensuel (estimation)</span>
-                                                <span class="font-medium text-sm">fcfa 1497/Monthly</span>
-                                            </li>
-                                        </ul>
+                                        <div class="flex">
+                                            <div class="p-1 w-1/2">
+                                                
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</button>
+                                                
+                                                {{-- <a href="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
+                                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a> --}}
+                                            </div>
+                                            {{-- <div class="p-1 w-1/2">
+    <a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">par tranche</a>
+    </div> --}}
+                                        </div>
+                                    </form>
                                     </div>
+                                @else
+                                    <div class="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+                                        <div class="p-6">
+                                            <h5 class="text-2xl font-medium">Price:</h5>
 
-                                    <div class="flex">
-                                        @if (Auth::check())
-                                        <div class="p-1 w-1/2">
-                                            <a href="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
-                                                class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a>
+                                            <div class="flex justify-between items-center mt-4">
+                                                <span class="text-xl font-medium">{{ $item->price }} fcfa </span>
+
+                                                <span
+                                                    class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">{{ $item->status }}</span>
+                                            </div>
+                                            <form
+                                            action="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
+                                            method="POST">
+                                            <ul class="list-none mt-4">
+
+                                                <li class="flex justify-between items-center mt-2">
+                                                    <span class="text-slate-400 text-sm">Fréquence de paiement</span>
+
+                                                    <select name="payment_frequency" class="form-input">
+                                                        <option value="cash">choisir</option>
+                                                        <option value="cash">cash</option>
+                                                        <option value="Hebdomadaire">Hebdomadaire</option>
+                                                        <option value="Bimensuel">Bimensuel</option>
+                                                        <option value="Mensuel">Mensuel</option>
+                                                        <option value="Trimestriel">Trimestriel</option>
+                                                        <option value="Semestriel">Semestriel</option>
+                                                        <option value="Échéance">Échéance</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        @else
-                                        <div class="p-1 w-1/2">
-                                            <a href="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
-                                                class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a>
+
+                                        <div class="flex">
+                                            <div class="p-1 w-1/2">
+                                                
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</button>
+                                                
+                                                {{-- <a href="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
+                class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a> --}}
+                                            </div>
+                                            {{-- <div class="p-1 w-1/2">
+<a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">par tranche</a>
+</div> --}}
                                         </div>
-                                        @endif
-                                        
-                                        {{-- <div class="p-1 w-1/2">
-                                <a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">par tranche</a>
-                            </div> --}}
+                                    </form>
                                     </div>
-                                </div>
+                                @endif
 
                                 <div class="mt-12 text-center">
-                                    <h3 class="mb-6 text-xl leading-normal font-medium text-black dark:text-white">Vous avez des questions ? <br> Entrer en contact!</h3>
+                                    <h3 class="mb-6 text-xl leading-normal font-medium text-black dark:text-white">Vous
+                                        avez
+                                        des questions ? <br> Entrer en contact!</h3>
 
                                     <div class="mt-6">
-                                        <a href="{{route('contact')}}"
+                                        <a href="{{ route('contact') }}"
                                             class="btn bg-transparent hover:bg-green-600 border border-green-600 text-green-600 hover:text-white rounded-md"><i
                                                 class="uil uil-phone align-middle me-2"></i> Contactez-nous</a>
                                     </div>

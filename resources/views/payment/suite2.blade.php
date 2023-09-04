@@ -39,6 +39,7 @@
                         <input type="hidden" name="registration_andf" value="{{$registration_andf}}">
                         <input type="hidden" name="formality_fees" value="{{$formality_fees}}">
                         <input type="hidden" name="notary_fees" value="{{$notary_fees}}">
+                        <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
                         <input type="hidden" name="id" value="{{$id}}">
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
@@ -66,7 +67,7 @@
                                 </div> --}}
                             <div class="flex">
                                 <div class="p-1 w-1/2">
-                                    <a href="{{ route('paymnt.form', ['price'=>$price,'lastName'=>$lastName,'firstName'=>$firstName,'id'=>$id]) }}"
+                                    <a href="{{ route('paymnt.form', ['price'=>$price,'lastName'=>$lastName,'firstName'=>$firstName,'payment_frequency'=>$payment_frequency,'id'=>$id]) }}"
                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                 </div>
                                 <div class="p-1 w-1/2">

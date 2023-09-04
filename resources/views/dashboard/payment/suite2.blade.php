@@ -39,6 +39,7 @@
                         <input type="hidden" name="registration_andf" value="{{$registration_andf}}">
                         <input type="hidden" name="formality_fees" value="{{$formality_fees}}">
                         <input type="hidden" name="notary_fees" value="{{$notary_fees}}">
+                        <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
                         <input type="hidden" name="id" value="{{$id}}">
                         <div class="grid grid-cols-1">
                             <div class="mb-4">

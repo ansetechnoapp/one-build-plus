@@ -31,6 +31,7 @@
                         <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('paymnt.form') }}">
                             @csrf
                             <input type="hidden" name="id" value="{{$id}}">
+                            <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>

@@ -20,6 +20,7 @@ class additional_option extends Model
         'registration_andf',
         'formality_fees',
         'notary_fees',
+        'payment_frequency',
         'users_id',
         'prod_id',
     ];

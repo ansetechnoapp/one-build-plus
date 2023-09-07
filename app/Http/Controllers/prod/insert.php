@@ -25,6 +25,7 @@ class insert extends Controller
         $formality_fees = $request->formality_fees;
         $notary_fees = $request->notary_fees;
         $payment_frequency = $request->payment_frequency;
+        $montant = $request->montant;
 
         if (isset($price)  || isset($prod_id) || isset($user_id)) {
             if ($price == ''  || $prod_id == '' || $user_id == '') {
@@ -61,7 +62,7 @@ class insert extends Controller
                     ]);
 
                     $devis = new devis();
-                    $devis->montant = $price;
+                    $devis->montant = $montant;
                     $devis->prod_id = $prod_id;
                     $devis->users_id = $user_id;
                     $devis->dateDevis = now()->format('Y-m-d');

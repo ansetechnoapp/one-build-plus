@@ -43,7 +43,7 @@
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Nom:</label>
-                                    <input id="LoginPassword" name="lastName" required type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}" required>
+                                    <input id="LoginPassword" name="lastName" type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}" required>
                                     @if ($errors->has('lastName'))
                                     <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
                                 @endif
@@ -97,12 +97,7 @@
         <!-- LTR & RTL Mode Code -->
 
         <!-- JAVASCRIPTS -->
-        <script src="assets/libs/particles.js/particles.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <script src="assets/js/plugins.init.js"></script>
-        <script src="assets/js/app.js"></script>
+        @include('include.script2')
         <!-- JAVASCRIPTS -->
     </body>
-
-<!-- Mirrored from shreethemes.in/OBP/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:06 GMT -->
 </html>

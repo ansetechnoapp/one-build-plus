@@ -41,6 +41,7 @@
                         <input type="hidden" name="notary_fees" value="{{$notary_fees}}">
                         <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
                         <input type="hidden" name="id" value="{{$id}}">
+                        <input type="hidden" name="montant" value="{{ $montant }}">
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginEmail">Email:</label>
@@ -67,7 +68,7 @@
                                 </div> --}}
                             <div class="flex">
                                 <div class="p-1 w-1/2">
-                                    <a href="{{ route('paymnt.form', ['price'=>$price,'lastName'=>$lastName,'firstName'=>$firstName,'payment_frequency'=>$payment_frequency,'id'=>$id]) }}"
+                                    <a href="{{ route('paymnt.form', ['price'=>$price,'lastName'=>$lastName,'firstName'=>$firstName,'payment_frequency'=>$payment_frequency, 'montant' => $montant,'id'=>$id]) }}"
                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                 </div>
                                 <div class="p-1 w-1/2">
@@ -115,13 +116,8 @@
     <!-- LTR & RTL Mode Code -->
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/particles.js/particles.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    @include('include.script2')
     <!-- JAVASCRIPTS -->
 </body>
-
-<!-- Mirrored from shreethemes.in/OBP/layouts/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:06 GMT -->
 
 </html>

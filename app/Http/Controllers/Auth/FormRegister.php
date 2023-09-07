@@ -50,6 +50,7 @@ class FormRegister extends Controller
         $formality_fees = $request->formality_fees;
         $notary_fees = $request->notary_fees;
         $payment_frequency = $request->payment_frequency;
+        $montant = $request->montant;
         $email = $request->email;
         $password1 = $request->password;
         $password2 = $request->password_confirm;
@@ -110,7 +111,7 @@ class FormRegister extends Controller
                         $additional_option->save(); // Sauvegarde d'abord le modèle
                         $additional_option_insert = $additional_option; // Utilisez simplement l'instance existante
                         $devis = new devis();
-                        $devis->montant = $price;
+                        $devis->montant = $montant;
                         $devis->prod_id = $prod_id;
                         $devis->dateDevis = now()->format('Y-m-d');
                         $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
@@ -235,9 +236,10 @@ class FormRegister extends Controller
         $lastName = $request->lastName;
         $firstName = $request->firstName;
         $payment_frequency = $request->payment_frequency;
+        $montant = $request->montant;
         $id = $request->id;
         if (isset($price) && isset($id)) {
-            return view('payment.index', compact('price', 'lastName', 'firstName', 'payment_frequency', 'id'));
+            return view('payment.index', compact('price', 'lastName', 'firstName', 'payment_frequency','montant', 'id'));
         } else {
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
@@ -249,6 +251,7 @@ class FormRegister extends Controller
         $firstName = $request->firstName;
         $id = $request->id;
         $payment_frequency = $request->payment_frequency;
+        $montant = $request->montant;
         if (isset($price) && isset($lastName) && isset($firstName) && isset($id)) {
             // Définition des règles de validation
             $rules = [
@@ -275,7 +278,7 @@ class FormRegister extends Controller
 
             try {
                 $request->validate($rules, $messages, $customAttributes);
-                return view('payment.suite', compact('price', 'lastName', 'firstName','payment_frequency', 'id'));
+                return view('payment.suite', compact('price', 'lastName', 'firstName','payment_frequency','montant', 'id'));
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
@@ -286,7 +289,7 @@ class FormRegister extends Controller
             }
         } else {
             // dd('rr');
-            return view('payment.suite', compact('price', 'lastName', 'firstName','payment_frequency', 'id'));
+            return view('payment.suite', compact('price', 'lastName', 'firstName','payment_frequency','montant', 'id'));
         }
     }
     public function receptiondata2(Request $request)
@@ -299,6 +302,7 @@ class FormRegister extends Controller
         $formality_fees = $request->formality_fees;
         $notary_fees = $request->notary_fees;
         $payment_frequency = $request->payment_frequency;
+        $montant = $request->montant;
         if (isset($price) && isset($lastName) && isset($firstName) && isset($id)) {
             // Définition des règles de validation
             $rules = [
@@ -325,7 +329,7 @@ class FormRegister extends Controller
 
             try {
                 $request->validate($rules, $messages, $customAttributes);
-                return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees','payment_frequency'));
+                return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees','payment_frequency','montant'));
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
@@ -336,7 +340,7 @@ class FormRegister extends Controller
             }
         } else {
             // dd('rr');
-            return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees','payment_frequency'));
+            return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees','payment_frequency','montant'));
         }
     }
     public function SaveSignupOneStep(Request $request)

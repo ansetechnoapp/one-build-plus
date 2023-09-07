@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('additional_option', function (Blueprint $table) {
             $table->id();
-            $table->string('registration_andf')->nullable();
-            $table->string('formality_fees')->nullable();
-            $table->string('notary_fees')->nullable();
+            $table->Integer('registration_andf')->default('0');
+            $table->Integer('formality_fees')->default('0');
+            $table->Integer('notary_fees')->default('0');
             $table->string('payment_frequency')->default('cash');
             $table->unsignedBigInteger('users_id'); // Clé étrangère
             $table->unsignedBigInteger('prod_id'); // Clé étrangère

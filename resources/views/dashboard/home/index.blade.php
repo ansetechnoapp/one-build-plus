@@ -37,6 +37,7 @@
                                             <tr>
                                                 <th class="border-gray-200" scope="col">Identification de la transaction</th>
                                                 <th class="border-gray-200" scope="col">Date</th>
+                                                <th class="border-gray-200" scope="col">price produit</th>
                                                 <th class="border-gray-200" scope="col">Montant</th>
                                                 <th class="border-gray-200" scope="col">Statut</th>
                                             </tr>
@@ -48,6 +49,7 @@
                                                 <td>{{ $item->id}}</td>
                                                 <td>{{ $item->dateDevis}}</td>
                                                 <td>{{ $item->prod->price }} FCFA</td>
+                                                <td>{{ $item->montant}}</td>
                                                 <td>
                                                     <form action="{{ route('devis') }}" method="POST" >
                                                         @csrf <!-- Ajoutez le jeton CSRF pour la protection -->

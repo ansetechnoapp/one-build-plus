@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('devis', function (Blueprint $table) {
             $table->id();
+            $table->Integer('prix');
             $table->Integer('montant');
             $table->date('dateDevis');
             $table->date('dateExpiration');

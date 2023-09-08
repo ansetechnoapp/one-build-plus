@@ -41,9 +41,7 @@
         </div>
     </div>
 
-    <div class="container">
-        @include('include.formsearch')
-    </div>
+    @include('include.formsearch')
     <!--end container-->
     <!-- End Hero -->
 

@@ -20,7 +20,7 @@
     <!-- End Navbar -->
 
     <!-- Hero Start -->
-    <section class="relative {{-- mt-20 --}}" style="margin-top: 10rem">
+    <section class="relative {{-- mt-20 --}}" style="margin-top: 6rem">
         <div class="container-fluid md:mx-4 mx-2">
             <div class="relative {{-- pt-40 pb-52 --}} table w-full rounded-2xl shadow-md overflow-hidden style-padding" id="home">
                 {{-- <div class="absolute inset-0 bg-black/60"></div> --}}

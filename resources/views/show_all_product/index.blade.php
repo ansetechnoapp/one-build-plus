@@ -22,7 +22,7 @@
             <div class="absolute inset-0 bg-black opacity-80"></div>
             <div class="container">
                 <div class="grid grid-cols-1 text-center mt-10">
-                    <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">Grid View Layout</h3>
+                    <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">Trouvez le logement de vos rêves</h3>
                 </div><!--end grid-->
             </div><!--end container-->
         </section><!--end section-->
@@ -33,75 +33,7 @@
                 </svg>
             </div>
         </div>
-        <div class="container relative -mt-16 z-1">
-            <div class="grid grid-cols-1">
-                <form class="p-6 bg-white dark:bg-slate-900 rounded-xl shadow-md dark:shadow-gray-700">
-                    <div class="registration-form text-dark text-start">
-                        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
-                            <div>
-                                <label class="form-label font-medium">Search : <span class="text-red-600">*</span></label>
-                                <div class="filter-search-form relative filter-border mt-2">
-                                    <i class="uil uil-search icons"></i>
-                                    <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search your keaywords">
-                                </div>
-                            </div>
-                            
-
-                            <div>
-                                <label for="buy-properties" class="form-label font-medium">Select Categories:</label>
-                                <div class="filter-search-form relative filter-border mt-2">
-                                    <i class="uil uil-estate icons"></i>
-                                    <select class="form-select z-2" data-trigger name="choices-catagory" id="choices-catagory-buy" aria-label="Default select example">
-                                        <option>Houses</option>
-                                        <option>Apartment</option>
-                                        <option>Offices</option>
-                                        <option>Townhome</option>
-                                    </select>
-                                </div>
-                            </div>
-                        
-                            <div>
-                                <label for="buy-min-price" class="form-label font-medium">Min Price :</label>
-                                <div class="filter-search-form relative filter-border mt-2">
-                                    <i class="uil uil-usd-circle icons"></i>
-                                    <select class="form-select" data-trigger name="choices-min-price" id="choices-min-price-buy" aria-label="Default select example">
-                                        <option>Min Price</option>
-                                        <option>500</option>
-                                        <option>1000</option>
-                                        <option>2000</option>
-                                        <option>3000</option>
-                                        <option>4000</option>
-                                        <option>5000</option>
-                                        <option>6000</option>
-                                    </select>
-                                </div>
-                            </div>
-                        
-                            <div>
-                                <label for="buy-max-price" class="form-label font-medium">Max Price :</label>
-                                <div class="filter-search-form relative mt-2">
-                                    <i class="uil uil-usd-circle icons"></i>
-                                    <select class="form-select" data-trigger name="choices-max-price" id="choices-max-price-buy" aria-label="Default select example">
-                                        <option>Max Price</option>
-                                        <option>500</option>
-                                        <option>1000</option>
-                                        <option>2000</option>
-                                        <option>3000</option>
-                                        <option>4000</option>
-                                        <option>5000</option>
-                                        <option>6000</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="lg:mt-6">
-                                <input type="submit" id="search-buy" name="search" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white searchbtn submit-btn w-full !h-12 rounded" value="Search">
-                            </div>
-                        </div><!--end grid-->
-                    </div><!--end container-->
-                </form><!--end form-->
-            </div><!--end grid-->
-        </div><!--end container-->
+        @include('include.formsearch')<!--end container-->
         <!-- End Hero -->
         
         <!-- Start -->

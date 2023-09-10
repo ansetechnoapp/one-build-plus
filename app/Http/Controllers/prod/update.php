@@ -21,7 +21,7 @@ class update extends Controller
 
     public function updateprod(Request $request)
     {
-        
+
         // Définition des règles de validation
         $rules = [
             'land_owner' => 'required|string|max:100|min:2',
@@ -30,8 +30,8 @@ class update extends Controller
             'communes' => 'required|string|max:100|min:2',
             'borough' => 'required|string|max:100|min:2',
             'area' => 'required|string|max:100|min:2',
-            'price' => 'required|integer',
-            'price_min' => 'required|integer',
+            'price' => 'required|numeric',
+            'price_min' => 'required|numeric',
             'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'img1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -49,8 +49,8 @@ class update extends Controller
             'communes' => 'Entrer une bonne valeur',
             'borough' => 'Entrer une bonne valeur',
             'area' => 'Entrer une bonne valeur',
-            'price' => 'pris',
-            'price_min' => 'prix minimal',
+            'price' => 'Entrer un prix correct',
+            'price_min' => 'le prix minimal doit être inférieur au prix maximal',
             'main_image' => 'image important',
             'img1' => 'image',
             'img2' => 'image',
@@ -78,14 +78,14 @@ class update extends Controller
             'description' => 'Entrer un texte',
             'ground_type' => 'Entrer un texte',
         ];
-    
+
         try {
             $request->validate($rules, $messages, $customAttributes);
-            
+
             $prod_id = $request->prod_id;
             $prod = prod::findOrFail($prod_id);
-            
-            $prodsuite = $prod->update([
+
+            $prod->update([
                 'land_owner' => $request->land_owner,
                 'address' => $request->address,
                 'department' => $request->department,
@@ -98,28 +98,18 @@ class update extends Controller
                 'ground_type' => $request->ground_type,
                 'status' => $request->status,
             ]);
-            
-            $img = $prod->img;
-    
             if ($request->hasFile('main_image')) {
-                
+
                 $filename = time() . '.' . $request->main_image->extension();
                 $path = $request->file('main_image')->storeAs(
                     'imageprod',
                     $filename,
                     'public'
                 );
-                
-                $img->main_image = $path;
+
+                img::where('prod_id', $prod_id)
+                    ->update(['main_image' => $path]);
             }
-    
-            $img->img1 = null;
-            $img->img2 = null;
-            $img->img3 = null;
-            $img->img4 = null;
-            $img->prod()->associate($prodsuite);
-            $img->save();
-    
             for ($i = 1; $i <= 4; $i++) {
                 $imgField = 'img' . $i;
                 if ($request->hasFile($imgField)) {
@@ -129,12 +119,12 @@ class update extends Controller
                         $imgFilename,
                         'public'
                     );
-    
-                    $img->$imgField = $imgPath;
-                    $img->save();
+
+                    img::where('prod_id', $prod_id)
+                        ->update([$imgField => $imgPath]);
                 }
             }
-    
+
             return redirect()->route('list_prod');
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici

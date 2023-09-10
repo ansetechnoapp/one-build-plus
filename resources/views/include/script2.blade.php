@@ -44,8 +44,8 @@
                 }, 0);
     
                 /* montantTotal.value = total.toFixed(1); */
-                montantTotal.value = parseInt(total) + parseInt(inputPrice.value);
-                console.log(parseInt(inputPrice.value))
+                var calculatedValue2 = parseFloat(total) + parseFloat(inputPrice.value);
+                montantTotal.value = calculatedValue2.toFixed(2);
             });
         });
     </script>

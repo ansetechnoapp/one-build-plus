@@ -26,7 +26,7 @@
 
                     <!-- Page Heading -->
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
-                    <div class="container-xl px-4 mt-n10 mb-4">
+                    <div class="{{-- container-xl  --}}px-4 mt-n10 mb-4">
                         <div class="card mb-4">
                             <div class="card-header">Liste des produits Enrégistrer</div>
                             <div class="card-body p-0">

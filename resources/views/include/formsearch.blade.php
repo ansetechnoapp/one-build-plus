@@ -114,9 +114,9 @@
                                                 font-weight: bold;
                                                 border: none;
                                                 outline: none;">
-                                                @isset($posts)
+                                                @isset($commune)
                                                 <option value="">selectionnez une commune</option>
-                                                @foreach ($posts as $result)                                 
+                                                @foreach ($commune as $result)                                 
                                                 <option name="{{$result->communes}}">{{$result->communes}}</option>
                                                 @endforeach  
                                                 @endisset

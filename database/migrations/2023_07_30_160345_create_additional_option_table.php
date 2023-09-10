@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('additional_option', function (Blueprint $table) {
             $table->id();
-            $table->Integer('registration_andf')->default('0');
-            $table->Integer('formality_fees')->default('0');
-            $table->Integer('notary_fees')->default('0');
+            $table->decimal('registration_andf', 10, 2)->default(0); // Utilisation de décimal
+            $table->decimal('formality_fees', 10, 2)->default(0);
+            $table->decimal('notary_fees', 10, 2)->default(0);
             $table->string('payment_frequency')->default('cash');
             $table->unsignedBigInteger('users_id'); // Clé étrangère
             $table->unsignedBigInteger('prod_id'); // Clé étrangère
             $table->timestamps();
-            
+
             $table->foreign('users_id')->references('id')->on('users');
             $table->foreign('prod_id')->references('id')->on('prod');
         });

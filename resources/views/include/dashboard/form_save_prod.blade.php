@@ -114,7 +114,8 @@
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputborough">Statut du produit</label>
                 <select class="form-control" name="status" id="">
-                    <option> choix</option>
+                    <option value="{{ $allprodupdate->status }}"selected>{{ $allprodupdate->status }}
+                    </option>
                     <option value="disponible">Disponible</option>
                     <option value="vendu">Vendu</option>
                 </select>
@@ -166,7 +167,7 @@
             <label class="small mb-1" for="inputdescription">Desription</label>
             <textarea class="form-control" id="inputdescription"
                 placeholder="mettre tous les informations supplémentaire concernant le produit" name="description" required
-                cols="10" rows="10"></textarea>
+                cols="10" rows="10">{{ $allprodupdate->description }}</textarea>
             @if ($errors->has('description'))
                 <div class="alert alert-danger">{{ $errors->first('description') }}</div>
             @endif
@@ -378,7 +379,7 @@
             "Sèmè-Podji", "Zangnanado"
         ],
         "Plateau": ["Ifangni", "Kétou", "Pobè", "Sakété"],
-        "Zou": ["Abomey", "Agbangnizoun", "Bohicon", "Covè", "Djidja", "Ouinhi", "Za-Kpota"]
+        "Zou": ["Abomey", "Agbangnizoun", "Bohicon", "Covè", "Djidja", "Ouinhi", "Zagnanado", "Za-Kpota", "Zogbodomey"]
     };
 
     function afficherCommunes() {

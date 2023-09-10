@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('communes');
             $table->string('borough')->nullable();
             $table->string('area')->nullable();
-            $table->Integer('price');
-            $table->Integer('price_min');
+            $table->decimal('price', 10, 2); // Utilisation de décimal pour les prix avec 2 décimales de précision
+            $table->decimal('price_min', 10, 2);
             $table->text('description')->nullable();
             $table->string('ground_type');
             $table->string('status')->default('disponible');

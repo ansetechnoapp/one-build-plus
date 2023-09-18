@@ -124,7 +124,7 @@
                                                     <ul class="pt-6 flex justify-between items-center list-none">
                                                         <li>
                                                             <span class="text-slate-400">Prix</span>
-                                                            <p class="text-lg font-medium">fcfa {{ $data->price }}</p>
+                                                            <p class="text-lg font-medium">{{ $data->price }} fcfa</p>
                                                         </li>
 
                                                         <li>
@@ -332,7 +332,7 @@
                         <div class="tiny-slide">
                             <div class="text-center">
                                 <p class="text-xl text-slate-400 italic"> " OBP made the processes so easy. OBP
-                                    instantly increased the amount of interest and ultimately saved us over fcfa10,000.
+                                    instantly increased the amount of interest and ultimately saved us over 10,000 fcfa.
                                     "
                                 </p>
 
@@ -358,7 +358,7 @@
                             <div class="text-center">
                                 <p class="text-xl text-slate-400 italic"> " I highly recommend OBP as the new way to
                                     sell your home "by owner". My home sold in 24 hours for the asking price. Best
-                                    fcfa400
+                                    400 fcfa
                                     you could spend to sell your home. " </p>
 
                                 <div class="text-center mt-5">

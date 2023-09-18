@@ -54,30 +54,30 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $post->address }}</a>
+                                <a href="{{ route('property_detail', ['id' => $post->id, 'price' => $post->price]) }}" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $post->address }}</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                 <li class="flex items-center me-4">
                                     <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                    <span>8000sqf</span>
+                                    <span>{{ $post->communes }}</span>
                                 </li>
 
                                 <li class="flex items-center me-4">
-                                    <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
-                                    <span>4 Beds</span>
+                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                    <span>{{ $post->borough }}</span>
                                 </li>
 
                                 <li class="flex items-center">
-                                    <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
-                                    <span>4 Baths</span>
+                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                    <span>{{ $post->area }}</span>
                                 </li>
                             </ul>
 
                             <ul class="pt-6 flex justify-between items-center list-none">
                                 <li>
-                                    <span class="text-slate-400">Price</span>
-                                    <p class="text-lg font-medium">$5000</p>
+                                    <span class="text-slate-400">Prix</span>
+                                    <p class="text-lg font-medium">{{ $post->price }} fcfa</p>
                                 </li>
 
                                 <li>
@@ -88,7 +88,7 @@
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        <li class="inline text-black dark:text-white">5.0(30)</li>
+                                        <li class="inline text-black dark:text-white">5.0(30)</li> 
                                     </ul>
                                 </li>
                             </ul>
@@ -99,7 +99,7 @@
                     @endisset
                 </div><!--en grid-->
 
-                <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+                {{-- <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
                     <div class="md:col-span-12 text-center">
                         <nav>
                             <ul class="inline-flex items-center -space-x-px">
@@ -128,7 +128,7 @@
                             </ul>
                         </nav>
                     </div>
-                </div><!--end grid-->
+                </div> --}}<!--end grid-->
             </div><!--end container-->
         </section><!--end section-->
         <!-- End -->

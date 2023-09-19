@@ -81,13 +81,12 @@
                                                 font-weight: bold;
                                                 border: none;
                                                 outline: none;">
+                                                @isset($ground_type)
                                                 <option>sélectionnez un type de terrain</option>
-                                                <option value="centre ville">centre ville</option>
-                                                <option value="agglomérations">agglomérations</option>
-                                                <option value="terre agricole">terre agricole</option>
-                                                <option value="terres rurales">terres rurales</option>
-                                                <option value="urbain">urbain</option>
-                                                <option value="péri-urbain">péri-urbain</option>
+                                                @foreach ($ground_type as $result)                                 
+                                                <option name="{{$result->ground_type}}">{{$result->ground_type}}</option>
+                                                @endforeach  
+                                                @endisset
                                             </select>
                                         </div>
                                     </div> 

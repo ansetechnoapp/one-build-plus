@@ -98,9 +98,12 @@
                 <select class="form-control" id="inputground_type" name="ground_type" required>
                     <option value="{{ $allprodupdate->ground_type }}"selected>{{ $allprodupdate->ground_type }}
                     </option>
+                    <option value="Domaine agricole">Domaine agricole</option>
+                    <option value="Domaine habitable">Domaine habitable</option>
+                    <option value="Domaine semi-habitable">Domaine semi-habitable</option>
+                    <option value="Domaine agricole">Domaine agricole</option>
                     <option value="centre ville">centre ville</option>
                     <option value="agglomérations">agglomérations</option>
-                    <option value="terre agricole">terre agricole</option>
                     <option value="terres rurales">terres rurales</option>
                     <option value="urbain">urbain</option>
                     <option value="péri-urbain">péri-urbain</option>
@@ -278,9 +281,12 @@
                 <labeL class="small mb-1" for="inputground_type">Type de terre</labeL>
                 <select class="form-control" id="inputground_type" name="ground_type" required>
                     <option>sélectionnez un type de terrain</option>
+                    <option value="Domaine agricole">Domaine agricole</option>
+                    <option value="Domaine habitable">Domaine habitable</option>
+                    <option value="Domaine semi-habitable">Domaine semi-habitable</option>
+                    <option value="Domaine agricole">Domaine agricole</option>
                     <option value="centre ville">centre ville</option>
                     <option value="agglomérations">agglomérations</option>
-                    <option value="terre agricole">terre agricole</option>
                     <option value="terres rurales">terres rurales</option>
                     <option value="urbain">urbain</option>
                     <option value="péri-urbain">péri-urbain</option>
@@ -379,7 +385,9 @@
             "Sèmè-Podji", "Zangnanado"
         ],
         "Plateau": ["Ifangni", "Kétou", "Pobè", "Sakété"],
-        "Zou": ["Abomey", "Agbangnizoun", "Bohicon", "Covè", "Djidja", "Ouinhi", "Zagnanado", "Za-Kpota", "Zogbodomey"]
+        "Zou": ["Abomey", "Agbangnizoun", "Bohicon", "Covè", "Djidja", "Ouinhi", "Zagnanado", "Za-Kpota",
+            "Zogbodomey"
+        ]
     };
 
     function afficherCommunes() {

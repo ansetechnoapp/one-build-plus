@@ -25,8 +25,7 @@ Route::get('/well', function () {
 
 // Route::get('/testmodelrequest', [\App\Http\Controllers\Auth\FormRegister::class, 'testmodelrequest']);
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
-Route::post('/search_info_prod', [\App\Http\Controllers\search\prod::class, 'selectsearch'])->name('search.prod');
-
+Route::post('/search_info_prod', [\App\Http\Controllers\show_all_product\index::class, 'selectsearch'])->name('search.prod');
 
 Route::get('/', [\App\Http\Controllers\search\prod::class, 'allselecttableProdForHome'])->name('home');
 Route::get('/faqs', function () {
@@ -35,7 +34,7 @@ Route::get('/faqs', function () {
 Route::get('/aboutus', function () {
     return view('about.index');
 })->name('about');
-Route::get('/buy', [\App\Http\Controllers\prod\select::class, 'showbuyallprod'])->name('buy');
+Route::get('/buy', [\App\Http\Controllers\buy\index::class, 'showbuyallprod'])->name('buy');
 
 
 

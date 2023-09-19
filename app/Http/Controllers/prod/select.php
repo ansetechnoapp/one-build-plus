@@ -31,13 +31,6 @@ class select extends Controller
         $posts = prod::all();
         return view('dashboard.admin.list_prod.index', ['allprod' => $posts]);
     }
-    public function showbuyallprod()
-    {
-        $posts = prod::orderBy('id', 'desc')->get();
-        $commune = prod::all();
-        return view('buy.index', ['allprod' => $posts,'posts' => $commune]);
-    }
-    
     public function receptiondata1(Request $request)
     {
         // dd('ee');

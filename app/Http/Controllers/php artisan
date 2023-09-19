@@ -9,3 +9,5 @@ php artisan make:controller facture_des_services/devis
 php artisan make:controller prod/select
 php artisan make:controller prod/update
 php artisan make:controller contact/envoiemail
+php artisan make:controller show_all_product/index
+php artisan make:controller buy\index

@@ -182,7 +182,7 @@
                                                 
                                                     @csrf
                                                     <button type="submit"
-                                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</button>
+                                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Valider</button>
                                                 
                                                 {{-- <a href="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
                                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a> --}}
@@ -231,7 +231,7 @@
                                                 
                                                     @csrf
                                                     <button type="submit"
-                                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</button>
+                                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Valider</button>
                                                 
                                                 {{-- <a href="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
                 class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a> --}}

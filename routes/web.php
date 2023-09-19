@@ -94,7 +94,9 @@ Route::get('/maintenance', function () {
 Route::get('/404', function () {
     return view('404');
 });
-
+Route::get('/devisview', function () {
+    return view('devis.template');
+});
 Route::post('/devis', [\App\Http\Controllers\facture_des_services\devis::class, 'genererDevis'])->name('devis');
 Route::get('/emailsendforconfirmationuserregistration', function () {
     return view('emails.emailsendforconfirmationuserregistration');

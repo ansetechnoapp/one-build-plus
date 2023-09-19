@@ -111,6 +111,7 @@ class FormRegister extends Controller
                         $additional_option->save(); // Sauvegarde d'abord le modèle
                         $additional_option_insert = $additional_option; // Utilisez simplement l'instance existante
                         $devis = new devis();
+                        $devis->price = $price;
                         $devis->montant = $montant;
                         $devis->prod_id = $prod_id;
                         $devis->dateDevis = now()->format('Y-m-d');

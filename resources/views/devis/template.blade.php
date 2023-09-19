@@ -49,6 +49,7 @@
         .line {
             border: 3px solid black;
         }
+
         .flexEntete_devis {
             display: flex;
         }
@@ -101,9 +102,9 @@
                 <div class="flexEntete_devis">
                     <div>
                         <h2>Informations du Client:</h2>
-                        <p>Nom: {{ $nom }}</p>
-                        <p>Prénom: {{ $prenom }}</p>
-                        <p>Email: {{ $email }}</p>
+                        <p>Nom: rita</p>
+                        <p>Prénom: ive</p>
+                        <p>Email: email</p>
 
                     </div>
                     <div></div>
@@ -123,23 +124,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($services as $service)
-                            <tr>
-                                <td>1</td>
-                                <td>100</td>
-                                <td>Mensuel</td>
-                                <td>{{ $service }}</td>
-                                <td>30</td>
-                                <td>40</td>
-                                <td>{{ $montantTotal }}</td>
-                            </tr>
-                        @endforeach
+                        <tr>
+                            <td>1</td>
+                            <td>100</td>
+                            <td>Mensuel</td>
+                            <td>service</td>
+                            <td>30</td>
+                            <td>40</td>
+                            <td>montantTotal</td>
+                        </tr>
                     </tbody>
                 </table>
-                <h2>Montant Total: {{ $montantTotal }}</h2>
+                <h2>Montant Total: montantTotal</h2>
 
-                <p>Date du Devis: {{ $dateDevis }}</p>
-                <p>Date d'Expiration: {{ $dateExpiration }}</p>
+                <p>Date du Devis: dateDevis</p>
+                <p>Date d'Expiration: dateExpiration</p>
 
                 <h2>Conditions Générales:</h2>
                 <ul>
@@ -158,6 +157,8 @@
         </section>
 
         <footer></footer>
+    </div>
+
 
 </body>
 

@@ -62,6 +62,7 @@ class insert extends Controller
                     ]);
 
                     $devis = new devis();
+                    $devis->price = $price;
                     $devis->montant = $montant;
                     $devis->prod_id = $prod_id;
                     $devis->users_id = $user_id;

@@ -13,17 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-
-
-
-
 Route::get('/well', function () {
     return view('reactJS/reactjs');
 });
 
 // Route::get('/testmodelrequest', [\App\Http\Controllers\Auth\FormRegister::class, 'testmodelrequest']);
+Route::post('/subscribe', [\App\Http\Controllers\Auth\FormRegister::class, 'subscribe'])->name('subscribe');
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
 Route::post('/search_info_prod', [\App\Http\Controllers\show_all_product\index::class, 'selectsearch'])->name('search.prod');
 
@@ -121,10 +116,8 @@ Route::middleware(['auth', 'isActive'])->group(function () {
     })->name('dashboard.security');
     Route::match(array('GET', 'POST'), '/ChangePassword', [\App\Http\Controllers\save\account::class, 'ChangePassword'])->name('account.security.ChangePassword');
     Route::post('/save_info_prod', [\App\Http\Controllers\prod\insert::class, 'store'])->name('save.prod');
-
     Route::match(array('GET', 'POST'), '/dashboard-payment.{id}.{price}', [\App\Http\Controllers\prod\select::class, 'receptiondata1'])->name('dashboard.paymnt');
     Route::post('/dashboard-paymnt', [\App\Http\Controllers\prod\insert::class, 'generateDevisForProperty'])->name('generateDevisForProperty');
-
     Route::match(array('GET', 'POST'), '/Logout', [\App\Http\Controllers\Auth\Logout::class, 'logout'])->name('Logout');
 });
 /*

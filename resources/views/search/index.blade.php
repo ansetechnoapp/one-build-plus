@@ -238,6 +238,4 @@
         <script src="assets/js/app.js"></script>
         <!-- JAVASCRIPTS -->
     </body>
-
-<!-- Mirrored from shreethemes.in/OBP/layouts/grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:52:37 GMT -->
 </html>

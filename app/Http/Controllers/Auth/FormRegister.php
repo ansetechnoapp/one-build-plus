@@ -240,7 +240,7 @@ class FormRegister extends Controller
         $montant = $request->montant;
         $id = $request->id;
         if (isset($price) && isset($id)) {
-            return view('payment.index', compact('price', 'lastName', 'firstName', 'payment_frequency','montant', 'id'));
+            return view('payment.index', compact('price', 'lastName', 'firstName', 'payment_frequency', 'montant', 'id'));
         } else {
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
@@ -279,7 +279,7 @@ class FormRegister extends Controller
 
             try {
                 $request->validate($rules, $messages, $customAttributes);
-                return view('payment.suite', compact('price', 'lastName', 'firstName','payment_frequency','montant', 'id'));
+                return view('payment.suite', compact('price', 'lastName', 'firstName', 'payment_frequency', 'montant', 'id'));
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
@@ -290,7 +290,7 @@ class FormRegister extends Controller
             }
         } else {
             // dd('rr');
-            return view('payment.suite', compact('price', 'lastName', 'firstName','payment_frequency','montant', 'id'));
+            return view('payment.suite', compact('price', 'lastName', 'firstName', 'payment_frequency', 'montant', 'id'));
         }
     }
     public function receptiondata2(Request $request)
@@ -330,7 +330,7 @@ class FormRegister extends Controller
 
             try {
                 $request->validate($rules, $messages, $customAttributes);
-                return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees','payment_frequency','montant'));
+                return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees', 'payment_frequency', 'montant'));
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
@@ -341,7 +341,7 @@ class FormRegister extends Controller
             }
         } else {
             // dd('rr');
-            return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees','payment_frequency','montant'));
+            return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees', 'payment_frequency', 'montant'));
         }
     }
     public function SaveSignupOneStep(Request $request)
@@ -350,7 +350,7 @@ class FormRegister extends Controller
         $firstName = $request->firstName;
         $email = $request->email;
         $payment_frequency = $request->payment_frequency;
-        
+
         if (isset($lastName) || isset($firstName) || isset($email)) {
             // Définition des règles de validation
             $rules = [
@@ -360,7 +360,7 @@ class FormRegister extends Controller
             ];
 
             // Définition des messages d'erreur personnalisés
-            $messages = [   
+            $messages = [
                 'lastName' => 'Votre nom n\'est pas valide.',
                 'firstName' => 'Votre prénom n\'est pas valide.',
                 'email' => "L'adresse email n'est pas valide.",
@@ -383,7 +383,7 @@ class FormRegister extends Controller
                     Session::put('user_firstName', $firstName);
                     Session::put('user_email', $email);
                     Session::put('payment_frequency', $payment_frequency);
-                    
+
                     return view('auth-signup.step2');
                 } else {
                     return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
@@ -399,6 +399,9 @@ class FormRegister extends Controller
         } else {
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
-
+    }
+    public function subscribe(Request $request)
+    {
+        $subscribe = $request->subscribe;
     }
 }

@@ -42,8 +42,7 @@
                                                 <th class="border-gray-200" scope="col">Numéro</th>
                                                 <th class="border-gray-200" scope="col">addresse</th>
                                                 <th class="border-gray-200" scope="col">Date de naissance</th>
-                                                <th class="border-gray-200" scope="col" style="width: 5%">Activation
-                                                    ou Désactivation</th>
+                                                <th class="border-gray-200" scope="col" style="width: 5%">Statut compte</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,19 +58,19 @@
                                                         <td>{{ $post->address }}</td>
                                                         <td>{{ $post->birthday }}</td>
 
-                                                        @if ($post->isactive === '2')
+                                                        @if ($post->isactive == '2')
                                                             <td>
                                                                 <a
                                                                     href="{{ route('user.activate', ['user_id' => $post->id]) }}">Activer</a>
                                                             </td>
                                                         @endif
-                                                        @if ($post->isactive === '1')
+                                                        @if ($post->isactive == '1')
                                                             <td>
                                                                 <a
                                                                     href="{{ route('user.disable', ['user_id' => $post->id]) }}">Désativer</a>
                                                             </td>
                                                         @endif
-                                                        @if ($post->isactive === '0')
+                                                        @if ($post->isactive == '0')
                                                             <td>
                                                                 <a href="#">Compte Non Activer</a>
                                                             </td>

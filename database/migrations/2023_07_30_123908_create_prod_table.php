@@ -24,6 +24,12 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('ground_type');
             $table->string('status')->default('disponible');
+            $table->string('propertyName')->nullable();
+            $table->Integer('number_of_bedrooms')->nullable();
+            $table->Integer('number_of_bathrooms')->nullable();
+            $table->Integer('monthlyRent')->nullable();
+            $table->string('location')->default('non');
+            $table->string('locationType')->default('non sanitaire');
             $table->timestamps();
         });
     }

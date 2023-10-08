@@ -61,4 +61,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(devis::class, 'users_id');
     }
+    public function comment()
+    {
+        return $this->hasOne(comment::class, 'users_id');
+    }
 }

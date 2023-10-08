@@ -49,7 +49,165 @@
     <section class="relative md:pb-24 pb-16">
         @include('include.formsearch')
         <!--end container-->
+        <div class="container lg:mt-24 mt-16">
+            <div class="grid grid-cols-1 pb-8 text-center">
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Chambre a louer disponible</h3>
 
+                <p class="text-slate-400 max-w-xl mx-auto">Trouvez des chambres a louer.</p>
+            </div>
+            <div class="grid grid-cols-1 mt-8 relative">
+                <div class="tns-outer" id="tns2-ow">
+                    <div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button"
+                            data-controls="prev" tabindex="-1" aria-controls="tns2"><i
+                                class="mdi mdi-chevron-left "></i></button><button type="button" data-controls="next"
+                            tabindex="-1" aria-controls="tns2"><i class="mdi mdi-chevron-right"></i></button></div>
+                    <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span
+                            class="current">2 to 4</span> of 6</div>
+                    <div id="tns2-mw" class="tns-ovh">
+                        <div class="tns-inner" id="tns2-iw">
+                            <div class="tiny-home-slide-three  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal"
+                                id="tns2" style="transform: translate3d(-16.6667%, 0px, 0px);">
+                                @isset($posts1)
+                                    @foreach ($posts1 as $data)
+                                        <div class="tiny-slide tns-item" id="tns2-item0" aria-hidden="true" tabindex="-1">
+                                            <div
+                                                class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                                <div class="relative">
+                                                    <img src="assets/images/property/1.jpg" alt="">
+
+                                                    {{-- <div class="absolute top-4 end-4">
+                                                        <a href="javascript:void(0)"
+                                                            class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
+                                                                class="mdi mdi-heart mdi-18px"></i></a>
+                                                    </div> --}}
+                                                </div>
+
+                                                <div class="p-6">
+                                                    <div class="pb-6">
+                                                        <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
+                                                            class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                                    </div>
+
+                                                    <ul
+                                                        class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                                        <li class="flex items-center me-4">
+                                                            <i
+                                                                class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                            <span>{{ $data->communes }}</span>
+                                                        </li>
+
+                                                        <li class="flex items-center me-4">
+                                                            <i
+                                                                class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                            {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
+                                                            <span>{{ $data->borough }}</span>
+                                                        </li>
+
+                                                        <li class="flex items-center">
+                                                            <i
+                                                                class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                            {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
+                                                            <span>{{ $data->area }}</span>
+                                                        </li>
+                                                    </ul>
+
+                                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                                        <li>
+                                                            <span class="text-slate-400">Prix</span>
+                                                            <p class="text-lg font-medium">{{ $data->price }} fcfa</p>
+                                                        </li>
+
+                                                        <li>
+                                                            <span class="text-slate-400">Rating</span>
+                                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline text-black dark:text-white">5.0</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!--end property content-->
+                                        </div>
+                                    @endforeach
+                                @endisset
+                                @isset($posts2) 
+                                    @foreach ($posts2 as $data)
+                                        <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
+                                            <div
+                                                class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                                <div class="relative">
+                                                    <img src="assets/images/property/2.jpg" alt="">
+
+                                                    {{-- <div class="absolute top-4 end-4">
+                                                        <a href="javascript:void(0)"
+                                                            class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
+                                                                class="mdi mdi-heart mdi-18px"></i></a>
+                                                    </div> --}}
+                                                </div>
+
+                                                <div class="p-6">
+                                                    <div class="pb-6">
+                                                        <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
+                                                            class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                                    </div>
+
+                                                    <ul
+                                                        class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                                        <li class="flex items-center me-4">
+                                                            <i
+                                                                class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                            <span>{{ $data->borough }}</span>
+                                                        </li>
+
+                                                        <li class="flex items-center me-4">
+                                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                                            <span>{{ $data->department }}</span>
+                                                        </li>
+
+                                                        <li class="flex items-center">
+                                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                                            <span>{{ $data->communes }}</span>
+                                                        </li>
+                                                    </ul>
+
+                                                    <ul class="pt-6 flex justify-between items-center list-none">
+                                                        <li>
+                                                            <span class="text-slate-400">Prix</span>
+                                                            <p class="text-lg font-medium">{{ $data->price }} fcfa </p>
+                                                        </li>
+
+                                                        <li>
+                                                            <span class="text-slate-400">Rating</span>
+                                                            <ul class="text-lg font-medium text-amber-400 list-none">
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                                <li class="inline text-black dark:text-white">5.0</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!--end property content-->
+                                        </div>
+                                    @endforeach
+                                @endisset
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container lg:mt-24 mt-16">
             <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
                 @include('include.1sectioncontainer')
@@ -145,7 +303,7 @@
                                         </div>
                                     @endforeach
                                 @endisset
-                                @isset($posts2)
+                                @isset($posts2) 
                                     @foreach ($posts2 as $data)
                                         <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
                                             <div
@@ -317,6 +475,8 @@
                 <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
             </div>
             <!--end grid-->
+            
+            
 
             <div class="flex justify-center relative mt-16">
                 <div class="relative lg:w-1/3 md:w-1/2 w-full">
@@ -329,32 +489,37 @@
                     </div>
 
                     <div class="tiny-single-item">
-                        <div class="tiny-slide">
-                            <div class="text-center">
-                                <p class="text-xl text-slate-400 italic"> " OBP made the processes so easy. OBP
-                                    instantly increased the amount of interest and ultimately saved us over 10,000 fcfa.
-                                    "
-                                </p>
+                        @isset($selectCommment)
+            @foreach ($selectCommment as $item)
+            <div class="tiny-slide">
+                <div class="text-center">
+                    <p class="text-xl text-slate-400 italic"> " {{ $item->Message }} "
+                    </p>
 
-                                <div class="text-center mt-5">
-                                    <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                                        <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        <li class="inline"><i class="mdi mdi-star"></i></li>
-                                    </ul>
+                    <div class="text-center mt-5">
+                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
+                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                            <li class="inline"><i class="mdi mdi-star"></i></li>
+                        </ul>
 
-                                    <img src="assets/images/client/01.jpg"
-                                        class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
-                                        alt="">
-                                    <h6 class="mt-2 fw-semibold">Christa Smith</h6>
-                                    <span class="text-slate-400 text-sm">Manager</span>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="assets/images/client/01.jpg"
+                            class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
+                            alt="">
+                        <h6 class="mt-2 fw-semibold">{{ $item->user->lastName }} {{ $item->user->firstName }}</h6>
+                        <span class="text-slate-400 text-sm">{{ $item->user->Profession }}</span>
+                    </div>
+                </div>
+            </div>
+                
+            @endforeach
+                
+            @endisset
+                        
 
-                        <div class="tiny-slide">
+                        {{-- <div class="tiny-slide">
                             <div class="text-center">
                                 <p class="text-xl text-slate-400 italic"> " I highly recommend OBP as the new way to
                                     sell your home "by owner". My home sold in 24 hours for the asking price. Best
@@ -470,7 +635,9 @@
                                     <span class="text-slate-400 text-sm">Manager</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+
+
                     </div>
                 </div>
             </div>

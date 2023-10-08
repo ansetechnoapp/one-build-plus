@@ -1,5 +1,4 @@
 php artisan make:controller prod/insert --resource 
-php artisan make:controller search/prod
 php artisan make:controller Auth/FormLogin
 php artisan make:controller Auth/FormRegister
 php artisan make:controller Auth/Logout
@@ -11,3 +10,9 @@ php artisan make:controller prod/update
 php artisan make:controller contact/envoiemail
 php artisan make:controller show_all_product/index
 php artisan make:controller buy\index
+php artisan make:controller dashboard\commentUser\view
+php artisan make:controller dashboard\commentUser\update
+php artisan make:controller home\index
+php artisan make:controller service
+php artisan make:controller dashboard\admin\commentUser\view
+php artisan make:controller dashboard\admin\commentUser\update

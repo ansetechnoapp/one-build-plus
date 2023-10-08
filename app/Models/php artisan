@@ -3,3 +3,4 @@ php artisan make:model additional_option
 php artisan make:model img 
 php artisan make:model prod
 php artisan make:model devis
+php artisan make:model comment

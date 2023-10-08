@@ -19,11 +19,11 @@
     </li> --}}
 
     @if (Auth::user()->role == 'admin')
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard.admin') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Enrégistrement des produits</span></a>
-    </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('dashboard.admin') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Enrégistrement des produits</span></a>
+        </li>
         <li class="nav-item active">
             <a class="nav-link" href="{{ route('list_prod') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -33,6 +33,16 @@
             <a class="nav-link" href="{{ route('list_user') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Liste des utilisateurs</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('dashboard.admin.commentUser') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Gestion avis Client</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('dashboard.admin.Rental_management') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Ajout de biens locative</span></a>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="{{ route('form.send.sms') }}">
@@ -60,7 +70,11 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Liste des devis</span></a>
         </li>
-
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('dashboard.commentUser') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Avis Client</span></a>
+        </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">

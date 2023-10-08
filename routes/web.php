@@ -22,7 +22,7 @@ Route::post('/subscribe', [\App\Http\Controllers\Auth\FormRegister::class, 'subs
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
 Route::post('/search_info_prod', [\App\Http\Controllers\show_all_product\index::class, 'selectsearch'])->name('search.prod');
 
-Route::get('/', [\App\Http\Controllers\search\prod::class, 'allselecttableProdForHome'])->name('home');
+Route::get('/', [\App\Http\Controllers\home\index::class, 'requestForHome'])->name('home');
 Route::get('/faqs', function () {
     return view('faqs.index');
 })->name('faqs');
@@ -119,6 +119,11 @@ Route::middleware(['auth', 'isActive'])->group(function () {
     Route::match(array('GET', 'POST'), '/dashboard-payment.{id}.{price}', [\App\Http\Controllers\prod\select::class, 'receptiondata1'])->name('dashboard.paymnt');
     Route::post('/dashboard-paymnt', [\App\Http\Controllers\prod\insert::class, 'generateDevisForProperty'])->name('generateDevisForProperty');
     Route::match(array('GET', 'POST'), '/Logout', [\App\Http\Controllers\Auth\Logout::class, 'logout'])->name('Logout');
+    Route::match(array('GET', 'POST'), '/comment', [\App\Http\Controllers\dashboard\commentUser\view::class, 'view'])->name('dashboard.commentUser');
+    Route::match(array('GET', 'POST'), '/savecomment', [\App\Http\Controllers\dashboard\commentUser\view::class, 'saveComment'])->name('dashboard.save.commentUser');
+    Route::match(array('GET', 'POST'), '/update.view.comment.{id}fkldjxllsjkdqsjksk', [\App\Http\Controllers\dashboard\commentUser\update::class, 'affichage'])->name('dashboard.update.view.commentUser');
+    Route::match(array('GET', 'POST'), '/updatecomment', [\App\Http\Controllers\dashboard\commentUser\update::class, 'saveComment'])->name('dashboard.update.commentUser');
+    
 });
 /*
 |--------------------------------------------------------------------------
@@ -138,6 +143,12 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::post('/updade_prod', [\App\Http\Controllers\prod\update::class, 'updateprod'])->name('updade.prod');
     Route::get('/user_disable{user_id}', [\App\Http\Controllers\save\account::class, 'userDisable'])->name('user.disable');
     Route::get('/user_activate{user_id}', [\App\Http\Controllers\save\account::class, 'userActivate'])->name('user.activate');
+    Route::match(array('GET', 'POST'), '/admin.comment', [\App\Http\Controllers\dashboard\admin\commentUser\view::class, 'view'])->name('dashboard.admin.commentUser');
+    Route::match(array('GET', 'POST'), '/admin.comment.update.statut.disable{id}', [\App\Http\Controllers\dashboard\admin\commentUser\view::class, 'statutDisable'])->name('admin.comment.update.statut.disable');
+    Route::match(array('GET', 'POST'), '/admin.comment.update.statut.active{id}', [\App\Http\Controllers\dashboard\admin\commentUser\view::class, 'statutActive'])->name('admin.comment.update.statut.active');
+    Route::get('/dashboard.admin.Rental_management', function () {
+        return view('dashboard.admin.Rental_management.index');
+    })->name('dashboard.admin.Rental_management');
 });
 
 /*

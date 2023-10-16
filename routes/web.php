@@ -123,6 +123,7 @@ Route::middleware(['auth', 'isActive'])->group(function () {
     Route::match(array('GET', 'POST'), '/savecomment', [\App\Http\Controllers\dashboard\commentUser\view::class, 'saveComment'])->name('dashboard.save.commentUser');
     Route::match(array('GET', 'POST'), '/update.view.comment.{id}fkldjxllsjkdqsjksk', [\App\Http\Controllers\dashboard\commentUser\update::class, 'affichage'])->name('dashboard.update.view.commentUser');
     Route::match(array('GET', 'POST'), '/updatecomment', [\App\Http\Controllers\dashboard\commentUser\update::class, 'saveComment'])->name('dashboard.update.commentUser');
+    Route::post('/save_info_prod_rent', [\App\Http\Controllers\dashboard\admin\Rental_management\index::class, 'store'])->name('save.prod_rent');
     
 });
 /*
@@ -149,6 +150,8 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::get('/dashboard.admin.Rental_management', function () {
         return view('dashboard.admin.Rental_management.index');
     })->name('dashboard.admin.Rental_management');
+    Route::get('/Rental.management.list_prod', [\App\Http\Controllers\dashboard\admin\Rental_management\list_prod::class, 'show'])->name('Rental.management.list.prod');
+
 });
 
 /*

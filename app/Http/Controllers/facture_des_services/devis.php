@@ -46,8 +46,7 @@ class devis extends Controller
                 'dateExpiration' => $getDevis->dateExpiration,
             ];
 
-            $pdf = Pdf::loadView('devis.index', $data);
-            return $pdf->stream('devis.pdf');
+            return Pdf::loadView('devis.index', $data)->setPaper('A4', 'Portrait')->stream();
         } else {
             // Gérez le cas où les modèles n'ont pas été trouvés
             // Par exemple, redirigez avec un message d'erreur

@@ -30,19 +30,22 @@
                 <span>Liste des produits</span></a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('list_user') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Liste des utilisateurs</span></a>
-        </li>
-        <li class="nav-item active">
             <a class="nav-link" href="{{ route('dashboard.admin.commentUser') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Gestion avis Client</span></a>
         </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('dashboard.admin.Rental_management') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Ajout de biens locative</span></a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Gestion location</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('dashboard.admin.Rental_management') }}">Ajout de biens locative</a>
+                    <a class="collapse-item" href="{{ route('Rental.management.list.prod') }}">Liste biens locative</a>
+                </div>
+            </div>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="{{ route('form.send.sms') }}">
@@ -51,15 +54,16 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                aria-expanded="true" aria-controls="collapsePages">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                aria-expanded="true" aria-controls="collapsePages2">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>compte</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="{{ route('dashboard.profil') }}">Profile</a>
                     {{-- <a class="collapse-item" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a> --}}
+                    <a class="collapse-item" href="{{ route('list_user') }}">Liste des utilisateurs</a>
                     <a class="collapse-item" href="{{ route('dashboard.security') }}">Sécurité</a>
                 </div>
             </div>

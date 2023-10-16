@@ -16,3 +16,5 @@ php artisan make:controller home\index
 php artisan make:controller service
 php artisan make:controller dashboard\admin\commentUser\view
 php artisan make:controller dashboard\admin\commentUser\update
+php artisan make:controller dashboard\admin\Rental_management\index
+php artisan make:controller dashboard\admin\Rental_management\list_prod

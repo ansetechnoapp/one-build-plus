@@ -3,20 +3,24 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Devis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            font-size: 83%;
+            
         }
 
         .body {
-            margin: 0 auto;
+            margin: 0;
             /* max-width: 900px; */
             padding: 20px;
             /* border: 1px solid #ccc; */
             background-color: #ffffff;
+            
         }
 
 
@@ -24,30 +28,26 @@
         .entete {
             color: #fff;
             /* Couleur du texte */
-            display: flex;
-            /* Utilisation de Flexbox pour aligner les éléments */
-            align-items: center;
-            /* Centrer verticalement les éléments */
-            justify-content: space-between;
-            /* Les logos sont alignés aux extrémités, le texte est centré */
+            width: 50px;
             padding: 2px;
+            display: contents;
             /* Marge intérieure autour de l'en-tête */
         }
 
-        .logo-left img,
-        .logo-right img {
+        .logo-left img {
             max-height: 20px;
             /* Hauteur maximale des logos (ajustez selon vos besoins) */
         }
 
-        .header-text {
+        .header-text p {
+
             color: black;
             text-align: center;
             /* Centrer le texte horizontalement */
         }
 
         .line {
-            border: 3px solid black;
+            border: 2px solid black;
         }
 
         .flexEntete_devis {
@@ -83,9 +83,6 @@
                 </div>
                 <div class="header-text">
                     <p>SOCIETE ONE BUILD PLUS OBP</p>
-                </div>
-                <div class="logo-right">
-                    <img src="assets/images/logo-dark.png" alt="Logo droite">
                 </div>
             </div>
             <div class="header-text">
@@ -155,8 +152,14 @@
                 </p>
             </div>
         </section>
-
-        <footer></footer>
+        <div class="line"></div>
+        <footer>
+            <div class="header-text">
+                <p>Nous vous Garantissons la Sécurité de vos Biens Immobiliers et Educatifs.
+                    N° RCCM RB/COT/23 B 35222; IFU n* 3202378122260 Tel: +229 98 27 27 16 /69 68 47 05 (Appel et
+                    WhatsApp). </p>
+            </div>
+        </footer>
     </div>
 
 

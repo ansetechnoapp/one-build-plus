@@ -29,6 +29,12 @@ class prod extends Model
         'description',
         'ground_type',
         'status',
+        'propertyName',
+        'number_of_bedrooms',
+        'number_of_bathrooms',
+        'monthlyRent',
+        'location',
+        'locationType'
     ];
     public function img()
     {

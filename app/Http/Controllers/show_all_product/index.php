@@ -19,10 +19,12 @@ class index extends Controller
 
         $selectCommunetableProdForHome = crudProd::distinct()->select('department', 'communes')->get();
         $selectGround_typetableProdForHome = crudProd::distinct()->select('ground_type')->get();
-        $query = crudProd::where('ground_type', $groundType)
+        $query = crudProd::select('ground_type', 'communes', 'price')
+            ->where('ground_type', $groundType)
             ->where('communes', $communes)
             ->wherebetween('price', [$priceMin, $priceMax])
+            ->distinct()
             ->get();
-        return view('show_all_product.index', ['ground_type' => $selectGround_typetableProdForHome,'commune' => $selectCommunetableProdForHome,'posts' => $query]);
+        return view('show_all_product.index', ['ground_type' => $selectGround_typetableProdForHome, 'commune' => $selectCommunetableProdForHome, 'posts' => $query]);
     }
 }

@@ -121,18 +121,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($services as $service)
+                        {{-- @foreach ($services as $service) --}}
                             <tr>
-                                <td>1</td>
-                                <td>100</td>
-                                <td>Mensuel</td>
+                                <td>{{ $numDevis }}</td>
+                                <td>{{ $price }}</td>
+                                <td>{{ $montantTotal }}</td>
                                 <td>{{ $service }}</td>
-                                <td>30</td>
-                                <td>40</td>
+                                <td>{{ $service1 }}</td>
+                                <td>{{ $service2 }}</td>
                                 <td>{{ $montantTotal }}</td>
                             </tr>
-                        @endforeach
-                    </tbody>
+                        {{-- @endforeach --}}
+                    </tbody> 
                 </table>
                 <h2>Montant Total: {{ $montantTotal }}</h2>
 

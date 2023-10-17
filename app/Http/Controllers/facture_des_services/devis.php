@@ -33,15 +33,15 @@ class devis extends Controller
 
         if ($user && $additionalOption && $getDevis) {
             $data = [
+                'numDevis' => $getDevis->id,
                 'nom' => $user->lastName,
                 'prenom' => $user->firstName,
                 'email' => $user->email,
-                'services' => [
-                    $additionalOption->registration_andf,
-                    $additionalOption->formality_fees,
-                    $additionalOption->notary_fees,
-                ],
-                'montantTotal' => '500',
+                'service' => $additionalOption->registration_andf,
+                'service1' => $additionalOption->formality_fees,
+                'service2' => $additionalOption->notary_fees,
+                'price' => $getDevis->price,
+                'montantTotal' => $getDevis->montant,
                 'dateDevis' => $getDevis->dateDevis,
                 'dateExpiration' => $getDevis->dateExpiration,
             ];

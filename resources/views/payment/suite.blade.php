@@ -36,14 +36,17 @@
                         <div class="grid grid-cols-1">
 
 
-                            <input type="hidden" name="lastName" value="{{ $lastName }}">
-                            <input type="hidden" name="firstName" value="{{ $firstName }}">
-                            <input type="hidden" name="payment_frequency" value="{{ $payment_frequency }}">
-                            <input type="hidden" name="id" value="{{ $id }}">
+                            <input type="hidden" name="lastName" value="{{ Session::get('user_lastName') }}">
+                            <input type="hidden" name="firstName" value="{{ Session::get('user_firstName') }}">
+                            <input type="hidden" name="payment_frequency"
+                                value="
+                            {{ Session::get('payment_frequency') }}
+                            ">
+                            <input type="hidden" name="id" value="{{ Session::get('prod_id') }}">
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginEmail">prix:</label>
                                 <input id="input_price" type="number" class="form-input mt-3" name="price"
-                                    value="{{ $price }}" readonly required>
+                                    value="{{ Session::get('prod_price') }}" readonly required>
                             </div>
                             <div class="mb-4">
                                 <label>
@@ -77,21 +80,21 @@
 
                             <div class="mb-4">
                                 <label class="font-medium">Montant Total:</label>
-
-                                @isset($montant)
+{{-- @dd() --}}
+                                @if (Session::get('prod_price') < Session::get('montant'))
                                     <input id="montant_total" type="number" name="montant" class="form-input mt-3"
-                                        value="{{ $montant }}" readonly required>
-                                @endisset
+                                        value="{{ Session::get('montant') }}" readonly required>
+                                @endif
 
-                                @empty($montant)
+                                @if (Session::get('prod_price') >= Session::get('montant'))
                                     <input id="montant_total" type="number" name="montant" class="form-input mt-3"
-                                        value="{{ $price }}" readonly required>
-                                @endempty
+                                        value="{{ Session::get('prod_price') }}" readonly required>
+                                @endif
                             </div>
 
                             <div class="flex">
                                 <div class="p-1 w-1/2">
-                                    <a href="{{ route('paymnt', ['price' => $price, 'lastName' => $lastName, 'firstName' => $firstName, 'payment_frequency' => $payment_frequency, 'id' => $id]) }}"
+                                    <a href="{{ route('paymnt', [Session::get('prod_id'), Session::get('prod_price')]) }}"
                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                 </div>
                                 <div class="p-1 w-1/2">

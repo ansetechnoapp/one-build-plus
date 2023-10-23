@@ -5,6 +5,7 @@ php artisan make:migration create_additional_option_table
 php artisan make:migration create_img_table
 php artisan make:migration create_devis_table
 php artisan make:migration create_comment_table
+php artisan make:migration create_faq_title_table
 php artisan migrate
 
 
@@ -19,5 +20,3 @@ php artisan migrate:reset
 php artisan migrate:rollback
 
 php artisan migrate:refresh --seed
-
-

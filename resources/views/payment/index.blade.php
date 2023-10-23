@@ -30,12 +30,12 @@
                         
                         <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('paymnt.form') }}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$id}}">
-                            <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
+                            <input type="hidden" name="id" value="{{ Session::get('prod_id') }}">
+                            <input type="hidden" name="payment_frequency" value="{{ Session::get('payment_frequency') }}">
                             <div class="grid grid-cols-1">
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Montant:</label>
-                                    <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{$price}}" readonly required>
+                                    <input id="LoginEmail" type="number" class="form-input mt-3" name="price" placeholder="montant" value="{{ Session::get('prod_price') }}" readonly required>
                                     @if ($errors->has('price'))
                                     <div class="alert alert-danger">{{ $errors->first('price') }}</div>
                                 @endif
@@ -43,21 +43,21 @@
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Nom:</label>
-                                    <input id="LoginPassword" name="lastName" type="text" class="form-input mt-3" placeholder="Nom" value="{{$lastName}}" required>
+                                    <input id="LoginPassword" name="lastName" type="text" class="form-input mt-3" placeholder="Nom" value="{{ Session::get('user_lastName') }}" required>
                                     @if ($errors->has('lastName'))
                                     <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
                                 @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">prénom:</label>
-                                    <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom" value="{{$firstName}}" required>
+                                    <input id="LoginPassword" type="text" name="firstName" class="form-input mt-3" placeholder="prénom" value="{{ Session::get('user_firstName') }}" required>
                                     @if ($errors->has('firstName'))
                                     <div class="alert alert-danger">{{ $errors->first('firstName') }}</div>
                                 @endif
                                 </div> 
                                 <div class="flex">
                                     <div class="p-1 w-1/2">
-                                        <a href="{{ route('property_detail', ['id' =>$id, 'param2' => 'valeur2']) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
+                                        <a href="{{ route('property_detail', ['id' => Session::get('prod_id'), 'param2' => 'valeur2']) }}" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                     </div>
                                     <div class="p-1 w-1/2">
                                         <button type="submit" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">suivant</button>

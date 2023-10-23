@@ -4,3 +4,5 @@ php artisan make:model img
 php artisan make:model prod
 php artisan make:model devis
 php artisan make:model comment
+php artisan make:model faq
+php artisan make:model faq_title

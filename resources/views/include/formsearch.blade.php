@@ -56,6 +56,12 @@
                         <form method="POST" action="{{ route('search.prod') }}">
                             @csrf
                             <div class="registration-form text-dark text-start">
+                                @if($errors->has('comparePrice'))
+                                    <div class="lg:mt-6" style="color: firebrick;text-align: center;
+                                    margin-bottom: 15px;">
+                                        {{ $errors->first('comparePrice') }}
+                                    </div>
+                                @endif
                                 <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
 
                                     <div style="height: auto;">
@@ -174,7 +180,7 @@
                                     </div>
                                     
 
-
+                                    
 
                                     <div class="lg:mt-6">
                                         <input type="submit" id="search-buy" name="search"

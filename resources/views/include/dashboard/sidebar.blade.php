@@ -48,6 +48,11 @@
             </div>
         </li>
         <li class="nav-item active">
+            <a class="nav-link" href="{{ route('faq_form') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>formulaire FAQ</span></a>
+        </li>
+        <li class="nav-item active">
             <a class="nav-link" href="{{ route('form.send.sms') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Envoie SMS</span></a>

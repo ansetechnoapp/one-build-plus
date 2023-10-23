@@ -18,3 +18,6 @@ php artisan make:controller dashboard\admin\commentUser\view
 php artisan make:controller dashboard\admin\commentUser\update
 php artisan make:controller dashboard\admin\Rental_management\index
 php artisan make:controller dashboard\admin\Rental_management\list_prod
+php artisan make:controller dashboard\admin\Rental_management\list_prod
+php artisan make:controller dashboard\admin\faq_form\index
+php artisan make:controller dashboard\admin\faq_form\title

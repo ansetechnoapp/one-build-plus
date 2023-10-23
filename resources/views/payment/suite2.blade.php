@@ -33,15 +33,16 @@
 
                     <form class="ltr:text-left rtl:text-right" action="{{ route('sign.up.user.and.prod') }}" method="POST">
                         @csrf
-                        <input type="hidden" name="price" value="{{ $price }}">
-                        <input type="hidden" name="lastName" value="{{ $lastName }}">
-                        <input type="hidden" name="firstName" value="{{ $firstName }}">
-                        <input type="hidden" name="registration_andf" value="{{$registration_andf}}">
-                        <input type="hidden" name="formality_fees" value="{{$formality_fees}}">
-                        <input type="hidden" name="notary_fees" value="{{$notary_fees}}">
-                        <input type="hidden" name="payment_frequency" value="{{$payment_frequency}}">
-                        <input type="hidden" name="id" value="{{$id}}">
-                        <input type="hidden" name="montant" value="{{ $montant }}">
+
+                        <input type="hidden" name="price" value="{{ Session::get('prod_price') }}">
+                        <input type="hidden" name="lastName" value="{{ Session::get('user_lastName') }}">
+                        <input type="hidden" name="firstName" value="{{ Session::get('user_firstName') }}">
+                        <input type="hidden" name="registration_andf" value="{{ Session::get('registration_andf') }}">
+                        <input type="hidden" name="formality_fees" value="{{ Session::get('formality_fees') }}">
+                        <input type="hidden" name="notary_fees" value="{{ Session::get('notary_fees') }}">
+                        <input type="hidden" name="payment_frequency" value="{{ Session::get('payment_frequency') }}">
+                        <input type="hidden" name="id" value="{{ Session::get('prod_id') }}">
+                        <input type="hidden" name="montant" value="{{ Session::get('montant') }}">
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginEmail">Email:</label>
@@ -57,6 +58,11 @@
                                 <label class="font-medium" for="LoginPassword">Retapez votre mot de passe:</label>
                                 <input id="LoginPassword" type="password" name="password_confirm" class="form-input mt-3"
                                     placeholder="Mot de passe" required>
+                                    @if (isset($comparePassword))
+                                    <div class="alert alert-danger">
+                                        {{ $comparePassword }}
+                                    </div>
+                                @endif
                             </div>
                             {{-- <div class="flex justify-between mb-4">
                                     <div class="inline-flex items-center">
@@ -68,7 +74,7 @@
                                 </div> --}}
                             <div class="flex">
                                 <div class="p-1 w-1/2">
-                                    <a href="{{ route('paymnt.form', ['price'=>$price,'lastName'=>$lastName,'firstName'=>$firstName,'payment_frequency'=>$payment_frequency, 'montant' => $montant,'id'=>$id]) }}"
+                                    <a href="{{ route('paymnt.form') }}"
                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                 </div>
                                 <div class="p-1 w-1/2">

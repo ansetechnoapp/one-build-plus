@@ -23,9 +23,7 @@ Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->nam
 Route::post('/search_info_prod', [\App\Http\Controllers\show_all_product\index::class, 'selectsearch'])->name('search.prod');
 
 Route::get('/', [\App\Http\Controllers\home\index::class, 'requestForHome'])->name('home');
-Route::get('/faqs', function () {
-    return view('faqs.index');
-})->name('faqs');
+Route::get('/faqs', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'show'])->name('faqs');
 Route::get('/aboutus', function () {
     return view('about.index');
 })->name('about');
@@ -151,7 +149,12 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
         return view('dashboard.admin.Rental_management.index');
     })->name('dashboard.admin.Rental_management');
     Route::get('/Rental.management.list_prod', [\App\Http\Controllers\dashboard\admin\Rental_management\list_prod::class, 'show'])->name('Rental.management.list.prod');
-
+    Route::get('/faq.form', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'view'])->name('faq_form');
+    Route::get('/faq.title.form', function () {
+        return view('dashboard.admin.faq_form.title');
+    })->name('faq_title_form');
+    Route::post('/save.form.faq', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'save'])->name('save_form_faq');
+    Route::post('/save.form.title.faq', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'save'])->name('save_form_title_faq');
 });
 
 /*

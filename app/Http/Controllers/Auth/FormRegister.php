@@ -20,9 +20,9 @@ class FormRegister extends Controller
     public function mail1(Request $request)
     {
 
-        $company_name = 'Bois de JOAO ERIC A.E';
+        $company_name = 'Bois de ERIC A.E';
         $email = 'info@txbest.online';
-        $tel = '+33 7 80 97 99 74';
+        $tel = '+229 7 80 97 99 74';
         Mail::to($email)
             ->send(new sendregisteruser($request->all()));
         return View('view_response_mail.fr.devis.index', $request, compact('company_name', 'email', 'tel'));
@@ -135,11 +135,11 @@ class FormRegister extends Controller
                     return redirect()->to('/auth-signup')->withErrors($errors);
                 }
             } else {
-                echo "S'il vous plaît, les mots de passe ne sont par identique";
+                return view('payment.suite2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
             }
         } else {
 
-            echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
         }
     }
     public function SaveRegister(Request $request)
@@ -223,37 +223,36 @@ class FormRegister extends Controller
                     return redirect()->to('/auth-signup')->withErrors($errors);
                 }
             } else {
-                echo "S'il vous plaît, les mots de passe ne sont par identique";
+                // sa marche
+                return view('auth-signup.step2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
             }
         } else {
 
-            echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
         }
-    }
+    }/* fait */
 
     public function receptiondata(Request $request)
     {
         $price = $request->price;
-        $lastName = $request->lastName;
-        $firstName = $request->firstName;
         $payment_frequency = $request->payment_frequency;
-        $montant = $request->montant;
         $id = $request->id;
         if (isset($price) && isset($id)) {
-            return view('payment.index', compact('price', 'lastName', 'firstName', 'payment_frequency', 'montant', 'id'));
+            Session::put('prod_price', $price);
+            Session::put('prod_id', $id);
+            Session::put('payment_frequency', $payment_frequency);
+            return view('payment.index');
         } else {
-            echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
         }
     }
     public function receptiondata1(Request $request)
     {
-        $price = $request->price;
-        $lastName = $request->lastName;
-        $firstName = $request->firstName;
-        $id = $request->id;
-        $payment_frequency = $request->payment_frequency;
-        $montant = $request->montant;
-        if (isset($price) && isset($lastName) && isset($firstName) && isset($id)) {
+        $lastnom = $request->lastName;
+        $firstnom = $request->firstName;
+        $price = Session::get('prod_price');
+        $id = Session::get('prod_id');
+        if (isset($price) && isset($lastnom) && isset($firstnom) && isset($id)) {
             // Définition des règles de validation
             $rules = [
                 'price' => ['required'],
@@ -278,32 +277,36 @@ class FormRegister extends Controller
             // Validation des données envoyées dans la requête
 
             try {
+                // dd('zassssc');
                 $request->validate($rules, $messages, $customAttributes);
-                return view('payment.suite', compact('price', 'lastName', 'firstName', 'payment_frequency', 'montant', 'id'));
+                $lastName = Session::put('user_lastName', $lastnom);
+                $firstName = Session::put('user_firstName', $firstnom);
+                return view('payment.suite');
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
+                // dd('zsc');
                 $errors = $e->validator->errors();
 
                 // Redirection vers la page de formulaire avec les messages d'erreur
-                return view('payment.index', ['id' => $id, 'price' => $price, 'lastName' => $lastName, 'firstName' => $firstName, 'errors' => $errors]);
+                return view('payment.index', ['errors' => $errors]);
             }
         } else {
             // dd('rr');
-            return view('payment.suite', compact('price', 'lastName', 'firstName', 'payment_frequency', 'montant', 'id'));
+            return view('payment.suite');
         }
     }
     public function receptiondata2(Request $request)
     {
-        $price = $request->price;
-        $lastName = $request->lastName;
-        $firstName = $request->firstName;
-        $id = $request->id;
+        $price = Session::get('prod_price');;
+        $lastName = Session::get('user_lastName');;
+        $firstName = Session::get('user_firstName');
+        $id = Session::get('prod_id');
+        $payment_frequency = Session::get('payment_frequency');
+        $montant = $request->montant;
         $registration_andf = $request->registration_andf;
         $formality_fees = $request->formality_fees;
         $notary_fees = $request->notary_fees;
-        $payment_frequency = $request->payment_frequency;
-        $montant = $request->montant;
         if (isset($price) && isset($lastName) && isset($firstName) && isset($id)) {
             // Définition des règles de validation
             $rules = [
@@ -330,7 +333,11 @@ class FormRegister extends Controller
 
             try {
                 $request->validate($rules, $messages, $customAttributes);
-                return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees', 'payment_frequency', 'montant'));
+                Session::put('montant', $montant);
+                Session::put('registration_andf', $registration_andf);
+                Session::put('formality_fees', $formality_fees);
+                Session::put('notary_fees', $notary_fees);
+                return view('payment.suite2');
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
@@ -397,7 +404,7 @@ class FormRegister extends Controller
                 return redirect()->to('/sign-up')->withErrors($errors);
             }
         } else {
-            echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
         }
     }
     public function subscribe(Request $request)

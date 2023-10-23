@@ -28,17 +28,23 @@
                     <div class="text-center">
                         <h5 class="my-6 text-xl font-semibold">Inscription</h5>
                     </div>
+                    @if (isset($EmailInputNotEmpty))
+                        <div class="alert alert-danger">
+                            {{ $EmailInputNotEmpty }}
+                        </div>
+                    @endif
                     <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('save.user') }}">
                         @csrf
                         <input type="hidden" name="lastName" value="{{ Session::get('user_lastName') }}" required>
                         <input type="hidden" name="firstName" value="{{ Session::get('user_firstName') }}" required>
                         <input type="hidden" name="email" value="{{ Session::get('user_email') }}" required>
-                        <input type="hidden" name="payment_frequency" value="{{ Session::get('payment_frequency') }}" required>
+                        <input type="hidden" name="payment_frequency" value="{{ Session::get('payment_frequency') }}"
+                            required>
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
                                 <label class="font-semibold" for="LoginEmail">numéro de téléphone:</label>
-                                <input id="LoginEmail" type="number" name="phone" class="form-input mt-3" placeholder="000000000"
-                                    required>
+                                <input id="LoginEmail" type="number" name="phone" class="form-input mt-3"
+                                    placeholder="000000000" required>
                             </div>
                             <div class="mb-4">
                                 <label class="font-semibold" for="LoginPassword">Mot de passe:</label>
@@ -50,6 +56,11 @@
                                 <label class="font-medium" for="LoginPassword">Retapez votre mot de passe:</label>
                                 <input id="LoginPassword" type="password" name="password_confirm"
                                     class="form-input mt-2" placeholder="Mot de passe" required>
+                                @if (isset($comparePassword))
+                                    <div class="alert alert-danger">
+                                        {{ $comparePassword }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="mb-4">
                                 {{-- <div class="flex items-center w-full mb-0">

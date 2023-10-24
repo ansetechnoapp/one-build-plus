@@ -28,32 +28,33 @@
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="container-xl px-4 mt-4">
 
-                        
+
 
                     </div>
-                    
 
-                    
-                        <div class="container-xl px-4 mt-n10 mb-4">
-                            <nav class="nav nav-borders">
-                                <a class="nav-link active ms-0" href="{{ route('dashboard.admin.commentUser') }}">Avis Client</a>            
-                            </nav>
-                            <hr class="mt-0 mb-4">
-                            <div class="card mb-4">
-                                <div class="card-header">tout les avis clients</div>
-                                <div class="card-body p-0">
-                                    <!-- Billing history table-->
-                                    <div class="table-responsive table-billing-history">
-                                        <table class="table mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="border-gray-200" scope="col">Profession</th>
-                                                    <th class="border-gray-200" scope="col">Non et Prénom</th>
-                                                    <th class="border-gray-200" scope="col">Message</th>
-                                                    <th class="border-gray-200" scope="col">modifier</th>
-                                                </tr>
-                                            </thead>
-                                            @isset($issetCommentInfoUser)
+
+
+                    <div class="container-xl px-4 mt-n10 mb-4">
+                        <nav class="nav nav-borders">
+                            <a class="nav-link active ms-0" href="{{ route('dashboard.admin.commentUser') }}">Avis
+                                Client</a>
+                        </nav>
+                        <hr class="mt-0 mb-4">
+                        <div class="card mb-4">
+                            <div class="card-header">tout les avis clients</div>
+                            <div class="card-body p-0">
+                                <!-- Billing history table-->
+                                <div class="table-responsive table-billing-history">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-gray-200" scope="col">Profession</th>
+                                                <th class="border-gray-200" scope="col">Non et Prénom</th>
+                                                <th class="border-gray-200" scope="col">Message</th>
+                                                <th class="border-gray-200" scope="col">modifier</th>
+                                            </tr>
+                                        </thead>
+                                        @isset($issetCommentInfoUser)
                                             @foreach ($issetCommentInfoUser as $item)
                                                 <tbody>
 
@@ -61,26 +62,26 @@
                                                     <td>{{ $item->user->lastName }} {{ $item->user->firstName }}</td>
                                                     <td>{{ $item->Message }}</td>
                                                     <td>
-                                                        @if ($item->Statut == '1')
-                                                            <a href="{{ route('admin.comment.update.statut.disable', ['id' => $item->id]) }}"
-                                                                class="badge text-dark"
-                                                                style="background-color: rgb(14 165 233)">Désactiver</a>
-                                                        @else
+                                                        @if ($item->Statut == '0')
                                                             <a href="{{ route('admin.comment.update.statut.active', ['id' => $item->id]) }}"
                                                                 class="badge text-dark"
                                                                 style="background-color: rgb(14 165 233)">Activer</a>
+                                                        @else
+                                                            <a href="{{ route('admin.comment.update.statut.disable', ['id' => $item->id]) }}"
+                                                                class="badge text-dark"
+                                                                style="background-color: rgb(14 165 233)">Désactiver</a>
                                                         @endif
 
                                                     </td>
                                                 </tbody>
                                             @endforeach
-                                            @endisset
-                                        </table>
-                                    </div>
+                                        @endisset
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                    
+                    </div>
+
                 </div>
                 <!-- /.container-fluid -->
 

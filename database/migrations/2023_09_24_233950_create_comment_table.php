@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('comment', function (Blueprint $table) {
             $table->id();
             $table->text('Message')->nullable();
-            $table->integer('Statut')->default('1');
+            $table->integer('Statut')->default('0');
             $table->unsignedBigInteger('users_id');
             $table->timestamps();
 

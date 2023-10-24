@@ -38,10 +38,6 @@ class FormRegister extends Controller
     } */
     public function SaveRegisterUserAndProd(Request $request)
     {
-
-
-
-        /* $civility = $request->input('civility'); */
         $price = $request->price;
         $lastName = $request->lastName;
         $firstName = $request->firstName;
@@ -59,10 +55,7 @@ class FormRegister extends Controller
 
         if (isset($price) || isset($lastName) || isset($firstName) || isset($prod_id) || isset($email) || isset($password)) {
             if ($password1 == $password2) {
-                // Définition des règles de validation
                 $rules = [
-                    /* 'firstName' => ['required', 'string', 'max:100', 'min:2'],
-                'lastName' => ['required', 'string', 'max:100', 'min:2'], */
                     'lastName' => ['required', 'string', 'max:100', 'min:2'],
                     'email' => ['required', 'string', 'email', 'max:255'],
                     'password' => ['required', 'string', 'max:255', Password::min(5)],
@@ -72,28 +65,20 @@ class FormRegister extends Controller
                     ->symbols()
                     ->uncompromised()], */
                 ];
-
-                // Définition des messages d'erreur personnalisés
                 $messages = [
                     'email.emailregister' => "L'adresse email n'est pas valide.",
                     'password.minregister' => 'Le mot de passe doit contenir au moins 8 caractères.',
                 ];
-
-                // Définition des noms de champs personnalisés
                 $customAttributes = [
                     'emailregister' => 'Adresse email',
                     'minregister' => 'mot de passe',
                 ];
 
-                // Validation des données envoyées dans la requête
-
                 try {
                     $request->validate($rules, $messages, $customAttributes);
                     if (User::where('email', $request->email)->first() === null) {
-                        // dd('eee');
 
                         $insert = User::create([
-                            /* 'civility' => $civility, */
                             'lastName' => $lastName,
                             'firstName' => $firstName,
                             'email' => $email,
@@ -107,19 +92,18 @@ class FormRegister extends Controller
                         $additional_option->notary_fees = $notary_fees;
                         $additional_option->payment_frequency = $payment_frequency;
                         $additional_option->prod_id = $prod_id;
-                        $additional_option->user()->associate($insert); // Associe le modèle users à la relation
-                        $additional_option->save(); // Sauvegarde d'abord le modèle
-                        $additional_option_insert = $additional_option; // Utilisez simplement l'instance existante
+                        $additional_option->user()->associate($insert);
+                        $additional_option->save();
+                        $additional_option_insert = $additional_option; 
                         $devis = new devis();
                         $devis->price = $price;
                         $devis->montant = $montant;
                         $devis->prod_id = $prod_id;
                         $devis->dateDevis = now()->format('Y-m-d');
                         $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
-                        $devis->user()->associate($insert); // Associe le modèle users à la relation
-                        $devis->additional_option()->associate($additional_option_insert); // Associe le modèle additional_option à la relation
+                        $devis->user()->associate($insert); 
+                        $devis->additional_option()->associate($additional_option_insert);
                         $devis->save();
-                        //  dd('validate');
                         Mail::to($email)
                             ->send(new sendregisteruser($request->all()));
                         return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
@@ -127,11 +111,7 @@ class FormRegister extends Controller
                         return redirect()->route('payment', ['id' => $prod_id, 'price' => $price]);
                     }
                 } catch (ValidationException $e) {
-                    // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                    // Récupération des messages d'erreur de validation
                     $errors = $e->validator->errors();
-
-                    // Redirection vers la page de formulaire avec les messages d'erreur
                     return redirect()->to('/auth-signup')->withErrors($errors);
                 }
             } else {
@@ -144,7 +124,6 @@ class FormRegister extends Controller
     }
     public function SaveRegister(Request $request)
     {
-        /* $civility = $request->input('civility'); */
         $lastName = $request->lastName;
         $firstName = $request->firstName;
         $email = $request->email;
@@ -156,7 +135,6 @@ class FormRegister extends Controller
 
         if (isset($lastName) || isset($email) || isset($password)) {
             if ($password1 == $password2) {
-                // Définition des règles de validation
                 $rules = [
                     'lastName' => ['required', 'string', 'max:100', 'min:2'],
                     'firstName' => ['required', 'string', 'max:100', 'min:2'],
@@ -170,7 +148,7 @@ class FormRegister extends Controller
                     ->uncompromised()], */
                 ];
 
-                // Définition des messages d'erreur personnalisés
+
                 $messages = [
                     'lastName' => 'Votre nom n\'est pas valide.',
                     'firstName' => 'Votre prénom n\'est pas valide.',
@@ -180,7 +158,7 @@ class FormRegister extends Controller
                     'password' => "le mots de passe doit contenir plus de 5 caractére.",
                 ];
 
-                // Définition des noms de champs personnalisés
+    
                 $customAttributes = [
                     'lastName' => 'Votre nom n\'est pas valide.',
                     'firstName' => 'Votre prénom n\'est pas valide.',
@@ -190,15 +168,12 @@ class FormRegister extends Controller
 
                 ];
 
-                // Validation des données envoyées dans la requête
 
                 try {
                     $request->validate($rules, $messages, $customAttributes);
                     if (User::where('email', $request->email)->first() === null) {
-                        // dd('eee');
-
+                        dd('e');
                         $insert = User::create([
-                            /* 'civility' => $civility, */
                             'lastName' => $lastName,
                             'firstName' => $firstName,
                             'phone' => $phone,
@@ -206,7 +181,6 @@ class FormRegister extends Controller
                             'password' => $password,
 
                         ]);
-                        //  dd('validate');
                         Mail::to($email)
                             ->send(new sendregisteruser($request->all()));
                         Session::flush();
@@ -215,15 +189,11 @@ class FormRegister extends Controller
                         return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
                     }
                 } catch (ValidationException $e) {
-                    // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                    // Récupération des messages d'erreur de validation
+                    
                     $errors = $e->validator->errors();
-
-                    // Redirection vers la page de formulaire avec les messages d'erreur
                     return redirect()->to('/auth-signup')->withErrors($errors);
                 }
             } else {
-                // sa marche
                 return view('auth-signup.step2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
             }
         } else {

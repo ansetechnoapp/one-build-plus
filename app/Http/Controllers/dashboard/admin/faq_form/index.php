@@ -52,17 +52,19 @@ class index extends Controller
                 ->withErrors($errors);
         }
     }
-    public function show()
-    {
-        $uniqueTitles = faq_title::all();
-        $html = '';
 
-        foreach ($uniqueTitles as $data) {
-            $html .= '<div id="generalfaq'.$data->id.'">';
-            $html .= '<h5 class="text-2xl font-semibold">' . $data->title . '</h5>';
-            $html .= '<div id="accordion-collapseone" data-accordion="collapse" class="mt-6">';
-            $faqTitle = faq::where('title_id', $data->id)->get();
-            foreach ($faqTitle as $faq) {
+    public function show()
+{
+    $uniqueTitles = faq_title::all();
+    $html = '';
+
+    foreach ($uniqueTitles as $data) {
+        $html .= '<div id="generalfaq'.$data->id.'">';
+        $html .= '<h5 class="text-2xl font-semibold">' . $data->title . '</h5>';
+        $html .= '<div id="accordion-collapseone" data-accordion="collapse" class="mt-6">';
+        $faqTitle = faq::where('title_id', $data->id)->get();
+        
+        foreach ($faqTitle as $faq) {
             $html .= '<div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden">';
             $html .= '<h2 class="text-lg font-medium" id="accordion-collapse-heading-'. $faq->id .'">';
             $html .= '<button type="button" class="flex justify-between items-center p-5 w-full font-medium text-left" data-accordion-target="#accordion-collapse-body-'.$faq->id.'" aria-expanded="false" aria-controls="accordion-collapse-body-'.$faq->id.'">';
@@ -76,12 +78,13 @@ class index extends Controller
             $html .= '<div class="p-5">';
             $html .= '<p class="text-slate-400 dark:text-gray-400">' . $faq->answer . '</p>';
             $html .= '</div>';
+            $html .= '</div>';
         }
         $html .= '</div>';
-        $html .= '</div>';
-        }
-         return view('faqs.index', ['listFaq' => $html,'uniqueTitles' => $uniqueTitles]);
+        $html .= '</div>'; // Fermez la div pour ce titre ici
     }
+    return view('faqs.index', ['listFaq' => $html,'uniqueTitles' => $uniqueTitles]);
+}
     public function view()
     {
         $posts = faq_title::all();

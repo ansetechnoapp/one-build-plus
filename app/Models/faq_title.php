@@ -14,4 +14,8 @@ class faq_title extends Model
     protected $fillable = [
         'title',
     ];
+    public function faqs()
+    {
+        return $this->hasMany(Faq::class, 'title_id');
+    }
 }

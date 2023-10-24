@@ -16,4 +16,8 @@ class faq extends Model
         'question',
         'answer',
     ];
+    public function faqTitle()
+    {
+        return $this->belongsTo(FaqTitle::class, 'title_id');
+    }
 }

@@ -44,158 +44,21 @@
             <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
                 <div class="lg:col-span-4 md:col-span-5">
                     <div class="rounded-md shadow dark:shadow-gray-700 p-6 sticky top-20">
-                        @isset($listFaq)
-                        @foreach ($listFaq as $data)
+                        
                         <ul class="list-unstyled sidebar-nav mb-0 py-0" id="navmenu-nav">
-                            <li class="navbar-item p-0"><a href="#tech"
+                            @isset($uniqueTitles)
+                        @foreach ($uniqueTitles as $data)
+                            <li class="navbar-item p-0"><a href="#generalfaq{{ $data->id }}"  
                                     class="text-base font-medium navbar-link">{{ $data->title }}</a></li>
-                            <li class="navbar-item mt-3 p-0"><a href="#general"
-                                    class="text-base font-medium navbar-link">{{ $data->title }}</a></li>
-                            <li class="navbar-item mt-3 p-0"><a href="#payment"
-                                    class="text-base font-medium navbar-link">{{ $data->title }}</a></li>
-                            <li class="navbar-item mt-3 p-0"><a href="#support"
-                                    class="text-base font-medium navbar-link">{{ $data->title }}</a></li>
-                        </ul>
-                        @endforeach
+                                    @endforeach
                     @endisset
+                        </ul>
+                        
                     </div>
                 </div>
                 <div class="lg:col-span-8 md:col-span-7">
                     @isset($listFaq)
-                        @foreach ($listFaq as $data)
-                            <div id="tech">
-
-                                <h5 class="text-2xl font-semibold">{{ $data->title }}</h5>
-
-                                <div id="accordion-collapseone" data-accordion="collapse" class="mt-6">
-                                    <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden">
-                                        <h2 class="text-lg font-medium" id="accordion-collapse-heading-1">
-                                            <button type="button"
-                                                class="flex justify-between items-center p-5 w-full font-medium text-left"
-                                                data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
-                                                aria-controls="accordion-collapse-body-1">
-                                                <span>{{ $data->question }}</span>
-                                                <svg data-accordion-icon class="w-4 h-4 rotate-180 shrink-0"
-                                                    fill="currentColor" viewBox="0 0 20 20"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                            </button>
-                                        </h2>
-                                        <div id="accordion-collapse-body-1" class="hidden"
-                                            aria-labelledby="accordion-collapse-heading-1">
-                                            <div class="p-5">
-                                                <p class="text-slate-400 dark:text-gray-400">{{ $data->answer }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endisset
-                    @isset($listFaq)
-                        @foreach ($listFaq as $data)
-                            <div id="general" class="mt-8">
-
-                                <h5 class="text-2xl font-semibold">{{ $data->title }}</h5>
-
-                                <div id="accordion-collapseone" data-accordion="collapse" class="mt-6">
-                                    <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden">
-                                        <h2 class="text-lg font-medium" id="accordion-collapse-heading-1">
-                                            <button type="button"
-                                                class="flex justify-between items-center p-5 w-full font-medium text-left"
-                                                data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
-                                                aria-controls="accordion-collapse-body-1">
-                                                <span>{{ $data->question }}</span>
-                                                <svg data-accordion-icon class="w-4 h-4 rotate-180 shrink-0"
-                                                    fill="currentColor" viewBox="0 0 20 20"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                            </button>
-                                        </h2>
-                                        <div id="accordion-collapse-body-1" class="hidden"
-                                            aria-labelledby="accordion-collapse-heading-1">
-                                            <div class="p-5">
-                                                <p class="text-slate-400 dark:text-gray-400">{{ $data->answer }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endisset
-                    @isset($listFaq)
-                        @foreach ($listFaq as $data)
-                            <div id="payment" class="mt-8">
-
-                                <h5 class="text-2xl font-semibold">{{ $data->title }}</h5>
-
-                                <div id="accordion-collapseone" data-accordion="collapse" class="mt-6">
-                                    <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden">
-                                        <h2 class="text-lg font-medium" id="accordion-collapse-heading-1">
-                                            <button type="button"
-                                                class="flex justify-between items-center p-5 w-full font-medium text-left"
-                                                data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
-                                                aria-controls="accordion-collapse-body-1">
-                                                <span>{{ $data->question }}</span>
-                                                <svg data-accordion-icon class="w-4 h-4 rotate-180 shrink-0"
-                                                    fill="currentColor" viewBox="0 0 20 20"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                            </button>
-                                        </h2>
-                                        <div id="accordion-collapse-body-1" class="hidden"
-                                            aria-labelledby="accordion-collapse-heading-1">
-                                            <div class="p-5">
-                                                <p class="text-slate-400 dark:text-gray-400">{{ $data->answer }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endisset
-                    @isset($listFaq)
-                        @foreach ($listFaq as $data)
-                            <div id="support" class="mt-8">
-
-                                <h5 class="text-2xl font-semibold">{{ $data->title }}</h5>
-
-                                <div id="accordion-collapseone" data-accordion="collapse" class="mt-6">
-                                    <div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden">
-                                        <h2 class="text-lg font-medium" id="accordion-collapse-heading-1">
-                                            <button type="button"
-                                                class="flex justify-between items-center p-5 w-full font-medium text-left"
-                                                data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
-                                                aria-controls="accordion-collapse-body-1">
-                                                <span>{{ $data->question }}</span>
-                                                <svg data-accordion-icon class="w-4 h-4 rotate-180 shrink-0"
-                                                    fill="currentColor" viewBox="0 0 20 20"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                            </button>
-                                        </h2>
-                                        <div id="accordion-collapse-body-1" class="hidden"
-                                            aria-labelledby="accordion-collapse-heading-1">
-                                            <div class="p-5">
-                                                <p class="text-slate-400 dark:text-gray-400">{{ $data->answer }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                    {!! $listFaq !!}
                     @endisset
                 </div>
             </div><!--end grid-->

@@ -181,7 +181,11 @@
         </div>
     </form>
 @else
-    @isset($listTitleFaq)
+    @if ($listTitleFaq->isEmpty())
+        <div class="row gx-3">
+            <p>veuillez inserer un titre <a class="nav-link" href="{{route('faq_title_form')}}">FORMULAIRE TITRE FAQ</a></p>
+        </div>
+        @else
         <form action="{{ route('save_form_faq') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
@@ -220,12 +224,7 @@
                 <button class="btn btn-primary" type="submit">Valider</button>
             </div>
         </form>
-    @endisset
-    @empty($listTitleFaq)
-        <div class="row gx-3">
-            <p>veuillez inserer un titre <a class="nav-link" href="{{route('faq_title_form')}}">FORMULAIRE TITRE FAQ</a></p>
-        </div>
-    @endempty
+        @endif
 @endif
 
 

@@ -154,6 +154,8 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
         return view('dashboard.admin.faq_form.title');
     })->name('faq_title_form');
     Route::post('/save.form.faq', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'save'])->name('save_form_faq');
+    Route::get('/delete.faq.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'deleteforfaq'])->name('delete_faq');
+    Route::get('/delete.title.faq.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'deleteforfaqtitle'])->name('delete_title_faq');
     Route::post('/save.form.title.faq', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'save'])->name('save_form_title_faq');
 });
 

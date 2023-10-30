@@ -21,6 +21,7 @@ Route::get('/well', function () {
 Route::post('/subscribe', [\App\Http\Controllers\Auth\FormRegister::class, 'subscribe'])->name('subscribe');
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
 Route::post('/search_info_prod', [\App\Http\Controllers\show_all_product\index::class, 'selectsearch'])->name('search.prod');
+Route::post('/search.info.prod.location', [\App\Http\Controllers\rent\index::class, 'selectsearch'])->name('search_location');
 
 Route::get('/', [\App\Http\Controllers\home\index::class, 'requestForHome'])->name('home');
 Route::get('/faqs', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'show'])->name('faqs');
@@ -28,8 +29,7 @@ Route::get('/aboutus', function () {
     return view('about.index');
 })->name('about');
 Route::get('/buy', [\App\Http\Controllers\buy\index::class, 'showbuyallprod'])->name('buy');
-
-
+Route::get('/rent', [\App\Http\Controllers\rent\index::class, 'showRentallprod'])->name('rent');
 
 
 

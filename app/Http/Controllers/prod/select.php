@@ -28,7 +28,7 @@ class select extends Controller
     }
     public function show()
     {
-        $posts = prod::where('location','non')->get();
+        $posts = prod::where('location','non')->orderBy('id', 'desc')->get();
         return view('dashboard.admin.list_prod.index', ['allprod' => $posts]);
     }
     public function receptiondata1(Request $request)

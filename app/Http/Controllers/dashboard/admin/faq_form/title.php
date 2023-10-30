@@ -18,12 +18,9 @@ class title extends Controller
         $messages = [
             'title.titleregister' => "Entrer un texte.",
         ];
-        $customAttributes = [
-            'titleregister' => 'Entrer un texte.',
-        ];
 
         try {
-            $request->validate($rules, $messages, $customAttributes);
+            $request->validate($rules, $messages);
 
             $title = $request->title;
 

@@ -20,19 +20,17 @@
 
     @if (Auth::user()->role == 'admin')
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('dashboard.admin') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Enrégistrement des produits</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('list_prod') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Liste des produits</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('dashboard.admin.commentUser') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Gestion avis Client</span></a>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
+                aria-expanded="true" aria-controls="collapsePages3">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Gestion des propriétés</span>
+            </a>
+            <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('dashboard.admin') }}">Enrégistrement</a>
+                    <a class="collapse-item" href="{{ route('list_prod') }}">Liste</a>
+                </div>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -42,10 +40,16 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('dashboard.admin.Rental_management') }}">Ajout de biens locative</a>
+                    <a class="collapse-item" href="{{ route('dashboard.admin.Rental_management') }}">Ajout de biens
+                        locative</a>
                     <a class="collapse-item" href="{{ route('Rental.management.list.prod') }}">Liste biens locative</a>
                 </div>
             </div>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('dashboard.admin.commentUser') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Gestion avis Client</span></a>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="{{ route('faq_form') }}">

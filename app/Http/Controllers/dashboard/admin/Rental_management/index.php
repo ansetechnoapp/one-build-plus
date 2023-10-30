@@ -12,103 +12,82 @@ use Illuminate\Validation\ValidationException;
 class index extends Controller
 {
     public function store(Request $request): RedirectResponse
-    {
+    {   
         // Définition des règles de validation
         $rules = [
-            'land_owner' => 'required|string|max:100|min:2',
+            'landOwner_propertyName' => 'required|string|max:100|min:2',
             'address' => 'required|string|max:100|min:2',
             'department' => 'required|string|max:100|min:2',
             'communes' => 'required|string|max:100|min:2',
             'borough' => 'required|string|max:100|min:2',
             'area' => 'required|string|max:100|min:2',
             'price' => 'required|integer',
-            'price_min' => 'required|integer',
+            'status' => 'required|string',
+            'number_of_bedrooms' => 'required|integer',
+            'number_of_bathrooms' => 'required|integer',
             'main_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'img1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'img3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'img4' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
-            'ground_type' => 'required|string',
+            'locationType' => 'required|string',
         ];
 
         // Définition des messages d'erreur personnalisés
         $messages = [
-            'land_owner' => 'Entrer une bonne valeur',
+            'landOwner_propertyName' => 'Entrer une bonne valeur',
             'address' => 'Entrer une bonne valeur',
             'department' => 'Entrer une bonne valeur',
             'communes' => 'Entrer une bonne valeur',
             'borough' => 'Entrer une bonne valeur',
             'area' => 'Entrer une bonne valeur',
-            'price' => 'pris',
-            'price_min' => 'prix minimal',
+            'price' => 'prix',
+            'status' => 'Entrer une bonne valeur',
+            'number_of_bedrooms' => 'Entrer une bonne valeur',
+            'number_of_bathrooms' => 'Entrer une bonne valeur',
             'main_image' => 'image important',
             'img1' => 'image',
             'img2' => 'image',
             'img3' => 'image',
             'img4' => 'image',
             'description' => 'Entrer un texte',
-            'ground_type' => 'Entrer un texte',
-        ];
-
-        // Définition des noms de champs personnalisés
-        $customAttributes = [
-            'land_owner' => 'Entrer une bonne valeur',
-            'address' => 'Entrer une bonne valeur',
-            'department' => 'Entrer une bonne valeur',
-            'communes' => 'Entrer une bonne valeur',
-            'borough' => 'Entrer une bonne valeur',
-            'area' => 'Entrer une bonne valeur',
-            'price' => 'pris',
-            'price_min' => 'prix minimal',
-            'main_image' => 'image important',
-            'img1' => 'image',
-            'img2' => 'image',
-            'img3' => 'image',
-            'img4' => 'image',
-            'description' => 'Entrer un texte',
-            'ground_type' => 'Entrer un texte',
+            'locationType' => 'Entrer un texte',
         ];
 
         // Validation des données envoyées dans la requête
 
         try {
-            $request->validate($rules, $messages, $customAttributes);
+            $request->validate($rules, $messages);
 
-            $land_owner = $request->land_owner;
+            $landOwner_propertyName = $request->landOwner_propertyName;
             $address = $request->address;
             $department = $request->department;
             $communes = $request->communes;
             $borough = $request->borough;
             $area = $request->area;
             $price = $request->price;
-            $price_min = $request->price_min;
             $description = $request->description;
-            $ground_type = $request->ground_type;
             $status = $request->status;
-            $propertyName  = $request->propertyName;
             $number_of_bedrooms = $request->number_of_bedrooms;
             $number_of_bathrooms = $request->number_of_bathrooms;
-            $monthlyRent = $request->monthlyRent;
-            $location = $request->location;
             $locationType = $request->locationType;
+            // dd($landOwner_propertyName,$address,$department,$communes,$borough,$area,$price,$description,$status,$number_of_bedrooms,$number_of_bathrooms,$locationType);
 
             $insert = prod::create([
-                'land_owner' => $land_owner,
+                'landOwner_propertyName' => $landOwner_propertyName,
                 'address' => $address,
                 'department' => $department,
                 'communes' => $communes,
                 'borough' => $borough,
                 'area' => $area,
                 'price' => $price,
-                'price_min' => $price_min,
                 'description' => $description,
-                'ground_type' => $ground_type,
                 'status' => $status,
-                'propertyName' => $propertyName,
                 'number_of_bedrooms' => $number_of_bedrooms,
                 'number_of_bathrooms' => $number_of_bathrooms,
-                'monthlyRent' => $monthlyRent,
+                'location' => 'oui',
+                'locationType' => $locationType,
             ]);
 
             $img = new img();
@@ -142,7 +121,7 @@ class index extends Controller
                 }
             }
 
-            return redirect()->route('list_prod');
+            return redirect()->route('Rental.management.list.prod');
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();

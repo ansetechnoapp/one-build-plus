@@ -27,22 +27,15 @@
                     <!-- Page Heading -->
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="container-xl px-4 mt-n10 mb-4">
+                        <nav class="nav nav-borders">
+                            <a class="nav-link active ms-0" href="{{ route('dashboard.admin') }}">Enrégistrement des biens immobiliers</a>
+                            
+                            <a class="nav-link" href="{{ route('dashboard.admin.Rental_management') }}">Enrégistrement des biens locatif</a>
+                            
+                        </nav>
+                        <hr class="mt-0 mb-4">
                         <!-- Wizard card example with navigation-->
                         <div class="card">
-                            <div class="card-header border-bottom">
-                                <!-- Wizard navigation-->
-                                <div class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard"
-                                    id="cardTab" role="tablist">
-                                    <!-- Wizard navigation item 1-->
-                                    <a class="nav-item nav-link active" href="#wizard1">
-                                        {{-- <div class="wizard-step-icon">1</div> --}}
-                                        <div class="wizard-step-text">
-                                            {{-- <div class="wizard-step-text-name">Account Setup</div> --}}
-                                            <div class="wizard-step-text-details">Enrégistrement de votre location</div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
                             <div class="card-body">
                                 <div class="tab-content" id="cardTabContent">
                                     <!-- Wizard tab pane item 1-->
@@ -53,7 +46,7 @@
                                                 {{-- <h3 class="text-primary">Step 1</h3> --}}
                                                 <h1 class="card-title mb-4">Saisir les informations relatives au propriété loacatif
                                                 </h1>
-                                                @include('include.dashboard.admin.Rental_management.index')
+                                                @include('include.dashboardAdminRentalManagement')
                                             </div>
                                         </div>
                                     </div>

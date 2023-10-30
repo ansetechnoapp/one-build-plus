@@ -22,7 +22,8 @@
     <!-- Hero Start -->
     <section class="relative {{-- mt-20 --}}" style="margin-top: 6rem">
         <div class="container-fluid md:mx-4 mx-2">
-            <div class="relative {{-- pt-40 pb-52 --}} table w-full rounded-2xl shadow-md overflow-hidden style-padding" id="home">
+            <div class="relative {{-- pt-40 pb-52 --}} table w-full rounded-2xl shadow-md overflow-hidden style-padding"
+                id="home">
                 {{-- <div class="absolute inset-0 bg-black/60"></div> --}}
 
                 <div class="container">
@@ -51,7 +52,8 @@
         <!--end container-->
         <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Chambre a louer disponible</h3>
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos logements à la
+                    une</h3>
 
                 <p class="text-slate-400 max-w-xl mx-auto">Trouvez des chambres a louer.</p>
             </div>
@@ -67,8 +69,8 @@
                         <div class="tns-inner" id="tns2-iw">
                             <div class="tiny-home-slide-three  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal"
                                 id="tns2" style="transform: translate3d(-16.6667%, 0px, 0px);">
-                                @isset($posts1)
-                                    @foreach ($posts1 as $data)
+                                @isset($lastThree_loation)
+                                    @foreach ($lastThree_loation as $data)
                                         <div class="tiny-slide tns-item" id="tns2-item0" aria-hidden="true" tabindex="-1">
                                             <div
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
@@ -135,8 +137,8 @@
                                         </div>
                                     @endforeach
                                 @endisset
-                                @isset($posts2) 
-                                    @foreach ($posts2 as $data)
+                                @isset($beforeLastThree_loation)
+                                    @foreach ($beforeLastThree_loation as $data)
                                         <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
                                             <div
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
@@ -227,8 +229,9 @@
                 <div class="tns-outer" id="tns2-ow">
                     <div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button"
                             data-controls="prev" tabindex="-1" aria-controls="tns2"><i
-                                class="mdi mdi-chevron-left "></i></button><button type="button" data-controls="next"
-                            tabindex="-1" aria-controls="tns2"><i class="mdi mdi-chevron-right"></i></button></div>
+                                class="mdi mdi-chevron-left "></i></button><button type="button"
+                            data-controls="next" tabindex="-1" aria-controls="tns2"><i
+                                class="mdi mdi-chevron-right"></i></button></div>
                     <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span
                             class="current">2 to 4</span> of 6</div>
                     <div id="tns2-mw" class="tns-ovh">
@@ -237,7 +240,8 @@
                                 id="tns2" style="transform: translate3d(-16.6667%, 0px, 0px);">
                                 @isset($posts1)
                                     @foreach ($posts1 as $data)
-                                        <div class="tiny-slide tns-item" id="tns2-item0" aria-hidden="true" tabindex="-1">
+                                        <div class="tiny-slide tns-item" id="tns2-item0" aria-hidden="true"
+                                            tabindex="-1">
                                             <div
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                                 <div class="relative">
@@ -303,7 +307,7 @@
                                         </div>
                                     @endforeach
                                 @endisset
-                                @isset($posts2) 
+                                @isset($posts2)
                                     @foreach ($posts2 as $data)
                                         <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
                                             <div
@@ -459,7 +463,8 @@
             <!--en grid-->
             <div class="md:flex justify-center text-center mt-6">
                 <div class="md:w-full">
-                    <a href="{{ route('buy') }}" class="btn btn-link text-green-600 hover:text-green-600 after:bg-green-600 transition duration-500">Voir
+                    <a href="{{ route('buy') }}"
+                        class="btn btn-link text-green-600 hover:text-green-600 after:bg-green-600 transition duration-500">Voir
                         plus de propriétés <i class="uil uil-arrow-right ms-1"></i></a>
                 </div>
             </div>
@@ -475,8 +480,8 @@
                 <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
             </div>
             <!--end grid-->
-            
-            
+
+
 
             <div class="flex justify-center relative mt-16">
                 <div class="relative lg:w-1/3 md:w-1/2 w-full">
@@ -490,34 +495,34 @@
 
                     <div class="tiny-single-item">
                         @isset($selectCommment)
-            @foreach ($selectCommment as $item)
-            <div class="tiny-slide">
-                <div class="text-center">
-                    <p class="text-xl text-slate-400 italic"> " {{ $item->Message }} "
-                    </p>
+                            @foreach ($selectCommment as $item)
+                                <div class="tiny-slide">
+                                    <div class="text-center">
+                                        <p class="text-xl text-slate-400 italic"> " {{ $item->Message }} "
+                                        </p>
 
-                    <div class="text-center mt-5">
-                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                        </ul>
+                                        <div class="text-center mt-5">
+                                            <ul class="text-xl font-medium text-amber-400 list-none mb-2">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                            </ul>
 
-                        <img src="assets/images/client/01.jpg"
-                            class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
-                            alt="">
-                        <h6 class="mt-2 fw-semibold">{{ $item->user->lastName }} {{ $item->user->firstName }}</h6>
-                        <span class="text-slate-400 text-sm">{{ $item->user->Profession }}</span>
-                    </div>
-                </div>
-            </div>
-                
-            @endforeach
-                
-            @endisset
-                        
+                                            <img src="assets/images/client/01.jpg"
+                                                class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
+                                                alt="">
+                                            <h6 class="mt-2 fw-semibold">{{ $item->user->lastName }}
+                                                {{ $item->user->firstName }}</h6>
+                                            <span class="text-slate-400 text-sm">{{ $item->user->Profession }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        @endisset
+
 
                         {{-- <div class="tiny-slide">
                             <div class="text-center">

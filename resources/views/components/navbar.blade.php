@@ -1,7 +1,7 @@
 <nav id="topnav" class="defaultscroll is-sticky">
     <div class="container">
         <!-- Logo container-->
-        <a class="logo" href="{{ route('home') }}" style="max-width: 15%;">
+        <a class="logo" href="{{ route('home') }}" style="max-width: 10%;">
             <img src="assets/images/logo-dark.png" class="inline-block dark:hidden" alt="">
             <img src="assets/images/logo-light.png" class="hidden dark:inline-block" alt="">
         </a>
@@ -54,7 +54,8 @@
 
 
                 <li class="active"><a href="{{ route('home') }}" class="sub-menu-item">Acceuil</a></li>
-                <li><a href="buy" class="sub-menu-item active">Achat</a></li>
+                <li><a href="buy" class="sub-menu-item">Achat</a></li>
+                <li><a href="rent" class="sub-menu-item">Louer</a></li>
                 <li><a href="aboutus" class="sub-menu-item">A propos</a></li>
                 <li><a href="faqs" class="sub-menu-item">Faqs</a></li>
                 <li><a href="contact" class="sub-menu-item">Contact</a></li>

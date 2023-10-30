@@ -33,7 +33,7 @@ class insert extends Controller
             } else {
                 // Définition des règles de validation
                 $rules = [
-                    'price' => ['required', 'string', 'max:11'],
+                    'price' => ['required', 'integer', 'max:11'],
                 ];
 
                 // Définition des messages d'erreur personnalisés
@@ -41,15 +41,8 @@ class insert extends Controller
                     'price.priceregister' => "L'adresse email n'est pas valide.",
                 ];
 
-                // Définition des noms de champs personnalisés
-                $customAttributes = [
-                    'priceregister' => 'price non defini',
-                ];
-
-                // Validation des données envoyées dans la requête
-
                 try {
-                    $request->validate($rules, $messages, $customAttributes);
+                    $request->validate($rules, $messages);
                     // dd('eee');
 
                     $insert = additional_option::create([
@@ -108,7 +101,7 @@ class insert extends Controller
     {
         // Définition des règles de validation
         $rules = [
-            'land_owner' => 'required|string|max:100|min:2',
+            'landOwner_propertyName' => 'required|string|max:100|min:2',
             'address' => 'required|string|max:100|min:2',
             'department' => 'required|string|max:100|min:2',
             'communes' => 'required|string|max:100|min:2',
@@ -127,32 +120,13 @@ class insert extends Controller
 
         // Définition des messages d'erreur personnalisés
         $messages = [
-            'land_owner' => 'Entrer une bonne valeur',
+            'landOwner_propertyName' => 'Entrer une bonne valeur',
             'address' => 'Entrer une bonne valeur',
             'department' => 'Entrer une bonne valeur',
             'communes' => 'Entrer une bonne valeur',
             'borough' => 'Entrer une bonne valeur',
             'area' => 'Entrer une bonne valeur',
-            'price' => 'pris',
-            'price_min' => 'prix minimal',
-            'main_image' => 'image important',
-            'img1' => 'image',
-            'img2' => 'image',
-            'img3' => 'image',
-            'img4' => 'image',
-            'description' => 'Entrer un texte',
-            'ground_type' => 'Entrer un texte',
-        ];
-
-        // Définition des noms de champs personnalisés
-        $customAttributes = [
-            'land_owner' => 'Entrer une bonne valeur',
-            'address' => 'Entrer une bonne valeur',
-            'department' => 'Entrer une bonne valeur',
-            'communes' => 'Entrer une bonne valeur',
-            'borough' => 'Entrer une bonne valeur',
-            'area' => 'Entrer une bonne valeur',
-            'price' => 'pris',
+            'price' => 'prix',
             'price_min' => 'prix minimal',
             'main_image' => 'image important',
             'img1' => 'image',
@@ -166,9 +140,9 @@ class insert extends Controller
         // Validation des données envoyées dans la requête
 
         try {
-            $request->validate($rules, $messages, $customAttributes);
+            $request->validate($rules, $messages);
 
-            $land_owner = $request->land_owner;
+            $landOwner_propertyName = $request->landOwner_propertyName;
             $address = $request->address;
             $department = $request->department;
             $communes = $request->communes;
@@ -181,7 +155,7 @@ class insert extends Controller
             $status = $request->status;
 
             $insert = prod::create([
-                'land_owner' => $land_owner,
+                'landOwner_propertyName' => $landOwner_propertyName,
                 'address' => $address,
                 'department' => $department,
                 'communes' => $communes,
@@ -192,6 +166,7 @@ class insert extends Controller
                 'description' => $description,
                 'ground_type' => $ground_type,
                 'status' => $status,
+                'location' => 'non',
             ]);
 
             $img = new img();

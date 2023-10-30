@@ -32,14 +32,9 @@ class envoiemail extends Controller
                 'email' => 'Votre addresse email n\'est pas correcte.',
                 'comments' => 'Vous devez au moins écrit une phrase.',
             ];
-            $customAttributes = [
-                'name' => 'Votre nom n\'est pas valide.',
-                'subject' => 'Votre sujet.',
-                'email' => 'Votre addresse email n\'est pas correcte.',
-                'comments' => 'Votre commentaire.',
-            ];
+
             try {
-                $request->validate($rules, $messages, $customAttributes);
+                $request->validate($rules, $messages);
                 Mail::to(env('MAIL_USERNAME'))
                     ->send(new emailcontact($request->all()));
                 return view('contact.index', ['message' => 'Votre Message a été envoyé avec sucess']);

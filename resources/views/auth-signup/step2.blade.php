@@ -43,19 +43,34 @@
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
                                 <label class="font-semibold" for="LoginEmail">numéro de téléphone:</label>
-                                <input id="LoginEmail" type="number" name="phone" class="form-input mt-3"
-                                    placeholder="000000000" required>
+                                <input id="LoginEmail" type="text" name="phone" class="form-input mt-3"
+                                    placeholder="taper votre numéro de téléphone" required>
+                                @if ($errors->has('phone'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('phone') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="mb-4">
                                 <label class="font-semibold" for="LoginPassword">Mot de passe:</label>
                                 <input id="LoginPassword" type="password" name="password" class="form-input mt-2"
                                     placeholder="Password:" required>
+                                @if ($errors->has('password'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('password') }}
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginPassword">Retapez votre mot de passe:</label>
                                 <input id="LoginPassword" type="password" name="password_confirm"
                                     class="form-input mt-2" placeholder="Mot de passe" required>
+                                @if ($errors->has('password_confirm'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('password_confirm') }}
+                                    </div>
+                                @endif
                                 @if (isset($comparePassword))
                                     <div class="alert alert-danger">
                                         {{ $comparePassword }}

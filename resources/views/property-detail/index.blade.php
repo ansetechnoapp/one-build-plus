@@ -144,104 +144,108 @@
 
                         <div class="lg:w-1/3 md:w-1/2 md:p-4 px-3 mt-8 md:mt-0">
                             <div class="sticky top-20">
-                                @if (Auth::check())
-                                    <div class="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
-                                        <div class="p-6">
-                                            <h5 class="text-2xl font-medium">Price:</h5>
+                                @if ($item->location == 'non')
+                                    @if (Auth::check())
+                                        <div class="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+                                            <div class="p-6">
+                                                <h5 class="text-2xl font-medium">Price:</h5>
 
-                                            <div class="flex justify-between items-center mt-4">
-                                                <span class="text-xl font-medium">{{ $item->price }} fcfa </span>
+                                                <div class="flex justify-between items-center mt-4">
+                                                    <span class="text-xl font-medium">{{ $item->price }} fcfa </span>
 
-                                                <span
-                                                    class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">{{ $item->status }}</span>
+                                                    <span
+                                                        class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">{{ $item->status }}</span>
+                                                </div>
+                                                <form
+                                                    action="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
+                                                    method="POST">
+                                                    <ul class="list-none mt-4">
+
+                                                        <li class="flex justify-between items-center mt-2">
+                                                            <span class="text-slate-400 text-sm">Fréquence de
+                                                                paiement</span>
+
+                                                            <select name="payment_frequency" class="form-input">
+                                                                <option value="cash">choisir</option>
+                                                                <option value="cash">cash</option>
+                                                                <option value="Hebdomadaire">Hebdomadaire</option>
+                                                                <option value="Bimensuel">Bimensuel</option>
+                                                                <option value="Mensuel">Mensuel</option>
+                                                                <option value="Trimestriel">Trimestriel</option>
+                                                                <option value="Semestriel">Semestriel</option>
+                                                                <option value="Échéance">Échéance</option>
+                                                            </select>
+                                                        </li>
+                                                    </ul>
                                             </div>
-                                            <form
-                                            action="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
-                                            method="POST">
-                                            <ul class="list-none mt-4">
 
-                                                <li class="flex justify-between items-center mt-2">
-                                                    <span class="text-slate-400 text-sm">Fréquence de paiement</span>
+                                            <div class="flex">
+                                                <div class="p-1 w-1/2">
 
-                                                    <select name="payment_frequency" class="form-input">
-                                                        <option value="cash">choisir</option>
-                                                        <option value="cash">cash</option>
-                                                        <option value="Hebdomadaire">Hebdomadaire</option>
-                                                        <option value="Bimensuel">Bimensuel</option>
-                                                        <option value="Mensuel">Mensuel</option>
-                                                        <option value="Trimestriel">Trimestriel</option>
-                                                        <option value="Semestriel">Semestriel</option>
-                                                        <option value="Échéance">Échéance</option>
-                                                    </select>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="flex">
-                                            <div class="p-1 w-1/2">
-                                                
                                                     @csrf
                                                     <button type="submit"
                                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Valider</button>
-                                                
-                                                {{-- <a href="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
+
+                                                    {{-- <a href="{{ route('dashboard.paymnt', ['id' => $item->id, 'price' => $item->price, 'lastName' => Auth::user()->lastName, 'firstName' => Auth::user()->firstName]) }}"
                                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a> --}}
-                                            </div>
-                                            {{-- <div class="p-1 w-1/2">
+                                                </div>
+                                                {{-- <div class="p-1 w-1/2">
     <a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">par tranche</a>
     </div> --}}
-                                        </div>
-                                    </form>
-                                    </div>
-                                @else
-                                    <div class="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
-                                        <div class="p-6">
-                                            <h5 class="text-2xl font-medium">Price:</h5>
-
-                                            <div class="flex justify-between items-center mt-4">
-                                                <span class="text-xl font-medium">{{ $item->price }} fcfa </span>
-
-                                                <span
-                                                    class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">{{ $item->status }}</span>
                                             </div>
-                                            <form
-                                            action="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
-                                            method="POST">
-                                            <ul class="list-none mt-4">
-
-                                                <li class="flex justify-between items-center mt-2">
-                                                    <span class="text-slate-400 text-sm">Fréquence de paiement</span>
-
-                                                    <select name="payment_frequency" class="form-input">
-                                                        <option value="cash">choisir</option>
-                                                        <option value="cash">cash</option>
-                                                        <option value="Hebdomadaire">Hebdomadaire</option>
-                                                        <option value="Bimensuel">Bimensuel</option>
-                                                        <option value="Mensuel">Mensuel</option>
-                                                        <option value="Trimestriel">Trimestriel</option>
-                                                        <option value="Semestriel">Semestriel</option>
-                                                        <option value="Échéance">Échéance</option>
-                                                    </select>
-                                                </li>
-                                            </ul>
+                                            </form>
                                         </div>
+                                    @else
+                                        <div class="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+                                            <div class="p-6">
+                                                <h5 class="text-2xl font-medium">Price:</h5>
 
-                                        <div class="flex">
-                                            <div class="p-1 w-1/2">
-                                                
+                                                <div class="flex justify-between items-center mt-4">
+                                                    <span class="text-xl font-medium">{{ $item->price }} fcfa </span>
+
+                                                    <span
+                                                        class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">{{ $item->status }}</span>
+                                                </div>
+                                                <form
+                                                    action="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
+                                                    method="POST">
+                                                    <ul class="list-none mt-4">
+
+                                                        <li class="flex justify-between items-center mt-2">
+                                                            <span class="text-slate-400 text-sm">Fréquence de
+                                                                paiement</span>
+
+                                                            <select name="payment_frequency" class="form-input">
+                                                                <option value="cash">choisir</option>
+                                                                <option value="cash">cash</option>
+                                                                <option value="Hebdomadaire">Hebdomadaire</option>
+                                                                <option value="Bimensuel">Bimensuel</option>
+                                                                <option value="Mensuel">Mensuel</option>
+                                                                <option value="Trimestriel">Trimestriel</option>
+                                                                <option value="Semestriel">Semestriel</option>
+                                                                <option value="Échéance">Échéance</option>
+                                                            </select>
+                                                        </li>
+                                                    </ul>
+                                            </div>
+
+                                            <div class="flex">
+                                                <div class="p-1 w-1/2">
+
                                                     @csrf
                                                     <button type="submit"
                                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Valider</button>
-                                                
-                                                {{-- <a href="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
+
+                                                    {{-- <a href="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
                 class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">Paiement</a> --}}
-                                            </div>
-                                            {{-- <div class="p-1 w-1/2">
+                                                </div>
+                                                {{-- <div class="p-1 w-1/2">
 <a href="#" class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">par tranche</a>
 </div> --}}
+                                            </div>
+                                            </form>
                                         </div>
-                                    </form>
-                                    </div>
+                                    @endif
                                 @endif
 
                                 <div class="mt-12 text-center">

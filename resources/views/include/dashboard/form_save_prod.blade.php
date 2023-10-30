@@ -13,11 +13,11 @@
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
-                <label class="small mb-1" for="inputland_owner">Entrer le nom complet</label>
-                <input class="form-control" id="inputland_owner" type="text" value="{{ $allprodupdate->land_owner }}"
-                    value="xora Valerie" name="land_owner" required>
-                @if ($errors->has('land_owner'))
-                    <div class="alert alert-danger">{{ $errors->first('land_owner') }}</div>
+                <label class="small mb-1" for="inputlandOwner_propertyName">Entrer le nom complet</label>
+                <input class="form-control" id="inputlandOwner_propertyName" type="text" value="{{ $allprodupdate->landOwner_propertyName }}"
+                    value="xora Valerie" name="landOwner_propertyName" required>
+                @if ($errors->has('landOwner_propertyName'))
+                    <div class="alert alert-danger">{{ $errors->first('landOwner_propertyName') }}</div>
                 @endif
             </div>
             <div class="mb-3 col-md-6">
@@ -68,7 +68,7 @@
         <div class="row gx-3">
             <div class="col-md-6 mb-md-0">
                 <label class="small mb-1" for="inputprice">prix</label>
-                <input class="form-control" id="inputprice" type="number" value="{{ $allprodupdate->price }}"
+                <input class="form-control" id="inputprice" type="text" value="{{ $allprodupdate->price }}"
                     name="price" required>
                 @if ($errors->has('price'))
                     <div class="alert alert-danger">{{ $errors->first('price') }}</div>
@@ -76,7 +76,7 @@
             </div>
             <div class="col-md-6 mb-0">
                 <label class="small mb-1" for="inputprice_min">prix min</label>
-                <input class="form-control" id="inputprice_min" type="number" value="{{ $allprodupdate->price_min }}"
+                <input class="form-control" id="inputprice_min" type="text" value="{{ $allprodupdate->price_min }}"
                     name="price_min" required>
                 @if ($errors->has('price_min'))
                     <div class="alert alert-danger">{{ $errors->first('price_min') }}</div>
@@ -196,11 +196,11 @@
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
-                <label class="small mb-1" for="inputland_owner">Entrer le nom complet</label>
-                <input class="form-control" id="inputland_owner" type="text" placeholder="Enter your first name"
-                    value="xora Valerie" name="land_owner" required>
-                @if ($errors->has('land_owner'))
-                    <div class="alert alert-danger">{{ $errors->first('land_owner') }}</div>
+                <label class="small mb-1" for="inputlandOwner_propertyName">Entrer le nom complet</label>
+                <input class="form-control" id="inputlandOwner_propertyName" type="text" placeholder="Enter your first name"
+                    value="xora Valerie" name="landOwner_propertyName" required>
+                @if ($errors->has('landOwner_propertyName'))
+                    <div class="alert alert-danger">{{ $errors->first('landOwner_propertyName') }}</div>
                 @endif
             </div>
             <div class="mb-3 col-md-6">
@@ -252,7 +252,7 @@
         <div class="row gx-3">
             <div class="col-md-6 mb-md-0">
                 <label class="small mb-1" for="inputprice">prix</label>
-                <input class="form-control" id="inputprice" type="number" placeholder="prix" name="price"
+                <input class="form-control" id="inputprice" type="text" placeholder="prix" name="price"
                     required>
                 @if ($errors->has('price'))
                     <div class="alert alert-danger">{{ $errors->first('price') }}</div>
@@ -260,7 +260,7 @@
             </div>
             <div class="col-md-6 mb-0">
                 <label class="small mb-1" for="inputprice_min">prix min</label>
-                <input class="form-control" id="inputprice_min" type="number"placeholder="price min"
+                <input class="form-control" id="inputprice_min" type="text"placeholder="price min"
                     name="price_min" required>
                 @if ($errors->has('price_min'))
                     <div class="alert alert-danger">{{ $errors->first('price_min') }}</div>

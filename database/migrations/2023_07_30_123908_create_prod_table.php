@@ -13,21 +13,19 @@ return new class extends Migration
     {
         Schema::create('prod', function (Blueprint $table) {
             $table->id();
-            $table->string('land_owner')->nullable();
+            $table->string('landOwner_propertyName')->nullable();
             $table->string('address')->nullable(); 
             $table->string('department')->nullable(); 
             $table->string('communes');
             $table->string('borough')->nullable();
             $table->string('area')->nullable();
             $table->decimal('price', 10, 2); // Utilisation de décimal pour les prix avec 2 décimales de précision
-            $table->decimal('price_min', 10, 2);
+            $table->decimal('price_min', 10, 2)->nullable();
             $table->text('description')->nullable();
-            $table->string('ground_type');
+            $table->string('ground_type')->nullable();
             $table->string('status')->default('disponible');
-            $table->string('propertyName')->nullable();
             $table->Integer('number_of_bedrooms')->nullable();
             $table->Integer('number_of_bathrooms')->nullable();
-            $table->Integer('monthlyRent')->nullable();
             $table->string('location')->default('non');
             $table->string('locationType')->default('non sanitaire');
             $table->timestamps();

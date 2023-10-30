@@ -55,7 +55,7 @@
                                                 @foreach ($allprod as $post)
                                                     <tr>
                                                         <td>{{ $post->id }}</td>
-                                                        <td>{{ $post->land_owner }}</td>
+                                                        <td>{{ $post->landOwner_propertyName }}</td>
                                                         <td>{{ $post->address }}</td>
                                                         <td>{{ $post->department }}</td>
                                                         <td>{{ $post->communes }}</td>

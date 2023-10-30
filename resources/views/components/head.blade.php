@@ -1,4 +1,4 @@
-<head>
+    <head>
     <meta charset="UTF-8" />
     <title>one build plus - Nous garantissons la sécurité de vos biens immobiliers et éducatifs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

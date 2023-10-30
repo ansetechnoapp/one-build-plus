@@ -47,18 +47,11 @@ class account extends Controller
                 'phone' => "S'il vous plaît, entrez votre numéro de téléphone",
             ];
 
-            $customAttributes = [
-                'firstName' => "Prénom",
-                'lastName' => "Nom.",
-                'email' => 'Adresse email',
-                'phone' => 'numéro de téléphone',
-            ];
-
 
             // Validation des données envoyées dans la requête
 
             try {
-                $request->validate($rules, $messages, $customAttributes);
+                $request->validate($rules, $messages);
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
                 // Récupération des messages d'erreur de validation
@@ -115,16 +108,8 @@ class account extends Controller
                 'newPassword' => 'Le mot de passe doit contenir au moins 8 caractères.',
                 'comfirm_password' => 'Le mot de passe doit contenir au moins 8 caractères.',
             ];
-
-            // Définition des noms de champs personnalisés
-            $customAttributes = [
-                'oldPassword' => 'Le mot de passe actuelle.',
-                'newPassword' => 'Le nouveau mot de passe.',
-                'comfirm_password' => 'confirmation du mot de passe nouveau mots de passe.',
-            ];
-            // Validation des données envoyées dans la requête
             try {
-                $request->validate($rules, $messages, $customAttributes);
+                $request->validate($rules, $messages);
 
 
                 $currentPasswordStatus = Hash::check($oldPassword, auth()->user()->password);

@@ -25,14 +25,9 @@ class index extends Controller
             'question.questionregister' => 'Entrer un texte',
             'answer.answerregister' => 'Entrer un texte',
         ];
-        $customAttributes = [
-            'title_idregister' => 'Entrer un texte.',
-            'questionregister' => 'Entrer un texte.',
-            'answerregister' => 'Entrer un texte.',
-        ];
 
         try {
-            $request->validate($rules, $messages, $customAttributes);
+            $request->validate($rules, $messages);
 
             $title_id = $request->title_id;
             $question = $request->question;

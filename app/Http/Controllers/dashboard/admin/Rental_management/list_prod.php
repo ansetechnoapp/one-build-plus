@@ -10,7 +10,7 @@ class list_prod extends Controller
 {
     public function show(Request $request)
     {
-        $posts = prod::where('location','oui')->get();
+        $posts = prod::where('location','oui')->orderBy('id', 'desc')->get();
         return view('dashboard.admin.Rental_management.list_prod', ['allprod' => $posts]);
     }
 }

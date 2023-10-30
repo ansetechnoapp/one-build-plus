@@ -24,7 +24,7 @@ class update extends Controller
 
         // Définition des règles de validation
         $rules = [
-            'land_owner' => 'required|string|max:100|min:2',
+            'landOwner_propertyName' => 'required|string|max:100|min:2',
             'address' => 'required|string|max:100|min:2',
             'department' => 'required|string|max:100|min:2',
             'communes' => 'required|string|max:100|min:2',
@@ -43,7 +43,7 @@ class update extends Controller
 
         // Définition des messages d'erreur personnalisés
         $messages = [
-            'land_owner' => 'Entrer une bonne valeur',
+            'landOwner_propertyName' => 'Entrer une bonne valeur',
             'address' => 'Entrer une bonne valeur',
             'department' => 'Entrer une bonne valeur',
             'communes' => 'Entrer une bonne valeur',
@@ -60,33 +60,14 @@ class update extends Controller
             'ground_type' => 'Entrer un texte',
         ];
 
-        // Définition des noms de champs personnalisés
-        $customAttributes = [
-            'land_owner' => 'Entrer une bonne valeur',
-            'address' => 'Entrer une bonne valeur',
-            'department' => 'Entrer une bonne valeur',
-            'communes' => 'Entrer une bonne valeur',
-            'borough' => 'Entrer une bonne valeur',
-            'area' => 'Entrer une bonne valeur',
-            'price' => 'pris',
-            'price_min' => 'prix minimal',
-            'main_image' => 'image important',
-            'img1' => 'image',
-            'img2' => 'image',
-            'img3' => 'image',
-            'img4' => 'image',
-            'description' => 'Entrer un texte',
-            'ground_type' => 'Entrer un texte',
-        ];
-
         try {
-            $request->validate($rules, $messages, $customAttributes);
+            $request->validate($rules, $messages);
 
             $prod_id = $request->prod_id;
             $prod = prod::findOrFail($prod_id);
 
             $prod->update([
-                'land_owner' => $request->land_owner,
+                'landOwner_propertyName' => $request->landOwner_propertyName,
                 'address' => $request->address,
                 'department' => $request->department,
                 'communes' => $request->communes,

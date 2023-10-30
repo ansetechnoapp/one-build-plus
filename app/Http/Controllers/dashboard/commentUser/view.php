@@ -33,12 +33,8 @@ class view extends Controller
                 'profession.errorProfession' => "L'adresse email n'est pas valide.",
                 'message.errorMessage' => 'Le mot de passe doit contenir au moins 8 caractères.',
             ];
-            $customAttributes = [
-                'errorProfession' => 'Adresse email',
-                'errorMessage' => 'mot de passe',
-            ];
             try {
-                $request->validate($rules, $messages, $customAttributes);
+                $request->validate($rules, $messages);
                 if (User::where('id', Auth::user()->id)->first() !== null) {
                     User::where('id', Auth::user()->id)->update([
                         'Profession' => $profession,

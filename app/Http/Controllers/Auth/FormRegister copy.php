@@ -19,15 +19,14 @@ class FormRegister extends Controller
 {
     public function mail1(Request $request)
     {
+
         $company_name = 'Bois de ERIC A.E';
         $email = 'info@txbest.online';
         $tel = '+229 7 80 97 99 74';
-
-        Mail::to($email)->send(new sendregisteruser($request->all()));
-
-        return View('view_response_mail.fr.devis.index', compact('company_name', 'email', 'tel'));
+        Mail::to($email)
+            ->send(new sendregisteruser($request->all()));
+        return View('view_response_mail.fr.devis.index', $request, compact('company_name', 'email', 'tel'));
     }
-
     /* public function testmodelrequest(Request $request)
     {
 
@@ -37,6 +36,88 @@ class FormRegister extends Controller
         ->first();
         dd($isactive->isactive);
     } */
+    public function SaveRegisterUserAndProd(Request $request)
+    {
+        $price = $request->price;
+        $lastName = $request->lastName;
+        $firstName = $request->firstName;
+        $prod_id = $request->id;
+        $registration_andf = $request->registration_andf;
+        $formality_fees = $request->formality_fees;
+        $notary_fees = $request->notary_fees;
+        $payment_frequency = $request->payment_frequency;
+        $montant = $request->montant;
+        $email = $request->email;
+        $password1 = $request->password;
+        $password2 = $request->password_confirm;
+        $password = bcrypt($request->password);
+
+
+        if (isset($price) || isset($lastName) || isset($firstName) || isset($prod_id) || isset($email) || isset($password)) {
+            if ($password1 == $password2) {
+                $rules = [
+                    'lastName' => ['required', 'string', 'max:100', 'min:2'],
+                    'email' => ['required', 'string', 'email', 'max:255'],
+                    'password' => ['required', 'string', 'max:255', Password::min(5)],
+                    /* 'password' => ['required', 'string', 'max:255', Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()], */
+                ];
+                $messages = [
+                    'email.emailregister' => "L'adresse email n'est pas valide.",
+                    'password.minregister' => 'Le mot de passe doit contenir au moins 8 caractères.',
+                ];
+
+                try {
+                    $request->validate($rules, $messages);
+                    if (User::where('email', $request->email)->first() === null) {
+
+                        $insert = User::create([
+                            'lastName' => $lastName,
+                            'firstName' => $firstName,
+                            'email' => $email,
+                            'password' => $password,
+
+                        ]);
+
+                        $additional_option = new additional_option();
+                        $additional_option->registration_andf = $registration_andf;
+                        $additional_option->formality_fees = $formality_fees;
+                        $additional_option->notary_fees = $notary_fees;
+                        $additional_option->payment_frequency = $payment_frequency;
+                        $additional_option->prod_id = $prod_id;
+                        $additional_option->user()->associate($insert);
+                        $additional_option->save();
+                        $additional_option_insert = $additional_option;
+                        $devis = new devis();
+                        $devis->price = $price;
+                        $devis->montant = $montant;
+                        $devis->prod_id = $prod_id;
+                        $devis->dateDevis = now()->format('Y-m-d');
+                        $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
+                        $devis->user()->associate($insert);
+                        $devis->additional_option()->associate($additional_option_insert);
+                        $devis->save();
+                        Mail::to($email)
+                            ->send(new sendregisteruser($request->all()));
+                        return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
+                    } else {
+                        return redirect()->route('payment', ['id' => $prod_id, 'price' => $price]);
+                    }
+                } catch (ValidationException $e) {
+                    $errors = $e->validator->errors();
+                    return redirect()->to('/auth-signup')->withErrors($errors);
+                }
+            } else {
+                return view('payment.suite2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
+            }
+        } else {
+
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
+        }
+    }
     public function SaveRegister(Request $request)
     {
         $lastName = Session::get('user_lastName');;
@@ -255,93 +336,5 @@ class FormRegister extends Controller
     public function subscribe(Request $request)
     {
         $subscribe = $request->subscribe;
-    }
-
-
-
-    public function SaveRegisterUserAndProd(Request $request)
-    {
-
-        if ($request->password == $request->password_confirm) {
-            $this->validateUserData($request);
-            if (!$this->userExists($request->email)) {
-                $user = $this->createUser($request);
-                $additional_option = $this->createadditional_option($request, $user);
-                $this->createDevis($request, $user, $additional_option);
-                Mail::to($user->email)->send(new sendregisteruser($request->all()));
-
-                return view('emails.emailsendforconfirmationuserregistration', ['email' => $user->email]);
-            } else {
-                return view('payment.suite2', ['email' => 'Votre email ou votre mots de passe ne correpond pas']);
-            }
-        } else {
-            return view('payment.suite2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
-        }
-    }
-
-    private function validateUserData($request)
-    {
-        $rules = [
-            'lastName' => ['required', 'string', 'max:100', 'min:2'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'max:255', Password::min(5)],
-        ];
-
-        $messages = [
-            'email.emailregister' => "L'adresse email n'est pas valide.",
-            'password.minregister' => 'Le mot de passe doit contenir au moins 8 caractères.',
-        ];
-
-        $request->validate($rules, $messages);
-    }
-
-    private function userExists($email)
-    {
-        if ($email) {
-            return User::where('email', $email)->exists();
-        } else {
-            $email = session::get('user_email');
-            return User::where('email', $email)->exists();
-        }
-    }
-
-    private function createUser($request)
-    {
-        $user = User::create([
-            'lastName' => $request->lastName,
-            'firstName' => $request->firstName,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
-
-        return $user;
-    }
-
-    private function createadditional_option($request, $user)
-    {  /*  dd(Session::get('payment_frequency')); */
-        $additional_option = new additional_option();
-        $additional_option->registration_andf = $request->registration_andf;
-        $additional_option->formality_fees = $request->formality_fees;
-        $additional_option->notary_fees = $request->notary_fees;
-        $additional_option->payment_frequency = Session::get('payment_frequency');
-        $additional_option->prod_id = $request->id;
-        $additional_option->user()->associate($user);
-        $additional_option->save();
-
-        return $additional_option;
-    }
-
-    private function createDevis($request, $user, $additional_option)
-    {
-        $devis = new devis();
-        $devis->price = $request->price;
-        $devis->montant = $request->montant;
-        $devis->prod_id = $request->id;
-        $devis->dateDevis = now()->format('Y-m-d');
-        $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
-        $devis->user()->associate($user);
-        $devis->additional_option()->associate($additional_option);
-        $devis->save();
-        return $devis;
     }
 }

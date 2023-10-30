@@ -13,23 +13,15 @@
                 @endif
             </div>
             <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">Nom du domicile</labeL>
+                <labeL class="small mb-1" for="inputarea">Nom du domicile ou Entrer le nom complet du propriétaire</labeL>
                 <input class="form-control" id="inputarea" type="text" value="{{ $allprodupdate->area }}"
-                    name="propertyName" required>
+                    name="landOwner_propertyName" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
                 @endif
             </div>
         </div>
         <div class="row gx-3">
-            <div class="mb-3 col-md-6">
-                <label class="small mb-1" for="inputland_owner">Entrer le nom complet du propriétaire</label>
-                <input class="form-control" id="inputland_owner" type="text" value="{{ $allprodupdate->land_owner }}"
-                    value="xora Valerie" name="land_owner" required>
-                @if ($errors->has('land_owner'))
-                    <div class="alert alert-danger">{{ $errors->first('land_owner') }}</div>
-                @endif
-            </div>
             <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
                 <input class="form-control" id="inputarea" type="text" value="{{ $allprodupdate->area }}"
@@ -77,19 +69,11 @@
         </div>
         <div class="row gx-3">
             <div class="col-md-6 mb-md-0">
-                <label class="small mb-1" for="inputprice">prix</label>
-                <input class="form-control" id="inputprice" type="number" value="{{ $allprodupdate->price }}"
+                <label class="small mb-1" for="inputprice">Loyer mensuel</label>
+                <input class="form-control" id="inputprice" type="text" value="{{ $allprodupdate->price }}"
                     name="price" required>
                 @if ($errors->has('price'))
                     <div class="alert alert-danger">{{ $errors->first('price') }}</div>
-                @endif
-            </div>
-            <div class="col-md-6 mb-0">
-                <label class="small mb-1" for="inputprice_min">prix min</label>
-                <input class="form-control" id="inputprice_min" type="number" value="{{ $allprodupdate->price_min }}"
-                    name="price_min" required>
-                @if ($errors->has('price_min'))
-                    <div class="alert alert-danger">{{ $errors->first('price_min') }}</div>
                 @endif
             </div>
         </div>
@@ -103,39 +87,20 @@
                     <div class="alert alert-danger">{{ $errors->first('borough') }}</div>
                 @endif
             </div>
-            <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputground_type">Type de terre</labeL>
-                <select class="form-control" id="inputground_type" name="ground_type" required>
-                    <option value="{{ $allprodupdate->ground_type }}"selected>{{ $allprodupdate->ground_type }}
-                    </option>
-                    <option value="Domaine agricole">Domaine agricole</option>
-                    <option value="Domaine habitable">Domaine habitable</option>
-                    <option value="Domaine semi-habitable">Domaine semi-habitable</option>
-                    <option value="Domaine agricole">Domaine agricole</option>
-                    <option value="centre ville">centre ville</option>
-                    <option value="agglomérations">agglomérations</option>
-                    <option value="terres rurales">terres rurales</option>
-                    <option value="urbain">urbain</option>
-                    <option value="péri-urbain">péri-urbain</option>
-                </select>
-                @if ($errors->has('ground_type'))
-                    <div class="alert alert-danger">{{ $errors->first('ground_type') }}</div>
-                @endif
-            </div>
         </div>
 
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
 
                 <label class="small mb-1" for="inputaddress">nombre de chambre</label>
-                <input class="form-control" id="inputaddress" type="text" name="number_of_bedrooms" required>
+                <input class="form-control" id="inputaddress" type="number" name="number_of_bedrooms" required>
                 @if ($errors->has('address'))
                     <div class="alert alert-danger">{{ $errors->first('address') }}</div>
                 @endif
             </div>
             <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">nombre de salle de bain</labeL>
-                <input class="form-control" id="inputarea" type="text" name="number_of_bathrooms" value="1ha"
+                <input class="form-control" id="inputarea" type="number" name="number_of_bathrooms" value="1ha"
                     required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
@@ -155,13 +120,6 @@
                 </select>
                 @if ($errors->has('status'))
                     <div class="alert alert-danger">{{ $errors->first('status') }}</div>
-                @endif
-            </div>
-            <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">Loyer mensuel</labeL>
-                <input class="form-control" id="inputarea" type="text" name="monthlyRent" required>
-                @if ($errors->has('monthlyRent'))
-                    <div class="alert alert-danger">{{ $errors->first('monthlyRent') }}</div>
                 @endif
             </div>
         </div>
@@ -221,6 +179,7 @@
 @else
     <form action="{{ route('save.prod_rent') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="location" value="oui" required>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputaddress">Entrer les détaille sur la localisation de la
@@ -231,8 +190,8 @@
                 @endif
             </div>
             <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">Nom du domicile</labeL>
-                <input class="form-control" id="inputarea" type="text" name="propertyName" required>
+                <labeL class="small mb-1" for="inputarea">Nom du domicile ou Entrer le nom complet du propriétaire</labeL>
+                <input class="form-control" id="inputarea" type="text" name="landOwner_propertyName" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
                 @endif
@@ -240,19 +199,19 @@
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
-                <label class="small mb-1" for="inputland_owner">Entrer le nom complet du propriétaire</label>
-                <input class="form-control" id="inputland_owner" type="text" placeholder="Enter your first name"
-                    value="xora Valerie" name="land_owner" required>
-                @if ($errors->has('land_owner'))
-                    <div class="alert alert-danger">{{ $errors->first('land_owner') }}</div>
-                @endif
-            </div>
-            <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
                 <input class="form-control" id="inputarea" type="text" placeholder="Supéficie" value="1ha"
                     name="area" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
+                @endif
+            </div>
+            <div class="col-md-6 mb-md-0">
+                <label class="small mb-1" for="inputprice">Loyer mensuel</label>
+                <input class="form-control" id="inputprice" type="text" placeholder="prix" name="price"
+                    required>
+                @if ($errors->has('price'))
+                    <div class="alert alert-danger">{{ $errors->first('price') }}</div>
                 @endif
             </div>
         </div>
@@ -293,24 +252,6 @@
             </div>
 
         </div>
-        <div class="row gx-3">
-            <div class="col-md-6 mb-md-0">
-                <label class="small mb-1" for="inputprice">prix</label>
-                <input class="form-control" id="inputprice" type="number" placeholder="prix" name="price"
-                    required>
-                @if ($errors->has('price'))
-                    <div class="alert alert-danger">{{ $errors->first('price') }}</div>
-                @endif
-            </div>
-            <div class="col-md-6 mb-0">
-                <label class="small mb-1" for="inputprice_min">prix min</label>
-                <input class="form-control" id="inputprice_min" type="number"placeholder="price min"
-                    name="price_min" required>
-                @if ($errors->has('price_min'))
-                    <div class="alert alert-danger">{{ $errors->first('price_min') }}</div>
-                @endif
-            </div>
-        </div>
 
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
@@ -322,21 +263,17 @@
                 @endif
             </div>
             <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputground_type">Type de terre</labeL>
-                <select class="form-control" id="inputground_type" name="ground_type" required>
-                    <option>sélectionnez un type de terrain</option>
-                    <option value="Domaine agricole">Domaine agricole</option>
-                    <option value="Domaine habitable">Domaine habitable</option>
-                    <option value="Domaine semi-habitable">Domaine semi-habitable</option>
-                    <option value="Domaine agricole">Domaine agricole</option>
-                    <option value="centre ville">centre ville</option>
-                    <option value="agglomérations">agglomérations</option>
-                    <option value="terres rurales">terres rurales</option>
-                    <option value="urbain">urbain</option>
-                    <option value="péri-urbain">péri-urbain</option>
+                <label class="small mb-1" for="inputborough">type de location</label>
+                <select class="form-control" name="locationType">
+                    <option>Fait votre choix</option>
+                    <option name="maison">maison</option>
+                    <option name="appartemant">appartemant</option>
+                    <option name="sanitaire">sanitaire</option>
+                    <option name="non sanitaire">non sanitaire</option>
+                    <option name="autre">autre</option>
                 </select>
-                @if ($errors->has('ground_type'))
-                    <div class="alert alert-danger">{{ $errors->first('ground_type') }}</div>
+                @if ($errors->has('locationType'))
+                    <div class="alert alert-danger">{{ $errors->first('locationType') }}</div>
                 @endif
             </div>
         </div>
@@ -369,13 +306,6 @@
                 </select>
                 @if ($errors->has('status'))
                     <div class="alert alert-danger">{{ $errors->first('status') }}</div>
-                @endif
-            </div>
-            <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">Loyer mensuel</labeL>
-                <input class="form-control" id="inputarea" type="number" name="monthlyRent" required>
-                @if ($errors->has('area'))
-                    <div class="alert alert-danger">{{ $errors->first('area') }}</div>
                 @endif
             </div>
         </div>

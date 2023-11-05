@@ -2,6 +2,7 @@
     <form action="{{route('updade.prod.rent')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="location" value="oui" required>
+        <input type="hidden" name="id" value="{{ $allprodupdate->id }}">
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputaddress">Entrer les détaille sur la localisation de la
@@ -22,7 +23,7 @@
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
-                <input class="form-control" id="inputarea" type="text" placeholder="Supéficie" value="{{ $allprodupdate->area }}"
+                <input class="form-control" id="inputarea" type="text"  value="{{ $allprodupdate->area }}"
                     name="area" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
@@ -30,7 +31,7 @@
             </div>
             <div class="col-md-6 mb-md-0">
                 <label class="small mb-1" for="inputprice">Loyer mensuel</label>
-                <input class="form-control" id="inputprice" type="text" placeholder="prix" name="price" value="{{ $allprodupdate->price }}"
+                <input class="form-control" id="inputprice" type="text"  name="price" value="{{ $allprodupdate->price }}"
                     required>
                 @if ($errors->has('price'))
                     <div class="alert alert-danger">{{ $errors->first('price') }}</div>
@@ -78,7 +79,7 @@
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputborough">Arrondissement</label>
-                <input class="form-control" id="inputborough" type="text" placeholder="Arrondissement"
+                <input class="form-control" id="inputborough" type="text" value="{{ $allprodupdate->borough }}"
                     name="borough" required>
                 @if ($errors->has('borough'))
                     <div class="alert alert-danger">{{ $errors->first('borough') }}</div>

@@ -28,7 +28,7 @@ class upadate_prod extends Controller
             'communes' => 'required|string|max:100|min:2',
             'borough' => 'required|string|max:100|min:2',
             'area' => 'required|string|max:100|min:2',
-            'price' => 'required|integer',
+            'price' => 'required|numeric',
             'status' => 'required|string',
             'number_of_bedrooms' => 'required|integer',
             'number_of_bathrooms' => 'required|integer',
@@ -64,8 +64,7 @@ class upadate_prod extends Controller
 
         try {
             $request->validate($rules, $messages);
-
-            $prod_id = $request->prod_id;
+            $prod_id = $request->id;
             $prod = prod::findOrFail($prod_id);
 
             $prod->update([
@@ -110,8 +109,9 @@ class upadate_prod extends Controller
                 }
             }
 
-            return redirect()->route('list_prod');
+            return redirect()->route('Rental.management.list.prod');
         } catch (ValidationException $e) {
+            dd('erreur');
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();
             return redirect()

@@ -28,10 +28,10 @@
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="container-xl px-4 mt-n10 mb-4">
                         <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="{{route('faq_form')}}">FORMULAIRE FAQ</a>
-                            
-                            <a class="nav-link" href="{{route('faq_title_form')}}">FORMULAIRE TITRE FAQ</a>
-                            
+                            <a class="nav-link active ms-0" href="{{ route('faq_form') }}">FORMULAIRE FAQ</a>
+
+                            <a class="nav-link" href="{{ route('faq_title_form') }}">FORMULAIRE TITRE FAQ</a>
+
                         </nav>
                         <hr class="mt-0 mb-4">
                         <!-- Wizard card example with navigation-->
@@ -58,27 +58,59 @@
                                         <div class="row justify-content-center">
                                             <div class="col-xxl-6 col-xl-8">
                                                 {{-- <h3 class="text-primary">Step 1</h3> --}}
-                                                <h1 class="card-title mb-4">Saisir les informations
+                                                @if (isset($allprodupdate))
+                                                <h1 class="card-title mb-4">mettre a jour la catégorie : {{$allprodupdate->title}}
                                                 </h1>
-                                                <form action="{{route('save_form_title_faq')}}" method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                        
-                                                    <div class="row gx-3">
-                                                        <div class="mb-3 col-md-6">
-                                                            <label class="small mb-1" for="inputtitle">Catégories</label>
-                                                            <input class="form-control" id="inputtitle" type="text" 
-                                                            placeholder="Enter votre titre"
-                                                            name="title" required>
-                                                            @if ($errors->has('title'))
-                                                                <div class="alert alert-danger">{{ $errors->first('title') }}</div>
-                                                            @endif
+                                                    <form action="{{route('Updatesavefaqs.title')}}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <div class="row gx-3">
+                                                            <div class="mb-3 col-md-6">
+                                                                <label class="small mb-1"
+                                                                    for="inputtitle">Catégories</label>
+                                                                <input class="form-control" id="inputtitle"
+                                                                    type="text" value="{{$allprodupdate->title}}"
+                                                                    name="title" required>
+                                                                    <input type="hidden" name="id" value="{{$allprodupdate->id}}">
+                                                                @if ($errors->has('title'))
+                                                                    <div class="alert alert-danger">
+                                                                        {{ $errors->first('title') }}</div>
+                                                                @endif
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <hr class="my-4">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button class="btn btn-primary" type="submit">Valider</button>
-                                                    </div>
-                                                </form>
+                                                        <hr class="my-4">
+                                                        <div class="d-flex justify-content-between">
+                                                            <button class="btn btn-primary"
+                                                                type="submit">Valider</button>
+                                                        </div>
+                                                    </form>
+                                                @else
+                                                    <form action="{{ route('save_form_title_faq') }}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        <div class="row gx-3">
+                                                            <div class="mb-3 col-md-6">
+                                                                <label class="small mb-1"
+                                                                    for="inputtitle">Catégories</label>
+                                                                <input class="form-control" id="inputtitle"
+                                                                    type="text" placeholder="Enter votre titre"
+                                                                    name="title" required>
+                                                                @if ($errors->has('title'))
+                                                                    <div class="alert alert-danger">
+                                                                        {{ $errors->first('title') }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <hr class="my-4">
+                                                        <div class="d-flex justify-content-between">
+                                                            <button class="btn btn-primary"
+                                                                type="submit">Valider</button>
+                                                        </div>
+                                                    </form>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>

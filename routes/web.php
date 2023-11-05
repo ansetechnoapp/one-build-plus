@@ -152,14 +152,16 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     })->name('dashboard.admin.Rental_management');
     Route::get('/Rental.management.list_prod', [\App\Http\Controllers\dashboard\admin\Rental_management\list_prod::class, 'show'])->name('Rental.management.list.prod');
     Route::get('/faq.form', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'view'])->name('faq_form');
-    Route::get('/faq.title.form', function () {
-        return view('dashboard.admin.faq_form.title');
-    })->name('faq_title_form');
+    Route::get('/faq.title.form', [\App\Http\Controllers\dashboard\admin\faqs_form\title::class, 'view'])->name('faq_title_form');
     Route::post('/save.form.faq', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'save'])->name('save_form_faq');
     Route::get('/delete.faq.{id}', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'deleteforfaq'])->name('delete_faq');
     Route::get('/delete.title.faq.{id}', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'deleteforfaqtitle'])->name('delete_title_faq');
     Route::post('/save.form.title.faq', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'save'])->name('save_form_title_faq');
     Route::get('/faqs_admin', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'show'])->name('faqs.admin');
+    Route::get('/faqsUpdate_title.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'showid'])->name('faqsUpdate.title');
+    Route::post('/Updatesavefaqs_title', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'update'])->name('Updatesavefaqs.title');
+    Route::get('/faqsUpdate.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'showid'])->name('faqsUpdate');
+    Route::post('/Updatesavefaqs', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'update'])->name('Updatesavefaqs');
 });
 
 /*

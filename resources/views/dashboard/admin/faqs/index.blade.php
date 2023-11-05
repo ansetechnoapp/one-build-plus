@@ -61,10 +61,10 @@
                         {!! $listFaq !!}
                     @endisset
                 </div>
-            </div><!--end grid-->
+            </div><!--end <grid-->
         </div><!--end container-->
 
-        <div class="container lg:mt-24 mt-16">
+        <div class="container lg:mt-24 mt-16" style="grid-column: span 20 / span 10 !important;">
             @include('include.3sectioncontainer')
         </div><!--end container-->
     </section><!--end section-->

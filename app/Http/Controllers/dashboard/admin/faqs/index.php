@@ -16,10 +16,14 @@ class index extends Controller
         $html = '';
 
         foreach ($uniqueTitles as $data) {
-            $html .= '<div id="generalfaq' . $data->id . '">';
+            $html .= '<div id="generalfaq' . $data->id . '" style="margin-top: 5%;">';
             if (isset(Auth::user()->role)) {
                 if (Auth::user()->role == 'admin') {
-                    $html .='<h5 class="text-2xl font-semibold">' . $data->title . ' <a href="#"  onclick="openModal(\'delete.title.faq.' . $data->id . '\')" class="btn btn-open hover-bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">supprimer</a></h5>';
+                    $html .='<h5 class="text-2xl font-semibold">' . $data->title . '<br>
+                    
+                    <a href="' . route("faqsUpdate.title",['id'=>'' . $data->id . '']) . '"  class="btn btn-open hover-bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">
+                    Modifier</a>
+                     <a href="#"  onclick="openModal(\'delete.title.faq.' . $data->id . '\')" class="btn btn-open hover-bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">supprimer</a></h5>';
 
                 } else {
                     $html .= '<h5 class="text-2xl font-semibold">' . $data->title . '</h5>';
@@ -35,37 +39,19 @@ class index extends Controller
                 if (isset(Auth::user()->role)) {
                     if (Auth::user()->role == 'admin') {
 
-                        $html .='<a href="#" onclick="openModal(\'delete.faq.' . $faq->id . '\')" class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">supprimer</a>';
+                        $html .='<a href="' . route("faqsUpdate",['id'=>'' . $faq->id . '']) . '"  class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">
+                        Modifier</a>
+                        <a href="delete.faq.' . $faq->id . '" class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">supprimer</a>';
                     } else {
                     }
                 } else {
                 }
                 $html .= '</div>';
-            }
+            }       
             $html .= '</div>';
             $html .= '</div>'; // Fermez la div pour ce titre ici
         }
-        return view('faqs.index', ['listFaq' => $html, 'uniqueTitles' => $uniqueTitles]);
-    }
-    public function deleteforfaqtitle($id)
-    {
-        $faq = faq::where('title_id', $id); // Recherche l'enregistrement à supprimer
-        $faq_title = faq_title::find($id);
-
-        if ($faq_title) {
-            $faq->delete(); // Supprime l'enregistrement s'il existe
-            $faq_title->delete();
-        }
-        return redirect()->back();
-    }
-
-    public function deleteforfaq($id)
-    {
-        $faq = faq::find($id); // Recherche l'enregistrement à supprimer
-
-        if ($faq) {
-            $faq->delete(); // Supprime l'enregistrement s'il existe
-        }
-        return redirect()->back();
+        return view('dashboard.admin.faqs.index', ['listFaq' => $html, 'uniqueTitles' => $uniqueTitles]);
     }
 }
+

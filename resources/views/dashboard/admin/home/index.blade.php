@@ -28,15 +28,17 @@
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="container-xl px-4 mt-n10 mb-4">
                         <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="{{ route('dashboard.admin') }}">Enrégistrement des biens immobiliers</a>
-                            
-                            <a class="nav-link" href="{{ route('dashboard.admin.Rental_management') }}">Enrégistrement des biens locatif</a>
-                            
+                            <a class="nav-link active ms-0" href="{{ route('dashboard.admin') }}">Enrégistrement des
+                                biens immobiliers</a>
+
+                            <a class="nav-link" href="{{ route('dashboard.admin.Rental_management') }}">Enrégistrement
+                                des biens locatif</a>
+
                         </nav>
                         <hr class="mt-0 mb-4">
                         <!-- Wizard card example with navigation-->
                         <div class="card">
-                            
+
                             <div class="card-body">
                                 <div class="tab-content" id="cardTabContent">
                                     <!-- Wizard tab pane item 1-->
@@ -80,7 +82,10 @@
     </a>
 
     <!-- Logout Modal-->
-    @include('include.dashboard.logoutModal')
+    <x-dashboard_modal title="Prêt à partir ?"
+        message='Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre
+    session en cours.'
+        path="{{ route('Logout') }}"></x-dashboard_modal>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/dashboard/vendor/jquery/jquery.min.js"></script>

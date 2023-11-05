@@ -39,7 +39,7 @@ class index extends Controller
                 'answer' => $answer,
             ]);
 
-            return redirect()->route('faqs');
+            return redirect()->route('faqs.admin');
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();
@@ -47,81 +47,6 @@ class index extends Controller
                 ->back()
                 ->withErrors($errors);
         }
-    }
-
-    public function show()
-    {
-        $uniqueTitles = faq_title::all();
-        $html = '';
-
-        foreach ($uniqueTitles as $data) {
-            $html .= '<div id="generalfaq' . $data->id . '">';
-            if (isset(Auth::user()->role)) {
-                if (Auth::user()->role == 'admin') {
-                    $html .= '<h5 class="text-2xl font-semibold">' . $data->title . ' <a href="delete.title.faq.' . $data->id . '" class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px;
-                margin-bottom: 10px;background-color: black;">supprimer</a></h5>';
-                } else {
-                    $html .= '<h5 class="text-2xl font-semibold">' . $data->title . '</h5>';
-                }
-            } else {
-                $html .= '<h5 class="text-2xl font-semibold">' . $data->title . '</h5>';
-            }
-            $html .= '<div id="accordion-collapseone" data-accordion="collapse" class="mt-6">';
-            $faqTitle = faq::where('title_id', $data->id)->get();
-
-            foreach ($faqTitle as $faq) {
-                $html .= '<div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden">';
-                $html .= '<h2 class="text-lg font-medium" id="accordion-collapse-heading-' . $faq->id . '">';
-                $html .= '<button type="button" class="flex justify-between items-center p-5 w-full font-medium text-left" data-accordion-target="#accordion-collapse-body-' . $faq->id . '" aria-expanded="false" aria-controls="accordion-collapse-body-' . $faq->id . '">';
-                $html .= '<span>s' . $faq->question . '</span>';
-                $html .= '<svg data-accordion-icon class="w-4 h-4 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">';
-                $html .= '<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>';
-                $html .= '</svg>';
-                $html .= '</button>';
-                $html .= '</h2>';
-                $html .= '<div id="accordion-collapse-body-' . $faq->id . '" class="hidden" aria-labelledby="accordion-collapse-heading-' . $faq->id . '">';
-                $html .= '<div class="p-5">';
-                $html .= '<p class="text-slate-400 dark:text-gray-400">' . $faq->answer . '</p>';
-                $html .= '</div>';
-                if (isset(Auth::user()->role)) {
-                    if (Auth::user()->role == 'admin') {
-
-                        $html .= '<a href="delete.faq.' . $faq->id . '" class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px;
-                    margin-bottom: 10px;background-color: black;">supprimer</a>';
-                        // $html .= '<a href="#" class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px;
-                        // margin-bottom: 10px;background-color: black;">modifier</a>';
-                    } else {
-                    }
-                } else {
-                }
-                $html .= '</div>';
-            }
-            $html .= '</div>';
-            $html .= '</div>'; // Fermez la div pour ce titre ici
-        }
-        return view('faqs.index', ['listFaq' => $html, 'uniqueTitles' => $uniqueTitles]);
-    }
-
-    public function deleteforfaqtitle($id)
-    {
-        $faq = faq::where('title_id', $id); // Recherche l'enregistrement à supprimer
-        $faq_title = faq_title::find($id);
-
-        if ($faq_title) {
-            $faq->delete(); // Supprime l'enregistrement s'il existe
-            $faq_title->delete();
-        }
-        return redirect()->back();
-    }
-
-    public function deleteforfaq($id)
-    {
-        $faq = faq::find($id); // Recherche l'enregistrement à supprimer
-
-        if ($faq) {
-            $faq->delete(); // Supprime l'enregistrement s'il existe
-        }
-        return redirect()->back();
     }
     public function view()
     {

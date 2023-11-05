@@ -65,7 +65,7 @@
                                                         
                                                     <div class="row gx-3">
                                                         <div class="mb-3 col-md-6">
-                                                            <label class="small mb-1" for="inputtitle">Titre</label>
+                                                            <label class="small mb-1" for="inputtitle">Catégories</label>
                                                             <input class="form-control" id="inputtitle" type="text" 
                                                             placeholder="Enter votre titre"
                                                             name="title" required>
@@ -110,7 +110,10 @@
     </a>
 
     <!-- Logout Modal-->
-    @include('include.dashboard.logoutModal')
+    <x-dashboard_modal title="Prêt à partir ?"
+        message='Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre
+    session en cours.'
+        path="{{ route('Logout') }}"></x-dashboard_modal>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/dashboard/vendor/jquery/jquery.min.js"></script>

@@ -57,7 +57,17 @@
                 <li><a href="buy" class="sub-menu-item">Achat</a></li>
                 <li><a href="rent" class="sub-menu-item">Louer</a></li>
                 <li><a href="aboutus" class="sub-menu-item">A propos</a></li>
-                <li><a href="faqs" class="sub-menu-item">Faqs</a></li>
+                @if (Auth::user() == null)
+                <li><a href="{{route('faqs')}}" class="sub-menu-item">Faqs</a></li>
+                
+                @else
+                @if (Auth::user()->role == 'admin')
+                <li><a href="{{route('faqs.admin')}}" class="sub-menu-item">Faqs</a></li>
+                @else
+                <li><a href="{{route('faqs')}}" class="sub-menu-item">Faqs</a></li>
+                @endif
+                    
+                @endif
                 <li><a href="contact" class="sub-menu-item">Contact</a></li>
             </ul>
             <!--end navigation menu-->

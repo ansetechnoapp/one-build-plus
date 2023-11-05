@@ -22,3 +22,6 @@ php artisan make:controller dashboard\admin\Rental_management\list_prod
 php artisan make:controller dashboard\admin\faq_form\index
 php artisan make:controller dashboard\admin\faq_form\title
 php artisan make:controller rent\index
+php artisan make:controller dashboard\admin\Rental_management\upadate_prod
+php artisan make:controller dashboard\admin\faqs\index
+php artisan make:controller faqs\index

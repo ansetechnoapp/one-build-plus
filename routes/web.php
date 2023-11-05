@@ -24,7 +24,7 @@ Route::post('/search_info_prod', [\App\Http\Controllers\show_all_product\index::
 Route::post('/search.info.prod.location', [\App\Http\Controllers\rent\index::class, 'selectsearch'])->name('search_location');
 
 Route::get('/', [\App\Http\Controllers\home\index::class, 'requestForHome'])->name('home');
-Route::get('/faqs', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'show'])->name('faqs');
+Route::get('/faqs', [\App\Http\Controllers\faqs\index::class, 'show'])->name('faqs');
 Route::get('/aboutus', function () {
     return view('about.index');
 })->name('about');
@@ -139,7 +139,9 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::get('/list_prod', [\App\Http\Controllers\prod\select::class, 'show'])->name('list_prod');
     Route::get('/list_user', [\App\Http\Controllers\Auth\FormLogin::class, 'show_list_user'])->name('list_user');
     Route::get('/view_prod_update', [\App\Http\Controllers\prod\update::class, 'show'])->name('view.prod.update');
+    Route::get('/view_prod_rent_update', [\App\Http\Controllers\dashboard\admin\Rental_management\upadate_prod::class, 'show'])->name('view.prod.rent.update');
     Route::post('/updade_prod', [\App\Http\Controllers\prod\update::class, 'updateprod'])->name('updade.prod');
+    Route::post('/updade_prod_rent', [\App\Http\Controllers\dashboard\admin\Rental_management\upadate_prod::class, 'updateprod'])->name('updade.prod.rent');
     Route::get('/user_disable{user_id}', [\App\Http\Controllers\save\account::class, 'userDisable'])->name('user.disable');
     Route::get('/user_activate{user_id}', [\App\Http\Controllers\save\account::class, 'userActivate'])->name('user.activate');
     Route::match(array('GET', 'POST'), '/admin.comment', [\App\Http\Controllers\dashboard\admin\commentUser\view::class, 'view'])->name('dashboard.admin.commentUser');
@@ -154,9 +156,10 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
         return view('dashboard.admin.faq_form.title');
     })->name('faq_title_form');
     Route::post('/save.form.faq', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'save'])->name('save_form_faq');
-    Route::get('/delete.faq.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'deleteforfaq'])->name('delete_faq');
-    Route::get('/delete.title.faq.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'deleteforfaqtitle'])->name('delete_title_faq');
+    Route::get('/delete.faq.{id}', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'deleteforfaq'])->name('delete_faq');
+    Route::get('/delete.title.faq.{id}', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'deleteforfaqtitle'])->name('delete_title_faq');
     Route::post('/save.form.title.faq', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'save'])->name('save_form_title_faq');
+    Route::get('/faqs_admin', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'show'])->name('faqs.admin');
 });
 
 /*

@@ -13,9 +13,9 @@
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
-                <label class="small mb-1" for="inputlandOwner_propertyName">Entrer le nom complet</label>
+                <label class="small mb-1" for="inputlandOwner_propertyName">Nom,prénom du propriétaire ou le nom de la propriété</label>
                 <input class="form-control" id="inputlandOwner_propertyName" type="text" value="{{ $allprodupdate->landOwner_propertyName }}"
-                    value="xora Valerie" name="landOwner_propertyName" required>
+                    placeholder="xora Valerie" name="landOwner_propertyName" required>
                 @if ($errors->has('landOwner_propertyName'))
                     <div class="alert alert-danger">{{ $errors->first('landOwner_propertyName') }}</div>
                 @endif
@@ -23,7 +23,7 @@
             <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
                 <input class="form-control" id="inputarea" type="text" value="{{ $allprodupdate->area }}"
-                    value="1ha" name="area" required>
+                    placeholder="1ha" name="area" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
                 @endif
@@ -196,7 +196,7 @@
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
-                <label class="small mb-1" for="inputlandOwner_propertyName">Entrer le nom complet</label>
+                <label class="small mb-1" for="inputlandOwner_propertyName">Nom,prénom du propriétaire ou le nom de la propriété</label>
                 <input class="form-control" id="inputlandOwner_propertyName" type="text" placeholder="Enter your first name"
                     value="xora Valerie" name="landOwner_propertyName" required>
                 @if ($errors->has('landOwner_propertyName'))

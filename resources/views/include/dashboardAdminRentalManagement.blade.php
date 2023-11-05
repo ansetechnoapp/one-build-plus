@@ -1,40 +1,47 @@
 @if (isset($allprodupdate))
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{route('updade.prod.rent')}}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="location" value="oui" required>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
-                <input type="hidden" value="{{ $allprodupdate->id }}" name="prod_id">
                 <label class="small mb-1" for="inputaddress">Entrer les détaille sur la localisation de la
                     propiété</label>
-                <input class="form-control" id="inputaddress" type="text"value="{{ $allprodupdate->address }}"
-                    name="address" required>
+                <input class="form-control" id="inputaddress" type="text" name="address" value="{{ $allprodupdate->address }}" required>
                 @if ($errors->has('address'))
                     <div class="alert alert-danger">{{ $errors->first('address') }}</div>
                 @endif
             </div>
             <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">Nom du domicile ou Entrer le nom complet du propriétaire</labeL>
-                <input class="form-control" id="inputarea" type="text" value="{{ $allprodupdate->area }}"
-                    name="landOwner_propertyName" required>
-                @if ($errors->has('area'))
-                    <div class="alert alert-danger">{{ $errors->first('area') }}</div>
+                <labeL class="small mb-1" for="inputlandOwner_propertyName">Nom,prénom du propriétaire ou le nom de la propriété</labeL>
+                <input class="form-control" id="inputlandOwner_propertyName" type="text" name="landOwner_propertyName" value="{{ $allprodupdate->landOwner_propertyName }}" required>
+                @if ($errors->has('landOwner_propertyName'))
+                    <div class="alert alert-danger">{{ $errors->first('landOwner_propertyName') }}</div>
                 @endif
             </div>
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
-                <input class="form-control" id="inputarea" type="text" value="{{ $allprodupdate->area }}"
-                    value="1ha" name="area" required>
+                <input class="form-control" id="inputarea" type="text" placeholder="Supéficie" value="{{ $allprodupdate->area }}"
+                    name="area" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
+                @endif
+            </div>
+            <div class="col-md-6 mb-md-0">
+                <label class="small mb-1" for="inputprice">Loyer mensuel</label>
+                <input class="form-control" id="inputprice" type="text" placeholder="prix" name="price" value="{{ $allprodupdate->price }}"
+                    required>
+                @if ($errors->has('price'))
+                    <div class="alert alert-danger">{{ $errors->first('price') }}</div>
                 @endif
             </div>
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="departement">Département</label>
-                <select class="form-control" id="departement" name="department" onchange="afficherCommunes()" required>
+                <select class="form-control" id="departement" name="department" onchange="afficherCommunes()"
+                    required>
                     <!-- Option par défaut -->
                     <option value="{{ $allprodupdate->department }}"selected>{{ $allprodupdate->department }}</option>
 
@@ -67,43 +74,45 @@
             </div>
 
         </div>
-        <div class="row gx-3">
-            <div class="col-md-6 mb-md-0">
-                <label class="small mb-1" for="inputprice">Loyer mensuel</label>
-                <input class="form-control" id="inputprice" type="text" value="{{ $allprodupdate->price }}"
-                    name="price" required>
-                @if ($errors->has('price'))
-                    <div class="alert alert-danger">{{ $errors->first('price') }}</div>
-                @endif
-            </div>
-        </div>
 
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputborough">Arrondissement</label>
-                <input class="form-control" id="inputborough" type="text" value="{{ $allprodupdate->borough }}"
+                <input class="form-control" id="inputborough" type="text" placeholder="Arrondissement"
                     name="borough" required>
                 @if ($errors->has('borough'))
                     <div class="alert alert-danger">{{ $errors->first('borough') }}</div>
                 @endif
             </div>
+            <div class="mb-3 col-md-6">
+                <label class="small mb-1" for="inputborough">type de location</label>
+                <select class="form-control" name="locationType">
+                    <option value="{{ $allprodupdate->locationType }}"selected>{{ $allprodupdate->locationType }}</option>
+                    <option name="maison">maison</option>
+                    <option name="appartemant">appartemant</option>
+                    <option name="sanitaire">sanitaire</option>
+                    <option name="non sanitaire">non sanitaire</option>
+                    <option name="autre">autre</option>
+                </select>
+                @if ($errors->has('locationType'))
+                    <div class="alert alert-danger">{{ $errors->first('locationType') }}</div>
+                @endif
+            </div>
         </div>
-
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
 
-                <label class="small mb-1" for="inputaddress">nombre de chambre</label>
-                <input class="form-control" id="inputaddress" type="number" name="number_of_bedrooms" required>
-                @if ($errors->has('address'))
-                    <div class="alert alert-danger">{{ $errors->first('address') }}</div>
+                <label class="small mb-1" for="inputnumber_of_bedrooms">nombre de chambre</label>
+                <input class="form-control" id="inputnumber_of_bedrooms" type="number" name="number_of_bedrooms" value="{{ $allprodupdate->number_of_bedrooms }}" required>
+                @if ($errors->has('number_of_bedrooms'))
+                    <div class="alert alert-danger">{{ $errors->first('number_of_bedrooms') }}</div>
                 @endif
             </div>
             <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">nombre de salle de bain</labeL>
-                <input class="form-control" id="inputarea" type="number" name="number_of_bathrooms" value="1ha"
-                    required>
-                @if ($errors->has('area'))
-                    <div class="alert alert-danger">{{ $errors->first('area') }}</div>
+                <labeL class="small mb-1" for="inputnumber_of_bathrooms">nombre de salle de bain</labeL>
+                <input class="form-control" id="inputnumber_of_bathrooms" type="number" name="number_of_bathrooms" value="{{ $allprodupdate->number_of_bathrooms }}" required>
+                @if ($errors->has('number_of_bathrooms'))
+                    <div class="alert alert-danger">{{ $errors->first('number_of_bathrooms') }}</div>
                 @endif
             </div>
         </div>
@@ -111,8 +120,7 @@
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputborough">Statut du produit</label>
                 <select class="form-control" name="status" id="">
-                    <option value="{{ $allprodupdate->status }}"selected>{{ $allprodupdate->status }}
-                    </option>
+                    <option value="{{ $allprodupdate->status }}"selected>{{ $allprodupdate->status }}</option>
                     <option value="disponible">Disponible</option>
                     <option value="loué">loué</option>
                     <option value="en maintenance">en maintenance</option>
@@ -190,17 +198,17 @@
                 @endif
             </div>
             <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">Nom du domicile ou Entrer le nom complet du propriétaire</labeL>
-                <input class="form-control" id="inputarea" type="text" name="landOwner_propertyName" required>
-                @if ($errors->has('area'))
-                    <div class="alert alert-danger">{{ $errors->first('area') }}</div>
+                <labeL class="small mb-1" for="inputlandOwner_propertyName">Nom,prénom du propriétaire ou le nom de la propriété</labeL>
+                <input class="form-control" id="inputlandOwner_propertyName" type="text" name="landOwner_propertyName" required>
+                @if ($errors->has('landOwner_propertyName'))
+                    <div class="alert alert-danger">{{ $errors->first('landOwner_propertyName') }}</div>
                 @endif
             </div>
         </div>
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
-                <input class="form-control" id="inputarea" type="text" placeholder="Supéficie" value="1ha"
+                <input class="form-control" id="inputarea" type="text" placeholder="Supéficie"
                     name="area" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>
@@ -280,17 +288,17 @@
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
 
-                <label class="small mb-1" for="inputaddress">nombre de chambre</label>
-                <input class="form-control" id="inputaddress" type="number" name="number_of_bedrooms" required>
-                @if ($errors->has('address'))
-                    <div class="alert alert-danger">{{ $errors->first('address') }}</div>
+                <label class="small mb-1" for="inputnumber_of_bedrooms">nombre de chambre</label>
+                <input class="form-control" id="inputnumber_of_bedrooms" type="number" name="number_of_bedrooms" required>
+                @if ($errors->has('number_of_bedrooms'))
+                    <div class="alert alert-danger">{{ $errors->first('number_of_bedrooms') }}</div>
                 @endif
             </div>
             <div class="mb-3 col-md-6">
-                <labeL class="small mb-1" for="inputarea">nombre de salle de bain</labeL>
-                <input class="form-control" id="inputarea" type="number" name="number_of_bathrooms" required>
-                @if ($errors->has('area'))
-                    <div class="alert alert-danger">{{ $errors->first('area') }}</div>
+                <labeL class="small mb-1" for="inputnumber_of_bathrooms">nombre de salle de bain</labeL>
+                <input class="form-control" id="inputnumber_of_bathrooms" type="number" name="number_of_bathrooms" required>
+                @if ($errors->has('number_of_bathrooms'))
+                    <div class="alert alert-danger">{{ $errors->first('number_of_bathrooms') }}</div>
                 @endif
             </div>
         </div>

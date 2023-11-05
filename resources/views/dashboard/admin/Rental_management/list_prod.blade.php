@@ -45,7 +45,7 @@
                                                 <th class="border-gray-200" scope="col">prix</th>
                                                 <th class="border-gray-200" scope="col">type location</th>
                                                 <th class="border-gray-200" scope="col">voir</th>
-                                                {{-- <th class="border-gray-200" scope="col">Modifier</th> --}}
+                                                <th class="border-gray-200" scope="col">Modifier</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -65,9 +65,9 @@
                                                         <td><a href="{{ route('property_detail', ['id' => $post->id, 'price' => $post->price]) }}"
                                                                 class="badge text-dark"
                                                                 style="background-color: rgb(14 165 233)">Afficher</a></td>
-                                                        {{-- <td><a href="{{ route('view.prod.update', ['id' => $post->id]) }}"
+                                                        <td><a href="{{ route('view.prod.rent.update', ['id' => $post->id]) }}"
                                                                 class="badge text-dark"
-                                                                style="background-color: rgb(14 165 233)">Modifier</a></td> --}}
+                                                                style="background-color: rgb(14 165 233)">Modifier</a></td>
                                                     </tr>
                                                 @endforeach
 
@@ -103,7 +103,10 @@
     </a>
 
     <!-- Logout Modal-->
-    @include('include.dashboard.logoutModal')
+    <x-dashboard_modal title="Prêt à partir ?"
+        message='Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre
+    session en cours.'
+        path="{{ route('Logout') }}"></x-dashboard_modal>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/dashboard/vendor/jquery/jquery.min.js"></script>

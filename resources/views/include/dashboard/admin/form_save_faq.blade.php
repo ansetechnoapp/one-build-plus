@@ -191,7 +191,7 @@
 
             <div class="row gx-3">
                 <div class="mb-3 col-md-6">
-                    <label class="small mb-1" for="inputtitle">Titre</label>
+                    <label class="small mb-1" for="inputtitle">Catégories</label>
                     <select class="form-control" id="inputtitle" name="title_id" required>
 
                         @foreach ($listTitleFaq as $item)

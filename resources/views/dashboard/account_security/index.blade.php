@@ -195,8 +195,11 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    @include('include.dashboard.logoutModal')
+    <!-- Logout dashboard_modal-->
+    <x-dashboard_modal title="Prêt à partir ?"
+        message='Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre
+    session en cours.'
+        path="{{ route('Logout') }}"></x-dashboard_modal>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/dashboard/vendor/jquery/jquery.min.js"></script>

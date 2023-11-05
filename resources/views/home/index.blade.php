@@ -75,7 +75,7 @@
                                             <div
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                                 <div class="relative">
-                                                    <img src="assets/images/property/1.jpg" alt="">
+                                                    <img src="{{ $data->main_image }}" alt="">
 
                                                     {{-- <div class="absolute top-4 end-4">
                                                         <a href="javascript:void(0)"
@@ -245,13 +245,9 @@
                                             <div
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                                 <div class="relative">
-                                                    <img src="assets/images/property/1.jpg" alt="">
-
-                                                    {{-- <div class="absolute top-4 end-4">
-                                                        <a href="javascript:void(0)"
-                                                            class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                                                class="mdi mdi-heart mdi-18px"></i></a>
-                                                    </div> --}}
+                                                    @if ($data->img)
+                                                        <img src="storage/{{ $data->img->main_image }}" alt="">
+                                                    @endif
                                                 </div>
 
                                                 <div class="p-6">
@@ -313,13 +309,9 @@
                                             <div
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                                 <div class="relative">
-                                                    <img src="assets/images/property/2.jpg" alt="">
-
-                                                    {{-- <div class="absolute top-4 end-4">
-                                                        <a href="javascript:void(0)"
-                                                            class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                                                class="mdi mdi-heart mdi-18px"></i></a>
-                                                    </div> --}}
+                                                    @if ($data->img)
+                                                        <img src="storage/{{ $data->img->main_image }}" alt="">
+                                                    @endif
                                                 </div>
 
                                                 <div class="p-6">
@@ -400,13 +392,9 @@
                         <div
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
-                                <img src="assets/images/property/1.jpg" alt="">
-
-                                {{-- <div class="absolute top-4 end-4">
-                                    <a href="javascript:void(0)"
-                                        class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                            class="mdi mdi-heart mdi-18px"></i></a>
-                                </div> --}}
+                                @if ($data->img)
+                                    <img src="storage/{{ $data->img->main_image }}" alt="">
+                                @endif
                             </div>
 
                             <div class="p-6">

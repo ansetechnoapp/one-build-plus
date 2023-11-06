@@ -122,7 +122,7 @@
     <!-- LTR & RTL Mode Code -->
 
     <!-- JAVASCRIPTS -->
-    @include('include.script2')
+    @include('include.include.scriptForPagePayment')
     <!-- JAVASCRIPTS -->
 </body>
 

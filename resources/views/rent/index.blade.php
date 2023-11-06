@@ -63,7 +63,12 @@
                         <div
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
-                                <img src="{{ $data->main_image }}" alt="">
+                                {{-- <img src="{{ $allprod->img->main_image }}" alt=""> --}}
+                                @if ($data->img)
+                                    <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
+                                @else
+                                    Aucune image disponible
+                                @endif
 
                                 {{-- <div class="absolute top-4 end-4">
                             <a href="javascript:void(0)"
@@ -79,8 +84,7 @@
                                         {{ $data->address }}</a>
                                 </div>
 
-                                <ul
-                                    class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                     <li class="flex items-center me-4">
                                         <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                         <span>{{ $data->communes }}</span>
@@ -103,7 +107,7 @@
                                         <p class="text-lg font-medium">{{ $data->price }} fcfa</p>
                                     </li>
 
-                                    <li>
+                                    {{-- <li>
                                         <span class="text-slate-400">Evaluation</span>
                                         <ul class="text-lg font-medium text-amber-400 list-none">
                                             <li class="inline"><i class="mdi mdi-star"></i></li>
@@ -113,7 +117,7 @@
                                             <li class="inline"><i class="mdi mdi-star"></i></li>
                                             <li class="inline text-black dark:text-white">5.0(30)</li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

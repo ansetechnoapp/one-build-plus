@@ -62,7 +62,9 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="storage/{{ $data->img->main_image }}" alt="">
+                                    <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
+                                @else
+                                    Aucune image disponible
                                 @endif
                             </div>
 
@@ -96,7 +98,7 @@
                                         <p class="text-lg font-medium">{{ $data->price }} fcfa</p>
                                     </li>
 
-                                    <li>
+                                    {{-- <li>
                                         <span class="text-slate-400">Evaluation</span>
                                         <ul class="text-lg font-medium text-amber-400 list-none">
                                             <li class="inline"><i class="mdi mdi-star"></i></li>
@@ -106,7 +108,7 @@
                                             <li class="inline"><i class="mdi mdi-star"></i></li>
                                             <li class="inline text-black dark:text-white">5.0(30)</li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

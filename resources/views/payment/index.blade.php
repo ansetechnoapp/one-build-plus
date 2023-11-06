@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+include.scriptForPagePayment<!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
     
 <x-head></x-head>
@@ -97,7 +97,7 @@
         <!-- LTR & RTL Mode Code -->
 
         <!-- JAVASCRIPTS -->
-        @include('include.script2')
+        @include('include.include.scriptForPagePayment')
         <!-- JAVASCRIPTS -->
     </body>
 </html>

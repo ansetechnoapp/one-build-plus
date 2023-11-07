@@ -30,7 +30,7 @@ class sendpasswordreset extends Mailable
         $donnees = $this->datas;
        // dd($donnees['name']);
         return new Envelope(
-            from: new Address($donnees['email'], ''),
+            from: new Address(env('MAIL_USERNAME'), env('APP_NAME')),
             replyTo: [
                   new Address($donnees['email'], ''),
             ],

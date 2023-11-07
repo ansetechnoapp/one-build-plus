@@ -25,3 +25,4 @@ php artisan make:controller rent\index
 php artisan make:controller dashboard\admin\Rental_management\upadate_prod
 php artisan make:controller dashboard\admin\faqs\index
 php artisan make:controller faqs\index
+php artisan make:controller page_confirm_message\sendforforgetpassword

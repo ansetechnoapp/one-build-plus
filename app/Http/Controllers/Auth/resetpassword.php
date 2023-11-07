@@ -53,7 +53,7 @@ class resetpassword extends Controller
                 } else {
                     Mail::to($email)
                         ->send(new sendpasswordreset($request->all()));
-                        return view('home.index');
+                        return redirect()->route('url.emails.sendforforgetpassword',['email' => $email]);
                     
                 }
             } catch (ValidationException $e) {

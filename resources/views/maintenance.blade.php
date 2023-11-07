@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
-    
-<!-- Mirrored from shreethemes.in/hously/layouts/maintenance.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:53:59 GMT -->
 <head>
         <meta charset="UTF-8" />
         <title>Hously - Tailwind CSS Real Estate Website Landing Page Template</title>
@@ -97,6 +95,4 @@
         <script src="assets/js/app.js"></script>
         <!-- JAVASCRIPTS -->
     </body>
-
-<!-- Mirrored from shreethemes.in/hously/layouts/maintenance.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Jul 2023 15:53:59 GMT -->
 </html>

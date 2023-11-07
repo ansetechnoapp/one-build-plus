@@ -35,7 +35,7 @@ Route::get('/rent', [\App\Http\Controllers\rent\index::class, 'showRentallprod']
 
 Route::post('/login', [\App\Http\Controllers\Auth\FormLogin::class, 'authenticate'])->name('login');
 
-Route::get('/formupdatepassword/{email}', function ($email) {
+Route::get('/formupdatepassword.{email}', function ($email) {
     return view('forgetpassword.updatepassword', ['email' => $email]);
 })->name('formupdatepassword');
 Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::class, 'isactive'])->name('activate.account');
@@ -94,6 +94,8 @@ Route::post('/devis', [\App\Http\Controllers\facture_des_services\devis::class, 
 Route::get('/emailsendforconfirmationuserregistration', function () {
     return view('emails.emailsendforconfirmationuserregistration');
 })->name('url.confirmation.user.registration');
+
+Route::get('/emailsendforconfirmationforgetpassword', [\App\Http\Controllers\page_confirm_message\sendforforgetpassword::class, 'view'])->name('url.emails.sendforforgetpassword');
 Route::get('/user_disable', function () {
     return view('user_disable.index');
 })->name('view.user.disable');

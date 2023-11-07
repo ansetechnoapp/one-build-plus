@@ -179,7 +179,7 @@ Route::middleware(['guest'])->group(function () {
     })->name('sign.up');
     Route::post('/sign-up-step2', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveSignupOneStep'])->name('sign.up.step2');
 
-    Route::get('/updatePassword', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->name('password.update');
+    Route::match(array('GET', 'POST'),[\App\Http\Controllers\Auth\resetpassword::class, 'updatePassword'])->name('password.update');
     Route::get('/sendEmail', [\App\Http\Controllers\Auth\resetpassword::class, 'authrepassword'])->name('auth-re-password');
     Route::post('/updatePasswordSendEmail', [\App\Http\Controllers\Auth\resetpassword::class, 'updatePasswordSendEmail'])->name('password.updateSendEmail');
 });

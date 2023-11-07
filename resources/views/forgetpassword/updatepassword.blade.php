@@ -56,9 +56,8 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    {{-- <a href="#" class="btn bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Envoyer</a> --}}
                                     <button type="submit"
-                                        class="btn bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Envoyer</button>
+                                        class="btn bg-red-600 hover:bg-green-700 rounded-md w-full">Envoyer</button>
                                         @if ($errors->has('status'))
                                         <div class="alert alert-danger">{{ $errors->first('status') }}
                                         </div>

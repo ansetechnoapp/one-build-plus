@@ -119,7 +119,7 @@ class resetpassword extends Controller
                         User::where('email', $request->email)->first()->update([
                             'password' => hash::make($newPassword),
                         ]);
-                        return redirect()->route('auth-re-password');
+                        return view('page_confirm_message.confirme_updateforgetpassword');
                     } else {
                         // L'authentification a échoué, redirigez l'utilisateur vers la page de connexion avec un message d'erreur
                         return back()->withErrors([

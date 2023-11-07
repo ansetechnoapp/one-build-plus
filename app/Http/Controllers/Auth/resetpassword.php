@@ -108,6 +108,13 @@ class resetpassword extends Controller
                 // Validation des données envoyées dans la requête
                 try {
                     $credentials = $request->validate($rules, $messages, $customAttributes);
+                    if (User::where('email', $request->email)->first() === null) {
+                        $forerror = [
+                            'parm1' => 'Un peu de serieur!',
+                        ];
+                        return redirect()->route('auth-re-password',$forerror);
+                    } else {
+                        
                     if ($credentials) {
                         User::where('email', $request->email)->first()->update([
                             'password' => hash::make($newPassword),
@@ -118,6 +125,8 @@ class resetpassword extends Controller
                         return back()->withErrors([
                             'email' => 'Les identifiants fournis ne correspondent pas à nos enregistrements.',
                         ])->withInput($request->only('email'));
+                    }
+                        
                     }
                 } catch (ValidationException $e) {
                     // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)

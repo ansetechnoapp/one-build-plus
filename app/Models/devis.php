@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+/* use App\Models\User;
+use App\Models\prod; */
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class devis extends Model
 {
@@ -33,7 +35,7 @@ class devis extends Model
     }
     public function prod()
     {
-        return $this->belongsTo(Prod::class, 'prod_id');
+        return $this->belongsTo(prod::class, 'prod_id');
     }
     public function fedapay()
     {

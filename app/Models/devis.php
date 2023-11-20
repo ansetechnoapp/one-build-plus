@@ -35,4 +35,8 @@ class devis extends Model
     {
         return $this->belongsTo(Prod::class, 'prod_id');
     }
+    public function fedapay()
+    {
+        return $this->hasOne(fedapay::class, 'devis_id');
+    }
 }

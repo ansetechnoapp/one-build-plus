@@ -25,7 +25,7 @@
             <div class="flex justify-center">
                 <div
                     class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
-                    <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
+                    <a href="{{route('home')}}"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
 
                     <div class="text-center">
                         <h5 class="my-6 text-xl font-semibold">Formulaire paiements</h5>
@@ -48,6 +48,16 @@
                                 <label class="font-medium" for="LoginEmail">Email:</label>
                                 <input id="LoginEmail" type="email" name="email" class="form-input mt-3"
                                     placeholder="Email" required>
+                            </div> 
+                            <div class="mb-4">
+                                <label class="font-semibold" for="LoginEmail">numéro de téléphone:</label>
+                                <input id="LoginEmail" type="text" name="phone" class="form-input mt-3"
+                                    placeholder="taper votre numéro de téléphone" required>
+                                @if ($errors->has('phone'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('phone') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginPassword">Mot de passe:</label>
@@ -122,7 +132,7 @@
     <!-- LTR & RTL Mode Code -->
 
     <!-- JAVASCRIPTS -->
-    @include('include.include.scriptForPagePayment')
+    @include('include.scriptForPagePayment')
     <!-- JAVASCRIPTS -->
 </body>
 

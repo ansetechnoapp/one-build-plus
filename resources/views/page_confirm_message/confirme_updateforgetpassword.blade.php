@@ -28,8 +28,7 @@
                         <br>
                     </div>
                     <div class="text-center">
-                        <span class="text-slate-400 me-2">Si vous avez déja confirmer votre incription alors connécter
-                            vous </span> <a href="{{ route('auth-login') }}"
+                        <span class="text-slate-400 me-2">Veuillez, aller à la page d'authentification pour vous connectez. </span> <a href="{{ route('auth-login') }}"
                             class="text-black dark:text-white font-bold">Connexion</a>
                     </div>
                 </div>

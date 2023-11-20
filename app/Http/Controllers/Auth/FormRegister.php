@@ -106,20 +106,33 @@ class FormRegister extends Controller
 
     public function receptiondata(Request $request)
     {
+        // dd(Session::get('payment_frequency'));
         $price = $request->price;
-        $payment_frequency = $request->payment_frequency;
         $id = $request->id;
-        if (isset($price) && isset($id)) {
-            Session::put('prod_price', $price);
-            Session::put('prod_id', $id);
-            Session::put('payment_frequency', $payment_frequency);
-            return view('payment.index');
+        $payment_frequency = $request->payment_frequency;
+        if (Session::get('payment_frequency') != null) {
+            if ($payment_frequency != Session::get('payment_frequency')) {
+                Session::put('payment_frequency', $payment_frequency);
+                return view('payment.index');
+            } else {
+                return view('payment.index');
+            }
         } else {
-            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
+            if (isset($price) && isset($id)) {
+                Session::put('prod_price', $price);
+                Session::put('prod_id', $id);
+                Session::put('payment_frequency', $payment_frequency);
+                return view('payment.index');
+            } else {
+                return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
+            }
         }
     }
     public function receptiondata1(Request $request)
     {
+        // dd($request->payment_frequency,$request->id,$request->price,$request->lastName,$request->firstName);
+        // dd(Session::get('payment_frequency'));
+
         $lastnom = $request->lastName;
         $firstnom = $request->firstName;
         $price = Session::get('prod_price');
@@ -163,6 +176,7 @@ class FormRegister extends Controller
     }
     public function receptiondata2(Request $request)
     {
+        // dd(Session::get('payment_frequency'));
         $price = Session::get('prod_price');;
         $lastName = Session::get('user_lastName');;
         $firstName = Session::get('user_firstName');
@@ -262,6 +276,11 @@ class FormRegister extends Controller
     public function SaveRegisterUserAndProd(Request $request)
     {
 
+        // dd(Session::get('payment_frequency'));
+        /* dd($request->payment_frequency,$request->id,$request->price,$request->lastName,$request->firstName,$request->registration_andf,
+        $request->formality_fees,$request->notary_fees
+        ,$request->montant,$request->email,$request->password,$request->password_confirm); */
+
         if ($request->password == $request->password_confirm) {
             $this->validateUserData($request);
             if (!$this->userExists($request->email)) {
@@ -285,11 +304,14 @@ class FormRegister extends Controller
             'lastName' => ['required', 'string', 'max:100', 'min:2'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'max:255', Password::min(5)],
+            'phone' => ['required', 'regex:/^\d{8}$/'],
         ];
 
         $messages = [
             'email.emailregister' => "L'adresse email n'est pas valide.",
             'password.minregister' => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'phone.required' => "Le phone est requis.",
+            'phone.regex' => "Entrer un numéro de téléphone valide (08 chiffres).",
         ];
 
         $request->validate($rules, $messages);
@@ -311,6 +333,7 @@ class FormRegister extends Controller
             'lastName' => $request->lastName,
             'firstName' => $request->firstName,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => bcrypt($request->password),
         ]);
 

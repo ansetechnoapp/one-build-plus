@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\prod;
 
+
 use App\Models\img;
 use App\Models\prod;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class select extends Controller
 {
@@ -37,7 +39,11 @@ class select extends Controller
         $price = $request->price;
         $id = $request->id;
         $payment_frequency = $request->payment_frequency;
-        // dd($price,$id);
-        return view('dashboard.payment.index', compact('price', 'payment_frequency', 'id'));
+        if (isset($price) && isset($id)) {
+            Session::put('prod_price', $price);
+            Session::put('prod_id', $id);
+            Session::put('payment_frequency', $payment_frequency);
+            return view('dashboard.payment.index');
+        }
     }
 }

@@ -110,7 +110,7 @@ class resetpassword extends Controller
                     $credentials = $request->validate($rules, $messages, $customAttributes);
                     if (User::where('email', $request->email)->first() === null) {
                         $forerror = [
-                            'parm1' => 'Un peu de serieur!',
+                            'parm1' => 'Tu es ici pourquoi ?',
                         ];
                         return redirect()->route('auth-re-password',$forerror);
                     } else {

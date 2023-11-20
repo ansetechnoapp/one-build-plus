@@ -17,12 +17,12 @@ class index extends Controller
 
 
         $lastThree_loation = prod::where('location', 'oui')->orderBy('id', 'asc')->take(3)->get();
-        $beforeLastThree_loation = prod::where('location', 'oui')->whereNotIn('id', $lastThree_loation->pluck('id'))
+        $beforeThree_loation = prod::where('location', 'oui')->whereNotIn('id', $lastThree_loation->pluck('id'))
             ->orderBy('id', 'desc')
             ->take(3)
             ->get();
 
-        $selecttableProdForHome = prod::with('img')->orderBy('id', 'desc')->take(9)->get();
+        $selecttableProdForHome = prod::where('location', 'non')->with('img')->orderBy('id', 'desc')->take(9)->get();
         $lastThree = prod::orderBy('id', 'asc')->take(3)->get();
         $beforeLastThree = prod::whereNotIn('id', $lastThree->pluck('id'))
             ->orderBy('id', 'desc')
@@ -32,7 +32,7 @@ class index extends Controller
 
         return view('home.index', [
             'ground_type' => $selectGround_typetableProdForHome, 'commune' => $selectCommunetableProdForHome, 'posts' => $selecttableProdForHome, 'posts1' =>
-            $lastThree, 'posts2' => $beforeLastThree, 'selectCommment' => $selectCommment, 'lastThree_loation' => $lastThree_loation, 'beforeLastThree_loation' => $beforeLastThree_loation
+            $lastThree, 'posts2' => $beforeLastThree, 'selectCommment' => $selectCommment, 'lastThree_loation' => $lastThree_loation, 'beforeThree_loation' => $beforeThree_loation
         ]);
     }
 }

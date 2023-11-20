@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('devis', function (Blueprint $table) {
             $table->id();
-            $table->decimal('price', 10, 2);
-            $table->decimal('montant', 10, 2);
+            $table->Integer('price');
+            $table->Integer('montant');
             $table->date('dateDevis');
             $table->date('dateExpiration');
             $table->Integer('prod_id');

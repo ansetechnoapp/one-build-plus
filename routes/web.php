@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/well', function () {
     return view('reactJS/reactjs');
 });
+Route::get('/testmodelrequest1', [\App\Http\Controllers\PaymentController::class, 'boot']);
+Route::get('/testmodelrequest2', [\App\Http\Controllers\PaymentController::class, 'getApiKeys']);
 
 // Route::get('/testmodelrequest', [\App\Http\Controllers\Auth\FormRegister::class, 'testmodelrequest']);
 Route::post('/subscribe', [\App\Http\Controllers\Auth\FormRegister::class, 'subscribe'])->name('subscribe');
@@ -124,6 +126,9 @@ Route::middleware(['auth', 'isActive'])->group(function () {
     Route::match(array('GET', 'POST'), '/update.view.comment.{id}fkldjxllsjkdqsjksk', [\App\Http\Controllers\dashboard\commentUser\update::class, 'affichage'])->name('dashboard.update.view.commentUser');
     Route::match(array('GET', 'POST'), '/updatecomment', [\App\Http\Controllers\dashboard\commentUser\update::class, 'saveComment'])->name('dashboard.update.commentUser');
     Route::post('/save_info_prod_rent', [\App\Http\Controllers\dashboard\admin\Rental_management\index::class, 'store'])->name('save.prod_rent');
+
+    Route::match(array('GET', 'POST'),'/listepaymentdevis', [\App\Http\Controllers\dashboard\list_payment\liste::class, 'test'])->name('paymentdevis');
+
     
 });
 /*

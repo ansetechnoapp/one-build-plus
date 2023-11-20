@@ -1,4 +1,4 @@
-include.scriptForPagePayment<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
     
 <x-head></x-head>
@@ -22,7 +22,7 @@ include.scriptForPagePayment<!DOCTYPE html>
             <div class="container z-3">
                 <div class="flex justify-center">
                     <div class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
-                        <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
+                        <a href="{{route('home')}}"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                         
                         <div class="text-center">
                             <h5 class="my-6 text-xl font-semibold">Formulaire paiements</h5>
@@ -97,7 +97,7 @@ include.scriptForPagePayment<!DOCTYPE html>
         <!-- LTR & RTL Mode Code -->
 
         <!-- JAVASCRIPTS -->
-        @include('include.include.scriptForPagePayment')
+        @include('include.scriptForPagePayment')
         <!-- JAVASCRIPTS -->
     </body>
 </html>

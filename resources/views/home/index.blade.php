@@ -52,8 +52,7 @@
         <!--end container-->
         <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos logements à la
-                    une</h3>
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos logements à la une</h3>
 
                 <p class="text-slate-400 max-w-xl mx-auto">Trouvez des chambres a louer.</p>
             </div>
@@ -66,7 +65,7 @@
                                     class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                     <div class="relative">
                                         @if ($data->img)
-                                            <img src="storage/{{ $data->main_image }}" alt="Image du produit">
+                                            <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
                                         @else
                                             Aucune image disponible
                                         @endif
@@ -130,14 +129,14 @@
                             </div>
                         @endforeach
                     @endisset
-                    @isset($beforeLastThree_loation)
-                                    @foreach ($beforeLastThree_loation as $data)
+                    @isset($beforeThree_loation)
+                                    @foreach ($beforeThree_loation as $data)
                                         <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
                                             <div
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                                 <div class="relative">
                                                     @if ($data->img)
-                                                        <img src="storage/{{ $data->main_image }}" alt="Image du produit">
+                                                    <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
                                                     @else
                                                         Aucune image disponible
                                                     @endif
@@ -179,18 +178,6 @@
                                                             <span class="text-slate-400">Prix</span>
                                                             <p class="text-lg font-medium">{{ $data->price }} fcfa </p>
                                                         </li>
-
-                                                        {{-- <li>
-                                                            <span class="text-slate-400">Rating</span>
-                                                            <ul class="text-lg font-medium text-amber-400 list-none">
-                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
-                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
-                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
-                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
-                                                                <li class="inline"><i class="mdi mdi-star"></i></li>
-                                                                <li class="inline text-black dark:text-white">5.0</li>
-                                                            </ul>
-                                                        </li> --}}
                                                     </ul>
                                                 </div>
                                             </div>

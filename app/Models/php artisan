@@ -6,3 +6,4 @@ php artisan make:model devis
 php artisan make:model comment
 php artisan make:model faq
 php artisan make:model faq_title
+php artisan make:model fedapay

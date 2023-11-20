@@ -26,3 +26,5 @@ php artisan make:controller dashboard\admin\Rental_management\upadate_prod
 php artisan make:controller dashboard\admin\faqs\index
 php artisan make:controller faqs\index
 php artisan make:controller page_confirm_message\sendforforgetpassword
+php artisan make:controller PaymentController
+php artisan make:controller dashboard\list_payment\liste

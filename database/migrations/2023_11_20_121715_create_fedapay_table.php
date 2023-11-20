@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->Integer('fedapayTransactionId');
             $table->string('fedapayTransactionUrl');
+            $table->string('statut')->default('Non payer');
             $table->unsignedBigInteger('devis_id');
             $table->timestamps();
 

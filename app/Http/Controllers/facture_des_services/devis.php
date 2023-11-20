@@ -62,7 +62,7 @@ class devis extends Controller
     public function listDevisForUser()
     {
         $user_id = Auth::user()->id;
-        $getDevis = getDevis::with('prod', 'additional_option', 'user')->where('users_id', $user_id)
+        $getDevis = getDevis::with('prod', 'additional_option', 'user', 'fedapay')->where('users_id', $user_id)
         ->get();
         return view('dashboard.home.index', ['listDevis' => $getDevis]);
     }

@@ -27,7 +27,7 @@ class liste extends Controller
             "description" => "Transaction for john.doe@example.com",
             "amount" => $montant,
             "currency" => ["iso" => "XOF"],
-            "callback_url" => route('paymentdevis'),
+            "callback_url" => route('paymentdevis.PageConfirmation'),
             "customer" => [
                 "firstname" => $firstName,
                 "lastname" => $lastName,
@@ -66,5 +66,21 @@ private function fedapayValidatePay($fedapaytransactionId,$url,$devis_id)
     $transactions = $response->transactions;
     $meta = $response->meta;
     // return view('dashboard.list_payment.liste');
+   }
+
+   public function confirm(Request $request){
+    $status = $request->status;
+    $close = $request->close;
+    $id = $request->id;
+
+    if ($status == 'pending') {
+        $status = 'en attente';
+        feda::where('fedapayTransactionId', $id)->update(['statut' => $status]);
+    } /* else {
+        # code...
+    } */
+    
+
+     return redirect()->route('dashboard.home');
    }
 }

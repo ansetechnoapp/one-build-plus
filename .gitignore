@@ -4,7 +4,7 @@
 /public/hot
 /public/storage
 /storage/*.key
-# /vendor
+/vendor
 .env
 .env.backup
 .env.production
@@ -17,6 +17,12 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/.github/workflows/configuration action github ftp.txt
+/.github/workflows/connexion par ssh.txt
+installation de react et typescript et tailwaind dans laravel.txt
+postcss.config.js
+tsconfig.json
+vite.config.js
 
 # Logs
 logs

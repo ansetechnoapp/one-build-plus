@@ -37,12 +37,12 @@
                         <div class="grid grid-cols-1">
 
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" required>
-                            <input type="hidden" name="id" value="{{ $id }}" required>
-                            <input type="hidden" name="payment_frequency" value="{{ $payment_frequency }}">
+                            <input type="hidden" name="id" value="{{ Session::get('prod_id'); }}" required>
+                            <input type="hidden" name="payment_frequency" value="{{ Session::get('payment_frequency'); }}">
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginEmail">prix:</label>
                                 <input id="input_price" type="number" class="form-input mt-3" name="price"
-                                    value="{{ $price }}" readonly required>
+                                    value="{{ Session::get('prod_price'); }}" readonly required>
                             </div>
                             <div class="mb-4">
                                 <label>
@@ -80,7 +80,7 @@
 
                                 @empty($montant)
                                     <input id="montant_total" type="number" name="montant" class="form-input mt-3"
-                                        value="{{ $price }}" readonly required>
+                                        value="{{ Session::get('prod_price'); }}" readonly required>
                                 @endempty
                             </div>
                             <div class="mb-4">

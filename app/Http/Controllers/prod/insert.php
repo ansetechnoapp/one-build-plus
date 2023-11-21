@@ -10,6 +10,7 @@ use App\Models\additional_option;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
 class insert extends Controller
@@ -18,8 +19,8 @@ class insert extends Controller
     public function generateDevisForProperty(Request $request)
     {
 
-        $price = $request->price;
-        $prod_id = $request->id;
+        $price = Session::get('prod_price');
+        $prod_id = Session::get('prod_id');
         $user_id = $request->user_id;
         $registration_andf = $request->registration_andf;
         $formality_fees = $request->formality_fees;
@@ -33,17 +34,17 @@ class insert extends Controller
             } else {
                 // Définition des règles de validation
                 $rules = [
-                    'price' => ['required', 'integer', 'max:11'],
+                    'price' => ['required', 'max:11'],
                 ];
 
                 // Définition des messages d'erreur personnalisés
                 $messages = [
-                    'price.priceregister' => "L'adresse email n'est pas valide.",
+                    'price.priceregister' => "prix pas correct.",
                 ];
 
                 try {
                     $request->validate($rules, $messages);
-                    // dd('eee');
+                    // dd($price,$prod_id,$user_id,$registration_andf,$formality_fees,$notary_fees,$payment_frequency,$montant);
 
                     $insert = additional_option::create([
                         'registration_andf' => $registration_andf,

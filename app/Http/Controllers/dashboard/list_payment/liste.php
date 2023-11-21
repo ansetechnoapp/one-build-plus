@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\dashboard\list_payment;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use FedaPay\Fedapay;
+use FedaPay\FedaPay;
 use FedaPay\FedaPayObject;
 use FedaPay\Transaction;
 use App\Models\fedapay as feda;
@@ -20,8 +21,8 @@ class liste extends Controller
         $montant = $request->montant;
         $devis_id =$request->devis_id;
 
-    Fedapay::setEnvironment(env('FEDAPAY_Environment'));
-    Fedapay::setApiKey(env('FEDAPAY_PRIVATE_KEY'));
+    FedaPay::setEnvironment(env('FEDAPAY_Environment'));
+    FedaPay::setApiKey(env('FEDAPAY_PRIVATE_KEY'));
         
         $transaction = Transaction::create(array(
             "description" => "Transaction for john.doe@example.com",

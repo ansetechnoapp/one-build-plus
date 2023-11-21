@@ -15,9 +15,14 @@ class fedapay extends Model
         'fedapayTransactionId',
         'fedapayTransactionUrl',
         'devis_id',
+        'users_id',
     ];
     public function devis()
     {
         return $this->belongsTo(devis::class, 'devis_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
     }
 }

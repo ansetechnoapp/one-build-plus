@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\dashboard\list_payment;
 
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use FedaPay\FedaPay;
-use FedaPay\FedaPayObject;
 use FedaPay\Transaction;
+use FedaPay\FedaPayObject;
+use Illuminate\Http\Request;
 use App\Models\fedapay as feda;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\devis;
 
 class liste extends Controller
 {
@@ -48,11 +50,13 @@ class liste extends Controller
 
     private function fedapayValidatePay($fedapaytransactionId, $url, $devis_id)
     {
-        if (!$this->IdfedapayExists($devis_id)) {
+        $users_id = Auth::user()->id;
+        if (!$this->IdfedapayExists($devis_id,$users_id)) {
             $pay = new feda();
             $pay->fedapayTransactionId = $fedapaytransactionId;
             $pay->fedapayTransactionUrl = $url;
             $pay->devis()->associate($devis_id);
+            $pay->user()->associate($users_id);
             $pay->save();
 
             return $pay;
@@ -63,14 +67,23 @@ class liste extends Controller
             $pay->fedapayTransactionId = $fedapaytransactionId;
             $pay->fedapayTransactionUrl = $url;
             $pay->devis()->associate($devis_id);
+            $pay->user()->associate($users_id);
             $pay->save();
 
             return $pay;
         }
     }
-    private function IdfedapayExists($id)
+    private function IdfedapayExists($id,$users_id)
     {
-        return feda::where('devis_id', $id)->exists();
+        return feda::where('devis_id', $id)->where('users_id', $users_id)->exists();
+    }
+
+    public function show()
+    {
+        $user_id = Auth::user()->id;
+        $getDevis = devis::with('prod', 'additional_option', 'user', 'fedapay')->where('users_id', $user_id)
+        ->get();
+        return view('dashboard.list_payment.liste', ['listDevis' => $getDevis]);
     }
 
     public function view($id)
@@ -101,6 +114,6 @@ class liste extends Controller
     } */
 
 
-        return redirect()->route('dashboard.home');
+        return redirect()->route('listpaymentpay');
     }
 }

@@ -84,6 +84,11 @@
                 <span>Liste des devis</span></a>
         </li>
         <li class="nav-item active">
+            <a class="nav-link" href="{{ route('listpaymentpay') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Liste des paiements</span></a>
+        </li>
+        <li class="nav-item active">
             <a class="nav-link" href="{{ route('dashboard.commentUser') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Avis Client</span></a>

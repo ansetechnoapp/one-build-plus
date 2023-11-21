@@ -65,4 +65,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(comment::class, 'users_id');
     }
+    public function FedaPay()
+    {
+        return $this->hasOne(FedaPay::class, 'users_id');
+    }
 }

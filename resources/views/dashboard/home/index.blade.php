@@ -42,12 +42,11 @@
                                                 <th class="border-gray-200" scope="col">price produit</th>
                                                 <th class="border-gray-200" scope="col">Montant</th>
                                                 <th class="border-gray-200" scope="col">Statut</th>
-                                                <th class="border-gray-200" scope="col">Payer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @isset($listDevis)
-                                                @foreach ($listDevis as $item)
+                                                @foreach ($listDevis as $item)  
                                                     <tr>
                                                         <td>{{ $item->id }}</td>
                                                         <td>{{ $item->dateDevis }}</td>
@@ -65,66 +64,9 @@
                                                             </form>
                                                             {{-- <a href="#" class="badge text-dark" style="background-color: rgb(14 165 233)">Imprimer</a> --}}
                                                         </td>
-                                                        <td>
-
-                                                            @isset($item->fedapay->statut)
-                                                                @if ($item->fedapay->statut == 'en attente')
-                                                                    <a href="{{ $item->fedapay->fedapayTransactionUrl }}"
-                                                                        class="badge text-dark"
-                                                                        style="background-color: rgb(14 165 233)">paiement en
-                                                                        attente</a>
-                                                                @else
-                                                                    <form action="{{ route('paymentdevis') }}" method="POST">
-                                                                        @csrf
-                                                                        <input type="hidden" name="devis_id"
-                                                                            value="{{ $item->id }}">
-                                                                        <input type="hidden" name="prod_id"
-                                                                            value="{{ $item->prod_id }}">
-                                                                        <input type="hidden" name="montant"
-                                                                            value="{{ $item->montant }}">
-                                                                        <input type="hidden" name="email"
-                                                                            value="{{ Auth::user()->email }}">
-                                                                        <input type="hidden" name="firstName"
-                                                                            value="{{ Auth::user()->firstName }}">
-                                                                        <input type="hidden" name="lastName"
-                                                                            value="{{ Auth::user()->lastName }}">
-                                                                        <input type="hidden" name="phone"
-                                                                            value="{{ Auth::user()->phone }}">
-                                                                        <input type="hidden" name="prod_id"
-                                                                            value="{{ $item->prod_id }}">
-                                                                        <button type="submit" class="badge text-dark"
-                                                                            style="background-color: rgb(14 165 233);border: none;">payer</button>
-                                                                    </form>
-                                                                @endif
-                                                            @endisset
-                                                            @empty($item->fedapay->statut)
-                                                                <form action="{{ route('paymentdevis') }}" method="POST">
-                                                                    @csrf
-                                                                    <input type="hidden" name="devis_id"
-                                                                        value="{{ $item->id }}">
-                                                                    <input type="hidden" name="prod_id"
-                                                                        value="{{ $item->prod_id }}">
-                                                                    <input type="hidden" name="montant"
-                                                                        value="{{ $item->montant }}">
-                                                                    <input type="hidden" name="email"
-                                                                        value="{{ Auth::user()->email }}">
-                                                                    <input type="hidden" name="firstName"
-                                                                        value="{{ Auth::user()->firstName }}">
-                                                                    <input type="hidden" name="lastName"
-                                                                        value="{{ Auth::user()->lastName }}">
-                                                                    <input type="hidden" name="phone"
-                                                                        value="{{ Auth::user()->phone }}">
-                                                                    <input type="hidden" name="prod_id"
-                                                                        value="{{ $item->prod_id }}">
-                                                                    <button type="submit" class="badge text-dark"
-                                                                        style="background-color: rgb(14 165 233);border: none;">payer</button>
-                                                                </form>
-                                                            @endempty
-
-
-                                                        </td>
                                                     </tr>
                                                 @endforeach
+
                                             @endisset
                                             @empty($listDevis)
                                             <tr>

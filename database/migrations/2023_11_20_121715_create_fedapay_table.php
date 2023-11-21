@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('fedapayTransactionUrl');
             $table->string('statut')->default('Non payer');
             $table->unsignedBigInteger('devis_id');
+            $table->unsignedBigInteger('users_id');
             $table->timestamps();
 
             $table->foreign('devis_id')->references('id')->on('devis');
+            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 

@@ -127,10 +127,10 @@ Route::middleware(['auth', 'isActive'])->group(function () {
     Route::match(array('GET', 'POST'), '/updatecomment', [\App\Http\Controllers\dashboard\commentUser\update::class, 'saveComment'])->name('dashboard.update.commentUser');
     Route::post('/save_info_prod_rent', [\App\Http\Controllers\dashboard\admin\Rental_management\index::class, 'store'])->name('save.prod_rent');
 
-    Route::post('/listepaymentdevis', [\App\Http\Controllers\dashboard\list_payment\liste::class, 'test'])->name('paymentdevis');
+    Route::post('/paymentdevis', [\App\Http\Controllers\dashboard\list_payment\liste::class, 'test'])->name('paymentdevis');
+    Route::get('/listepaymentdevis', [\App\Http\Controllers\dashboard\list_payment\liste::class, 'show'])->name('listpaymentpay');
     Route::match(array('GET', 'POST'),'/paymentdevisPageConfirmation', [\App\Http\Controllers\dashboard\list_payment\liste::class, 'confirm'])->name('paymentdevis.PageConfirmation');
 
-    
 });
 /*
 |--------------------------------------------------------------------------

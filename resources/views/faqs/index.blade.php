@@ -15,7 +15,7 @@
         </div> -->
     <!-- Loader End -->
     <!-- Start Navbar -->
-    <x-navbar></x-navbar><!--end header-->
+    <x-navbar></x-navbar><!--end header--> 
     <!-- End Navbar -->
 
     <!-- Start Hero -->

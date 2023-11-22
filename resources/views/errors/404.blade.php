@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
-<head>
-        <meta charset="UTF-8" />
-        <title>Hously - Tailwind CSS Real Estate Website Landing Page Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta content="Real Estate Website Landing Page" name="description" />
-        <meta content="Real Estate, buy, sell, Rent, tailwind Css" name="keywords" />
-        <meta name="author" content="Shreethemes" />
-        <meta name="website" content="https://shreethemes.in/" />
-        <meta name="email" content="support@shreethemes.in" />
-        <meta name="version" content="1.4.0" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" />
-
-        <!-- Css -->
-        <!-- Main Css -->
-        <link href="assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
-        <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="assets/css/tailwind.css" />
-
-    </head>
+    <x-head></x-head>
     
     <body class="dark:bg-slate-900">
         <!-- Loader Start -->
@@ -39,19 +19,21 @@
                 <div class="grid grid-cols-1">
                     <div class="flex flex-col min-h-screen justify-center md:px-10 py-10 px-4">
                         <div class="text-center">
-                            <a href="index.html"><img src="assets/images/logo-icon-64.png" class="mx-auto" alt=""></a>
+                            <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                         </div>
                         <div class="title-heading text-center my-auto">
                             <img src="assets/images/error.png" class="mx-auto" alt="">
-                            <h1 class="mt-3 mb-6 md:text-4xl text-3xl font-bold">Page Not Found?</h1>
-                            <p class="text-slate-400">Whoops, this is embarassing. <br> Looks like the page you were looking for wasn't found.</p>
+                            <h1 class="mt-3 mb-6 md:text-4xl text-3xl font-bold">Page non trouvée?</h1>
+                            <p class="text-slate-400">Oups, c'est embarrassant. <br>  Il semble que la page que vous cherchiez n'ait pas été trouvée.</p>
+                            <p class="text-slate-400">Revenir a la page d'accueil. </p><br>
                             
                             <div class="mt-4">
-                                <a href="index.html" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md">Back to Home</a>
+                                <a href="{{route('home')}}" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md"
+                                style="background: black;">OBP Accueil</a>
                             </div>
                         </div>
                         <div class="text-center">
-                            <p class="mb-0 text-slate-400">© <script>document.write(new Date().getFullYear())</script> Hously. Design with <i class="mdi mdi-heart text-red-600"></i> by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                            <p class="mb-0 text-slate-400">© <script>document.write(new Date().getFullYear())</script> One Build Plus.OBP <a href="#" target="_blank" class="text-reset">cotonou,sodjéatimè</a>.</p>
                         </div>
                     </div>
                 </div><!--end grid-->

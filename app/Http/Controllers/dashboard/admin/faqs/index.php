@@ -23,7 +23,7 @@ class index extends Controller
                     
                     <a href="' . route("faqsUpdate.title",['id'=>'' . $data->id . '']) . '"  class="btn btn-open hover-bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">
                     Modifier</a>
-                     <a href="#"  onclick="openModal(\'delete.title.faq.' . $data->id . '\')" class="btn btn-open hover-bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">supprimer</a></h5>';
+                     <a   onclick="openModal(\'delete.title.faq.' . $data->id . '\')" class="btn btn-open hover-bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;cursor: pointer;">supprimer</a></h5>';
 
                 } else {
                     $html .= '<h5 class="text-2xl font-semibold">' . $data->title . '</h5>';
@@ -41,7 +41,7 @@ class index extends Controller
 
                         $html .='<a href="' . route("faqsUpdate",['id'=>'' . $faq->id . '']) . '"  class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">
                         Modifier</a>
-                        <a href="delete.faq.' . $faq->id . '" class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;">supprimer</a>';
+                        <a  onclick="openModal(\'delete.faq.' . $faq->id . '\')" class="btn hover:bg-green-700 text-white rounded-md" style="margin-left: 10px; margin-bottom: 10px;background-color: black;cursor: pointer;">supprimer</a>';
                     } else {
                     }
                 } else {
@@ -52,6 +52,19 @@ class index extends Controller
             $html .= '</div>'; // Fermez la div pour ce titre ici
         }
         return view('dashboard.admin.faqs.index', ['listFaq' => $html, 'uniqueTitles' => $uniqueTitles]);
+    }
+    public function deleteforfaq($id)
+    {
+        $faqTitle = faq::where('id', $id)->delete();
+        return redirect()->back();
+    }
+
+    public function deleteforfaqtitle($id)
+    {
+        faq::where('title_id', $id)->delete();
+        faq_title::where('id', $id)->delete();
+
+        return redirect()->back();
     }
 }
 

@@ -162,8 +162,10 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::get('/faq.form', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'view'])->name('faq_form');
     Route::get('/faq.title.form', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'view'])->name('faq_title_form');
     Route::post('/save.form.faq', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'save'])->name('save_form_faq');
+
     Route::get('/delete.faq.{id}', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'deleteforfaq'])->name('delete_faq');
     Route::get('/delete.title.faq.{id}', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'deleteforfaqtitle'])->name('delete_title_faq');
+
     Route::post('/save.form.title.faq', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'save'])->name('save_form_title_faq');
     Route::get('/faqs_admin', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'show'])->name('faqs.admin');
     Route::get('/faqsUpdate_title.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'showid'])->name('faqsUpdate.title');

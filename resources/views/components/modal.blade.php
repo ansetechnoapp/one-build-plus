@@ -56,15 +56,15 @@
 <section class="modal-container hidden">
     <div class="flex-container">
         <h3 id="modal-title">{{ $title }}</h3>
-        <a href="#" class="btn-close" aria-label="Fermer">⨉</a>
+        <a class="btn-close" aria-label="Fermer" style="cursor: pointer;">⨉</a>
     </div>
     <div>
         <p class="description">
             {{ $message }}
         </p>
     </div>
-    <a id="modal-link" href="#" class="btn">{{$btn1}}</a>
-    <a href="#" class="btn" onclick="closeModal()">{{$btn2}}</a>
+    <a id="modal-link" class="btn" style="cursor: pointer;">{{$btn1}}</a>
+    <a class="btn" onclick="closeModal()" style="cursor: pointer;">{{$btn2}}</a>
 </section>
 
 <div class="overlay-container hidden" onclick="closeModal()"></div>

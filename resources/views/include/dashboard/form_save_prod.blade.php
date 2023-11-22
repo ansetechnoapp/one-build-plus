@@ -1,5 +1,5 @@
 @if (isset($allprodupdate))
-    <form action="{{ route('updade.prod') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('updade.prod') }}" method="POST" enctype="multipart/form-data" onsubmit="return checkPrices()">
         @csrf
         <div class="mb-3">
 
@@ -70,14 +70,16 @@
                 <label class="small mb-1" for="inputprice">prix</label>
                 <input class="form-control" id="inputprice" type="text" value="{{ $allprodupdate->price }}"
                     name="price" required>
+                     <div class="alert alert-danger" style="display: none;">Le prix minimum doit être inférieur au prix</div>
                 @if ($errors->has('price'))
                     <div class="alert alert-danger">{{ $errors->first('price') }}</div>
                 @endif
             </div>
             <div class="col-md-6 mb-0">
-                <label class="small mb-1" for="inputprice_min">prix min</label>
+                <label class="small mb-1" for="inputprice_min">Dernier prix</label>
                 <input class="form-control" id="inputprice_min" type="text" value="{{ $allprodupdate->price_min }}"
                     name="price_min" required>
+                     <div class="alert alert-danger" style="display: none;">Le prix minimum doit être inférieur au prix</div>
                 @if ($errors->has('price_min'))
                     <div class="alert alert-danger">{{ $errors->first('price_min') }}</div>
                 @endif
@@ -177,11 +179,11 @@
         </div>
         <hr class="my-4">
         <div class="d-flex justify-content-between">
-            <button class="btn btn-primary" type="submit">Valider</button>
+            <button class="btn btn-primary" type="submit" id="submitBtn">Valider</button>
         </div>
     </form>
 @else
-    <form action="{{ route('save.prod') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('save.prod') }}" method="POST" enctype="multipart/form-data" onsubmit="return checkPrices()">
         @csrf
         <div class="mb-3">
 
@@ -254,14 +256,16 @@
                 <label class="small mb-1" for="inputprice">prix</label>
                 <input class="form-control" id="inputprice" type="text" placeholder="prix" name="price"
                     required>
+                     <div class="alert alert-danger" style="display: none;">Le prix minimum doit être inférieur au prix</div>
                 @if ($errors->has('price'))
                     <div class="alert alert-danger">{{ $errors->first('price') }}</div>
                 @endif
             </div>
             <div class="col-md-6 mb-0">
-                <label class="small mb-1" for="inputprice_min">prix min</label>
+                <label class="small mb-1" for="inputprice_min">Dernier prix</label>
                 <input class="form-control" id="inputprice_min" type="text"placeholder="price min"
                     name="price_min" required>
+                     <div class="alert alert-danger" style="display: none;">Le prix minimum doit être inférieur au prix</div>
                 @if ($errors->has('price_min'))
                     <div class="alert alert-danger">{{ $errors->first('price_min') }}</div>
                 @endif
@@ -360,7 +364,7 @@
         </div>
         <hr class="my-4">
         <div class="d-flex justify-content-between">
-            <button class="btn btn-primary" type="submit">Valider</button>
+            <button class="btn btn-primary" type="submit" id="submitBtn">Valider</button>
         </div>
     </form>
 @endif
@@ -414,4 +418,38 @@
             communesSelect.add(optionDefaut);
         }
     }
+</script>
+<script>
+    // Fonction pour vérifier la condition et afficher ou masquer l'alerte
+    function checkPrices() {
+        var inputPriceMin = document.getElementById('inputprice_min');
+        var inputPrice = document.getElementById('inputprice');
+        var alertMessage = document.querySelector('.alert-danger');
+        var submitButton = document.getElementById('submitBtn');
+
+        // Vérifier si les valeurs sont des nombres
+        if (isNaN(parseFloat(inputPriceMin.value)) || isNaN(parseFloat(inputPrice.value))) {
+            // Afficher l'alerte si l'une des valeurs n'est pas un nombre
+            alertMessage.style.display = 'block';
+            submitButton.disabled = true;
+            return false; // Empêcher la soumission du formulaire
+        }
+
+        // Vérifier la condition
+        if (parseFloat(inputPriceMin.value) >= parseFloat(inputPrice.value)) {
+            // Afficher l'alerte si la condition n'est pas respectée
+            alertMessage.style.display = 'block';
+            submitButton.disabled = true;
+            return false; // Empêcher la soumission du formulaire
+        } else {
+            // Masquer l'alerte si la condition est respectée
+            alertMessage.style.display = 'none';
+            submitButton.disabled = false;
+            return true; // Autoriser la soumission du formulaire
+        }
+    }
+
+    // Attacher un gestionnaire d'événements à l'élément inputprice_min
+    document.getElementById('inputprice_min').addEventListener('input', checkPrices);
+    document.getElementById('inputprice').addEventListener('input', checkPrices);
 </script>

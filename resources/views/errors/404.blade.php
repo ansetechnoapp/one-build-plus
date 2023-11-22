@@ -4,22 +4,14 @@
     <x-head></x-head>
     
     <body class="dark:bg-slate-900">
-        <!-- Loader Start -->
-        <!-- <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Loader End -->
+        
+        
         <section class="relative bg-green-600/5">
             <div class="container-fluid relative">
                 <div class="grid grid-cols-1">
                     <div class="flex flex-col min-h-screen justify-center md:px-10 py-10 px-4">
                         <div class="text-center">
-                            <a href="index.html"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{env('APP_URL')}}/assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                         </div>
                         <div class="title-heading text-center my-auto">
                             <img src="assets/images/error.png" class="mx-auto" alt="">

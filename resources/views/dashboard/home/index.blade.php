@@ -2,7 +2,6 @@
 <html lang="en">
 
 <x-dashboard.head title="One Build Plus - Dashboard"></x-dashboard.head>
-{{-- <script src="https://cdn.fedapay.com/checkout.js?v=1.1.7"></script> --}}
 
 <body id="page-top">
 

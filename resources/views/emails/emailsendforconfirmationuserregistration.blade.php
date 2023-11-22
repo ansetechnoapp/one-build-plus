@@ -6,16 +6,6 @@
     </head>
     
     <body class="dark:bg-slate-900">
-        <!-- Loader Start -->
-        <!-- <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Loader End -->
         <section class="md:h-screen py-36 flex items-center relative overflow-hidden zoom-image">
             <div class="absolute inset-0 image-wrap z-1 bg-[url('../../assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-2" id="particles-snow"></div>

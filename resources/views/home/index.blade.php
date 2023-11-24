@@ -65,7 +65,7 @@
                                     class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                     <div class="relative">
                                         @if ($data->img)
-                                            <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
+                                            <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
                                         @else
                                             Aucune image disponible
                                         @endif
@@ -136,7 +136,7 @@
                                                 class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                                 <div class="relative">
                                                     @if ($data->img)
-                                                    <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
+                                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
                                                     @else
                                                         Aucune image disponible
                                                     @endif
@@ -213,7 +213,7 @@
                         class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
                             @if ($data->img)
-                                <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
+                                <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
                             @else
                                 Aucune image disponible
                             @endif
@@ -293,7 +293,7 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
+                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
                                 @else
                                     Aucune image disponible
                                 @endif
@@ -343,7 +343,7 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
+                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
                                 @else
                                     Aucune image disponible
                                 @endif

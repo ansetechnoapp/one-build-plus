@@ -17,9 +17,10 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/.github/workflows/configuration action github ftp.txt
-/.github/workflows/connexion par ssh.txt
-installation de react et typescript et tailwaind dans laravel.txt
+/note/configuration action github ftp.txt
+/note/connexion par ssh.txt
+/note/installation de react et typescript et tailwaind dans laravel.txt
+/note/issue image.txt
 postcss.config.js
 tsconfig.json
 vite.config.js

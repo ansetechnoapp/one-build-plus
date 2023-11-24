@@ -201,7 +201,7 @@
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos Propriétés a la une</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien immobilier sécurisé.</p>
             </div>
             <!--end grid-->
             <!--en grid-->
@@ -280,7 +280,7 @@
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Plus d'article</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien immobilier sécurisé.</p>
             </div>
             <!--end grid-->
             <!--en grid-->
@@ -405,7 +405,7 @@
                 <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Ce qu'en disent
                     nos clients ?</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien immobilier sécurisé.</p>
             </div>
             <!--end grid-->
 

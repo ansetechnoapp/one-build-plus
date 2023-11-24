@@ -54,8 +54,25 @@
 
 
                 <li class="active"><a href="{{ route('home') }}" class="sub-menu-item">Acceuil</a></li>
-                <li><a href="buy" class="sub-menu-item">Achat</a></li>
-                <li><a href="rent" class="sub-menu-item">Louer</a></li>
+                <li class="has-submenu parent-parent-menu-item">
+                    <a href="javascript:void(0)">Bien et Service</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Achat et location</a><span class="submenu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="buy" class="sub-menu-item">Achat</a></li>
+                                <li><a href="rent" class="sub-menu-item">Location</a></li>
+                            </ul> 
+                        </li>
+                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Agriculture <br> et Élevage </a><span class="submenu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="#" class="sub-menu-item">Agriculture</a></li>
+                                <li><a href="#" class="sub-menu-item">Élevage </a></li>
+                            </ul>  
+                        </li>
+                        <li><a href="#" class="sub-menu-item">Éducation</a></li>
+                        <li><a href="#" class="sub-menu-item">Import-export</a></li>
+                    </ul>
+                </li>
                 <li><a href="aboutus" class="sub-menu-item">A propos</a></li>
                 @if (Auth::user() == null)
                 <li><a href="{{route('faqs')}}" class="sub-menu-item">Faqs</a></li>

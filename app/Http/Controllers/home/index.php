@@ -13,7 +13,7 @@ class index extends Controller
     public function requestForHome()
     {
         $selectCommunetableProdForHome = prod::distinct()->select('department', 'communes')->get();
-        $selectGround_typetableProdForHome = prod::distinct()->select('ground_type')->get();
+        $selectGround_typetableProdForHome = prod::distinct()->select('ground_type')->whereNotNull('ground_type')->get();
 
 
         $lastThree_loation = prod::where('location', 'oui')->orderBy('id', 'asc')->take(3)->get();

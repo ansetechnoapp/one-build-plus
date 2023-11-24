@@ -4,7 +4,7 @@
 <x-head></x-head>
     
     <body class="dark:bg-slate-900">
-        <!-- Loader Start -->
+        <!-- Loader Start er -->
         <!-- <div id="preloader">
             <div id="status">
                 <div class="spinner">

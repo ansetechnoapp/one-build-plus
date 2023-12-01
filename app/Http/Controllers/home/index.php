@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\prod;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\imageslidehome;
 
 class index extends Controller
 {
@@ -29,10 +30,11 @@ class index extends Controller
             ->take(3)
             ->get();
         $selectCommment = comment::where('Statut', '1')->with('user')->get();
+        $imgslide = imageslidehome::where('id', '1')->first();
 
         return view('home.index', [
             'ground_type' => $selectGround_typetableProdForHome, 'commune' => $selectCommunetableProdForHome, 'posts' => $selecttableProdForHome, 'posts1' =>
-            $lastThree, 'posts2' => $beforeLastThree, 'selectCommment' => $selectCommment, 'lastThree_loation' => $lastThree_loation, 'beforeThree_loation' => $beforeThree_loation
+            $lastThree, 'posts2' => $beforeLastThree, 'selectCommment' => $selectCommment, 'lastThree_loation' => $lastThree_loation, 'beforeThree_loation' => $beforeThree_loation,'slide'=>$imgslide
         ]);
     }
 }

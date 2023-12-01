@@ -7,14 +7,12 @@ php artisan make:migration create_devis_table
 php artisan make:migration create_comment_table
 php artisan make:migration create_faq_title_table
 php artisan make:migration create_fedapay_table
+php artisan make:migration create_imageslidehome_table
 php artisan migrate
-
 
 
 ......................................................info
 php artisan migrate:fresh --seed
-
-php artisan make:migration info_city
 
 php artisan migrate:reset
 

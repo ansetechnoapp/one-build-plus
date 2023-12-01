@@ -625,6 +625,7 @@
 
     <!-- JAVASCRIPTS -->
     @include('include.script')
+    @include('include.scriptSlideHome')
 </body>
 
 </html>

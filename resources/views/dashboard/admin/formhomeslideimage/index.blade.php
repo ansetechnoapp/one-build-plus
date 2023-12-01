@@ -27,15 +27,6 @@
                     <!-- Page Heading -->
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="container-xl px-4 mt-n10 mb-4">
-                        <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="{{ route('dashboard.admin') }}">Enrégistrement des
-                                biens immobiliers</a>
-
-                            <a class="nav-link" href="{{ route('dashboard.admin.Rental_management') }}">Enrégistrement
-                                des biens locatif</a>
-
-                        </nav>
-                        <hr class="mt-0 mb-4">
                         <!-- Wizard card example with navigation-->
                         <div class="card">
 
@@ -47,11 +38,9 @@
                                         <div class="row justify-content-center">
                                             <div class="col-xxl-6 col-xl-8">
                                                 {{-- <h3 class="text-primary">Step 1</h3> --}}
-                                                <h1 class="card-title mb-4">Saisir les informations relatives au produit
+                                                <h1 class="card-title mb-4">   Mettre a jour images des bannires
                                                 </h1>
-                                                @include('include.dashboard.form_save_prod')
-                                                @include('include.dashboard.form_update_prod')
-                                                @include('include.dashboard.script_for_form_save_prod_and_update')
+                                                @include('include.dashboard.formhomeslideimage')
                                             </div>
                                         </div>
                                     </div>

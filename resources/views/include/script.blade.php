@@ -6,10 +6,3 @@
     <script src="assets/js/plugins.init.js"></script>
     <script src="assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
-
-    <script>
-        easy_background("#home", {
-            slide: ["assets/images/bg/01.png", "assets/images/bg/02.png", "assets/images/bg/03.png"],
-            delay: [4000, 4000, 4000]
-        });
-    </script>

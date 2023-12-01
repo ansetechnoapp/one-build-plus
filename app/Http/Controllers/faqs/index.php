@@ -13,7 +13,7 @@ class index extends Controller
     public function show()
     {
         $uniqueTitles = faq_title::all();
-        $html = '';
+        $html = ''; 
 
         foreach ($uniqueTitles as $data) {
             $html .= '<div id="generalfaq' . $data->id . '">';

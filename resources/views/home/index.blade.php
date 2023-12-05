@@ -109,7 +109,7 @@
                                         <ul class="pt-6 flex justify-between items-center list-none">
                                             <li>
                                                 <span class="text-slate-400">Prix</span>
-                                                <p class="text-lg font-medium">{{ $data->price }} fcfa</p>
+                                                <p class="text-lg font-medium">{{ $data->price }} FCFA</p>
                                             </li>
 
                                             {{-- <li>
@@ -176,7 +176,7 @@
                                                     <ul class="pt-6 flex justify-between items-center list-none">
                                                         <li>
                                                             <span class="text-slate-400">Prix</span>
-                                                            <p class="text-lg font-medium">{{ $data->price }} fcfa </p>
+                                                            <p class="text-lg font-medium">{{ $data->price }} FCFA </p>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -248,7 +248,7 @@
                             <ul class="pt-6 flex justify-between items-center list-none">
                                 <li>
                                     <span class="text-slate-400">Prix</span>
-                                    <p class="text-lg font-medium">{{ $data->price }}</p>
+                                    <p class="text-lg font-medium">{{ $data->price }} FCFA</p>
                                 </li>
 
                                 {{-- <li>
@@ -328,7 +328,7 @@
                                 <ul class="pt-6 flex justify-between items-center list-none">
                                     <li>
                                         <span class="text-slate-400">Prix</span>
-                                        <p class="text-lg font-medium">{{ $data->price }}</p>
+                                        <p class="text-lg font-medium">{{ $data->price }} FCFA</p>
                                     </li>
                                 </ul>
                             </div>
@@ -378,7 +378,7 @@
                                 <ul class="pt-6 flex justify-between items-center list-none">
                                     <li>
                                         <span class="text-slate-400">Prix</span>
-                                        <p class="text-lg font-medium">{{ $data->price }}</p>
+                                        <p class="text-lg font-medium">{{ $data->price }} FCFA</p>
                                     </li>
                                 </ul>
                             </div>

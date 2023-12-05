@@ -18,17 +18,18 @@ class index extends Controller
 
     public function update(Request $request)
     {
-        try {
+        
             $rules = [
                 'img1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5000',
                 'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5000',
                 'img3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5000',
             ];
             $messages = [
-                'img1' => 'erreur de chargement de l\'image 1',
-                'img2' => 'erreur de chargement de l\'image 2',
-                'img3' => 'erreur de chargement de l\'image 3',
+                'img1' => 'erreur de chargement de l\'image 1, la taille de l\'image ne doit pas depasser 5Mo',
+                'img2' => 'erreur de chargement de l\'image 2, la taille de l\'image ne doit pas depasser 5Mo',
+                'img3' => 'erreur de chargement de l\'image 3, la taille de l\'image ne doit pas depasser 5Mo',
             ];
+            try {
             $request->validate($rules, $messages);
             $imgFields = ['img1', 'img2', 'img3'];
             foreach ($imgFields as $imgField) {

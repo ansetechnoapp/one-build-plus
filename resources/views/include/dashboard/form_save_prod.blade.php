@@ -15,15 +15,14 @@
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputlandOwner_propertyName">Nom,prénom du propriétaire ou le nom de la propriété</label>
-                <input class="form-control" id="inputlandOwner_propertyName" type="text" placeholder="Enter your first name"
-                    value="xora Valerie" name="landOwner_propertyName" required>
+                <input class="form-control" id="inputlandOwner_propertyName" type="text" placeholder="Entrer le nom du propriétaire ou le nom de la propriété" name="landOwner_propertyName" value="OBP" required>
                 @if ($errors->has('landOwner_propertyName'))
                     <div class="alert alert-danger">{{ $errors->first('landOwner_propertyName') }}</div>
                 @endif
             </div>
             <div class="mb-3 col-md-6">
                 <labeL class="small mb-1" for="inputarea">Supéficie</labeL>
-                <input class="form-control" id="inputarea" type="text" placeholder="Supéficie" value="1ha"
+                <input class="form-control" id="inputarea" type="text" placeholder="Supéficie"
                     name="area" required>
                 @if ($errors->has('area'))
                     <div class="alert alert-danger">{{ $errors->first('area') }}</div>

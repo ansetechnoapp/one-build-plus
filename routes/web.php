@@ -27,9 +27,7 @@ Route::post('/search.info.prod.location', [\App\Http\Controllers\rent\index::cla
 
 Route::get('/', [\App\Http\Controllers\home\index::class, 'requestForHome'])->name('home');
 Route::get('/faqs', [\App\Http\Controllers\faqs\index::class, 'show'])->name('faqs');
-Route::get('/aboutus', function () {
-    return view('about.index');
-})->name('about');
+Route::get('/aboutus', [\App\Http\Controllers\about\index::class, 'show'])->name('about');
 Route::get('/buy', [\App\Http\Controllers\buy\index::class, 'showbuyallprod'])->name('buy');
 Route::get('/rent', [\App\Http\Controllers\rent\index::class, 'showRentallprod'])->name('rent');
 

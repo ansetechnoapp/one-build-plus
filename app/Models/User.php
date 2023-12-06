@@ -12,10 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function isAdmin()
-    {
-        return $this->role === 'admin'; // Modifier en fonction de votre logique de rôle
-    }
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -31,6 +27,7 @@ class User extends Authenticatable
         'birthday',
         'role',
         'isactive',
+        'agentOBP',
     ];
 
     /**
@@ -52,6 +49,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function hasRole(){
+        return $this->role === 'admin';
+    }
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
 
     public function additional_option()
     {

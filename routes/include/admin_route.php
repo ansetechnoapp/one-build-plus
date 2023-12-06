@@ -51,4 +51,7 @@ Route::middleware(['auth', 'isActive', 'admin'])->group(function () {
     Route::get('/all_list_pay', [\App\Http\Controllers\dashboard\admin\all_list_pay\index::class, 'ListShowAllFedapay'])->name('all.list.pay');
     Route::get('/form_homeslideimage', [\App\Http\Controllers\dashboard\admin\formhomeslideimage\index::class, 'view'])->name('save.form.home.slideimage');
     Route::post('/update_slideimage', [\App\Http\Controllers\dashboard\admin\formhomeslideimage\index::class, 'update'])->name('update.slideimage');
+    Route::get('/agent_obp', [\App\Http\Controllers\dashboard\admin\list_agent_obp\index::class, 'show'])->name('memberobp');
+    Route::match(array('GET', 'POST'),'/agent_obp_active{user_id}', [\App\Http\Controllers\dashboard\admin\list_agent_obp\index::class, 'agentOBP_active'])->name('agentOBP');
+    Route::match(array('GET', 'POST'),'/agent_obp_disable{user_id}', [\App\Http\Controllers\dashboard\admin\list_agent_obp\index::class, 'agentOBP_disable'])->name('notAgentOBP');
 });

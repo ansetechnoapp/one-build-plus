@@ -91,85 +91,30 @@
                 </div><!--end grid-->
 
                 <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px]">
-                    <div class="lg:col-span-3 md:col-span-6">
-                        <div class="group text-center">
-                            <div class="relative inline-block mx-auto h-52 w-52 rounded-full overflow-hidden">
-                                <img src="assets/images/client/04.jpg" class="" alt="">
-                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black h-52 w-52 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"></div>
+                                        
+@isset($membersOBP)
+@foreach ($membersOBP as $item)
+<div class="lg:col-span-3 md:col-span-6">
+    <div class="group text-center">
+        <div class="relative inline-block mx-auto h-52 w-52 rounded-full overflow-hidden">
+            <img src="assets/images/client/05.jpg" class="" alt="">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black h-52 w-52 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"></div>
 
-                                <ul class="list-none absolute start-0 end-0 -bottom-20 group-hover:bottom-5 transition-all duration-500 ease-in-out">
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                                </ul><!--end icon-->
-                            </div>
+            <ul class="list-none absolute start-0 end-0 -bottom-20 group-hover:bottom-5 transition-all duration-500 ease-in-out">
+                <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
+                <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
+                <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
+            </ul><!--end icon-->
+        </div>
 
-                            <div class="content mt-3">
-                                <a href="#" class="text-xl font-medium hover:text-green-600 transition-all duration-500 ease-in-out">Jack John</a>
-                                <p class="text-slate-400">Designer</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-3 md:col-span-6">
-                        <div class="group text-center">
-                            <div class="relative inline-block mx-auto h-52 w-52 rounded-full overflow-hidden">
-                                <img src="assets/images/client/05.jpg" class="" alt="">
-                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black h-52 w-52 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"></div>
-
-                                <ul class="list-none absolute start-0 end-0 -bottom-20 group-hover:bottom-5 transition-all duration-500 ease-in-out">
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                                </ul><!--end icon-->
-                            </div>
-
-                            <div class="content mt-3">
-                                <a href="#" class="text-xl font-medium hover:text-green-600 transition-all duration-500 ease-in-out">Krista John</a>
-                                <p class="text-slate-400">Designer</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-3 md:col-span-6">
-                        <div class="group text-center">
-                            <div class="relative inline-block mx-auto h-52 w-52 rounded-full overflow-hidden">
-                                <img src="assets/images/client/06.jpg" class="" alt="">
-                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black h-52 w-52 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"></div>
-
-                                <ul class="list-none absolute start-0 end-0 -bottom-20 group-hover:bottom-5 transition-all duration-500 ease-in-out">
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                                </ul><!--end icon-->
-                            </div>
-
-                            <div class="content mt-3">
-                                <a href="#" class="text-xl font-medium hover:text-green-600 transition-all duration-500 ease-in-out">Roger Jackson</a>
-                                <p class="text-slate-400">Designer</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-3 md:col-span-6">
-                        <div class="group text-center">
-                            <div class="relative inline-block mx-auto h-52 w-52 rounded-full overflow-hidden">
-                                <img src="assets/images/client/07.jpg" class="" alt="">
-                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black h-52 w-52 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"></div>
-
-                                <ul class="list-none absolute start-0 end-0 -bottom-20 group-hover:bottom-5 transition-all duration-500 ease-in-out">
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
-                                    <li class="inline"><a href="#" class="btn btn-icon btn-sm rounded-full border border-green-600 bg-green-600 hover:border-green-600 hover:bg-green-600 text-white"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
-                                </ul><!--end icon-->
-                            </div>
-
-                            <div class="content mt-3">
-                                <a href="#" class="text-xl font-medium hover:text-green-600 transition-all duration-500 ease-in-out">Johnny English</a>
-                                <p class="text-slate-400">Designer</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="content mt-3">
+            <a href="#" class="text-xl font-medium hover:text-green-600 transition-all duration-500 ease-in-out">{{ $item->lastName }} {{ $item->firstName }}</a>
+            <p class="text-slate-400">{{ $item->Profession }}</p>
+        </div>
+    </div>
+</div>
+@endforeach
+@endisset
                 </div><!--end grid-->
             </div><!--end container-->
 
@@ -183,125 +128,30 @@
                 <div class="flex justify-center relative mt-8">
                     <div class="relative w-full">
                         <div class="tiny-three-item">
+                            @isset($selectCommment)
+                            @foreach ($selectCommment as $item)
                             <div class="tiny-slide">
                                 <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " OBP made the processes so easy. OBP instantly increased the amount of interest and ultimately saved us over $10,000. " </p>
+                                    <p class="text-lg text-slate-400 italic"> "  {{ $item->Message }}. " </p>
 
                                     <div class="text-center mt-5">
-                                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
+                                            {{-- <ul class="text-xl font-medium text-amber-400 list-none mb-2">
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                                <li class="inline"><i class="mdi mdi-star"></i></li>
+                                            </ul> --}}
 
                                         <img src="assets/images/client/01.jpg" class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto" alt="">
-                                        <h6 class="mt-2 fw-semibold">Christa Smith</h6>
-                                        <span class="text-slate-400 text-sm">Manager</span>
+                                        <h6 class="mt-2 fw-semibold">{{ $item->user->lastName }} {{ $item->user->firstName }}</h6>
+                                        <span class="text-slate-400 text-sm">{{ $item->user->Profession }}</span>
                                     </div>
                                 </div>
                             </div>
+@endforeach
+@endisset
 
-                            <div class="tiny-slide">
-                                <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " I highly recommend OBP as the new way to sell your home "by owner". My home sold in 24 hours for the asking price. Best $400 you could spend to sell your home. " </p>
-
-                                    <div class="text-center mt-5">
-                                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-
-                                        <img src="assets/images/client/02.jpg" class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto" alt="">
-                                        <h6 class="mt-2 fw-semibold">Christa Smith</h6>
-                                        <span class="text-slate-400 text-sm">Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " My favorite part about selling my home myself was that we got to meet and get to know the people personally. This made it so much more enjoyable! " </p>
-
-                                    <div class="text-center mt-5">
-                                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-
-                                        <img src="assets/images/client/03.jpg" class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto" alt="">
-                                        <h6 class="mt-2 fw-semibold">Christa Smith</h6>
-                                        <span class="text-slate-400 text-sm">Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " Great experience all around! Easy to use and efficient. " </p>
-
-                                    <div class="text-center mt-5">
-                                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-
-                                        <img src="assets/images/client/04.jpg" class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto" alt="">
-                                        <h6 class="mt-2 fw-semibold">Christa Smith</h6>
-                                        <span class="text-slate-400 text-sm">Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " OBP made selling my home easy and stress free. They went above and beyond what is expected. " </p>
-
-                                    <div class="text-center mt-5">
-                                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-
-                                        <img src="assets/images/client/05.jpg" class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto" alt="">
-                                        <h6 class="mt-2 fw-semibold">Christa Smith</h6>
-                                        <span class="text-slate-400 text-sm">Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="text-center mx-3">
-                                    <p class="text-lg text-slate-400 italic"> " OBP is fair priced, quick to respond, and easy to use. I highly recommend their services! " </p>
-
-                                    <div class="text-center mt-5">
-                                        <ul class="text-xl font-medium text-amber-400 list-none mb-2">
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                            <li class="inline"><i class="mdi mdi-star"></i></li>
-                                        </ul>
-
-                                        <img src="assets/images/client/06.jpg" class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto" alt="">
-                                        <h6 class="mt-2 fw-semibold">Christa Smith</h6>
-                                        <span class="text-slate-400 text-sm">Manager</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div><!--end grid-->

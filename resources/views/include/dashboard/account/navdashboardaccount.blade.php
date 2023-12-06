@@ -3,4 +3,8 @@
     {{-- <a class="nav-link" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a> --}}
     <a class="nav-link" href="{{route('dashboard.security')}}">Sécurité</a>
     {{-- <a class="nav-link" href="account-notifications.html">Notifications</a> --}}
+    @if (Auth::user()->hasRole('admin'))
+        <a class="nav-link" href="{{route('list_user')}}">Liste des utilisateurs</a>
+        <a class="nav-link" href="{{route('memberobp')}}">Agent OBP</a>
+    @endif
 </nav>

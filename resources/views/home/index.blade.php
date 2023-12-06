@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
-
 <x-head></x-head>
-
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
     {{-- <div id="preloader">
@@ -206,9 +204,9 @@
             <!--end grid-->
             <!--en grid-->
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                @isset($posts)
+                @isset($selecttableProdForHome)
 
-                @foreach ($posts as $data)
+                @foreach ($selecttableProdForHome as $data)
                     <div
                         class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
@@ -336,9 +334,9 @@
                     @endforeach
 
                 @endisset
-                @isset($posts2)
+                @isset($beforeLastThree)
 
-                    @foreach ($posts2 as $data)
+                    @foreach ($beforeLastThree as $data)
                         <div
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">

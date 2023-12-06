@@ -100,7 +100,6 @@ class update extends Controller
                         $imgFilename,
                         'public'
                     );
-
                     img::where('prod_id', $prod_id)
                         ->update([$imgField => $imgPath]);
                 }

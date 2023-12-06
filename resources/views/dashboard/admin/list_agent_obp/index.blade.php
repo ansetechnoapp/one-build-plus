@@ -41,56 +41,22 @@
                                                 <th class="border-gray-200" scope="col">Nom</th>
                                                 <th class="border-gray-200" scope="col">Prénom</th>
                                                 <th class="border-gray-200" scope="col">email</th>
-                                                <th class="border-gray-200" scope="col">Numéro</th>
-                                                <th class="border-gray-200" scope="col">addresse</th>
-                                                <th class="border-gray-200" scope="col">Date de naissance</th>
-                                                <th class="border-gray-200" scope="col" style="width: 5%">Statut compte</th>
-                                                <th class="border-gray-200" scope="col" style="width: 5%">OBP membres</th>
+                                                <th class="border-gray-200" scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @isset($alluser)
+                                            @isset($members)
 
-                                                @foreach ($alluser as $post)
+                                                @foreach ($members as $post)
                                                     <tr>
                                                         <td>{{ $post->id }}</td>
                                                         <td>{{ $post->lastName }}</td>
                                                         <td>{{ $post->firstName }}</td>
                                                         <td>{{ $post->email }}</td>
-                                                        <td>{{ $post->phone }}</td>
-                                                        <td>{{ $post->address }}</td>
-                                                        <td>{{ $post->birthday }}</td>
-
-                                                        @if ($post->isactive == '2')
-                                                            <td>
-                                                                <a
-                                                                    href="{{ route('user.activate', ['user_id' => $post->id]) }}">Activer</a>
-                                                            </td>
-                                                        @endif
-                                                        @if ($post->isactive == '1')
-                                                            <td>
-                                                                <a
-                                                                    href="{{ route('user.disable', ['user_id' => $post->id]) }}">Désativer</a>
-                                                            </td>
-                                                        @endif
-                                                        @if ($post->isactive == '0')
-                                                            <td>
-                                                                <a href="#">Compte Non Activer</a>
-                                                            </td>
-                                                        @endif
-
-
-                                                        @if ($post->agentOBP == 'non')
-                                                            <td>
-                                                                <a
-                                                                    href="{{ route('agentOBP', ['user_id' => $post->id]) }}">non</a>
-                                                            </td>
-                                                        @endif
-
                                                         @if ($post->agentOBP == 'oui')
                                                             <td>
                                                                 <a
-                                                                    href="{{ route('notAgentOBP', ['user_id' => $post->id]) }}">oui</a>
+                                                                    href="{{ route('notAgentOBP', ['user_id' => $post->id]) }}">Supprimer</a>
                                                             </td>
                                                         @endif
 

@@ -91,15 +91,15 @@
                             <div class="flex mt-6">
                                 <i data-feather="mail" class="w-5 h-5 text-green-600 me-3"></i>
                                 <div class="">
-                                    <a href="mailto:contact@example.com"
-                                        class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">contact@example.com</a>
+                                    <a href="mailto:{{env('APP_EMAIL')}}"
+                                        class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">{{env('APP_EMAIL')}}</a>
                                 </div>
                             </div>
 
                             <div class="flex mt-6">
                                 <i data-feather="phone" class="w-5 h-5 text-green-600 me-3"></i>
                                 <div class="">
-                                    <a href="tel:+152534-468-854"
+                                    <a href="tel:{{env('APP_TEL')}}"
                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out">{{env('APP_TEL')}}</a>
                                 </div>
                             </div>

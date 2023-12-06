@@ -1,40 +1,3 @@
-{{-- <style>
-    .select {
-        position: relative;
-        display: inline-block;
-    }
-
-    .select select {
-        font-family: 'Arial';
-        display: inline-block;
-        padding: 5px 21px;
-        outline: 0;
-        border: 0px solid #000000;
-        border-radius: 2px;
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-
-    .select select::-ms-expand {
-        display: none;
-    }
-
-    .select select:hover,
-    .select select:focus {
-        color: #000000;
-        background-color: #dddddd4f;
-    }
-
-    .select select:disabled {
-        opacity: 0.5;
-        pointer-events: none;
-    }
-
-    select>option {
-        background-color: #dddddd4f;
-    }
-</style> --}}
 
 <div class="container">
     <div class="grid grid-cols-1 justify-center">
@@ -87,9 +50,9 @@
                                                 font-weight: bold;
                                                 border: none;
                                                 outline: none;">
-                                                @isset($ground_type)
+                                                @isset($selectGround_typetableProdForHome)
                                                 <option>sélectionnez un type de terrain</option>
-                                                @foreach ($ground_type as $result)                                 
+                                                @foreach ($selectGround_typetableProdForHome as $result)                                 
                                                 <option name="{{$result->ground_type}}">{{$result->ground_type}}</option>
                                                 @endforeach  
                                                 @endisset
@@ -119,9 +82,9 @@
                                                 font-weight: bold;
                                                 border: none;
                                                 outline: none;">
-                                                @isset($commune)
+                                                @isset($selectCommunetableProdForHome)
                                                 <option value="">selectionnez une commune</option>
-                                                @foreach ($commune as $result)                                 
+                                                @foreach ($selectCommunetableProdForHome as $result)                                 
                                                 <option name="{{$result->communes}}">{{$result->communes}}</option>
                                                 @endforeach  
                                                 @endisset

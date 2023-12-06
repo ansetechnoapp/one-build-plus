@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('role')->default('users');
             $table->Integer('isactive')->default('0');
             $table->string('img')->nullable();
+            $table->string('agentOBP')->default('non');
             $table->rememberToken();
             $table->timestamps();
         });

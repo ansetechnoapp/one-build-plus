@@ -30,3 +30,5 @@ php artisan make:controller PaymentController
 php artisan make:controller dashboard\list_payment\liste
 php artisan make:controller dashboard\admin\all_list_pay\index
 php artisan make:controller dashboard\admin\formhomeslideimage\index
+php artisan make:controller about\index
+php artisan make:controller dashboard\admin\list_agent_obp\index

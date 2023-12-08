@@ -25,7 +25,7 @@ class index extends Controller
         $rules = [
             'title_id' => 'required|integer',
             'question' => 'required|string|max:100|min:2',
-            'answer' => 'required|string|max:100|min:2',
+            'answer' => 'required|string|max:500|min:2',
         ];
         $messages = [
             'title_id.title_idregister' => "Entrer un texte.",
@@ -67,7 +67,7 @@ class index extends Controller
         // Définition des règles de validation
         $rules = [
             'question' => 'required|string|max:100|min:2',
-            'answer' => 'required|string|max:100|min:2',
+            'answer' => 'required|string|max:500|min:2',
         ];
 
         // Définition des messages d'erreur personnalisés

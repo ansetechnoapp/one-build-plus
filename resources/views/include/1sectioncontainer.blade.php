@@ -15,8 +15,10 @@
         <div class="md:col-span-7">
             <div class="lg:ms-4">
                 <h4 class="mb-6 md:text-3xl text-2xl lg:leading-normal leading-normal font-semibold">
-                    Efficacité. Transparence. <br> Contrôle.</h4>
-                <p class="text-slate-400 max-w-xl">OBP a développé une plateforme pour le marché de l'immobilier qui permet aux acheteurs et aux vendeurs d'exécuter facilement une transaction par eux-mêmes. La plateforme apporte efficacité, transparence des coûts et contrôle dans les mains des consommateurs. OBP est la redéfinition de l'immobilier.</p>
+                    OBP, une entreprise qui incarne l'efficacité, la transparence et le contrôle dans chacune de ses actions.</h4>
+                <p class="text-slate-400 max-w-xl">
+                    OBP a développé une plateforme pour le marché de l'immobilier qui permet aux acheteurs et aux vendeurs d'exécuter facilement une transaction par eux-mêmes. 
+                    La plateforme apporte efficacité, transparence des coûts et contrôle dans les mains des consommateurs. OBP est la redéfinition de l'immobilier.</p>
 
                 <div class="mt-4">
                     <a href="contact"

@@ -24,8 +24,7 @@
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
             <div class="grid grid-cols-1 text-center mt-10">
-                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">A propos de one
-                    build plus</h3>
+                <h3 class="md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">A propos de one build plus</h3>
             </div><!--end grid-->
         </div><!--end container-->
     </section><!--end section-->
@@ -68,9 +67,9 @@
 
 
                         <div class="counter-box text-center">
-                            <h1 class="text-white lg:text-5xl text-4xl font-semibold mb-2"><span class="counter-value"
+                            {{-- <h1 class="text-white lg:text-5xl text-4xl font-semibold mb-2"><span class="counter-value"
                                     data-target="25">2</span>+</h1>
-                            <h5 class="counter-head text-white text-lg font-medium">Prix obtenu</h5>
+                            <h5 class="counter-head text-white text-lg font-medium">Prix obtenu</h5> --}}
                         </div><!--end counter box-->
 
 
@@ -146,7 +145,7 @@
                 <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Ce que disent nos
                     clients ?</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter, vendre.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour achat et vente.</p>
             </div><!--end grid-->
 
             <div class="flex justify-center relative mt-8">

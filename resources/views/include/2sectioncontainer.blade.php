@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 pb-8 text-center">
     <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Comment ça marche</h3>
 
-    <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter, vendre..</p>
+    <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour achat et vente</p>
 </div>
 <!--end grid-->
 
@@ -18,8 +18,9 @@
         </div>
 
         <div class="mt-6">
-            <h5 class="text-xl font-medium">Évaluer la propriété</h5>
-            <p class="text-slate-400 mt-3">Si la distribution des lettres et des "mots" est aléatoire, le lecteur ne sera pas distrait par le fait d'avoir à faire des choix. ne sera pas distrait de faire.</p>
+            <h5 class="text-xl font-medium">Évaluation des propriétés</h5>
+            <p class="text-slate-400 mt-3">OBP, en tant qu'entreprise, se distingue par sa pratique rigoureuse : elle évalue minutieusement les propriétés avant de les acquérir, 
+                puis les commercialise en veillant à fournir tous les documents légaux en conformité avec les lois en vigueur.</p>
         </div>
     </div>
     <!-- Content -->
@@ -36,8 +37,8 @@
         </div>
 
         <div class="mt-6">
-            <h5 class="text-xl font-medium">Rencontre avec l'agent</h5>
-            <p class="text-slate-400 mt-3">Si la distribution des lettres et des "mots" est aléatoire, le lecteur ne sera pas distrait par le fait d'avoir à faire des choix. ne sera pas distrait de faire.</p>
+            <h5 class="text-xl font-medium">Rencontre un agent à OBP</h5>
+            <p class="text-slate-400 mt-3">OBP, entreprise dynamique, met à votre disposition un agent dédié pour répondre à toutes vos questions et préoccupations concernant nos produits.</p>
         </div>
     </div>
     <!-- Content -->
@@ -54,8 +55,9 @@
         </div>
 
         <div class="mt-6">
-            <h5 class="text-xl font-medium">L'éducation</h5>
-            <p class="text-slate-400 mt-3">Si la distribution des lettres et des "mots" est aléatoire, le lecteur ne sera pas distrait par le fait d'avoir à faire des choix. ne sera pas distrait de faire.</p>
+            <h5 class="text-xl font-medium">Education</h5>
+            <p class="text-slate-400 mt-3">OBP, entreprise engagée, place l'éducation au cœur de ses priorités en liant financièrement le secteur éducatif à celui de l'agriculture, 
+                simplifiant ainsi la vie des parents dans le règlement des frais de scolarité de leurs enfants.</p>
         </div>
     </div>
     <!-- Content -->

@@ -32,3 +32,4 @@ php artisan make:controller dashboard\admin\all_list_pay\index
 php artisan make:controller dashboard\admin\formhomeslideimage\index
 php artisan make:controller about\index
 php artisan make:controller dashboard\admin\list_agent_obp\index
+php artisan make:controller dashboard\profil\index

@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'isActive'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\facture_des_services\devis::class, 'listDevisForUser'])->name('dashboard.home');
-    Route::get('/dashboard.account.profil', [\App\Http\Controllers\save\account::class, 'getaccountprofil'])->name('dashboard.profil');
+    Route::get('/dashboard.account.profil', [\App\Http\Controllers\dashboard\profil\index::class, 'getaccountprofil'])->name('dashboard.profil');
+    Route::post('/saveImg', [\App\Http\Controllers\dashboard\profil\index::class, 'saveImage'])->name('save.profil.img');
     Route::post('/saveprofilandupdate', [\App\Http\Controllers\save\account::class, 'saveprofilandupdate'])->name('saveprofilandupdate');
     /* Route::get('/dashboard.billing.history', function () {
         return view('dashboard.billing_history.index');

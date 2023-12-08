@@ -146,14 +146,6 @@ class account extends Controller
             return view('dashboard.account_security.index', $champVide);
         }
     }
-    public function getaccountprofil()
-    {
-        $emailRecherche = Auth::user()->email;
-        $donnees = User::where('email', $emailRecherche)->get();
-        if ($donnees) {
-            return view('dashboard.profil.index', ['donnees' => $donnees]);
-        }
-    }
     public function userDisable($user_id)
     {
         $isactive = '2';

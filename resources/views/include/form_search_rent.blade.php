@@ -76,7 +76,7 @@
             align-items: center;">
                                             <i class="uil uil-estate icons"
                                                 style="color: red; font-size: 20px;margin: 0px 0px 0px 10px;"></i>
-                                            <input type="number"
+                                            <input type="text"
                                                 style="
                 width: 100%;
                 background-color: #ffffff00;
@@ -101,7 +101,7 @@
             align-items: center;">
                                             <i class="uil uil-estate icons"
                                                 style="color: red; font-size: 20px;margin: 0px 0px 0px 10px;"></i>
-                                            <input type="number"
+                                            <input type="text"
                                                 style="
                 width: 100%;
                 background-color: #ffffff00;

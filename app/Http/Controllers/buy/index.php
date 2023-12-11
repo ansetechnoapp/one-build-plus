@@ -11,10 +11,14 @@ class index extends Controller
 {
     public function showbuyallprod()
     {
-        $selectCommunetableProdForHome = prod::distinct()->select('department', 'communes')->get();
-        $selectGround_typetableProdForHome = prod::distinct()->select('ground_type')->get();
+        
         $posts = Prod::with('img')->get();
         $commune = prod::all();
-        return view('buy.index', ['ground_type' => $selectGround_typetableProdForHome,'commune' => $selectCommunetableProdForHome,'allprod' => $posts,'posts' => $commune]);
+        return view('buy.index', [
+            'selectGround_typetableProdForHome' => prod::distinct()->select('ground_type')->get(),
+            'selectCommunetableProdForHome' => prod::distinct()->select('department', 'communes')->get(),
+            'allprod' => $posts,
+            'posts' => $commune
+        ]);
     }
 }

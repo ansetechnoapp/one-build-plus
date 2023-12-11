@@ -84,7 +84,7 @@
                                                 outline: none;">
                                                 @isset($selectCommunetableProdForHome)
                                                 <option value="">selectionnez une commune</option>
-                                                @foreach ($selectCommunetableProdForHome as $result)                                 
+                                                @foreach ($selectCommunetableProdForHome as $result)                                  
                                                 <option name="{{$result->communes}}">{{$result->communes}}</option>
                                                 @endforeach  
                                                 @endisset
@@ -105,7 +105,7 @@
                                         align-items: center;">
                                             <i class="uil uil-estate icons"
                                                 style="color: red; font-size: 20px;margin: 0px 0px 0px 10px;"></i>
-                                            <input type="number"
+                                            <input type="text"
                                                 style="
                                             width: 100%;
                                             background-color: #ffffff00;
@@ -130,7 +130,7 @@
                                         align-items: center;">
                                             <i class="uil uil-estate icons"
                                                 style="color: red; font-size: 20px;margin: 0px 0px 0px 10px;"></i>
-                                            <input type="number"
+                                            <input type="text"
                                                 style="
                                             width: 100%;
                                             background-color: #ffffff00;
@@ -141,8 +141,6 @@
                                                 placeholder="prix maximal" name="price_max" value="">
                                         </div>
                                     </div>
-                                    
-
                                     
 
                                     <div class="lg:mt-6">

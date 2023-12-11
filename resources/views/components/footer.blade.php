@@ -51,7 +51,7 @@
                         <!--end col-->
 
                         <div class="lg:col-span-2 md:col-span-4">
-                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Company</h5>
+                            <h5 class="tracking-[1px] text-gray-100 font-semibold">INFOS PRATIQUES</h5>
                             <ul class="list-none footer-list mt-6">
                                 <li><a href="aboutus"
                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i
@@ -64,7 +64,7 @@
                         <!--end col-->
 
                         <div class="lg:col-span-3 md:col-span-4">
-                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Usefull Links</h5>
+                            <h5 class="tracking-[1px] text-gray-100 font-semibold">ENTREPRISE</h5>
                             <ul class="list-none footer-list mt-6">
                                 <li><a href="terms"
                                         class="text-slate-300 hover:text-slate-400 duration-500 ease-in-out"><i

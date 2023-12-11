@@ -169,8 +169,7 @@
 
                     <div class="content mt-7">
                         <h5 class="title h5 text-xl font-medium">Téléphone</h5>
-                        <p class="text-slate-400 mt-3">La séquence phraséologique de la est maintenant de sorte que
-                            beaucoup de campagne et de bénéfice</p>
+                        <p class="text-slate-400 mt-3">Restez connecté avec notre ligne téléphonique dédiée, toujours à votre écoute, même le week-end !</p>
 
                         <div class="mt-5">
                             <a href="tel:+152534-468-854"
@@ -190,8 +189,7 @@
 
                     <div class="content mt-7">
                         <h5 class="title h5 text-xl font-medium"> Email </h5>
-                        <p class="text-slate-400 mt-3">La séquence phraséologique de la est maintenant de sorte que
-                            beaucoup de campagne et de bénéfice</p>
+                        <p class="text-slate-400 mt-3">Restez en contact avec nous via notre adresse e-mail dédiée, prête à recevoir vos messages à tout moment, sauf les dimanches !</p>
 
                         <div class="mt-5">
                             <a href="{{ env('MAIL_USERNAME') }}"

@@ -223,38 +223,25 @@
                                 <button
                                     class="px-4 py-2 text-base font-medium rounded-md w-full text-white hover:text-green-600 transition-all duration-500 ease-in-out"
                                     id="letter-tab" data-tabs-target="#letter" type="button" role="tab"
-                                    aria-controls="letter" aria-selected="true">Lettre d'approbation
-                                    préalable</button>
+                                    aria-controls="letter" aria-selected="true">Contactez OBP pour la vente de votre parcelle</button>
                             </li>
                             <li role="presentation">
                                 <button
                                     class="px-4 py-2 text-base font-medium rounded-md w-full text-white mt-3 transition-all duration-500 ease-in-out"
                                     id="schedule-tab" data-tabs-target="#schedule" type="button" role="tab"
-                                    aria-controls="schedule" aria-selected="false">Planifier une visite</button>
+                                    aria-controls="schedule" aria-selected="false">Planification de visite</button>
                             </li>
                             <li role="presentation">
                                 <button
                                     class="px-4 py-2 text-base font-medium rounded-md w-full text-white mt-3 transition-all duration-500 ease-in-out"
                                     id="offer-tab" data-tabs-target="#offer" type="button" role="tab"
-                                    aria-controls="offer" aria-selected="false">Soumettre une offre</button>
+                                    aria-controls="offer" aria-selected="false">OBP peut décider de payer ou non votre parcelle</button>
                             </li>
                             <li role="presentation">
                                 <button
                                     class="px-4 py-2 text-base font-medium rounded-md w-full text-white mt-3 transition-all duration-500 ease-in-out"
                                     id="inspection-tab" data-tabs-target="#inspection" type="button" role="tab"
-                                    aria-controls="inspection" aria-selected="false">Inspection des biens</button>
-                            </li>
-                            <li role="presentation">
-                                <button
-                                    class="px-4 py-2 text-base font-medium rounded-md w-full text-white mt-3 transition-all duration-500 ease-in-out"
-                                    id="appraisal-tab" data-tabs-target="#appraisal" type="button" role="tab"
-                                    aria-controls="appraisal" aria-selected="false">Évaluation</button>
-                            </li>
-                            <li role="presentation">
-                                <button
-                                    class="px-4 py-2 text-base font-medium rounded-md w-full text-white mt-3 transition-all duration-500 ease-in-out"
-                                    id="closing-tab" data-tabs-target="#closing" type="button" role="tab"
-                                    aria-controls="closing" aria-selected="false">Conclusion de l'affaire</button>
+                                    aria-controls="inspection" aria-selected="false">Paiement de votre domaine</button>
                             </li>
                         </ul>
                     </div>
@@ -265,58 +252,30 @@
                         <div class="" id="letter" role="tabpanel" aria-labelledby="letter-tab">
                             <img src="assets/images/svg/Agent_Monochromatic.svg" alt="">
                             <div class="mt-6">
-                                <h5 class="font-medium text-xl">Lettre d'approbation préalable</h5>
-                                <p class="text-slate-400 mt-3">La plupart des acheteurs pensent que la première étape
-                                    consiste à trouver la maison de leurs rêves. la maison de leurs rêves, mais la
-                                    vérité est que la recherche du financement est la première étape. OBP rationalise le
-                                    processus de le processus de préapprobation de prêt grâce à notre écosystème de
-                                    partenaires de premier plan ou simplement en téléchargeant votre propre lettre de
-                                    préapprobation. télécharger votre propre lettre de préapprobation.</p>
+                                <h5 class="font-medium text-xl">Contactez OBP pour la vente de votre parcelle</h5>
+                                <p class="text-slate-400 mt-3">OBP est là pour faciliter la vente de votre parcelle. Contactez-nous dès maintenant pour discuter des détails de votre propriété. Notre équipe d'experts est prête à vous guider tout au long du processus, vous assurant une expérience transparente et efficace.</p>
                             </div>
                         </div>
                         <div class="hidden " id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
                             <img src="assets/images/svg/presentation_Flatline.svg" alt="">
                             <div class="mt-6">
-                                <h5 class="font-medium text-xl">Planifier une visite</h5>
-                                <p class="text-slate-400 mt-3">OBP permet à un acheteur de planifier une visite
-                                    instantanée et d'obtenir une visite privée sans avoir besoin d'impliquer plusieurs
-                                    parties. et d'obtenir une visite privée sans que plusieurs parties ne soient
-                                    impliquées. Vous choisissez l'heure qui vous convient !</p>
+                                <h5 class="font-medium text-xl">Planification de visite</h5>
+                                <p class="text-slate-400 mt-3">Une fois que nous avons discuté des détails de votre parcelle, planifions une visite sur place. C'est l'occasion idéale pour nos experts de découvrir les caractéristiques uniques de votre propriété et de répondre à toutes vos questions. Nous cherchons à comprendre chaque aspect pour présenter au mieux votre bien.</p>
                             </div>
                         </div>
                         <div class="hidden " id="offer" role="tabpanel" aria-labelledby="offer-tab">
                             <img src="assets/images/svg/session_Flatline.svg" alt="">
                             <div class="mt-6">
-                                <h5 class="font-medium text-xl">Soumettre une offre</h5>
-                                <p class="text-slate-400 mt-3">OBP accompagne l'acheteur tout au long du processus de
-                                    en donnant l'impression que la paperasserie se fait sans effort. Grâce à nos flux de
-                                    travail personnalisés et d'analyse de la progression, vous saurez toujours où en est
-                                    votre achat. Fini le téléphone de téléphone et de courriels sans réponse !</p>
+                                <h5 class="font-medium text-xl">OBP peut décider de payer ou non votre parcelle</h5>
+                                <p class="text-slate-400 mt-3">Après la visite, notre équipe évaluera la parcelle en fonction de plusieurs critères. OBP peut décider d'acquérir votre propriété en fonction de sa pertinence pour notre portefeuille immobilier. Soyez assuré que nous traiterons chaque proposition avec professionnalisme et transparence.</p>
                             </div>
                         </div>
                         <div class="hidden " id="inspection" role="tabpanel" aria-labelledby="inspection-tab">
                             <img src="assets/images/svg/Startup_Flatline.svg" alt="">
                             <div class="mt-6">
-                                <h5 class="font-medium text-xl">Inspection des biens</h5>
-                                <p class="text-slate-400 mt-3">Personne ne veut acheter un citron. Réservez une
-                                    inspection auprès d'un inspecteur agréé, puis soumettre les demandes de réparation
-                                    via la plateforme OBP..</p>
-                            </div>
-                        </div>
-                        <div class="hidden " id="appraisal" role="tabpanel" aria-labelledby="appraisal-tab">
-                            <img src="assets/images/svg/team_Flatline.svg" alt="">
-                            <div class="mt-6">
-                                <h5 class="font-medium text-xl">Évaluation</h5>
-                                <p class="text-slate-400 mt-3">OBP surveille le processus d'évaluation en s'assurant
-                                    que la maison que vous achetez correspond ou dépasse le prix que vous payez.</p>
-                            </div>
-                        </div>
-                        <div class="hidden " id="closing" role="tabpanel" aria-labelledby="closing-tab">
-                            <img src="assets/images/svg/Team_meeting_Two.svg" alt="">
-                            <div class="mt-6">
-                                <h5 class="font-medium text-xl">Conclusion de l'affaire</h5>
-                                <p class="text-slate-400 mt-3">Enfin, le dossier de clôture est envoyé au bureau des
-                                    titres, et le jour est arrivé... Vous avez OBP la maison de vos rêves !</p>
+                                <h5 class="font-medium text-xl">Paiement de votre domaine</h5>
+                                <p class="text-slate-400 mt-3">Si nous décidons d'acquérir votre parcelle, le processus de paiement sera rapidement mis en place. Nous travaillerons avec vous pour finaliser les détails financiers de manière efficace et sécurisée. Notre engagement est de garantir une transaction fluide et équitable pour toutes les parties impliquées.
+                                </p>
                             </div>
                         </div>
                     </div>

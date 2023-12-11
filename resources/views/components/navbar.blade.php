@@ -1,7 +1,19 @@
+<style>
+    @media(max-width: 767px){
+        .logo{
+            max-width: 42%;
+        }
+    }
+    @media(min-width: 767px){
+        .logo{
+            max-width: 15%;
+        }
+    }
+</style>
 <nav id="topnav" class="defaultscroll is-sticky">
     <div class="container">
         <!-- Logo container-->
-        <a class="logo" href="{{ route('home') }}" style="max-width: 10%;">
+        <a class="logo" href="{{ route('home') }}">
             <img src="assets/images/logo-dark.png" class="inline-block dark:hidden" alt="">
             <img src="assets/images/logo-light.png" class="hidden dark:inline-block" alt="">
         </a>

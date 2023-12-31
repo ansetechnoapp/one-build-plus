@@ -20,30 +20,35 @@ class resetpassword extends Controller
     {
 
         $email = $request->email;
-
-        // dd($email);
-
         if (isset($email)) {
-            // Définition des règles de validation
+            try {
+                $request->validate(['email' => 'required|email']);
+                $status = Password::sendResetLink(
+                    $request->only('email')
+                );
+                return $status === Password::RESET_LINK_SENT
+                    ? back()->with(['status' => __($status)])
+                    : back()->withErrors(['email' => __($status)]);
+            } catch (ValidationException $e) {
+                $errors = $e->validator->errors();
+                return redirect()->to('/sendEmail')->withErrors($errors);
+            }
+        } else {
+            $forerror = [
+                'parm1' => 'Entrer un Email correcte et verifier que tous les champs soit remplir',
+            ];
+            return redirect()->route('auth-re-password', $forerror);
+        }
+        /* $email = $request->email;
+        if (isset($email)) {
             $rules = [
                 'email' => ['required', 'string', 'email', 'max:255'],
             ];
-
-            // Définition des messages d'erreur personnalisés
             $messages = [
                 'email' => "L'adresse email n'est pas valide.",
             ];
-
-            // Définition des noms de champs personnalisés
-            $customAttributes = [
-                'email' => 'Adresse email',
-            ];
-
-            // Validation des données envoyées dans la requête
-
             try {
-                
-                $request->validate($rules, $messages, $customAttributes);
+                $request->validate($rules, $messages);
                 
                 if (User::where('email', $request->email)->first() === null) {
                     $forerror = [
@@ -51,17 +56,13 @@ class resetpassword extends Controller
                     ];
                     return redirect()->route('auth-re-password',$forerror);
                 } else {
+                    
                     Mail::to($email)
                         ->send(new sendpasswordreset($request->all()));
                         return redirect()->route('url.emails.sendforforgetpassword',['email' => $email]);
-                    
                 }
             } catch (ValidationException $e) {
-                // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                // Récupération des messages d'erreur de validation
                 $errors = $e->validator->errors();
-
-                // Redirection vers la page de formulaire avec les messages d'erreur
                 return redirect()->to('/sendEmail')->withErrors($errors);
             }
         } else {
@@ -69,7 +70,7 @@ class resetpassword extends Controller
                 'parm1' => 'Entrer un Email correcte et verifier que tous les champs soit remplir',
             ];
             return redirect()->route('auth-re-password',$forerror);
-        }
+        } */
     }
     public function updatePassword(Request $request)
     {
@@ -112,21 +113,20 @@ class resetpassword extends Controller
                         $forerror = [
                             'parm1' => 'Tu es ici pourquoi ?',
                         ];
-                        return redirect()->route('auth-re-password',$forerror);
+                        return redirect()->route('auth-re-password', $forerror);
                     } else {
-                        
-                    if ($credentials) {
-                        User::where('email', $request->email)->first()->update([
-                            'password' => hash::make($newPassword),
-                        ]);
-                        return view('page_confirm_message.confirme_updateforgetpassword');
-                    } else {
-                        // L'authentification a échoué, redirigez l'utilisateur vers la page de connexion avec un message d'erreur
-                        return back()->withErrors([
-                            'email' => 'Les identifiants fournis ne correspondent pas à nos enregistrements.',
-                        ])->withInput($request->only('email'));
-                    }
-                        
+
+                        if ($credentials) {
+                            User::where('email', $request->email)->first()->update([
+                                'password' => hash::make($newPassword),
+                            ]);
+                            return view('page_confirm_message.confirme_updateforgetpassword');
+                        } else {
+                            // L'authentification a échoué, redirigez l'utilisateur vers la page de connexion avec un message d'erreur
+                            return back()->withErrors([
+                                'email' => 'Les identifiants fournis ne correspondent pas à nos enregistrements.',
+                            ])->withInput($request->only('email'));
+                        }
                     }
                 } catch (ValidationException $e) {
                     // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
@@ -143,9 +143,9 @@ class resetpassword extends Controller
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
     }
-    public function authrepassword(Request $request){
+    public function authrepassword(Request $request)
+    {
         $parm1 = $request->parm1;
-        return view('forgetpassword.sendEmail',['parm1' => $parm1   ]);
-
+        return view('forgetpassword.sendEmail', ['parm1' => $parm1]);
     }
 }

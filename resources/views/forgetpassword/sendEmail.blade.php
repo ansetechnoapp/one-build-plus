@@ -31,8 +31,7 @@
                     <div class="grid grid-cols-1">
                         <p class="text-slate-400 mb-6">Veuillez saisir votre adresse électronique. Vous recevrez un lien
                             pour créer un nouveau mot de passe par courriel.</p>
-                        {{-- <form class="ltr:text-left rtl:text-right" action="{{ route('password.updateSendEmail') }}"
-                            method="POST"> --}}
+                            
                             <form class="ltr:text-left rtl:text-right" action="{{ route('password.email') }}"
                             method="POST">
                             @csrf

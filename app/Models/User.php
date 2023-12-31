@@ -53,7 +53,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function sendPasswordEmailVerificationNotification($token)
+    public function sendPasswordResetNotification($token)
     {
         $this->notify(new NewResetPasswordNotification($token));
     }

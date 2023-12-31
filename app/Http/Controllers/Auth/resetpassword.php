@@ -27,7 +27,7 @@ class resetpassword extends Controller
                     $request->only('email')
                 );
                 return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['email' => __($status)])
+                    ? redirect()->route('url.emails.sendforforgetpassword',['email' => $email])
                     : back()->withErrors(['email' => __($status)]);
             } catch (ValidationException $e) {
                 $errors = $e->validator->errors();

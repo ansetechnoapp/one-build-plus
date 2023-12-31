@@ -44,6 +44,7 @@
                         <form class="ltr:text-left rtl:text-right" action="{{ route('password.update') }}"
                             method="POST">
                             @csrf
+                            <input type="hidden" name="token" value="{{ $token }}">
                             <div class="grid grid-cols-1">
                                 <input id="LoginEmail" type="hidden" name="email" class="form-input mt-3"
                                     value="{{ old('email') }}" required>

@@ -33,9 +33,7 @@ Route::get('/rent', [\App\Http\Controllers\rent\index::class, 'showRentallprod']
 
 Route::post('/login', [\App\Http\Controllers\Auth\FormLogin::class, 'authenticate'])->name('login');
 
-Route::get('/formupdatepassword.{email}', function ($email) {
-    return view('forgetpassword.updatepassword', ['email' => $email]);
-})->name('formupdatepassword');
+
 Route::get('/emailsendforconfirmationforgetpassword', [\App\Http\Controllers\page_confirm_message\sendforforgetpassword::class, 'view'])->name('url.emails.sendforforgetpassword');
 
 Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::class, 'isactive'])->name('activate.account');

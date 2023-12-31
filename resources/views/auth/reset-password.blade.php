@@ -31,12 +31,22 @@
                     <div class="grid grid-cols-1">
                         <p class="text-slate-400 mb-6">Veuillez saisir votre adresse électronique. Vous recevrez un lien
                             pour créer un nouveau mot de passe par courriel.</p>
+                        @if ($errors->any())
+                            <div>
+                                <strong>Whoops!</strong> Il y a eu un problème avec vos entrées.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form class="ltr:text-left rtl:text-right" action="{{ route('password.update') }}"
                             method="POST">
                             @csrf
                             <div class="grid grid-cols-1">
                                 <input id="LoginEmail" type="hidden" name="email" class="form-input mt-3"
-                                        value="{{$email}}" required>
+                                    value="{{ old('email') }}" required>
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Nouveau Mot de passe:</label>
                                     <input id="LoginEmail" type="password" name="password" class="form-input mt-3"
@@ -58,7 +68,7 @@
                                 <div class="mb-4">
                                     <button type="submit"
                                         class="btn bg-red-600 hover:bg-green-700 rounded-md w-full">Envoyer</button>
-                                        @if ($errors->has('status'))
+                                    @if ($errors->has('status'))
                                         <div class="alert alert-danger">{{ $errors->first('status') }}
                                         </div>
                                     @endif

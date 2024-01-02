@@ -43,13 +43,43 @@ class resetpassword extends Controller
     public function updatePassword(Request $request)
     {
 
-
         $newPassword = $request->password;
         $oldPasswordcurrent = $request->password_confirmation;
-        $email = $request->email;
+
+        if (isset($newPassword) || isset($oldPasswordcurrent)) {
+            if ($newPassword == '' && $oldPasswordcurrent == '') {
+                echo " S'il vous plaît, remplissez tous les champs.";
+            } else {
+                $request->validate([
+                    'token' => 'required',
+                    'email' => 'required|email',
+                    'password' => 'required|min:8|confirmed',
+                ]);
+             
+                $status = Password::reset(
+                    $request->only('email', 'password', 'password_confirmation', 'token'),
+                    function (User $user, string $password) {
+                        $user->forceFill([
+                            'password' => Hash::make($password)
+                        ])->setRememberToken(Str::random(60));
+             
+                        $user->save();
+             
+                        event(new PasswordReset($user));
+                    }
+                );
+             
+                return $status === Password::PASSWORD_RESET
+                            ? redirect()->route('login')->with('status', __($status))
+                            : back()->withErrors(['email' => [__($status)]]);
+            }
+            
+        } else {
+                    echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
+                } 
 
         //////////////////////////////
-        if (isset($newPassword) || isset($oldPasswordcurrent)) {
+        /* if (isset($newPassword) || isset($oldPasswordcurrent)) {
             if ($newPassword == '' && $oldPasswordcurrent == '') {
                 dd('rrr');
                 echo " S'il vous plaît, remplissez tous les champs.";
@@ -62,7 +92,7 @@ class resetpassword extends Controller
                             ->mixedCase()
                             ->numbers()
                             ->symbols()
-                            ->uncompromised()], */
+                            ->uncompromised()], 
                 ];
 
                 // Définition des messages d'erreur personnalisés
@@ -109,7 +139,7 @@ class resetpassword extends Controller
             }
         } else {
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
-        }
+        } */
     }
     public function authrepassword(Request $request)
     {

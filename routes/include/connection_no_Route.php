@@ -27,7 +27,7 @@ Route::middleware(['guest'])->group(function () {
 // 
 // 
 // 
-Route::get('/reset-password.{token}{email}', function (string $token,string $email) {
+Route::get('/reset-password.{token}.{email}', function (string $token,string $email) {
     return view('auth.reset-password', ['token' => $token,'email' => $email]);
 })->name('password.reset');
 

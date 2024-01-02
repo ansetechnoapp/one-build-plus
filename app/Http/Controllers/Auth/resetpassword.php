@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Validation\ValidationException;
 
-class resetpassword extends Controller
+    class resetpassword extends Controller
 {
     public function updatePasswordSendEmail(Request $request)
     {

@@ -70,7 +70,7 @@ class resetpassword extends Controller
                 );
              
                 return $status === Password::PASSWORD_RESET
-                            ? redirect()->route('auth-login')->with('status', __($status))
+                            ? view('page_confirm_message.confirme_updateforgetpassword')
                             : back()->withErrors(['email' => [__($status)]]);
             }
             

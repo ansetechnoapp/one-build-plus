@@ -32,11 +32,6 @@
 
                     <form method="POST" action="{{ route('login') }}" class="ltr:text-left rtl:text-right">
                         @csrf
-                        @isset($status)
-                                    <div class="text-center">
-                                        <h5 class="my-6 text-xl font-semibold alert alert-danger">{{$status}}</h5>
-                                    </div>
-                        @endisset 
                         <div class="grid grid-cols-1">
                             <div class="mb-4">
                                 <label class="font-medium" for="LoginEmail">Adresse électronique:</label>

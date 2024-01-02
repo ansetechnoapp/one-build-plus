@@ -1,4 +1,6 @@
 <x-mail::message>
+    <img  src="{{env('APP_URL')}}/assets/images/logo-dark.png" class="mx-auto" alt="">
+    <br><br>
 {{-- Greeting --}}
 @if (! empty($greeting))
 # {{ $greeting }}

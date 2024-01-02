@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Validation\ValidationException;
 
-    class resetpassword extends Controller
+class resetpassword extends Controller
 {
     public function updatePasswordSendEmail(Request $request)
     {
@@ -27,7 +27,7 @@ use Illuminate\Validation\ValidationException;
                     $request->only('email')
                 );
                 return $status === Password::RESET_LINK_SENT
-                    ? redirect()->route('url.emails.sendforforgetpassword',['email' => $email])
+                    ? redirect()->route('url.emails.sendforforgetpassword', ['email' => $email])
                     : back()->withErrors(['email' => __($status)]);
             } catch (ValidationException $e) {
                 $errors = $e->validator->errors();
@@ -39,38 +39,6 @@ use Illuminate\Validation\ValidationException;
             ];
             return redirect()->route('auth-re-password', $forerror);
         }
-        /* $email = $request->email;
-        if (isset($email)) {
-            $rules = [
-                'email' => ['required', 'string', 'email', 'max:255'],
-            ];
-            $messages = [
-                'email' => "L'adresse email n'est pas valide.",
-            ];
-            try {
-                $request->validate($rules, $messages);
-                
-                if (User::where('email', $request->email)->first() === null) {
-                    $forerror = [
-                        'parm1' => 'Votre email actuel n\'est pas correct',
-                    ];
-                    return redirect()->route('auth-re-password',$forerror);
-                } else {
-                    
-                    Mail::to($email)
-                        ->send(new sendpasswordreset($request->all()));
-                        return redirect()->route('url.emails.sendforforgetpassword',['email' => $email]);
-                }
-            } catch (ValidationException $e) {
-                $errors = $e->validator->errors();
-                return redirect()->to('/sendEmail')->withErrors($errors);
-            }
-        } else {
-            $forerror = [
-                'parm1' => 'Entrer un Email correcte et verifier que tous les champs soit remplir',
-            ];
-            return redirect()->route('auth-re-password',$forerror);
-        } */
     }
     public function updatePassword(Request $request)
     {

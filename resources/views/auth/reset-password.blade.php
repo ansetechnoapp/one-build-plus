@@ -40,7 +40,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
+                        @endif 
                         <form class="ltr:text-left rtl:text-right" action="{{ route('password.update') }}"
                             method="POST">
                             @csrf

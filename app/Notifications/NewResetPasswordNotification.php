@@ -37,9 +37,9 @@ class NewResetPasswordNotification extends Notification
     {
         $email = request()->get('email');
         return (new MailMessage)
-                    ->line('1You are receiving this email because we received a password reset request for your account2.')
+                    ->line('One Build Plus (OBP) 1You are receiving this email because we received a password reset request for your account2.')
                     ->action('click', route('password.reset', ['token' => $this->token, 'email' => $email]))
-                    ->line('1Thank you for using our application!');
+                    ->line('Cliquer Pour Changer Le Mot de Passe');
     }
 
     /**

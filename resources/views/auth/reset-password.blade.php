@@ -47,7 +47,7 @@
                             <input type="hidden" name="token" value="{{ $token }}">
                             <div class="grid grid-cols-1">
                                 <input id="LoginEmail" type="hidden" name="email" class="form-input mt-3"
-                                    value="{{ old('email') }}" required>
+                                    value="{{ $email }}" required>
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginEmail">Nouveau Mot de passe:</label>
                                     <input id="LoginEmail" type="password" name="password" class="form-input mt-3"

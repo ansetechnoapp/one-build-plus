@@ -207,8 +207,10 @@
                                                         class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6">{{ $item->status }}</span>
                                                 </div>
                                                 <form
-                                                    action="{{ route('paymnt', ['id' => $item->id, 'price' => $item->price]) }}"
+                                                    action="{{ route('paymnt') }}"
                                                     method="POST">
+                                                    <input type="hidden" name="id" value="{{$item->id}}">
+                                                    <input type="hidden" name="price" value="{{$item->price}}">
                                                     <ul class="list-none mt-4">
 
                                                         <li class="flex justify-between items-center mt-2">

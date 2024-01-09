@@ -38,7 +38,7 @@ Route::get('/emailsendforconfirmationforgetpassword', [\App\Http\Controllers\pag
 
 Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::class, 'isactive'])->name('activate.account');
 
-Route::match(array('GET', 'POST'), '/auth-signup.{id}.{price}', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('paymnt');
+Route::post('/auth-signup', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('paymnt');
 Route::match(array('GET', 'POST'), '/auth-signup_form', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata1'])->name('paymnt.form');
 Route::match(array('GET', 'POST'), '/auth_signup_form_2', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata2'])->name('paymnt.form2');
 /* Route::get('/email-envoyer-pour-confirmation-enregistrement-utilisateur', function () {

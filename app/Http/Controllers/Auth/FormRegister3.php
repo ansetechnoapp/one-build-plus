@@ -17,6 +17,14 @@ use Illuminate\Validation\ValidationException;
 
 class FormRegister extends Controller
 {
+    private function getUserDataFromSession()
+    {
+        return [
+            'lastName' => Session::get('user_lastName'),
+            'firstName' => Session::get('user_firstName'),
+            'email' => Session::get('user_email'),
+        ];
+    }
     public function mail1(Request $request)
     {
         $company_name = 'Bois de ERIC A.E';
@@ -39,55 +47,89 @@ class FormRegister extends Controller
     } */
     public function SaveRegister(Request $request)
     {
-        $email = Session::get('user_email');
-        $password1 = $request->password;
-        $password2 = $request->password_confirm;
-        $password = bcrypt($request->password);
+        $userData = $this->getUserDataFromSession();
 
-        if (isset($email) || isset($password)) {
-            if ($password1 == $password2) {
-                try {
-                    $this->validateUserData($request);
-                    if (!$this->userExists($request->email)) {
-                        $this->createUser($request);
-                        Mail::to($email)
-                            ->send(new sendregisteruser($request->all()));
-                        Session::flush();
-                        return redirect()->route('url.confirmation.user.registration', ['email' => $email]);
-                    } else {
-                        return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
-                    }
-                } catch (ValidationException $e) {
-                    $errors = $e->validator->errors();
-                    return view('auth-signup.step2', ['errors' => $errors]);
-                }
+        if ($userData) {
+            $passwordMatch = $request->password === $request->password_confirm;
+
+            if ($passwordMatch) {
+                $this->validateAndSaveUser($request, $userData);
             } else {
-                return view('auth-signup.step2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
+                return view('auth-signup.step2', ['comparePassword' => 'Les mots de passe ne correspondent pas.']);
             }
         } else {
-            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Veuillez entrer une adresse e-mail correcte et vérifier que tous les champs soient remplis.']);
         }
+    }
+    private function validateAndSaveUser(Request $request, $userData)
+    {
+        // Validation rules and messages
+        $rules = [
+            'lastName' => ['required', 'string', 'max:100', 'min:2'],
+            'firstName' => ['required', 'string', 'max:100', 'min:2'],
+            'phone' => ['required', 'regex:/^\d{8}$/'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'max:255', Password::min(5)],
+        ];
+
+        $messages = [
+            'lastName' => 'Votre nom n\'est pas valide.',
+            'firstName' => 'Votre prénom n\'est pas valide.',
+            'phone.required' => "Le téléphone est requis.",
+            'phone.regex' => "Entrer un numéro de téléphone valide (8 chiffres).",
+            'email' => 'Votre adresse e-mail n\'est pas correcte.',
+            'password' => "Le mot de passe doit contenir au moins 5 caractères.",
+        ];
+
+        try {
+            $request->validate($rules, $messages);
+            
+            if (!User::where('email', $request->email)->exists()) {
+                // dd("1");  
+                $this->createAndSendUser($request, $userData);
+            } else {
+                // dd($userData['email']);  
+                // return view('emails.emailsendforconfirmationuserregistration', ['email' => $userData['email']]);
+                return  redirect()->route('url.confirmation.user.registration', ['email' => $userData['email']]);
+            }
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return view('auth-signup.step2', ['errors' => $errors]);
+        }
+    }
+    private function createAndSendUser(Request $request, $userData)
+    {
+        
+        // dd($userData['lastName'],$userData['firstName'],$request->phone,$userData['email'],$request->password);
+        // $user = User::create([
+        //     'lastName' => $userData['lastName'],
+        //     'firstName' => $userData['firstName'],
+        //     'phone' => $request->phone,
+        //     'email' => $userData['email'],
+        //     'password' => bcrypt($request->password),
+        // ]);
+        // Mail::to($userData['email'])->send(new SendRegisterUser($request->all()));
+        // Session::flush();
+        
+
+        return redirect()->route('url.confirmation.user.registration', ['email' => $userData['email']]);
     }
 
     public function receptiondata(Request $request)
     {
+        // dd(Session::get('payment_frequency'));
         $price = $request->price;
         $id = $request->id;
         $payment_frequency = $request->payment_frequency;
-        // dd(Session::get('payment_frequency'),$price,$id,$payment_frequency);
-
         if (Session::get('payment_frequency') != null) {
             if ($payment_frequency != Session::get('payment_frequency')) {
-                // dd('aa',$payment_frequency);
                 Session::put('payment_frequency', $payment_frequency);
                 return view('payment.index');
             } else {
-                // dd('bb',$payment_frequency);
                 return view('payment.index');
             }
         } else {
             if (isset($price) && isset($id)) {
-                // dd('ee',$payment_frequency);
                 Session::put('prod_price', $price);
                 Session::put('prod_id', $id);
                 Session::put('payment_frequency', $payment_frequency);
@@ -240,24 +282,15 @@ class FormRegister extends Controller
         $subscribe = $request->subscribe;
     }
 
+
+
     public function SaveRegisterUserAndProd(Request $request)
     {
 
         // dd(Session::get('payment_frequency'));
-        /* dd(
-            $request->payment_frequency,
-            $request->id,
-            $request->price,
-            $request->lastName,
-            $request->firstName,
-            $request->registration_andf,
-            $request->formality_fees,
-            $request->notary_fees,
-            $request->montant,
-            $request->email,
-            $request->password,
-            $request->password_confirm
-        ); */
+        /* dd($request->payment_frequency,$request->id,$request->price,$request->lastName,$request->firstName,$request->registration_andf,
+        $request->formality_fees,$request->notary_fees
+        ,$request->montant,$request->email,$request->password,$request->password_confirm); */
 
         if ($request->password == $request->password_confirm) {
             $this->validateUserData($request);
@@ -280,15 +313,12 @@ class FormRegister extends Controller
     {
         $rules = [
             'lastName' => ['required', 'string', 'max:100', 'min:2'],
-            'firstName' => ['required', 'string', 'max:100', 'min:2'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'max:255', Password::min(5)],
             'phone' => ['required', 'regex:/^\d{8}$/'],
         ];
 
         $messages = [
-            'lastName' => 'Votre nom n\'est pas valide.',
-            'firstName' => 'Votre prénom n\'est pas valide.',
             'email.emailregister' => "L'adresse email n'est pas valide.",
             'password.minregister' => 'Le mot de passe doit contenir au moins 8 caractères.',
             'phone.required' => "Le phone est requis.",

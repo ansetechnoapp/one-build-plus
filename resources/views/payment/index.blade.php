@@ -43,7 +43,7 @@
 
                                 <div class="mb-4">
                                     <label class="font-medium" for="LoginPassword">Nom:</label>
-                                    <input id="LoginPassword" name="lastName" type="text" class="form-input mt-3" placeholder="Nom" value="{{ Session::get('user_lastName') }}" required>
+                                    <input id="LoginPassword" name="lastName" type="text" class="form-input mt-3" placeholder="Nom" value="{{ Session::get('user_lastName') }}" required> 
                                     @if ($errors->has('lastName'))
                                     <div class="alert alert-danger">{{ $errors->first('lastName') }}</div>
                                 @endif

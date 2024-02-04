@@ -29,8 +29,8 @@ jobs:
     - name: Install Node.js Dependencies
       run: npm install
 
-    - name: Build assets
-      run: npm run production
+    # - name: Build assets
+    #   run: npm run production
 
     - name: Deploy to Server
       uses: appleboy/ssh-action@master
@@ -39,6 +39,6 @@ jobs:
         username: ${{ secrets.SSH_USERNAME_ONE_BUILD_PLUS }}
         password: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}
         script: |
-          cd ./obp/
+          cd ./obp/test/
           git pull origin main
           php artisan optimize

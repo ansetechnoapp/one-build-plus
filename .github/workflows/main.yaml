@@ -20,8 +20,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
           server-dir: "./obp/"
           local-dir: "./public/"
-          exclude: |
-          index.php
+          exclude: "./index.php"
 
       - name: Setup FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

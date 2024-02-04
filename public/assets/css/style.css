@@ -31,3 +31,8 @@
         padding-bottom: 9rem !important;
     }
 }
+@media screen and (max-width: 991px) {
+    #topnav #navigation{
+        max-height: fit-content;
+      }   
+}

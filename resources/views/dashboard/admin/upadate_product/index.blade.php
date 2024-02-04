@@ -54,6 +54,7 @@
                                                 <h1 class="card-title mb-4">Saisir les nouvelles informations relatives au produit
                                                 </h1>
                                                 @include('include.dashboard.form_save_prod')
+                                                @include('include.dashboard.form_update_prod')
                                             </div>
                                         </div>
                                     </div>

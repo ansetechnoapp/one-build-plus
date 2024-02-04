@@ -36,12 +36,6 @@
         <ul class="buy-button list-none mb-0">
             @if (Auth::check())
             <li class="inline mb-0">
-                <a href="{{ route('dashboard.admin') }}"
-                    class="btn bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i
-                        data-feather="user" class="h-4 w-4 stroke-[3]"
-                        style="margin-right: 5px; margin-bottom: 5px;"></i>Dashboard</a>
-            </li>
-            <li class="inline mb-0">
                 <a href="{{ route('Logout') }}"
                     class="btn bg-red-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i
                         data-feather="user" class="h-4 w-4 stroke-[3]"
@@ -85,8 +79,11 @@
                         <li><a href="#" class="sub-menu-item">Import-export</a></li>
                     </ul>
                 </li>
-                <li><a href="aboutus" class="sub-menu-item">A propos</a></li>
-                @if (Auth::user() == null)
+                <li class="has-submenu parent-parent-menu-item">
+                    <a href="javascript:void(0)">A propos</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="aboutus" class="sub-menu-item">A propos de nous</a></li>
+                        @if (Auth::user() == null)
                 <li><a href="{{route('faqs')}}" class="sub-menu-item">Faqs</a></li>
                 
                 @else
@@ -97,7 +94,50 @@
                 @endif
                     
                 @endif
+                    </ul>
+                </li>
                 <li><a href="contact" class="sub-menu-item">Contact</a></li>
+                @if (Auth::check())
+                <li class="has-submenu parent-parent-menu-item">
+                    <a href="javascript:void(0)">Espace client</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="{{ route('dashboard.admin') }}" class="sub-menu-item">Tableau de bord</a></li>
+                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Liste</a><span class="submenu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="{{ route('dashboard.admin') }}" class="sub-menu-item">Devis</a></li>
+                                <li><a href="{{route('listpaymentpay')}}" class="sub-menu-item">Paiements</a></li>
+                            </ul> 
+                        </li>
+                        @if (Auth::user()->role == 'admin')
+                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Gestion location</a><span class="submenu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="{{ route('dashboard.admin.Rental_management') }}" class="sub-menu-item">Ajout de biens locative</a></li>
+                                <li><a href="{{ route('Rental.management.list.prod') }}" class="sub-menu-item">Liste biens locative</a></li>
+                            </ul> 
+                        </li>
+                        @endif
+                        <li><a href="{{route('dashboard.commentUser')}}" class="sub-menu-item">Avis client</a></li>
+                        @if (Auth::user()->role == 'admin')
+                        <li><a href="{{ route('form.send.sms') }}" class="sub-menu-item">Envoie SMS</a></li>
+                        @endif
+                        <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">compte </a><span class="submenu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="{{route('dashboard.profil')}}" class="sub-menu-item">Profil client</a></li>
+                                @if (Auth::user()->role == 'admin')
+                        <li><a href="{{ route('list_user') }}" class="sub-menu-item">Liste des utilisateurs</a></li>
+                        @endif
+                                <li><a href="{{route('dashboard.security')}}" class="sub-menu-item">Sécurité </a></li>
+                            </ul>  
+                        </li>
+                        @if (Auth::user()->role == 'admin')
+                        <li><a href="{{ route('faq_form') }}" class="sub-menu-item">formulaire FAQ</a></li>
+                        <li><a href="{{ route('save.form.home.slideimage') }}" class="sub-menu-item">changer bannière</a></li>
+                        @endif
+                        
+                    </ul>
+                </li>
+
+@endif
             </ul>
             <!--end navigation menu-->
         </div>

@@ -2571,7 +2571,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     width: auto;
   }
   #topnav #navigation{
-    max-height: 400px;
     --tw-shadow: 0 0 3px rgb(60 72 88 / 0.15);
     --tw-shadow-colored: 0 0 3px var(--tw-shadow-color);
     -webkit-box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);

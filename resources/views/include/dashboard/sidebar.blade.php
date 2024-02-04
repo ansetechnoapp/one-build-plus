@@ -105,9 +105,9 @@
         </li>
     @endif
 
-
-
-    <!-- Divider -->
+ 
+@if (Auth::user()->role == 'admin')
+<!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
@@ -124,9 +124,10 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>changer bannière</span></a>
     </li>
-    <!-- Divider -->
+@endif
+    
+<!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -134,4 +135,4 @@
 
 </ul>
 
-<!-- End of Sidebar -->
+<!-- End of Sidebar --> 

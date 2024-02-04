@@ -37,7 +37,7 @@ jobs:
       with:
         host: ${{ secrets.SSH_HOST_ONE_BUILD_PLUS }}
         # port: ${{ secrets.SSH_PORT_ONE_BUILD_PLUS }}
-        port: "65002"
+        # port: "65002"
         username: ${{ secrets.SSH_USERNAME_ONE_BUILD_PLUS }}
         password: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}
         app_env_data: ${{ secrets.APP_ENV_DATA }}

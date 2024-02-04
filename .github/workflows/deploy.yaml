@@ -1,4 +1,4 @@
-name: Laravel Deployment
+name: Deploy to Server
 
 on:
   push:
@@ -11,34 +11,13 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
       with:
-        php-version: '8.1'
-
-    - name: Install Dependencies
-      run: composer install --no-dev --optimize-autoloader
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-
-    - name: Install Node.js Dependencies
-      run: npm install
-
-    # - name: Build assets
-    #   run: npm run production
+        ssh-private-key: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}
 
     - name: Deploy to Server
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST_ONE_BUILD_PLUS }}
-        username: ${{ secrets.SSH_USERNAME_ONE_BUILD_PLUS }}
-        password: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}
-        script: |
-          cd ./obp/test/
-          git pull origin main
-          php artisan optimize
+      run: |
+        ssh -p 65002 ${{ secrets.SSH_USERNAME_ONE_BUILD_PLUS }}@${{ secrets.SSH_HOST_ONE_BUILD_PLUS }} "cd /path/to/your/laravel/project && git pull origin main && php artisan optimize"

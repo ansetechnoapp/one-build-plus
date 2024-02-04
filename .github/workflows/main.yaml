@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Transfer public folder
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -19,8 +19,9 @@ jobs:
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
           server-dir: "./obp/"
-          exclude: "index.php"
           local-dir: "./public/"
+          exclude: |
+          ./index.php
 
       - name: Setup FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -29,5 +30,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
           server-dir: "./obp/OBP/"
-          exclude: "./public/**, ./obp/OBP/public/"
           local-dir: "./"  # Correction : Changement de "./" à "./public/"
+          exclude: |
+          ./public/** 
+          ./obp/OBP/public/**"

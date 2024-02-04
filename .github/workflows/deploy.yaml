@@ -17,8 +17,8 @@ jobs:
           php-version: '8.1'
       # - name: Copy .env
       #   run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Install Dependencies
-        run: composer install --no-interaction
+      # - name: Install Dependencies
+      #   run: composer install --no-interaction
       - name: update Dependencies
         run: composer update --no-interaction
       - name: Generate key

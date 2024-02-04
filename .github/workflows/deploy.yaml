@@ -14,6 +14,6 @@ jobs:
       - name: Checkout latest code
         uses: actions/checkout@v4
 
-      - name: SSH and run 'composer install' on the remote server
+      - name: Run composer install
         run: |
-          ssh -p 65002 u212330119@89.117.9.183 'cd ./obp/OBP/ && composer2 install'
+          ./deploy.sh

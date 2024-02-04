@@ -33,4 +33,4 @@ jobs:
           local-dir: "./"  # Correction : Changement de "./" à "./public/"
           exclude: |
           ./public/** 
-          ./obp/OBP/public/**"
+          ./obp/OBP/public/**

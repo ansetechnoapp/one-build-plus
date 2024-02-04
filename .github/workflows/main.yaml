@@ -11,21 +11,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Transfer public folder
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Setup Enviroment
+        uses: shivammathur/setup-php@v2
         with:
-          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./obp/"
-          local-dir: "./public/"
-          exclude: "index.php"
+            php-version: '8.1'
+      - name: Speed up the packages installation process
+        run: composer global require hirak/prestissimo
+
+      - name: Install Packages
+        run: composer install --no-dev
 
       - name: Setup FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -36,3 +36,13 @@ jobs:
           server-dir: "./obp/OBP/"
           local-dir: "./"  # Correction : Changement de "./" à "./public/"
           exclude: "./public/**, ./obp/OBP/public/"
+      
+      - name: Transfer public folder
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+          server-dir: "./obp/"
+          local-dir: "./public/"
+          exclude: "index.php"

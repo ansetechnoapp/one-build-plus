@@ -21,8 +21,8 @@ jobs:
       #   run: composer install --no-interaction
       - name: update Dependencies
         run: composer update --no-interaction
-      - name: Generate key
-        run: php artisan key:generate
+      # - name: Generate key
+      #   run: php artisan key:generate
       - name: Generate storage link
         run: php artisan storage:link
       # - name: Directory Permissions

@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "production": "node_modules/.bin/cross-env NODE_ENV=production node_modules/.bin/webpack --progress --hide-modules"
     },
     "devDependencies": {
         "@types/react": "^18.2.14",

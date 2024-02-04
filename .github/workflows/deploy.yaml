@@ -16,4 +16,4 @@ jobs:
 
       - name: SSH and run 'composer install' on the remote server
         run: |
-          ssh -p 65002 ${{ secrets.SSH_USERNAME_ONE_BUILD_PLUS }}@${{ secrets.SSH_HOST_ONE_BUILD_PLUS }} 'cd ./obp/OBP/ && composer2 install'
+          ssh -p 65002 u212330119@89.117.9.183 'cd ./obp/OBP/ && composer2 install'

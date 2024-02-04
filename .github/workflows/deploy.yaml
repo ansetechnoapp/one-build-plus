@@ -16,8 +16,8 @@ jobs:
       #   with:
       #     php-version: '8.1'
 
-      - name: Install Dependencies
-        run: composer install
+      - name: Update Dependencies
+        run: composer update --prefer-dist
 
       - name: Generate storage link
         run: php artisan storage:link

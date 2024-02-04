@@ -1,4 +1,4 @@
-name: Upload to FTP
+name: Laravel Deployment
 
 on:
   push:
@@ -6,41 +6,18 @@ on:
       - main
 
 jobs:
-  upload:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      # - name: Use Node.js 20
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-
-      # - name: Setup Enviroment
-      #   uses: shivammathur/setup-php@v2
-      #   with:
-      #       php-version: '8.1'
-
-      # - name: Install Packages
-      #   run: composer install --no-dev
-
-      - name: Setup FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./obp/OBP/"
-          local-dir: "./"  # Correction : Changement de "./" à "./public/"
-          exclude: "./public/**, ./obp/OBP/public/"
-      
-      - name: Transfer public folder
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./obp/"
-          local-dir: "./public/"
-          exclude: "index.php"
+    - name: Deploy to Server
+      # uses: peaceiris/actions-ssh-deploy@v1.2.5
+      with:
+        host: ${{ secrets.SSH_HOST_ONE_BUILD_PLUS }}
+        # port: ${{ secrets.SSH_PORT_ONE_BUILD_PLUS }}
+        port: "65002"
+        username: ${{ secrets.SSH_USERNAME_ONE_BUILD_PLUS }}
+        password: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}

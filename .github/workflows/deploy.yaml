@@ -1,4 +1,4 @@
-name: Laravel Deployment
+name: Upload to FTP
 
 on:
   push:
@@ -6,42 +6,28 @@ on:
       - main
 
 jobs:
-  deploy:
+  upload:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # - name: Set up PHP
-    #   uses: shivammathur/setup-php@v2
-    #   with:
-    #     php-version: '8.1'
-
-    # - name: Install Dependencies
-    #   run: composer install --no-dev --optimize-autoloader
-
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v4
-    #   with:
-    #     node-version: '20'
-
-    # - name: Install Node.js Dependencies
-    #   run: npm install
-
-    # - name: Build assets
-    #   run: npm run production
-
-    - name: Deploy to Server
-      uses: yankewei/laravel-deploy-action@main
-      with:
-        host: ${{ secrets.SSH_HOST_ONE_BUILD_PLUS }}
-        # port: ${{ secrets.SSH_PORT_ONE_BUILD_PLUS }}
-        # port: "65002"
-        username: ${{ secrets.SSH_USERNAME_ONE_BUILD_PLUS }}
-        password: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}
-        app_env_data: ${{ secrets.APP_ENV_DATA }}
-        # script: |
-        #   cd ./obp/test/
-        #   git pull origin main
-        #   php artisan optimize
+      - name: Setup FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+          server-dir: "./obp/OBP/"
+          local-dir: "./"  # Correction : Changement de "./" à "./public/"
+          exclude: "./public/**, ./obp/OBP/public/"
+      
+      - name: Transfer public folder
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+          server-dir: "./obp/"
+          local-dir: "./public/"
+          exclude: "index.php"

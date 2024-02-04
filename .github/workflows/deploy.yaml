@@ -11,21 +11,34 @@ jobs:
       - name: Get the latest code
         uses: actions/checkout@v4
       - uses: actions/setup-node@master
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      # - name: Copy .env
+      #   run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Dependencies
-        run: composer update --ignore-platform-reqs
+        run: composer install --no-interaction
+      - name: update Dependencies
+        run: composer update --no-interaction
       - name: Generate key
         run: php artisan key:generate
       - name: Generate storage link
         run: php artisan storage:link
-      - name: Directory Permissions
-        run: chmod -R 777 storage bootstrap/cache
+      # - name: Directory Permissions
+      #   run: chmod -R 775 storage bootstrap/cache
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
           username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./obp/test/"
-          local-dir: "./"
+          server-dir: "./obp/OBP/"
+          local-dir: "./"  # Correction : Changement de "./" à "./public/"
+          exclude: "./public/**, ./obp/OBP/public/"
+          
+      - name: Transfer public folder
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+          server-dir: "./obp/"
+          local-dir: "./public/"
+          exclude: "index.php"

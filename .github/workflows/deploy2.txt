@@ -25,12 +25,12 @@ jobs:
           local-dir: "./"  # Correction : Changement de "./" à "./public/"
           exclude: "./public/**, ./obp/OBP/public/"
       
-      - name: Transfer public folder
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-          server-dir: "./obp/"
-          local-dir: "./public/"
-          exclude: "index.php"
+        - name: Transfer public folder
+          uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+          with:
+            server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+            username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+            password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+            server-dir: "./obp/"
+            local-dir: "./public/"
+            exclude: "index.php"

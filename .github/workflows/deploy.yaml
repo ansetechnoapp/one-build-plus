@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Laravel Test Action
         uses: hdev14/laravel-test-action@v1
-
+        
       - name: Setup FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -24,13 +24,13 @@ jobs:
           server-dir: "./obp/OBP/"
           local-dir: "./"
           exclude: "./public/**, ./obp/OBP/public/"
-      
-        - name: Transfer public folder
-          uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-          with:
-            server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
-            username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
-            password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
-            server-dir: "./obp/"
-            local-dir: "./public/"
-            exclude: "index.php"
+
+      - name: Transfer public folder
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_ONE_BUILD_PLUS }}
+          username: ${{ secrets.FTP_USERNAME_ONE_BUILD_PLUS }}
+          password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
+          server-dir: "./obp/"
+          local-dir: "./public/"
+          exclude: "index.php"

@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_ONE_BUILD_PLUS }}
           server-dir: "./obp/OBP/"
           local-dir: "./"
-          exclude: "./public/**, ./obp/OBP/public/"
+          exclude: "./public/"
 
       - name: Transfer public folder
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

@@ -18,6 +18,6 @@ jobs:
 
     - name: Run SSH Script
       run: |
-        ./votre_script.sh
+        ./deploy.sh
       env:
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}

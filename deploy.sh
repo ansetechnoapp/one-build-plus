@@ -4,7 +4,7 @@
 HOST="89.117.9.183"
 PORT="65002"
 USERNAME="u212330119"
-PASSWORD="kdkkqqdjq"
+PASSWORD="U6q^Xf$gNjHjq*rmZ"
 
 # Commandes pour se connecter via SSH
 sshpass -p $PASSWORD ssh -T -p $PORT $USERNAME@$HOST << EOF

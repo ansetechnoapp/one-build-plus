@@ -1,4 +1,4 @@
-name: Deploy Laravel Project on push
+name: Install Dependencies
 
 on:
   push:
@@ -6,14 +6,24 @@ on:
       - main
 
 jobs:
-  web-deploy:
-    name: Deploy
+  install_dependencies:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout latest code
-        uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Run composer2 install
-        run: |
-          ./deploy.sh
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: Install Dependencies
+      run: |
+        sshpass -p ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }} ssh -p 65002 u212330119@89.117.9.183 << EOF
+          cd domains
+          cd txbest.online/public_html/obp/
+          pwd
+          mkdir hi
+          cd hi
+          composer2 install
+          exit
+        EOF

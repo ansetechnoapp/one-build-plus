@@ -16,14 +16,8 @@ jobs:
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
 
-    - name: Install Dependencies
+    - name: Run SSH Script
       run: |
-        sshpass -p ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }} ssh -p 65002 u212330119@89.117.9.183 << EOF
-          cd domains
-          cd txbest.online/public_html/obp/
-          pwd
-          mkdir hi
-          cd hi
-          composer2 install
-          exit
-        EOF
+        ./votre_script.sh
+      env:
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD_ONE_BUILD_PLUS }}

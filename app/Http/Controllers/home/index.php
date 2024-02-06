@@ -11,9 +11,6 @@ use App\Models\imageslidehome;
 
 class index extends Controller
 {
-    /**
-     * @Route("/", methods={"GET", "HEAD"})
-     */
     public function requestForHome()
     {
         $lastThree_loation = prod::where('location', 'oui')->orderBy('id', 'asc')->take(3)->get();

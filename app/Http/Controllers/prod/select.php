@@ -30,8 +30,9 @@ class select extends Controller
     }
     public function show()
     {
-        $posts = prod::where('location','non')->orderBy('id', 'desc')->get();
-        return view('dashboard.admin.list_prod.index', ['allprod' => $posts]);
+          $headers = ['id', 'propriétaire', 'addresse', 'département', 'commune', 'arrondissement', 'superficie', 'prix', 'prix promo', 'type de terre', 'Description', 'action'];
+          $posts = prod::where('location','non')->orderBy('id', 'desc')->get();
+        return view('dashboard.admin.list_prod.index', ['allprod' => $posts,'header' => $headers]);
     }
     public function receptiondata1(Request $request)
     {

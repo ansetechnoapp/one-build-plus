@@ -6,3 +6,4 @@ php artisan make:component script
 php artisan make:component dashboard/NomDuComposant
 php artisan make:component modal
 php artisan make:component dashboard_modal
+php artisan make:component table_body_list

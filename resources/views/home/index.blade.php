@@ -1,3 +1,11 @@
+{{-- {{$test1->Message}}
+
+ @foreach ($test2 as $item)
+ {{$item->Message}}
+@endforeach --}}
+
+{{-- {{$test1->lastName}}
+{{$test2->lastName}} --}}
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 <x-head></x-head>

@@ -11,19 +11,17 @@ class view extends Controller
 {
     public function view()
     {
-        $issetcomment = comment::with('user')->get();
-        return view('dashboard.admin.commentUser.view', ['issetCommentInfoUser' => $issetcomment]);
+        return view('dashboard.admin.commentUser.view', ['issetCommentInfoUser' => $this->Cm->selectCommmentWithUser(),
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function statutDisable($id){
-        comment::where('id', $id)->update([
-            'Statut' => '0',
-        ]);
-        return redirect()->to('/admin.comment');
+        $this->Cm->UpdateCommmentForCol('id',$id,'Statut','0');
+        return redirect()->route('admin.dashboard.admin.commentUser',[
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function statutActive($id){
-        comment::where('id', $id)->update([
-            'Statut' => '1',
-        ]);
-        return redirect()->to('/admin.comment');
+        $this->Cm->UpdateCommmentForCol('id',$id,'Statut','1');
+        return redirect()->route('admin.dashboard.admin.commentUser',[
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
 }

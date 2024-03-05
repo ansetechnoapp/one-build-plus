@@ -1,5 +1,5 @@
 @if (isset($allprodupdate))
-    <form action="{{ route('Updatesavefaqs') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.Updatesavefaqs') }}" method="POST" enctype="multipart/form-data">
         @csrf
         
         <div class="row gx-3">
@@ -46,7 +46,7 @@
                     FAQ</a></p>
         </div>
     @else
-        <form action="{{ route('save_form_faq') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.save_form_faq') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row gx-3">

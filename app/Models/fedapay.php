@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Fedapay\Create;
+use App\Models\Fedapay\Delete;
+use App\Models\Fedapay\Select;
+use App\Models\Fedapay\Update;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class fedapay extends Model
+class Fedapay extends Model
 {
-    use HasFactory;
+    use HasFactory,Select,Delete,Create,Update;
     protected $table = 'fedapay';
 
 

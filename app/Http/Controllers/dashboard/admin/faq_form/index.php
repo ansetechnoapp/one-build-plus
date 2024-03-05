@@ -15,10 +15,11 @@ class index extends Controller
 {
     public function showid(Request $request)
     {
-        $posts = faq_title::all();
-        $posts2 = faq::find($request->id);
-        $posts3 = faq_title::where('id',$posts2->title_id)->first();
-        return view('dashboard.admin.faq_form.index', ['listTitleFaq' => $posts,'allprodupdate' => $posts2,'currenttitle' => $posts3]);
+        $posts = $this->FaqT->all();
+        $posts2 = $this->faq->findFaq('id',$request->id);
+        $posts3 = $this->FaqT->findFaq_title('id',$posts2->title_id);
+        return view('dashboard.admin.faq_form.index', ['listTitleFaq' => $posts,'allprodupdate' => $posts2,'currenttitle' => $posts3,
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function save(Request $request): RedirectResponse
     {
@@ -35,18 +36,9 @@ class index extends Controller
 
         try {
             $request->validate($rules, $messages);
-
-            $title_id = $request->title_id;
-            $question = $request->question;
-            $answer = $request->answer;
-
-            faq::create([
-                'title_id' => $title_id,
-                'question' => $question,
-                'answer' => $answer,
-            ]);
-
-            return redirect()->route('faqs.admin');
+            $this->faq->createFaq($request);
+            return redirect()->route('admin.faqs.admin',[
+            'sub_path_admin'=>$this->sub_path_admin(),]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();
@@ -57,9 +49,10 @@ class index extends Controller
     }
     public function view()
     {
-        $posts = faq_title::all();
+        $posts = $this->FaqT->all();
         // dd($posts);
-        return view('dashboard.admin.faq_form.index', ['listTitleFaq' => $posts]);
+        return view('dashboard.admin.faq_form.index', ['listTitleFaq' => $posts,
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function Update(Request $request)
     {
@@ -78,16 +71,10 @@ class index extends Controller
 
         try {
             $request->validate($rules, $messages);
-            
-            $prod = faq::findOrFail($request->id);
+            $this->faq->UpdateFaq($request);
 
-            $prod->update([
-                'title_id' => $request->title_id,
-                'question' => $request->question,
-                'answer' => $request->answer,
-            ]);
-
-            return redirect()->route('faqs.admin');
+            return redirect()->route('admin.faqs.admin',[
+            'sub_path_admin'=>$this->sub_path_admin(),]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();

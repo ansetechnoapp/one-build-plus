@@ -10,7 +10,8 @@ class index extends Controller
 {
     public function ListShowAllFedapay()
     {
-        $getShowAllFedapay = devis::with('prod', 'additional_option', 'user', 'fedapay')->get();
-        return view('dashboard.admin.all_list_pay.index', ['listShowAllFedapay' => $getShowAllFedapay]);
+        $getShowAllFedapay = $this->devi->findDevis_withAll_Table();
+        return view('dashboard.admin.all_list_pay.index', ['listShowAllFedapay' => $getShowAllFedapay,
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
 }

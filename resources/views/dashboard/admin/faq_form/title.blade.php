@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-dashboard.head title="One Build Plus - Dashboard"></x-dashboard.head>
+<x-dashboard.head title="One Build Plus - Dashboard" subpathadmin={{$sub_path_admin}}></x-dashboard.head>
 
 <body id="page-top">
 
@@ -28,9 +28,9 @@
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="container-xl px-4 mt-n10 mb-4">
                         <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="{{ route('faq_form') }}">FORMULAIRE FAQ</a>
+                            <a class="nav-link active ms-0" href="{{ route('admin.faq_form') }}">FORMULAIRE FAQ</a>
 
-                            <a class="nav-link" href="{{ route('faq_title_form') }}">FORMULAIRE TITRE FAQ</a>
+                            <a class="nav-link" href="{{ route('admin.faq_title_form') }}">FORMULAIRE TITRE FAQ</a>
 
                         </nav>
                         <hr class="mt-0 mb-4">
@@ -61,7 +61,7 @@
                                                 @if (isset($allprodupdate))
                                                 <h1 class="card-title mb-4">mettre a jour la catégorie : {{$allprodupdate->title}}
                                                 </h1>
-                                                    <form action="{{route('Updatesavefaqs.title')}}" method="POST"
+                                                    <form action="{{route('admin.Updatesavefaqs.title')}}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
 
@@ -86,7 +86,7 @@
                                                         </div>
                                                     </form>
                                                 @else
-                                                    <form action="{{ route('save_form_title_faq') }}" method="POST"
+                                                    <form action="{{ route('admin.save_form_title_faq') }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
 
@@ -136,26 +136,7 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <x-dashboard_modal title="Prêt à partir ?"
-        message='Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre
-    session en cours.'
-        path="{{ route('Logout') }}"></x-dashboard_modal>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="assets/dashboard/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="assets/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="assets/dashboard/js/sb-admin-2.min.js"></script>
+    @include('include.dashboard.footer2')
 
 </body>
 

@@ -12,18 +12,21 @@ use Illuminate\Validation\ValidationException;
 
 class index extends Controller
 {
-    public function getaccountprofil()
+    public function getaccountprofil($txt1)
     {
-        $emailRecherche = Auth::user()->email;
-        $donnees = User::where('email', $emailRecherche)->first();
+        $donnees = $this->Users->findUser('email', Auth::user()->email);
         if ($donnees) {
-            return view('dashboard.profil.index', ['donnees' => $donnees]);
-        }else {
+            return view($txt1, ['donnees' => $donnees, 'sub_path_admin' => $this->sub_path_admin()]);
+        } else {
             return redirect()->back()->with('error', 'User data not found.');
         }
     }
-    public function saveImage(Request $request, User $user)
-{ 
+    public function getaccountprofil2()
+    {
+        return $this->getaccountprofil('dashboard.profil.index');
+    }
+    public function saveImage($request,$txt1,$user)
+    {
         $rules = [
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5000',
         ];
@@ -32,22 +35,25 @@ class index extends Controller
             'img' => 'erreur de chargement de l\'image 1, la taille de l\'image ne doit pas dépasser 5Mo',
         ];
         try {
-        $request->validate($rules, $messages);
-        $imgFieldOnModel =  Auth::user()->img;
-        if ($request->hasFile('img') && !$request->file('img')->getError()) {
-            if ($imgFieldOnModel) {
-                Storage::disk('public')->delete($imgFieldOnModel);
+            $request->validate($rules, $messages);
+            $imgFieldOnModel =  Auth::user()->img;
+            if ($request->hasFile('img') && !$request->file('img')->getError()) {
+                if ($imgFieldOnModel) {
+                    Storage::disk('public')->delete($imgFieldOnModel);
+                }
+                $imgPath = $request->file('img')->store('userImg', 'public');
+                $this->Users->Update_col_User('id', Auth::user()->id, $imgPath, 'img');
             }
-            $imgPath = $request->file('img')->store('userImg', 'public'); 
-            $user->where('id', Auth::user()->id)->update(['img' => $imgPath]);
+            return redirect()->route($txt1)->with('success', 'Mise à jour réussie');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator->errors())->withInput();
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue.');
         }
-        return redirect()->route('dashboard.profil')->with('success', 'Mise à jour réussie');
-    } catch (ValidationException $e) {
-        return redirect()->back()->withErrors($e->validator->errors())->withInput();
-    } catch (\Exception $e) {
-        Log::error($e->getMessage());
-        return redirect()->back()->with('error', 'Une erreur est survenue.');
     }
-}
-
+    public function saveImage2(Request $request, User $user)
+    {
+        return $this->saveImage($request,'dashboard.profil',$user);
+    }
 }

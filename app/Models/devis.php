@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-
+use App\Models\Prod;
+use App\Models\User;
+use App\Models\Devis\Create;
+use App\Models\Devis\Select;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class devis extends Model
+class Devis extends Model
 {
-    use HasFactory;
+    use HasFactory,Create,Select;
     protected $table = 'devis';
 
     /**
@@ -26,11 +29,11 @@ class devis extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(user::class, 'users_id');
     }
     public function additional_option()
     {
-        return $this->belongsTo(User::class, 'additional_option_id');
+        return $this->belongsTo(user::class, 'additional_option_id');
     }
     public function prod()
     {
@@ -39,5 +42,18 @@ class devis extends Model
     public function fedapay()
     {
         return $this->hasOne(fedapay::class, 'devis_id');
+    }
+    public function createDevis($request, $user, $additional_option)
+    {
+        $devis = new devis();
+        $devis->price = $request->price;
+        $devis->montant = $request->montant;
+        $devis->prod_id = $request->id;
+        $devis->dateDevis = now()->format('Y-m-d');
+        $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
+        $devis->user()->associate($user);
+        $devis->additional_option()->associate($additional_option);
+        $devis->save();
+        return $devis;
     }
 }

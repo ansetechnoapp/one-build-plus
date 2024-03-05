@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Prod;
+use App\Models\Img\Create;
+use App\Models\Img\Select;
+use App\Models\Img\Update;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\prod\insert as prod;
-class img extends Model
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Img extends Model
 {
-    use HasFactory;
+    use HasFactory,Select,Create,Update;
     protected $table = 'img';
 
     /**

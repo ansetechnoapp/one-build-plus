@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-dashboard.head title="One Build Plus - Dashboard"></x-dashboard.head>
+<x-dashboard.head title="One Build Plus - Dashboard" subpathadmin={{$sub_path_admin}}></x-dashboard.head>
 
 <body id="page-top">
 
@@ -64,13 +64,13 @@
                                                         @if ($post->isactive == '2')
                                                             <td>
                                                                 <a
-                                                                    href="{{ route('user.activate', ['user_id' => $post->id]) }}">Activer</a>
+                                                                    href="{{ route('admin.user.activate', ['user_id' => $post->id]) }}">Activer</a>
                                                             </td>
                                                         @endif
                                                         @if ($post->isactive == '1')
                                                             <td>
                                                                 <a
-                                                                    href="{{ route('user.disable', ['user_id' => $post->id]) }}">Désativer</a>
+                                                                    href="{{ route('admin.user.disable', ['user_id' => $post->id]) }}">Désativer</a>
                                                             </td>
                                                         @endif
                                                         @if ($post->isactive == '0')
@@ -83,14 +83,14 @@
                                                         @if ($post->agentOBP == 'non')
                                                             <td>
                                                                 <a
-                                                                    href="{{ route('agentOBP', ['user_id' => $post->id]) }}">non</a>
+                                                                    href="{{ route('admin.agentOBP', ['user_id' => $post->id]) }}">non</a>
                                                             </td>
                                                         @endif
 
                                                         @if ($post->agentOBP == 'oui')
                                                             <td>
                                                                 <a
-                                                                    href="{{ route('notAgentOBP', ['user_id' => $post->id]) }}">oui</a>
+                                                                    href="{{ route('admin.notAgentOBP', ['user_id' => $post->id]) }}">oui</a>
                                                             </td>
                                                         @endif
 
@@ -125,26 +125,7 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <x-dashboard_modal title="Prêt à partir ?"
-        message='Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre
-    session en cours.'
-        path="{{ route('Logout') }}"></x-dashboard_modal>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="assets/dashboard/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="assets/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="assets/dashboard/js/sb-admin-2.min.js"></script>
+    @include('include.dashboard.footer2')
 
 </body>
 

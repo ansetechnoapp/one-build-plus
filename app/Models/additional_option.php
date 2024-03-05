@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Prod;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
+use App\Models\Additional_option\Create;
+use App\Models\Additional_option\Select;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class additional_option extends Model
+class Additional_option extends Model
 {
-    use HasFactory;
+    use HasFactory,Select,Create;
 
     protected $table = 'additional_option';
 
@@ -31,7 +36,7 @@ class additional_option extends Model
     }
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(user::class, 'users_id');
     }
     public function prod()
     {

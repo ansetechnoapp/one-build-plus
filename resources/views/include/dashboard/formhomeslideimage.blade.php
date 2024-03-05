@@ -1,4 +1,4 @@
-<form action="{{route('update.slideimage')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.update.slideimage')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label class="small mb-1" for="inputimage">Inserer une image 1</label>

@@ -63,16 +63,8 @@ class account extends Controller
                     ->withErrors($errors);
             }
 
-            if (User::where('id', $user_id)->first() !== null) {
-                User::where('id', $user_id)
-                    ->update([
-                        'firstName' => $firstName,
-                        'lastName' => $lastName,
-                        'address' => $address,
-                        'email' => $email,
-                        'birthday' => $birthday,
-                        'phone' => $phone,
-                    ]);
+            if ($this->Users->VerifyUserExist($request->email)) {
+                $this->Users->UpdateUser($request, $user_id);
                 return redirect()->route('dashboard.profil');
             } else {
                 return redirect()->route('dashboard.profil');
@@ -114,11 +106,7 @@ class account extends Controller
 
                 $currentPasswordStatus = Hash::check($oldPassword, auth()->user()->password);
                 if ($currentPasswordStatus) {
-
-                    User::findOrFail(Auth::user()->id)->update([
-                        'password' => hash::make($newPasswordp),
-                    ]);
-
+                    $this->Users->UpdatePasswordUser(Auth::user()->id,hash::make($newPasswordp));
                     $oldpasswordCorrect = [
                         'parametre1' => 'Votre mots de passe a été mise a jour',
                     ];
@@ -149,24 +137,15 @@ class account extends Controller
     public function userDisable($user_id)
     {
         $isactive = '2';
-        $donnees = User::where('id', $user_id)
-            ->update([
-                'isactive' => $isactive,
-            ]);
-        if ($donnees) {
-            return redirect()->route('list_user');
-        }
+        $this->Users-> Update_col_User('id',$user_id,$isactive,'isactive');
+        return redirect()->route('admin.list_user',[
+        'sub_path_admin'=>$this->sub_path_admin,]);
     }
     public function userActivate($user_id)
     {
         $isactive = '1';
-        $donnees = User::where('id', $user_id)
-            ->update([
-                'isactive' => $isactive,
-            ]);
-        return redirect()->route('list_user');
-        if ($donnees) {
-            return redirect()->route('list_user');
-        }
+        $this->Users-> Update_col_User('id',$user_id,$isactive,'isactive');
+        return redirect()->route('admin.list_user',[
+        'sub_path_admin'=>$this->sub_path_admin,]);
     }
 }

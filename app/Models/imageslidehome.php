@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Imageslidehome\Select;
+use App\Models\Imageslidehome\Update;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class imageslidehome extends Model
+class Imageslidehome extends Model
 {
-    use HasFactory;
+    use HasFactory,Select,Update;
     protected $table = 'imageslidehome';
 
 

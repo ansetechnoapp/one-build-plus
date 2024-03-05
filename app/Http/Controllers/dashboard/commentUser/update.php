@@ -10,7 +10,9 @@ class update extends view
 {
     public function affichage(Request $request, $id)
     {
-        $issetcomment = comment::where('id', $id)->first();
-        return view('dashboard.commentUser.update', ['infoComment' => $issetcomment]);
+        $issetcomment = $this->Cm->selectCommment('id',$id);
+        return view('dashboard.commentUser.update', ['infoComment' => $issetcomment,
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
+    
 }

@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon">
-            <img src="assets/images/logo-dark.png" alt="one build plus obp" style="max-width: 100%;">
+            <img src="{{ $sub_path_admin }}assets/images/logo-dark.png" alt="one build plus obp" style="max-width: 100%;">
         </div>
     </a>
 
@@ -27,8 +27,8 @@
             </a>
             <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('dashboard.admin') }}">Enrégistrement</a>
-                    <a class="collapse-item" href="{{ route('list_prod') }}">Liste</a>
+                    <a class="collapse-item" href="{{ route('admin.dashboard.admin') }}">Enrégistrement</a>
+                    <a class="collapse-item" href="{{ route('admin.list_prod') }}">Liste</a>
                 </div>
             </div>
         </li>
@@ -40,20 +40,20 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('dashboard.admin.Rental_management') }}">Ajout de biens
+                    <a class="collapse-item" href="{{ route('admin.dashboard.admin.Rental_management') }}">Ajout de biens
                         locative</a>
-                    <a class="collapse-item" href="{{ route('Rental.management.list.prod') }}">Liste biens locative</a>
+                    <a class="collapse-item" href="{{ route('admin.Rental.management.list.prod') }}">Liste biens locative</a>
                 </div>
             </div>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('dashboard.admin.commentUser') }}">
+            <a class="nav-link" href="{{ route('admin.dashboard.admin.commentUser') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Gestion avis Client</span></a>
         </li>
         
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('form.send.sms') }}">
+            <a class="nav-link" href="{{ route('admin.form.send.sms') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Envoie SMS</span></a>
         </li>
@@ -66,10 +66,10 @@
             </a>
             <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('dashboard.profil') }}">Profile</a>
+                    <a class="collapse-item" href="{{ route('admin.dashboard.profil') }}">Profile</a>
                     {{-- <a class="collapse-item" href="{{route('dashboard.billing.history')}}">Historique de la facturation</a> --}}
-                    <a class="collapse-item" href="{{ route('list_user') }}">Liste des utilisateurs</a>
-                    <a class="collapse-item" href="{{ route('dashboard.security') }}">Sécurité</a>
+                    <a class="collapse-item" href="{{ route('admin.list_user') }}">Liste des utilisateurs</a>
+                    <a class="collapse-item" href="{{ route('admin.dashboard.security') }}">Sécurité</a>
                 </div>
             </div>
         </li>
@@ -115,12 +115,12 @@
         Autre
     </div>
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('faq_form') }}">
+        <a class="nav-link" href="{{ route('admin.faq_form') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>formulaire FAQ</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('save.form.home.slideimage') }}">
+        <a class="nav-link" href="{{ route('admin.save.form.home.slideimage') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>changer bannière</span></a>
     </li>

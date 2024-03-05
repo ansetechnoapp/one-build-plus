@@ -34,8 +34,6 @@
                     <form class="ltr:text-left rtl:text-right" method="POST" action="{{ route('paymnt.form2') }}">
                         @csrf
                         <div class="grid grid-cols-1">
-
-
                             <input type="hidden" name="lastName" value="{{ Session::get('user_lastName') }}">
                             <input type="hidden" name="firstName" value="{{ Session::get('user_firstName') }}">
                             <input type="hidden" name="payment_frequency"
@@ -94,7 +92,7 @@
 
                             <div class="flex">
                                 <div class="p-1 w-1/2">
-                                    <a href="{{ route('paymnt', [Session::get('prod_id'), Session::get('prod_price')]) }}"
+                                    <a href="{{ route('form.one') }}"
                                         class="btn bg-red-600 hover:bg-green-700 text-white rounded-md w-full">précédant</a>
                                 </div>
                                 <div class="p-1 w-1/2">

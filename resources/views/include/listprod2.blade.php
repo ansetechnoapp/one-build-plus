@@ -19,7 +19,6 @@
         </thead>
         <tbody>
             @isset($allprod)
-
                 @foreach ($allprod as $post) 
                     <tr>
                         <td>{{ $post->id }}</td>

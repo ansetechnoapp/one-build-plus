@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/well', function () {
-    return view('reactJS/reactjs');
-});
+
+Route::view('/well', 'reactJS/reactjs');
+
 Route::get('/testmodelrequest1', [\App\Http\Controllers\PaymentController::class, 'boot']);
 Route::get('/testmodelrequest2', [\App\Http\Controllers\PaymentController::class, 'getApiKeys']);
 
@@ -38,9 +38,10 @@ Route::get('/emailsendforconfirmationforgetpassword', [\App\Http\Controllers\pag
 
 Route::get('/activateaccount/{email}', [\App\Http\Controllers\Auth\FormLogin::class, 'isactive'])->name('activate.account');
 
-Route::post('/auth-signup', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('paymnt');
+Route::match(array('GET', 'POST'), '/auth-signup', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata'])->name('paymnt');
 Route::match(array('GET', 'POST'), '/auth-signup_form', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata1'])->name('paymnt.form');
 Route::match(array('GET', 'POST'), '/auth_signup_form_2', [\App\Http\Controllers\Auth\FormRegister::class, 'receptiondata2'])->name('paymnt.form2');
+Route::match(array('GET', 'POST'), '/form_one', [\App\Http\Controllers\Auth\FormRegister::class, 'form_one'])->name('form.one');
 /* Route::get('/email-envoyer-pour-confirmation-enregistrement-utilisateur', function () {
     return view('payment.index');
 })->name('email.send.for.confirmation.user.registration'); */
@@ -49,49 +50,30 @@ Route::post('/sign_up_user_and_prod', [\App\Http\Controllers\Auth\FormRegister::
 Route::post('/signup', [\App\Http\Controllers\Auth\FormRegister::class, 'SaveRegister'])->name('save.user');
 
 
-Route::get('/contact', function () {
-    return view('contact.index');
-})->name('contact');
+Route::view('/contact', 'contact.index')->name('contact');
+
 Route::post('/contactform', [\App\Http\Controllers\contact\envoiemail::class, 'envoiemail'])->name('form.contact');
-Route::get('/privacy', function () {
-    return view('privacy.index');
-})->name('privacy');
-Route::get('/terms', function () {
-    return view('terms.index');
-})->name('terms');
-Route::get('/grid', function () {
-    return view('grid.index');
-})->name('grid');
+Route::view('/privacy', 'privacy.index')->name('privacy');
+Route::view('/terms', 'terms.index')->name('terms');
+Route::view('/grid', 'grid.index')->name('grid');
+
 /* ..............................................................................  @other */
 Route::get('/property-detail', [\App\Http\Controllers\prod\select::class, 'receptiondata'])->name('property_detail');
 
 
+Route::view('/list', 'list');
+Route::view('/features', 'features');
+Route::view('/maintenance', 'maintenance');
+Route::view('/404', '404');
+Route::view('/devisview', 'devis.template');
+Route::view('/user_disable', 'user_disable.index')->name('view.user.disable');
+Route::view('/emailsendforconfirmationuserregistration', 'emails.emailsendforconfirmationuserregistration')->name('url.confirmation.user.registration');
 
-Route::get('/list', function () {
-    return view('list');
-});
-Route::get('/features', function () {
-    return view('features');
-});
 
 
-Route::get('/maintenance', function () {
-    return view('maintenance');
-});
-Route::get('/404', function () {
-    return view('404');
-});
-Route::get('/devisview', function () {
-    return view('devis.template');
-});
 Route::post('/devis', [\App\Http\Controllers\facture_des_services\devis::class, 'genererDevis'])->name('devis');
-Route::get('/emailsendforconfirmationuserregistration', function () {
-    return view('emails.emailsendforconfirmationuserregistration');
-})->name('url.confirmation.user.registration');
 
-Route::get('/user_disable', function () {
-    return view('user_disable.index');
-})->name('view.user.disable');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes for dashboard

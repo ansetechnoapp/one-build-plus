@@ -2,29 +2,31 @@
 
 namespace App\Http\Controllers\home;
 
+use App\Models\prod;
+use App\Models\User;
 use App\Models\comment;
 use Illuminate\Http\Request;
-use App\Models\prod;
+use App\Models\imageslidehome;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\imageslidehome;
 
 class index extends Controller
 {
     public function requestForHome()
-    {
-        $lastThree_loation = prod::where('location', 'oui')->orderBy('id', 'asc')->take(3)->get();
-        $lastThree = prod::orderBy('id', 'asc')->take(3)->get();
+    {   
         return view('home.index', [
-            'selectGround_typetableProdForHome' => prod::distinct()->select('ground_type')->whereNotNull('ground_type')->get(),
-            'selectCommunetableProdForHome' => prod::distinct()->select('department', 'communes')->get(),
-            'selecttableProdForHome' => prod::where('location', 'non')->with('img')->orderBy('id', 'desc')->take(9)->get(),
-            'posts1' => $lastThree,
-            'posts2' => prod::whereNotIn('id', $lastThree->pluck('id'))->orderBy('id', 'desc')->take(3)->get(),
-            'selectCommment' => $this->selectCommmentForUserStatutEqualOne(),
-            'lastThree_loation' => $lastThree_loation,
-            'beforeThree_loation' => prod::where('location', 'oui')->whereNotIn('id', $lastThree_loation->pluck('id'))->orderBy('id', 'desc')->take(3)->get(),
-            'imgslide' => imageslidehome::where('id', '1')->first()
+            // 'test1' => User::where('id', '4')->first(),
+            // 'test2' => User::find('4'),
+            'ground_type' => $this->prod->select_Ground_type(),
+            'communes' => $this->prod->select_Commune_table(),
+            'selecttableProdForHome' => $this->prod->select_take_location_prod_with_image('non','desc',9),
+            'posts1' => $this->prod->select_last_prod(3,'asc'),
+            'posts2' => $this->prod->whereNotIn('id', $this->prod->select_last_prod(3,'asc')->pluck('id'))->orderBy('id', 'desc')->take(3)->get(),
+            'selectCommment' => $this->Cm->selectCommmentForUserStatutEqualOne(),
+            'lastThree_loation' => $this->prod->select_take_location_prod('oui','asc',3),
+            'beforeThree_loation' => $this->prod->where('location', 'oui')->whereNotIn('id', $this->prod->select_take_location_prod('oui','asc',3)->pluck('id'))->orderBy('id', 'desc')->take(3)->get(),
+            'imgslide' => $this->imgslideHome->SelectImageslidehome('id', '1'),
         ]);
     }
 }
+ 

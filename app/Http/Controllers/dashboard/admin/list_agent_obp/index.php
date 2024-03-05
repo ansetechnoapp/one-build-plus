@@ -10,16 +10,19 @@ class index extends Controller
 {
     public function show()
     {
-        return view('dashboard.admin.list_agent_obp.index', ['members' => User::where('agentOBP', 'oui')->get()]);
+        return view('dashboard.admin.list_agent_obp.index', ['members' => $this->Users->selectCollection('agentOBP','oui'),
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function  agentOBP_active($id)
     {
-        User::where('id', $id)->update(['agentOBP' => 'oui']);
-       return redirect()->route('memberobp');
+        $this->Users->Update_col_User('id',$id,'oui','agentOBP');
+       return redirect()->route('admin.memberobp',[
+       'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function agentOBP_disable($id)
     {
-        User::where('id', $id)->update(['agentOBP' => 'non']);
-        return redirect()->route('memberobp');
+        $this->Users->Update_col_User('id',$id,'non','agentOBP');
+        return redirect()->route('admin.memberobp',[
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
 }

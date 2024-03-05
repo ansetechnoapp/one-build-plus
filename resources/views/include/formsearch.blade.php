@@ -41,7 +41,7 @@
                                         align-items: center;">
                                             <i class="uil uil-estate icons"
                                                 style="color: red; font-size: 20px;margin: 0px 0px 0px 10px;"></i>
-                                            <select class="" name="ground_type" data-trigger
+                                            <select  name="ground_type" data-trigger
                                                 aria-label="Default select example"
                                                 style="cursor: pointer;
                                                 width: 100%;
@@ -50,9 +50,9 @@
                                                 font-weight: bold;
                                                 border: none;
                                                 outline: none;">
-                                                @isset($selectGround_typetableProdForHome)
-                                                <option>sélectionnez un type de terrain</option>
-                                                @foreach ($selectGround_typetableProdForHome as $result)                                 
+                                                <option value>sélectionnez un type de terrain</option>
+                                                @isset($ground_type)
+                                                @foreach ($ground_type as $result)                                 
                                                 <option name="{{$result->ground_type}}">{{$result->ground_type}}</option>
                                                 @endforeach  
                                                 @endisset
@@ -82,9 +82,9 @@
                                                 font-weight: bold;
                                                 border: none;
                                                 outline: none;">
-                                                @isset($selectCommunetableProdForHome)
-                                                <option value="">selectionnez une commune</option>
-                                                @foreach ($selectCommunetableProdForHome as $result)                                  
+                                                <option value>selectionnez une commune</option>
+                                                @isset($communes)
+                                                @foreach ($communes as $result)                                  
                                                 <option name="{{$result->communes}}">{{$result->communes}}</option>
                                                 @endforeach  
                                                 @endisset

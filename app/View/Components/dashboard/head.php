@@ -8,13 +8,13 @@ use Illuminate\View\Component;
 
 class head extends Component
 {
-    public $title;
     /**
      * Create a new component instance.
      */
-    public function __construct($title)
+    public function __construct(public $title,public $subpathadmin)
     {
         $this->title = $title;
+        $this->subpathadmin = $subpathadmin;
     }
 
     /**

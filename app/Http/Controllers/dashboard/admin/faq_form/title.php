@@ -12,12 +12,14 @@ class title extends Controller
 {
     public function view()
     {
-        return view('dashboard.admin.faq_form.title');
+        return view('dashboard.admin.faq_form.title',[
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function showid(Request $request)
     {
-        $posts2 = faq_title::find($request->id);
-        return view('dashboard.admin.faq_form.title', ['allprodupdate' => $posts2]);
+        $posts2 = $this->FaqT->findFaq_title('id',$request->id);
+        return view('dashboard.admin.faq_form.title', ['allprodupdate' => $posts2,
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function save(Request $request): RedirectResponse
     {
@@ -30,14 +32,9 @@ class title extends Controller
 
         try {
             $request->validate($rules, $messages);
-
-            $title = $request->title;
-
-            faq_title::create([
-                'title' => $title,
-            ]);
-
-            return redirect()->route('faq_form');
+            $this->FaqT->createFaq_title($request);
+            return redirect()->route('faq_form',[
+            'sub_path_admin'=>$this->sub_path_admin(),]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();
@@ -62,13 +59,9 @@ class title extends Controller
 
         try {
             $request->validate($rules, $messages);
-            $prod = faq_title::findOrFail($request->id);
-
-            $prod->update([
-                'title' => $request->title,
-            ]);
-
-            return redirect()->route('faqs.admin');
+            $this->FaqT->UpdateFaqTitle($request);
+            return redirect()->route('admin.faqs.admin',[
+            'sub_path_admin'=>$this->sub_path_admin(),]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();

@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Faq_title\Create;
+use App\Models\Faq_title\Delete;
+use App\Models\Faq_title\Select;
+use App\Models\Faq_title\Update;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class faq_title extends Model
+class Faq_title extends Model
 {
-    use HasFactory;
+    use HasFactory,Create,Select,Update,Delete;
     protected $table = 'faq_title';
 
 

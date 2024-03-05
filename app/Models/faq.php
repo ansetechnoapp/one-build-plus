@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Faq\Create;
+use App\Models\Faq\Delete;
+use App\Models\Faq\Select;
+use App\Models\Faq\Update;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class faq extends Model
+class Faq extends Model
 {
-    use HasFactory;
+    use HasFactory,Select,Create,Update,Delete;
     protected $table = 'faq';
 
 
@@ -18,6 +22,6 @@ class faq extends Model
     ];
     public function faqTitle()
     {
-        return $this->belongsTo(FaqTitle::class, 'title_id');
+        return $this->belongsTo(Faq_title::class, 'title_id');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\buy;
 
-use App\Models\prod;
+use App\Models\Prod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -12,11 +12,11 @@ class index extends Controller
     public function showbuyallprod()
     {
         
-        $posts = Prod::with('img')->get();
-        $commune = prod::all();
+        $posts = $this->prod->select_prod_with_image();
+        $commune = $this->prod->all();
         return view('buy.index', [
-            'selectGround_typetableProdForHome' => prod::distinct()->select('ground_type')->get(),
-            'selectCommunetableProdForHome' => prod::distinct()->select('department', 'communes')->get(),
+            'selectGround_typetableProdForHome' => $this->prod->select_Ground_type(),
+            'selectCommunetableProdForHome' =>$this->prod->select_Commune_table(),
             'allprod' => $posts,
             'posts' => $commune
         ]);

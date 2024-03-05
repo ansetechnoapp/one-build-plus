@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\error;
+
 class FormLogin extends Controller
 {
-    public function authenticate(Request $request)
+
+    public function authenticate(Request $request) 
     {
         $credentials = $request->validate([
             'email' => ['required'],
@@ -21,11 +23,10 @@ class FormLogin extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin'){
-                return redirect()->intended('dashboard.admin');
+                return redirect()->intended('admin/dashboard_admin');
             }else{
                 return redirect()->intended('dashboard');
             }
-            
             
         }
         
@@ -35,17 +36,15 @@ class FormLogin extends Controller
     }
 
     public function show_list_user(){
-        $posts = User::all();
-        return view('dashboard.admin.list_user.index', ['alluser' => $posts]);
+        $posts = $this->Users->all();
+        return view('dashboard.admin.list_user.index', ['alluser' => $posts,
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
 
     public function isactive($email){
-
         $isactive = '1';
-        if (User::where('email', $email)->first() !== null) {
-            User::where('email', $email)->first()->update([
-                'isactive' => $isactive,
-            ]);
+        if (!$this->Users->VerifyUserExist($email)) {
+            $this->Users-> Update_col_User('email',$email,$isactive,'isactive');
             return redirect()->route('auth-login');
         }
     }

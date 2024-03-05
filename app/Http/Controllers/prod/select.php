@@ -4,21 +4,19 @@ namespace App\Http\Controllers\prod;
 
 
 use App\Models\img;
-use App\Models\prod;
+use App\Models\Prod;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class select extends Controller
 {
     public function receptiondata(Request $request)
     {
-        $id = $request->id;
-        $query = prod::where('id', $id)
-            ->get();
-        $query2 = img::where('prod_id', $id)
-            ->get();
+        $query = $this->prod->select_prod('id', $request->id);
+        $query2 = $this->Img->InfoImg($request->id);
 
         // Convertir le tableau en une chaîne de caractères
         /* $imgUrls = $query2->pluck('main_image')->toArray();
@@ -28,11 +26,38 @@ class select extends Controller
         /* $imgUrl1 = Storage::url($imgUrlsString); */
         return view('property-detail.index', ['data' => $query, 'imgdata' => $query2/* , 'img1' => $imgUrl1 */]);
     }
-    public function show()
+    public function show($num = '5')
     {
-          $headers = ['id', 'propriétaire', 'addresse', 'département', 'commune', 'arrondissement', 'superficie', 'prix', 'prix promo', 'type de terre', 'Description', 'action'];
-          $posts = prod::where('location','non')->orderBy('id', 'desc')->get();
-        return view('dashboard.admin.list_prod.index', ['allprod' => $posts,'header' => $headers]);
+        $headers = [
+            '<th width="29">id</th>', '<th>propriétaire</th>', '<th>addresse</th>', '<th>département</th>', '<th>commune</th>', '<th>arrondissement</th>',
+            '<th width="85">superficie</th>', '<th width="70">prix</th>', '<th width="90">prix promo</th>',
+            '<th width="85">type de terre</th>', '<th>Description</th>', '<th width="65">action</th>'
+        ];
+        if (isset($_GET['page'])) {
+            $posts = $this->prod->select_location_paginate_prod('non', 'desc', 5);
+        } else {
+            $posts = $this->prod->select_take_location_prod('non', 'desc', $num);
+        }
+        return view(
+            'dashboard.admin.list_prod.index',
+            [
+                'allprod' => $posts,
+                'header' => $headers,
+                'ground_type' => $this->prod->select_Ground_type(),
+                'communes' => $this->prod->select_Commune_table(),
+                'sub_path_admin'=>$this->sub_path_admin(),
+            ]
+        );
+    }
+    public function showAllProduct()
+    {
+        $headers = [
+            '<th width="29">id</th>', '<th>propriétaire</th>', '<th>addresse</th>', '<th>département</th>', '<th>commune</th>', '<th>arrondissement</th>',
+            '<th width="85">superficie</th>', '<th width="70">prix</th>', '<th width="90">prix promo</th>',
+            '<th width="85">type de terre</th>', '<th>Description</th>', '<th width="65">action</th>'
+        ];
+        $posts = $this->prod->select_location_prod('non', 'desc');
+        return view('dashboard.admin.list_prod.index', ['allprod' => $posts, 'header' => $headers]);
     }
     public function receptiondata1(Request $request)
     {

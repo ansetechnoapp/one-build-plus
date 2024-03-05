@@ -21,50 +21,38 @@ class devis extends Controller
         $devis_id = $request->devis_id;
         $prod_id = $request->prod_id;
         $user_id = Auth::user()->id;
-        $user = User::find($user_id);
+        $user = $this->Users->findUser('id',$user_id);
         if ($user_id !== null && $prod_id !== null) {
-            $additionalOption = Additional_option::where('prod_id', $prod_id)
-            ->where('users_id', $user_id)
-            ->first();
+            $additionalOption = $this->Add_opt->findAdditional_option($prod_id, $user_id);
+            $getDevis = $this->devi->findDevis($prod_id, $user_id);
+            if ($user && $additionalOption && $getDevis) {
+                $data = [
+                    'numDevis' => $getDevis->id,
+                    'nom' => $user->lastName,
+                    'prenom' => $user->firstName,
+                    'email' => $user->email,
+                    'service' => $additionalOption->registration_andf,
+                    'service1' => $additionalOption->formality_fees,
+                    'service2' => $additionalOption->notary_fees,
+                    'price' => $getDevis->price,
+                    'montantTotal' => $getDevis->montant,
+                    'dateDevis' => $getDevis->dateDevis,
+                    'dateExpiration' => $getDevis->dateExpiration,
+                ];
 
-        $getDevis = getDevis::where('prod_id', $prod_id)
-            ->where('users_id', $user_id)
-            ->first();
-
-        if ($user && $additionalOption && $getDevis) {
-            $data = [
-                'numDevis' => $getDevis->id,
-                'nom' => $user->lastName,
-                'prenom' => $user->firstName,
-                'email' => $user->email,
-                'service' => $additionalOption->registration_andf,
-                'service1' => $additionalOption->formality_fees,
-                'service2' => $additionalOption->notary_fees,
-                'price' => $getDevis->price,
-                'montantTotal' => $getDevis->montant,
-                'dateDevis' => $getDevis->dateDevis,
-                'dateExpiration' => $getDevis->dateExpiration,
-            ];
-
-            return Pdf::loadView('devis.index', $data)->setPaper('A4', 'Portrait')->stream();
-        } else {
-            // Gérez le cas où les modèles n'ont pas été trouvés
-            // Par exemple, redirigez avec un message d'erreur
-        }
+                return Pdf::loadView('devis.index', $data)->setPaper('A4', 'Portrait')->stream();
+            } else {
+                // Gérez le cas où les modèles n'ont pas été trouvés
+                // Par exemple, redirigez avec un message d'erreur
+            }
         } else {
             return redirect()->route('home');
         }
-        
-
-        
     }
 
     public function listDevisForUser()
     {
-        $user_id = Auth::user()->id;
-        $getDevis = getDevis::with('prod', 'additional_option', 'user', 'fedapay')->where('users_id', $user_id)
-        ->get();
-        return view('dashboard.home.index', ['listDevis' => $getDevis]);
+        $getDevis = $this->devi->findDevis_withAll_TableForUsers_id(Auth::user()->id);
+        return view('dashboard.home.index', ['listDevis' => $getDevis,'sub_path_admin' =>'']);
     }
 }
-

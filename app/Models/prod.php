@@ -2,15 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\img;
+use App\Models\Prod\Create;
+use App\Models\Prod\Select;
+use App\Models\Prod\Update;
+use App\Models\additional_option;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class prod extends Model
+class Prod extends Model
 {
-    use HasFactory;
+    use HasFactory,Select,Create,Update;
 
     protected $table = 'prod';
+    protected $gT = 'ground_type';
+    protected $cM = 'communes';
+    // public function __construct(private $gT = 'ground_type', private $cM = 'communes')
+    // {
+    //     $this->$gT = $gT;
+    //     $this->$cM = $cM; 
+    // }
 
     /**
      * The attributes that are mass assignable.

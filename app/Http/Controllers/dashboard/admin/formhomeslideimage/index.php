@@ -13,7 +13,8 @@ class index extends Controller
 {
     public function view()
     {
-        return view('dashboard.admin.formhomeslideimage.index');
+        return view('dashboard.admin.formhomeslideimage.index',[
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
 
     public function update(Request $request)
@@ -34,15 +35,16 @@ class index extends Controller
             $imgFields = ['img1', 'img2', 'img3'];
             foreach ($imgFields as $imgField) {
                 if ($request->hasFile($imgField) && !$request->$imgField->getError()) {
-                    $getImg = img::find(1);
+                    $getImg = $this->imgslideHome->SelectImageslidehome('id',1);
                     if ($getImg->$imgField) {
                         Storage::disk('public')->delete($getImg->$imgField);
                     }
                     $imgPath = $request->file($imgField)->store('imageslidehome', 'public');
-                    img::updateOrCreate(['id' => 1], [$imgField => $imgPath]);
+                    $this->imgslideHome->UpdateImageslidehome($imgField,$imgPath);
                 }
             }
-            return redirect()->route('home')->with('success', 'Mise à jour réussie');
+            return redirect()->route('home',[
+            'sub_path_admin'=>$this->sub_path_admin(),])->with('success', 'Mise à jour réussie');
         } catch (ValidationException $e) {
             $errors = $e->validator->errors();
             return redirect()->back()->withErrors($errors);

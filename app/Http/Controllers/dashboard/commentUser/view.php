@@ -13,17 +13,16 @@ class view extends Controller
 {
     public function view()
     {
-        $issetcomment = comment::where('users_id', Auth::user()->id);
-        $infoUser = User::where('id', Auth::user()->id)->first();
-        $issetcomment = $issetcomment->first();
-        return view('dashboard.commentUser.view', ['issetcomment' => $issetcomment, 'infoUser' => $infoUser]);
+        $issetcomment =  $this->Cm->selectCommment('users_id',Auth::user()->id);
+        $infoUser =$this->Users->findUser('id',Auth::user()->id);
+        return view('dashboard.commentUser.view', ['issetcomment' => $issetcomment, 'infoUser' => $infoUser,
+        'sub_path_admin'=>$this->sub_path_admin(),]);
     }
 
     public function saveComment(Request $request)
     {
         $profession = $request->profession;
         $message = $request->message;
-        $commentId = $request->commentId;
         if (isset($profession) && isset($message)) {
             $rules = [
                 'profession' => ['required', 'string', 'max:100', 'min:2'],
@@ -35,20 +34,9 @@ class view extends Controller
             ];
             try {
                 $request->validate($rules, $messages);
-                if (User::where('id', Auth::user()->id)->first() !== null) {
-                    User::where('id', Auth::user()->id)->update([
-                        'Profession' => $profession,
-                    ]);
-                    if (comment::where('users_id', Auth::user()->id)->first() !== null) {
-                        $comment = Comment::find($commentId);
-                        $comment->Message = $message;
-                        $comment->save();
-                    } else {
-                        $comment = new Comment();
-                        $comment->Message = $message;
-                        $comment->users_id = Auth::user()->id;
-                        $comment->save();
-                    }
+                if ($this->Users->findUser('id',Auth::user()->id) !== null) {
+                    $this->Users-> Update_col_User('id',Auth::user()->id,$profession,'Profession');
+                     $this->Cm->createComment($request,Auth::user()->id);
                     return redirect()->route('dashboard.commentUser');
                 }
             } catch (ValidationException $e) {

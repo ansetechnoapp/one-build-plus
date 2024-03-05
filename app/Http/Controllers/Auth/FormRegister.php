@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use App\Models\devis;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\sendregisteruser;
 use App\Models\additional_option;
@@ -17,6 +17,7 @@ use Illuminate\Validation\ValidationException;
 
 class FormRegister extends Controller
 {
+
     public function mail1(Request $request)
     {
         $company_name = 'Bois de ERIC A.E';
@@ -26,254 +27,6 @@ class FormRegister extends Controller
         Mail::to($email)->send(new sendregisteruser($request->all()));
 
         return View('view_response_mail.fr.devis.index', compact('company_name', 'email', 'tel'));
-    }
-
-    /* public function testmodelrequest(Request $request)
-    {
-
-        dd(Auth::user()->isactive);
-        $isactive = User::where('email', 'lola@mail.com')
-        ->where('isactive', '1')
-        ->first();
-        dd($isactive->isactive);
-    } */
-    public function SaveRegister(Request $request)
-    {
-        $email = Session::get('user_email');
-        $password1 = $request->password;
-        $password2 = $request->password_confirm;
-        $password = bcrypt($request->password);
-
-        if (isset($email) || isset($password)) {
-            if ($password1 == $password2) {
-                try {
-                    $this->validateUserData($request);
-                    if (!$this->userExists($request->email)) {
-                        $this->createUser($request);
-                        Mail::to($email)
-                            ->send(new sendregisteruser($request->all()));
-                        Session::flush();
-                        return redirect()->route('url.confirmation.user.registration', ['email' => $email]);
-                    } else {
-                        return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
-                    }
-                } catch (ValidationException $e) {
-                    $errors = $e->validator->errors();
-                    return view('auth-signup.step2', ['errors' => $errors]);
-                }
-            } else {
-                return view('auth-signup.step2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
-            }
-        } else {
-            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
-        }
-    }
-
-    public function receptiondata(Request $request)
-    {
-        $price = $request->price;
-        $id = $request->id;
-        $payment_frequency = $request->payment_frequency;
-        // dd(Session::get('payment_frequency'),$price,$id,$payment_frequency);
-
-        if (Session::get('payment_frequency') != null) {
-            if ($payment_frequency != Session::get('payment_frequency')) {
-                // dd('aa',$payment_frequency);
-                Session::put('payment_frequency', $payment_frequency);
-                return view('payment.index');
-            } else {
-                // dd('bb',$payment_frequency);
-                return view('payment.index');
-            }
-        } else {
-            if (isset($price) && isset($id)) {
-                // dd('ee',$payment_frequency);
-                Session::put('prod_price', $price);
-                Session::put('prod_id', $id);
-                Session::put('payment_frequency', $payment_frequency);
-                return view('payment.index');
-            } else {
-                return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
-            }
-        }
-    }
-    public function receptiondata1(Request $request)
-    {
-        // dd($request->payment_frequency,$request->id,$request->price,$request->lastName,$request->firstName);
-        // dd(Session::get('payment_frequency'));
-
-        $lastnom = $request->lastName;
-        $firstnom = $request->firstName;
-        $price = Session::get('prod_price');
-        $id = Session::get('prod_id');
-        if (isset($price) && isset($lastnom) && isset($firstnom) && isset($id)) {
-            // Définition des règles de validation
-            $rules = [
-                'price' => ['required'],
-                'lastName' => ['required', 'string', 'max:100', 'min:2'],
-                'firstName' => ['required', 'string', 'max:100', 'min:2'],
-            ];
-
-            // Définition des messages d'erreur personnalisés
-            $messages = [
-                'price' => "Vous devez entrer le montant",
-                'lastName' => "Entrer votre nom",
-                'firstName' => "Entrer votre prénom",
-            ];
-
-            // Validation des données envoyées dans la requête
-
-            try {
-                // dd('zassssc');
-                $request->validate($rules, $messages);
-                Session::put('user_lastName', $lastnom);
-                Session::put('user_firstName', $firstnom);
-                return view('payment.suite');
-            } catch (ValidationException $e) {
-                // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                // Récupération des messages d'erreur de validation
-                // dd('zsc');
-                $errors = $e->validator->errors();
-
-                // Redirection vers la page de formulaire avec les messages d'erreur
-                return view('payment.index', ['errors' => $errors]);
-            }
-        } else {
-            // dd('rr');
-            return view('payment.suite');
-        }
-    }
-    public function receptiondata2(Request $request)
-    {
-        // dd(Session::get('payment_frequency'));
-        $price = Session::get('prod_price');;
-        $lastName = Session::get('user_lastName');;
-        $firstName = Session::get('user_firstName');
-        $id = Session::get('prod_id');
-        $payment_frequency = Session::get('payment_frequency');
-        $montant = $request->montant;
-        $registration_andf = $request->registration_andf;
-        $formality_fees = $request->formality_fees;
-        $notary_fees = $request->notary_fees;
-        if (isset($price) && isset($lastName) && isset($firstName) && isset($id)) {
-            // Définition des règles de validation
-            $rules = [
-                'price' => ['required'],
-                'lastName' => ['required', 'string', 'max:100', 'min:2'],
-                'firstName' => ['required', 'string', 'max:100', 'min:2'],
-            ];
-
-            // Définition des messages d'erreur personnalisés
-            $messages = [
-                'price' => "Vous devez entrer le montant",
-                'lastName' => "Entrer votre nom",
-                'firstName' => "Entrer votre prénom",
-            ];
-            try {
-                $request->validate($rules, $messages);
-                Session::put('montant', $montant);
-                Session::put('registration_andf', $registration_andf);
-                Session::put('formality_fees', $formality_fees);
-                Session::put('notary_fees', $notary_fees);
-                return view('payment.suite2');
-            } catch (ValidationException $e) {
-                // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                // Récupération des messages d'erreur de validation
-                $errors = $e->validator->errors();
-
-                // Redirection vers la page de formulaire avec les messages d'erreur
-                return view('payment.suite', ['id' => $id, 'price' => $price, 'lastName' => $lastName, 'firstName' => $firstName, 'registration_andf' => $registration_andf, 'formality_fees' => $formality_fees, 'notary_fees' => $notary_fees, 'errors' => $errors]);
-            }
-        } else {
-            // dd('rr');
-            return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees', 'payment_frequency', 'montant'));
-        }
-    }
-    public function SaveSignupOneStep(Request $request)
-    {
-        $lastName = $request->lastName;
-        $firstName = $request->firstName;
-        $email = $request->email;
-        $payment_frequency = $request->payment_frequency;
-
-        if (isset($lastName) || isset($firstName) || isset($email)) {
-            // Définition des règles de validation
-            $rules = [
-                'lastName' => ['required', 'string', 'max:100', 'min:2'],
-                'firstName' => ['required', 'string', 'max:100', 'min:2'],
-                'email' => ['required', 'string', 'email', 'max:255'],
-            ];
-
-            // Définition des messages d'erreur personnalisés
-            $messages = [
-                'lastName' => 'Votre nom n\'est pas valide.',
-                'firstName' => 'Votre prénom n\'est pas valide.',
-                'email' => "L'adresse email n'est pas valide.",
-            ];
-
-            try {
-                $request->validate($rules, $messages);
-                if (User::where('email', $request->email)->first() === null) {
-                    Session::put('user_lastName', $lastName);
-                    Session::put('user_firstName', $firstName);
-                    Session::put('user_email', $email);
-                    Session::put('payment_frequency', $payment_frequency);
-
-                    return view('auth-signup.step2');
-                } else {
-                    return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
-                }
-            } catch (ValidationException $e) {
-                // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
-                // Récupération des messages d'erreur de validation
-                $errors = $e->validator->errors();
-                // dd('dd');
-                // Redirection vers la page de formulaire avec les messages d'erreur
-                return redirect()->to('/sign-up')->withErrors($errors);
-            }
-        } else {
-            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
-        }
-    }
-    public function subscribe(Request $request)
-    {
-        $subscribe = $request->subscribe;
-    }
-
-    public function SaveRegisterUserAndProd(Request $request)
-    {
-
-        // dd(Session::get('payment_frequency'));
-        /* dd(
-            $request->payment_frequency,
-            $request->id,
-            $request->price,
-            $request->lastName,
-            $request->firstName,
-            $request->registration_andf,
-            $request->formality_fees,
-            $request->notary_fees,
-            $request->montant,
-            $request->email,
-            $request->password,
-            $request->password_confirm
-        ); */
-
-        if ($request->password == $request->password_confirm) {
-            $this->validateUserData($request);
-            if (!$this->userExists($request->email)) {
-                $user = $this->createUser($request);
-                $additional_option = $this->createadditional_option($request, $user);
-                $this->createDevis($request, $user, $additional_option);
-                Mail::to($user->email)->send(new sendregisteruser($request->all()));
-
-                return view('emails.emailsendforconfirmationuserregistration', ['email' => $user->email]);
-            } else {
-                return view('payment.suite2', ['email' => 'Votre email ou votre mots de passe ne correpond pas']);
-            }
-        } else {
-            return view('payment.suite2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
-        }
     }
 
     private function validateUserData($request)
@@ -298,54 +51,210 @@ class FormRegister extends Controller
         $request->validate($rules, $messages);
     }
 
-    private function userExists($email)
+    public function SaveRegister(Request $request)
     {
-        if ($email) {
-            return User::where('email', $email)->exists();
+        $email = Session::get('user_email');
+        $password1 = $request->password;
+        $password2 = $request->password_confirm;
+        $password = bcrypt($request->password);
+
+        if (isset($email) || isset($password)) {
+            if ($password1 == $password2) {
+                try {
+                    $this->validateUserData($request);
+                    if (!$this->Users->VerifyUserExist($request->email)) {
+                        $this->Users->createUser($request);
+                        Mail::to($email)
+                            ->send(new sendregisteruser($request->all()));
+                        Session::flush();
+                        return redirect()->route('url.confirmation.user.registration', ['email' => $email]);
+                    } else {
+                        return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
+                    }
+                } catch (ValidationException $e) {
+                    $errors = $e->validator->errors();
+                    return view('auth-signup.step2', ['errors' => $errors]);
+                }
+            } else {
+                return view('auth-signup.step2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
+            }
         } else {
-            $email = session::get('user_email');
-            return User::where('email', $email)->exists();
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
         }
     }
 
-    private function createUser($request)
+    public function receptiondata(Request $request)
     {
-        $user = User::create([
-            'lastName' => $request->lastName,
-            'firstName' => $request->firstName,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => bcrypt($request->password),
-        ]);
+        $price = $request->price;
+        $id = $request->id;
+        $payment_frequency = $request->payment_frequency;
 
-        return $user;
+        if (Session::get('payment_frequency') != null) {
+            // dd('aa',$payment_frequency,Session::get('payment_frequency'));
+            if ($payment_frequency != Session::get('payment_frequency')) {
+                // dd('1');
+                Session::put('payment_frequency', $payment_frequency);
+                return view('payment.index');
+            } else {
+                // dd('2'); 
+                return view('payment.index');
+            }
+        } else {
+            if (isset($price) && isset($id)) {
+                // dd('3');
+                Session::put('prod_price', $price);
+                Session::put('prod_id', $id);
+                Session::put('payment_frequency', $payment_frequency);
+                return view('payment.index');
+            } else {
+                // dd('4',Session::get('user_lastName'),Session::get('payment_frequency'));
+                // if (Session::get('user_lastName') && Session::get('user_firstName') && Session::get('user_email')&& Session::get('payment_frequency') != null) {
+                //     # code...
+                // } else {
+                    
+                // }
+                return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
+            }
+        }
+    }
+    public function form_one()
+    {
+        return view('payment.index');
+    }
+    public function receptiondata1(Request $request)
+    {
+        $lastnom = $request->lastName;
+        $firstnom = $request->firstName;
+        // $payment_frequency = $request->payment_frequency;
+        $price = Session::get('prod_price');
+        $id = Session::get('prod_id');
+        if (isset($price) && isset($lastnom) && isset($firstnom) && isset($id)) {
+            $rules = [
+                'price' => ['required'],
+                'lastName' => ['required', 'string', 'max:100', 'min:2'],
+                'firstName' => ['required', 'string', 'max:100', 'min:2'],
+            ];
+
+            $messages = [
+                'price' => "Vous devez entrer le montant",
+                'lastName' => "Entrer votre nom",
+                'firstName' => "Entrer votre prénom",
+            ];
+
+
+            try {
+                $request->validate($rules, $messages);
+                Session::put('user_lastName', $lastnom);
+                Session::put('user_firstName', $firstnom);
+                // Session::put('payment_frequency', $payment_frequency);
+                return view('payment.suite');
+            } catch (ValidationException $e) {
+                $errors = $e->validator->errors();
+                return view('payment.index', ['errors' => $errors]);
+            }
+        } else {
+            // dd('rr');
+            return view('payment.suite');
+        }
+    }
+    public function receptiondata2(Request $request)
+    {
+        $price = Session::get('prod_price');;
+        $lastName = Session::get('user_lastName');;
+        $firstName = Session::get('user_firstName');
+        $id = Session::get('prod_id');
+        $payment_frequency = Session::get('payment_frequency');
+        $montant = $request->montant;
+        $registration_andf = $request->registration_andf;
+        $formality_fees = $request->formality_fees;
+        $notary_fees = $request->notary_fees;
+        if (isset($price) && isset($lastName) && isset($firstName) && isset($id)) {
+            $rules = [
+                'price' => ['required'],
+                'lastName' => ['required', 'string', 'max:100', 'min:2'],
+                'firstName' => ['required', 'string', 'max:100', 'min:2'],
+            ];
+            $messages = [
+                'price' => "Vous devez entrer le montant",
+                'lastName' => "Entrer votre nom",
+                'firstName' => "Entrer votre prénom",
+            ];
+            try {
+                $request->validate($rules, $messages);
+                Session::put('montant', $montant);
+                Session::put('registration_andf', $registration_andf);
+                Session::put('formality_fees', $formality_fees);
+                Session::put('notary_fees', $notary_fees);
+                return view('payment.suite2');
+            } catch (ValidationException $e) {
+                $errors = $e->validator->errors();
+                return view('payment.suite', ['id' => $id, 'price' => $price, 'lastName' => $lastName, 'firstName' => $firstName, 'registration_andf' => $registration_andf, 'formality_fees' => $formality_fees, 'notary_fees' => $notary_fees, 'errors' => $errors]);
+            }
+        } else {
+            return view('payment.suite2', compact('price', 'lastName', 'firstName', 'id', 'registration_andf', 'formality_fees', 'notary_fees', 'payment_frequency', 'montant'));
+        }
+    }
+    public function SaveSignupOneStep(Request $request)
+    {
+        $lastName = $request->lastName;
+        $firstName = $request->firstName;
+        $email = $request->email;
+        $payment_frequency = $request->payment_frequency;
+
+        if (isset($lastName) || isset($firstName) || isset($email)) {
+            $rules = [
+                'lastName' => ['required', 'string', 'max:100', 'min:2'],
+                'firstName' => ['required', 'string', 'max:100', 'min:2'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+            ];
+            $messages = [
+                'lastName' => 'Votre nom n\'est pas valide.',
+                'firstName' => 'Votre prénom n\'est pas valide.',
+                'email' => "L'adresse email n'est pas valide.",
+            ];
+
+            try {
+                $request->validate($rules, $messages);
+                if (!$this->Users->VerifyUserExist($request->email)) {
+                    Session::put('user_lastName', $lastName);
+                    Session::put('user_firstName', $firstName);
+                    Session::put('user_email', $email);
+                    Session::put('payment_frequency', $payment_frequency);
+
+                    return view('auth-signup.step2');
+                } else {
+                    return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
+                }
+            } catch (ValidationException $e) {
+                $errors = $e->validator->errors();
+                return redirect()->to('/sign-up')->withErrors($errors);
+            }
+        } else {
+            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.']);
+        }
+    }
+    public function subscribe(Request $request)
+    {
+        $subscribe = $request->subscribe;
     }
 
-    private function createadditional_option($request, $user)
-    {  /*  dd(Session::get('payment_frequency')); */
-        $additional_option = new additional_option();
-        $additional_option->registration_andf = $request->registration_andf;
-        $additional_option->formality_fees = $request->formality_fees;
-        $additional_option->notary_fees = $request->notary_fees;
-        $additional_option->payment_frequency = Session::get('payment_frequency');
-        $additional_option->prod_id = $request->id;
-        $additional_option->user()->associate($user);
-        $additional_option->save();
-
-        return $additional_option;
-    }
-
-    private function createDevis($request, $user, $additional_option)
+    public function SaveRegisterUserAndProd(Request $request)
     {
-        $devis = new devis();
-        $devis->price = $request->price;
-        $devis->montant = $request->montant;
-        $devis->prod_id = $request->id;
-        $devis->dateDevis = now()->format('Y-m-d');
-        $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
-        $devis->user()->associate($user);
-        $devis->additional_option()->associate($additional_option);
-        $devis->save();
-        return $devis;
+
+        if ($request->password == $request->password_confirm) {
+            $this->validateUserData($request);
+            if (!$this->Users->VerifyUserExist($request->email)) {
+                $user = $this->Users->createUser($request);
+                $additional_option = $this->Add_opt->createadditional_option($request, $user);
+                $this->devi->createDevis($request, $user, $additional_option);
+                Mail::to($user->email)->send(new sendregisteruser($request->all()));
+
+                return view('emails.emailsendforconfirmationuserregistration', ['email' => $user->email]);
+            } else {
+                return view('payment.suite2', ['email' => 'Votre email ou votre mots de passe ne correpond pas']);
+            }
+        } else {
+            return view('payment.suite2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.']);
+        }
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-dashboard.head title="One Build Plus - Dashboard"></x-dashboard.head>
+<x-dashboard.head title="One Build Plus - Dashboard" subpathadmin={{$sub_path_admin}}></x-dashboard.head>
 
 <body id="page-top">
 
@@ -46,7 +46,7 @@
                                             <tbody>
 
                                                 <td>{{ $infoUser->Profession }}</td>
-                                                <td>{{Auth::user()->lastName}} {{Auth::user()->firstName}}</td>
+                                                <td>{{ Auth::user()->lastName }} {{ Auth::user()->firstName }}</td>
                                                 <td>{{ $issetcomment->Message }}</td>
                                                 <td>
                                                     {{-- <form action="#" method="POST" >
@@ -54,7 +54,8 @@
                                                     <input type="hidden" name="users_id" value="{{ $infoUser->id }}">
                                                     <button type="submit" class="badge text-dark" style="background-color: rgb(14 165 233);border: none;">editer</button>
                                                 </form> --}}
-                                                    <a href="{{ route('dashboard.update.view.commentUser', ['id' => $issetcomment->id ]) }}" class="badge text-dark"
+                                                    <a href="{{ route('dashboard.update.view.commentUser', ['id' => $issetcomment->id]) }}"
+                                                        class="badge text-dark"
                                                         style="background-color: rgb(14 165 233)">editer</a>
                                                 </td>
 
@@ -92,15 +93,15 @@
                                                 <div class="col-xxl-6 col-xl-8">
                                                     {{-- <h3 class="text-primary">Step 1</h3> --}}
                                                     <h1 class="card-title mb-4">Avis client</h1>
-                                                    <form action="{{ route('dashboard.save.commentUser') }}" method="POST"
-                                                        enctype="multipart/form-data">
+                                                    <form action="{{ route('admin.dashboard.save.commentUser') }}"
+                                                        method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="mb-3">
                                                             <label class="small mb-1"
                                                                 for="inputProfession">Profession</label>
                                                             <input class="form-control" id="inputProfession" type="text"
                                                                 placeholder="entrer votre profession" name="profession"
-                                                                required>
+                                                                value="{{ Auth::user()->Profession }}" required>
                                                             @if ($errors->has('Profession'))
                                                                 <div class="alert alert-danger">
                                                                     {{ $errors->first('Profession') }}</div>
@@ -111,7 +112,9 @@
                                                                 <label class="small mb-1" for="inputland_owner">Non et
                                                                     Prénom</label>
                                                                 <input class="form-control" id="inputland_owner"
-                                                                    type="text" placeholder="{{Auth::user()->lastName}} {{Auth::user()->firstName}}" name="land_owner" disabled>
+                                                                    type="text"
+                                                                    placeholder="{{ Auth::user()->lastName }} {{ Auth::user()->firstName }}"
+                                                                    name="land_owner" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
@@ -284,26 +287,7 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <x-dashboard_modal title="Prêt à partir ?"
-        message='Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre
-    session en cours.'
-        path="{{ route('Logout') }}"></x-dashboard_modal>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="assets/dashboard/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="assets/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="assets/dashboard/js/sb-admin-2.min.js"></script>
+    @include('include.dashboard.footer2')
 
 </body>
 

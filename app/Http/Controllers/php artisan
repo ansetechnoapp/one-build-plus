@@ -33,3 +33,13 @@ php artisan make:controller dashboard\admin\formhomeslideimage\index
 php artisan make:controller about\index
 php artisan make:controller dashboard\admin\list_agent_obp\index
 php artisan make:controller dashboard\profil\index
+php artisan make:controller dashboard/admin/home/form/step1
+php artisan make:controller dashboard/admin/home/form/step2
+php artisan make:controller dashboard/admin/home/form/step3
+php artisan make:controller dashboard/admin/Rental_management/form/step1
+php artisan make:controller dashboard/admin/Rental_management/form/step2
+php artisan make:controller dashboard/admin/Rental_management/form/step3
+php artisan make:controller dashboard/admin/send_sms/index
+php artisan make:controller dashboard/admin/profil/index
+php artisan make:controller dashboard/account_security/index
+php artisan make:controller dashboard/admin/account_security/index

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\faqs;
 
-use App\Models\faq;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\faq_title;
+use App\Models\Faq_title;
 
 class index extends Controller
 {
     public function show()
     {
-        $uniqueTitles = faq_title::all();
+        $uniqueTitles = $this->FaqT->all();
         $html = ''; 
 
         foreach ($uniqueTitles as $data) {
@@ -23,8 +23,7 @@ class index extends Controller
                 $html .= '<h5 class="text-2xl font-semibold">' . $data->title . '</h5>';
             }
             $html .= '<div id="accordion-collapseone" data-accordion="collapse" class="mt-6">';
-            $faqTitle = faq::where('title_id', $data->id)->get();
-
+            $faqTitle = $this->faq->selectFaqTitle($data->id);
             foreach ($faqTitle as $faq) {
                 $html .= '<div class="relative shadow dark:shadow-gray-700 rounded-md overflow-hidden">';
                 $html .= '<h2 class="text-lg font-medium" id="accordion-collapse-heading-' . $faq->id . '">';

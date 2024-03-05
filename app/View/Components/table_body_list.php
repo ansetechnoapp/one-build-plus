@@ -13,7 +13,7 @@ class table_body_list extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($header)
+    public function __construct($header) 
     {
         $this->header = $header; 
     }

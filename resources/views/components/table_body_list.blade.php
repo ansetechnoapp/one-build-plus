@@ -43,7 +43,7 @@
         table-layout: fixed;
         /* table-layout: auto; */
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) {
             table-layout: auto;
         }
     }

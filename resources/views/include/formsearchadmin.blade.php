@@ -80,43 +80,37 @@
         border: solid 2px #0066cc;
     }
 </style>
-<div class="container-search">
-    <div id="cover">
-        <form method="POST" action="{{ route('admin.search.prod.admin') }}">
-            @csrf
-            <div class="tb">
-                <div style="display: flex">
-                    <select name="ground_type">
-                        <option value>sélectionnez un type de terrain</option>
-                        @isset($ground_type)
-                            @foreach ($ground_type as $result)
-                                <option name="{{ $result->ground_type }}">{{ $result->ground_type }}</option>
-                            @endforeach
-                        @endisset
-                    </select>
+<div id="cover">
+    <form method="POST" action="{{ route('admin.search.prod.admin') }}">
+        @csrf
+        <div class="tb">
+            <div style="display: flex">
+                <select name="ground_type">
+                    <option value>sélectionnez un type de terrain</option>
+                    @isset($ground_type)
+                        @foreach ($ground_type as $result)
+                            <option name="{{ $result->ground_type }}">{{ $result->ground_type }}</option>
+                        @endforeach
+                    @endisset
+                </select>
 
-                    <select class="" name="communes">
-                        <option value>selectionnez une commune</option>
-                        @isset($communes)
-                            @foreach ($communes as $result)
-                                <option name="{{ $result->communes }}">{{ $result->communes }}</option>
-                            @endforeach
-                        @endisset
-                    </select>
-                    <input type="text" name="price_min" placeholder="prix minimal">
-                    <input type="text" name="price_max" placeholder="prix maximal">
-                </div>
-                <div class="vcenter">
-                    <button type="submit">
-                        {{-- <div id="s-circle"></div> --}}
-                        <img src="assets/icons8-search-150.png" alt="search" width="60" height="60">
-                    </button>
-                </div>
+                <select class="" name="communes">
+                    <option value>selectionnez une commune</option>
+                    @isset($communes)
+                        @foreach ($communes as $result)
+                            <option name="{{ $result->communes }}">{{ $result->communes }}</option>
+                        @endforeach
+                    @endisset
+                </select>
+                <input type="text" name="price_min" placeholder="prix minimal">
+                <input type="text" name="price_max" placeholder="prix maximal">
             </div>
-        </form>
-    </div>
-    <div>
-        <a href="{{ route('admin.list.Allprod') }}" class="btn-act1">tout les produits</a>
-    </div>
-
+            <div class="vcenter">
+                <button type="submit">
+                    {{-- <div id="s-circle"></div> --}}
+                    <img src="assets/icons8-search-150.png" alt="search" width="60" height="60">
+                </button>
+            </div>
+        </div>
+    </form>
 </div>

@@ -16,6 +16,7 @@ Route::middleware(['auth', 'isActive', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/form_send_sms', [\App\Http\Controllers\dashboard\admin\send_sms\index::class, 'show'])->name('form.send.sms');
     Route::get('/list_prod{num?}', [\App\Http\Controllers\prod\select::class, 'show'])->name('list_prod');
     Route::get('/list_Allprod', [\App\Http\Controllers\prod\select::class, 'showAllProduct'])->name('list.Allprod');
+    Route::get('/list_Rental_management_Allprod', [\App\Http\Controllers\dashboard\admin\Rental_management\list_prod::class, 'showAllProductRental'])->name('list.RentalManagement.Allprod');
     Route::get('/list_user', [\App\Http\Controllers\Auth\FormLogin::class, 'show_list_user'])->name('list_user');
     
     Route::get('/user_disable{user_id}', [\App\Http\Controllers\save\account::class, 'userDisable'])->name('user.disable');

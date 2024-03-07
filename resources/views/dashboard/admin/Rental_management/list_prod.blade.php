@@ -27,8 +27,14 @@
                     <!-- Page Heading -->
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="{{-- container-xl  --}}px-4 mt-n10 mb-4">
+                        <div class="container-search">
+                            {{-- @include('include.formsearchadmin') --}}
+                        </div>
                         <div class="card mb-4">
-                            <div class="card-header" style="text-align: center">Liste des produits Enrégistrer</div>
+                            <div class="card-header">
+                                <div style="text-align: center">Liste des produits Enrégistrer</div>
+                            <div style="text-align: end"><a href="{{ route('admin.list.RentalManagement.Allprod') }}" class="btn-act1">tout les produits</a></div>
+                            </div>
                             <div class="card-body p-0">
                                 @unless ($allprod->isEmpty())
                                     <x-table_body_list :header="$header">

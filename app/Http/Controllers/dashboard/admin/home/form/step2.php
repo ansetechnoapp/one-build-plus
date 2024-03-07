@@ -52,9 +52,9 @@ class step2 extends Controller
                     'ground_type',
                     $request->ground_type,
                     'number_of_bedrooms',
-                    '',
+                    '0',
                     'number_of_bathrooms',
-                    ''
+                    '0'
                 );
                 return redirect()->route('admin.form.view.prod.step3', ['id' => $request->prod_id,
                 'sub_path_admin'=>$this->sub_path_admin(),]);

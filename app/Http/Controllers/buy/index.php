@@ -19,6 +19,6 @@ class index extends Controller
             'selectCommunetableProdForHome' =>$this->prod->select_Commune_table(),
             'allprod' => $posts,
             'posts' => $commune
-        ]);
+        ]); 
     }
 }

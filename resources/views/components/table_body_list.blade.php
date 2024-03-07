@@ -85,8 +85,10 @@
     }
 </style>
 
+@props(['header'])
+
 <div class="table_component" role="region" tabindex="0">
-    
+
 
     <table>
         {{-- <caption>Table 1</caption> --}}
@@ -99,7 +101,7 @@
             </tr>
         </thead>
         <tbody>
-            {{ $slot }}
+            {{ $slot }} 
         </tbody>
 
     </table>

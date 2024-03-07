@@ -7,7 +7,8 @@ export default defineConfig({
         laravel({
             input: [
                 'src/index.css',
-                'resources/ts/main.tsx',],
+                'resources/ts/main.tsx',
+            ],
             refresh: true,
         }),{
             name:'blade',

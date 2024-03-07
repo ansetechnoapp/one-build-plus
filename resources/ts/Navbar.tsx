@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
        <img src={logo} alt="" />
       </div>
       <ul className={`menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-        <li>Accueil</li>
+        <li className="w-20">Accueil</li>
         <li>Services</li>
         <li>Contact</li>
       </ul>

@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 <x-head></x-head>
+
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
     {{-- <div id="preloader">
@@ -58,7 +59,8 @@
         <!--end container-->
         <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos logements à la une</h3>
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos logements à la
+                    une</h3>
 
                 <p class="text-slate-400 max-w-xl mx-auto">Trouvez des chambres a louer.</p>
             </div>
@@ -71,7 +73,8 @@
                                     class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                     <div class="relative">
                                         @if ($data->img)
-                                            <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
+                                            <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                                alt="Image du produit">
                                         @else
                                             Aucune image disponible
                                         @endif
@@ -92,21 +95,18 @@
                                         <ul
                                             class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                             <li class="flex items-center me-4">
-                                                <i
-                                                    class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                 <span>{{ $data->communes }}</span>
                                             </li>
 
                                             <li class="flex items-center me-4">
-                                                <i
-                                                    class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                 {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
                                                 <span>{{ $data->borough }}</span>
                                             </li>
 
                                             <li class="flex items-center">
-                                                <i
-                                                    class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                                 {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
                                                 <span>{{ $data->area }}</span>
                                             </li>
@@ -136,61 +136,61 @@
                         @endforeach
                     @endisset
                     @isset($beforeThree_loation)
-                                    @foreach ($beforeThree_loation as $data)
-                                        <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
-                                            <div
-                                                class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
-                                                <div class="relative">
-                                                    @if ($data->img)
-                                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
-                                                    @else
-                                                        Aucune image disponible
-                                                    @endif
+                        @foreach ($beforeThree_loation as $data)
+                            <div class="tiny-slide tns-item tns-slide-active" id="tns2-item1">
+                                <div
+                                    class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
+                                    <div class="relative">
+                                        @if ($data->img)
+                                            <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                                alt="Image du produit">
+                                        @else
+                                            Aucune image disponible
+                                        @endif
 
-                                                    {{-- <div class="absolute top-4 end-4">
+                                        {{-- <div class="absolute top-4 end-4">
                                                         <a href="javascript:void(0)"
                                                             class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
                                                                 class="mdi mdi-heart mdi-18px"></i></a>
                                                     </div> --}}
-                                                </div>
+                                    </div>
 
-                                                <div class="p-6">
-                                                    <div class="pb-6">
-                                                        <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
-                                                            class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
-                                                    </div>
-
-                                                    <ul
-                                                        class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
-                                                        <li class="flex items-center me-4">
-                                                            <i
-                                                                class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                                            <span>{{ $data->borough }}</span>
-                                                        </li>
-
-                                                        <li class="flex items-center me-4">
-                                                            <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
-                                                            <span>{{ $data->department }}</span>
-                                                        </li>
-
-                                                        <li class="flex items-center">
-                                                            <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
-                                                            <span>{{ $data->communes }}</span>
-                                                        </li>
-                                                    </ul>
-
-                                                    <ul class="pt-6 flex justify-between items-center list-none">
-                                                        <li>
-                                                            <span class="text-slate-400">Prix</span>
-                                                            <p class="text-lg font-medium">{{ $data->price }} FCFA </p>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!--end property content-->
+                                    <div class="p-6">
+                                        <div class="pb-6">
+                                            <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
+                                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
                                         </div>
-                                    @endforeach
-                                @endisset
+
+                                        <ul
+                                            class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                            <li class="flex items-center me-4">
+                                                <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                                <span>{{ $data->borough }}</span>
+                                            </li>
+
+                                            <li class="flex items-center me-4">
+                                                <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                                <span>{{ $data->department }}</span>
+                                            </li>
+
+                                            <li class="flex items-center">
+                                                <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                                <span>{{ $data->communes }}</span>
+                                            </li>
+                                        </ul>
+
+                                        <ul class="pt-6 flex justify-between items-center list-none">
+                                            <li>
+                                                <span class="text-slate-400">Prix</span>
+                                                <p class="text-lg font-medium">{{ $data->price }} FCFA </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--end property content-->
+                            </div>
+                        @endforeach
+                    @endisset
 
                 </div>
             </div>
@@ -205,59 +205,61 @@
         <!--end container-->
         <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos Propriétés a la une</h3>
+                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Nos Propriétés a la
+                    une</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien immobilier sécurisé.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien
+                    immobilier sécurisé.</p>
             </div>
             <!--end grid-->
             <!--en grid-->
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
                 @isset($selecttableProdForHome)
 
-                @foreach ($selecttableProdForHome as $data)
-                    <div
-                        class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
-                        <div class="relative">
-                            @if ($data->img)
-                                <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
-                            @else
-                                Aucune image disponible
-                            @endif
-                        </div>
-
-                        <div class="p-6">
-                            <div class="pb-6">
-                                <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
-                                    class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                    @foreach ($selecttableProdForHome as $data)
+                        <div
+                            class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
+                            <div class="relative">
+                                @if ($data->img)
+                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                        alt="Image du produit">
+                                @else
+                                    Aucune image disponible
+                                @endif
                             </div>
 
-                            <ul
-                                class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
-                                <li class="flex items-center me-4">
-                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                    <span>{{ $data->borough }}</span>
-                                </li>
+                            <div class="p-6">
+                                <div class="pb-6">
+                                    <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
+                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                </div>
 
-                                <li class="flex items-center me-4">
-                                    {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
-                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                    <span>{{ $data->department }}</span>
-                                </li>
+                                <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                    <li class="flex items-center me-4">
+                                        <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                        <span>{{ $data->borough }}</span>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
-                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                    <span>{{ $data->communes }}</span>
-                                </li>
-                            </ul>
+                                    <li class="flex items-center me-4">
+                                        {{-- <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i> --}}
+                                        <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                        <span>{{ $data->department }}</span>
+                                    </li>
 
-                            <ul class="pt-6 flex justify-between items-center list-none">
-                                <li>
-                                    <span class="text-slate-400">Prix</span>
-                                    <p class="text-lg font-medium">{{ $data->price }} FCFA</p>
-                                </li>
+                                    <li class="flex items-center">
+                                        {{-- <i class="uil uil-bath text-2xl me-2 text-green-600"></i> --}}
+                                        <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
+                                        <span>{{ $data->communes }}</span>
+                                    </li>
+                                </ul>
 
-                                {{-- <li>
+                                <ul class="pt-6 flex justify-between items-center list-none">
+                                    <li>
+                                        <span class="text-slate-400">Prix</span>
+                                        <p class="text-lg font-medium">{{ $data->price }} FCFA</p>
+                                    </li>
+
+                                    {{-- <li>
                                     <span class="text-slate-400">Rating</span>
                                     <ul class="text-lg font-medium text-amber-400 list-none">
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
@@ -268,13 +270,13 @@
                                         <li class="inline text-black dark:text-white">5.0</li>
                                     </ul>
                                 </li> --}}
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
 
-            @endisset
-                
+                @endisset
+
                 <!--end property content-->
             </div>
         </div>
@@ -286,7 +288,8 @@
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Plus d'article</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien immobilier sécurisé.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien
+                    immobilier sécurisé.</p>
             </div>
             <!--end grid-->
             <!--en grid-->
@@ -299,7 +302,8 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
+                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                        alt="Image du produit">
                                 @else
                                     Aucune image disponible
                                 @endif
@@ -311,8 +315,7 @@
                                         class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
                                 </div>
 
-                                <ul
-                                    class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
+                                <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                     <li class="flex items-center me-4">
                                         <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
                                         <span>{{ $data->borough }}</span>
@@ -349,12 +352,12 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}" alt="Image du produit">
+                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                        alt="Image du produit">
                                 @else
                                     Aucune image disponible
                                 @endif
                             </div>
-
                             <div class="p-6">
                                 <div class="pb-6">
                                     <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
@@ -411,7 +414,8 @@
                 <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Ce qu'en disent
                     nos clients ?</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien immobilier sécurisé.</p>
+                <p class="text-slate-400 max-w-xl mx-auto">Une plateforme idéale pour acheter ou vendre un bien
+                    immobilier sécurisé.</p>
             </div>
             <!--end grid-->
 

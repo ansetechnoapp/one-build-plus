@@ -14,8 +14,7 @@
         rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="{{ $subpathadmin }}assets/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="{{ $subpathadmin }}assets/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
-
-
+    <link href="{{$subpathadmin}}assets/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{$subpathadmin}}assets/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
+    {{-- @vite('resources/css/app.css') --}}
 </head>

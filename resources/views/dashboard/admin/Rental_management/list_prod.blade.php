@@ -28,71 +28,96 @@
                     <x-dashboard.pageheadingdashboard title="Dashboard"></x-dashboard.pageheadingdashboard>
                     <div class="{{-- container-xl  --}}px-4 mt-n10 mb-4">
                         <div class="card mb-4">
-                            <div class="card-header">Liste des produits Enrégistrer</div>
+                            <div class="card-header" style="text-align: center">Liste des produits Enrégistrer</div>
                             <div class="card-body p-0">
-                                <!-- Billing history table-->
-                                <div class="table-responsive table-billing-history">
-                                    <table class="table mb-0">
-                                        <thead>
+                                @unless ($allprod->isEmpty())
+                                    <x-table_body_list :header="$header">
+                                        @foreach ($allprod as $post)
+                                            @php $i++; @endphp
                                             <tr>
-                                                <th class="border-gray-200" scope="col">N</th>
-                                                <th class="border-gray-200" scope="col">propriétaire</th>
-                                                <th class="border-gray-200" scope="col">addresse</th>
-                                                <th class="border-gray-200" scope="col">département</th>
-                                                <th class="border-gray-200" scope="col">commune</th>
-                                                <th class="border-gray-200" scope="col">arrondissement</th>
-                                                <th class="border-gray-200" scope="col">superficie</th>
-                                                <th class="border-gray-200" scope="col">prix</th>
-                                                <th class="border-gray-200" scope="col">type location</th>
-                                                <th class="border-gray-200" scope="col">voir</th>
-                                                <th class="border-gray-200" scope="col">Modifier</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @isset($allprod)
-
-                                                @foreach ($allprod as $post)
-                                                    <tr>
-                                                        <td>{{ $post->id }}</td>
-                                                        <td>{{ $post->landOwner_propertyName }}</td>
-                                                        <td>{{ $post->address }}</td>
-                                                        <td>{{ $post->department }}</td>
-                                                        <td>{{ $post->communes }}</td>
-                                                        <td>{{ $post->borough }}</td>
-                                                        <td>{{ $post->area }}</td>
-                                                        <td>{{ $post->price }}</td>
-                                                        <td>{{ $post->locationType }}</td>
-                                                        <td><a href="{{ route('property_detail', ['id' => $post->id, 'price' => $post->price]) }}"
-                                                                class="badge text-dark"
-                                                                style="background-color: rgb(14 165 233)">Afficher</a></td>
-                                                        <td><a href="{{ route('admin.dashboard.admin.Rental_management', ['id' => $post->id]) }}"
-                                                                class="badge text-dark"
-                                                                style="background-color: rgb(14 165 233)">Modifier</a></td>
-                                                    </tr>
+                                                @foreach ($cells as $cell)
+                                                    <td>{{ $post->{$cell} }}</td>
                                                 @endforeach
+                                                <td class="description-column">{{ $post->description }}</td>
+                                                <td><a href="{{ route('property_detail', ['id' => $post->id, 'price' => $post->price]) }}"
+                                                        class="badge text-dark"
+                                                        style="background-color: rgb(14 165 233);margin: 5px;"><img
+                                                            src="{{ $sub_path_admin }}assets/icons8-eye-96.png"
+                                                            alt="voir" width="30" height=25></a>
+                                                    <a href="{{ route('admin.dashboard.admin.Rental_management', ['id' => $post->id]) }}"
+                                                        class="badge text-dark"
+                                                        style="background-color: rgb(14 165 233);margin: 5px;"><img
+                                                            src="{{ $sub_path_admin }}assets/icons8-edit-100.png"
+                                                            alt="modifier" width="30" height=25></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-                                            @endisset
 
-                                        </tbody>
-                                    </table>
+                                    </x-table_body_list>
+                                    <style>
+                                        .centered-button {
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            margin: 20px;
+                                        }
+                                    </style>
+                                    <div class="centered-button">
+
+                                        <a href="{{ route('admin.list_prod', ['num' => $i + '5']) }}" class="btn-act1">Voir
+                                            plus</a>
+                                    </div>
+
+
+                                    {{-- @include('include.listprod2') --}}
                                 </div>
                             </div>
-                        </div>
+
+                            {{-- 
+                                @include('partials.pagination', ['post' => $allprod])
+                                
+                                @if (isset($_GET['page']))
+                            <div class="pagination-section">
+                                {{ $allprod->links() }}
+                            </div>
+                            @else
+                            <div class="centered-button">
+                                <a href="{{ route('admin.list_prod', ['page' => '2']) }}" class="btn-act1">2</a>
+                                <a href="{{ route('admin.list_prod', ['page' => '3']) }}" class="btn-act1">3</a>
+                                <a href="{{ route('admin.list_prod', ['page' => '4']) }}" class="btn-act1">4</a>
+                            </div>
+                            @endif --}}
+                        @else
+                            <x-table_body_list :header="$header">
+                                @foreach ($allprod as $post)
+                                    @php $i++; @endphp
+                                    <tr>
+                                        <p>aucun résultat</p>
+                                    </tr>
+                                @endforeach
+
+
+                            </x-table_body_list>
+                        @endunless
+                        <!-- Billing history table-->
                     </div>
-
-
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
 
-            <!-- Footer -->
-            @include('include.dashboard.footer')
-            <!-- End of Footer -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    @include('include.dashboard.footer')
+    <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->

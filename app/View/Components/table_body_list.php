@@ -8,14 +8,12 @@ use Illuminate\View\Component;
 
 class table_body_list extends Component
 {
-
-    public $header;
     /**
      * Create a new component instance.
      */
-    public function __construct($header) 
+    public function __construct(public $header) 
     {
-        $this->header = $header; 
+        $this->header = $header;
     }
 
     /**

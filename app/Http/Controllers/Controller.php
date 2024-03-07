@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Faq;
-use App\Models\Img;
-use App\Models\Prod;
-use App\Models\User;
-use App\Models\Devis;
+use App\Models\faq;
+use App\Models\img;
+use App\Models\prod;
+use App\Models\user;
+use App\Models\devis;
 use App\Models\comment;
-use App\Models\Fedapay;
-use App\Models\Faq_title;
-use App\Models\Imageslidehome;
-use App\Models\Additional_option;
+use App\Models\fedapay;
+use App\Models\faq_title;
+use App\Models\imageslidehome;
+use App\Models\additional_option;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,15 +26,15 @@ class Controller extends BaseController
 
     public function __construct(
         protected $Cm = new comment(),
-        protected $Users = new User(),
-        protected $prod = new Prod(),
-        protected $Img = new Img(),
-        protected $Add_opt = new Additional_option(),
-        protected $devi = new Devis(),
-        protected $faq = new Faq(),
-        protected $imgslideHome = new Imageslidehome(),
-        protected $FaqT = new Faq_title(),
-        protected $fedap = new Fedapay(),
+        protected $Users = new user(),
+        protected $prod = new prod(),
+        protected $Img = new img(),
+        protected $Add_opt = new additional_option(),
+        protected $devi = new devis(),
+        protected $faq = new faq(),
+        protected $imgslideHome = new imageslidehome(),
+        protected $FaqT = new faq_title(),
+        protected $fedap = new fedapay(),
     ) {
         $this->Cm = $Cm;
         $this->Users = $Users;

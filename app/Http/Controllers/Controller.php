@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\faq;
 use App\Models\img;
 use App\Models\prod;
-use App\Models\user;
+use App\Models\User;
 use App\Models\devis;
 use App\Models\comment;
 use App\Models\fedapay;
@@ -26,7 +26,7 @@ class Controller extends BaseController
 
     public function __construct(
         protected $Cm = new comment(),
-        protected $Users = new user(),
+        protected $Users = new User(),
         protected $prod = new prod(),
         protected $Img = new img(),
         protected $Add_opt = new additional_option(),

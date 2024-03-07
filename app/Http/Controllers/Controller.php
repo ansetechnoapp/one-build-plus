@@ -8,7 +8,7 @@ use App\Models\Img;
 use App\Models\Prod;
 use App\Models\User;
 use App\Models\Devis;
-use App\Models\Comment;
+use App\Models\comment;
 use App\Models\Fedapay;
 use App\Models\Faq_title;
 use App\Models\Imageslidehome;
@@ -25,7 +25,7 @@ class Controller extends BaseController
     protected $cM = 'communes';
 
     public function __construct(
-        protected $Cm = new Comment(),
+        protected $Cm = new comment(),
         protected $Users = new User(),
         protected $prod = new Prod(),
         protected $Img = new Img(),

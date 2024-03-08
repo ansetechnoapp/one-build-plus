@@ -34,7 +34,7 @@ Route::middleware(['auth', 'isActive', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/delete.title.faq.{id}', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'deleteforfaqtitle'])->name('delete_title_faq');
 
     Route::post('/save.form.title.faq', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'save'])->name('save_form_title_faq');
-    Route::get('/faqs_admin', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'show'])->name('faqs.admin');
+    Route::get('/faqs', [\App\Http\Controllers\dashboard\admin\faqs\index::class, 'show'])->name('faqs.admin');
     Route::get('/faqsUpdate_title.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'showid'])->name('faqsUpdate.title');
     Route::post('/Updatesavefaqs_title', [\App\Http\Controllers\dashboard\admin\faq_form\title::class, 'update'])->name('Updatesavefaqs.title');
     Route::get('/faqsUpdate.{id}', [\App\Http\Controllers\dashboard\admin\faq_form\index::class, 'showid'])->name('faqsUpdate');

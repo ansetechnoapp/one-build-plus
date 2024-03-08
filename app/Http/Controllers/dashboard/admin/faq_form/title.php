@@ -33,7 +33,7 @@ class title extends Controller
         try {
             $request->validate($rules, $messages);
             $this->FaqT->createFaq_title($request);
-            return redirect()->route('faq_form',[
+            return redirect()->route('admin.faq_form',[
             'sub_path_admin'=>$this->sub_path_admin(),]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici

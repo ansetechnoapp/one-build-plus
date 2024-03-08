@@ -1,7 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-<x-head></x-head>
+<head>
+    <meta charset="UTF-8" />
+    <title>one build plus - Nous garantissons la sécurité de vos biens immobiliers et éducatifs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta content="Real Estate Website Landing Page" name="description" />
+    <meta content="Real Estate, buy, sell, Rent, tailwind Css" name="keywords" />
+    <meta name="author" content="Shreethemes" />
+    <meta name="website" content="https://shreethemes.in/" />
+    <meta name="email" content="support@shreethemes.in" />
+    <meta name="version" content="1.4.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+   
+    <link rel="shortcut icon" href="assets/images/logo-dark.ico" />
+
+    <!-- Css -->
+    <link href="{{$sub_path_admin}}assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+    <link href="{{$sub_path_admin}}assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+    <link href="{{$sub_path_admin}}assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet">
+    <!-- Main Css -->
+    <link href="{{$sub_path_admin}}assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
+    <link href="{{$sub_path_admin}}assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{$sub_path_admin}}assets/css/tailwind.css" />
+    <link rel="stylesheet" href="{{$sub_path_admin}}assets/css/style.css" />
+
+</head>
 
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
@@ -109,11 +134,11 @@
     <!-- Back to top -->
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/gumshoejs/gumshoe.polyfills.min.js"></script>
-    <script src="assets/libs/tobii/js/tobii.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{{$sub_path_admin}}assets/libs/gumshoejs/gumshoe.polyfills.min.js"></script>
+    <script src="{{$sub_path_admin}}assets/libs/tobii/js/tobii.min.js"></script>
+    <script src="{{$sub_path_admin}}assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{$sub_path_admin}}assets/js/plugins.init.js"></script>
+    <script src="{{$sub_path_admin}}assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 

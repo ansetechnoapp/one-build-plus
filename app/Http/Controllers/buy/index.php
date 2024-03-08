@@ -15,8 +15,8 @@ class index extends Controller
         $posts = $this->prod->select_prod_with_image();
         $commune = $this->prod->all();
         return view('buy.index', [
-            'selectGround_typetableProdForHome' => $this->prod->select_Ground_type(),
-            'selectCommunetableProdForHome' =>$this->prod->select_Commune_table(),
+            'ground_type' => $this->prod->select_Ground_type(),
+            'communes' =>$this->prod->select_Commune_table(),
             'allprod' => $posts,
             'posts' => $commune
         ]); 

@@ -51,8 +51,8 @@
                                                 border: none;
                                                 outline: none;">
                                                 <option value>sélectionnez un type de terrain</option>
-                                                @isset($selectGround_typetableProdForHome)
-                                                @foreach ($selectGround_typetableProdForHome as $result)                                 
+                                                @isset($ground_type)
+                                                @foreach ($ground_type as $result)                                 
                                                 <option name="{{$result->ground_type}}">{{$result->ground_type}}</option>
                                                 @endforeach  
                                                 @endisset
@@ -83,8 +83,8 @@
                                                 border: none;
                                                 outline: none;">
                                                 <option value>selectionnez une commune</option>
-                                                @isset($selectCommunetableProdForHome)
-                                                @foreach ($selectCommunetableProdForHome as $result)                                  
+                                                @isset($communes)
+                                                @foreach ($communes as $result)                                  
                                                 <option name="{{$result->communes}}">{{$result->communes}}</option>
                                                 @endforeach  
                                                 @endisset

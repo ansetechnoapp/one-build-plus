@@ -97,18 +97,18 @@ class index extends Controller
             if($communes == null && $groundType !== null){
                 $query = $this->prod->select_distinct_groundType_prod($gT,$groundType);
             return view($viewPage, [$gT => $selectGround_typetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'allprod' => $query,'header' => $headers,
-                'sub_path_admin'=>$this->sub_path_admin,]);
+                'sub_path_admin'=>$this->sub_path_admin(),]);
             }
             if($groundType == null && $communes !== null){
                 $query = $this->prod->select_distinct_communes_prod($communes);
             return view($viewPage, [$gT => $selectGround_typetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'allprod' => $query,'header' => $headers,
-                'sub_path_admin'=>$this->sub_path_admin,]);
+                'sub_path_admin'=>$this->sub_path_admin(),]);
             }
 
             if($communes !== null && $groundType !== null){
                 $query = $this->prod->select_distinct_groundType_communes_prod($gT,$groundType,$communes);
             return view($viewPage, [$gT => $selectGround_typetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'allprod' => $query,'header' => $headers,
-                'sub_path_admin'=>$this->sub_path_admin,]);
+                'sub_path_admin'=>$this->sub_path_admin(),]);
             }
 
         } else {
@@ -130,17 +130,17 @@ class index extends Controller
                     if ($pMax == '0' && $pMin !== '0') {
                         $query = $this->prod->select_distinct_groundType_communes_pMax_Egal_0_prod($gT,$groundType, $communes,$pMin);
                         return view($viewPage, [$gT => $selectGround_typetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'allprod' => $query,'header' => $headers,
-                'sub_path_admin'=>$this->sub_path_admin,]);
+                'sub_path_admin'=>$this->sub_path_admin(),]);
                     }
                     if ($pMin == '0' && $pMax !== '0') {
                         $query = $this->prod->select_distinct_groundType_communes_pMin_Egal_0_prod($gT,$groundType,$communes,$pMax);
                         return view($viewPage, [$gT => $selectGround_typetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'allprod' => $query,'header' => $headers,
-                'sub_path_admin'=>$this->sub_path_admin,]);
+                'sub_path_admin'=>$this->sub_path_admin(),]);
                     }
                     if ($pMin !== '0' && $pMax !== '0') {
                         $query = $this->prod->select_distinct_groundType_communes_pMin_pMax_dif_0_prod($gT,$groundType,$communes,$pMax,$pMin);
                         return view($viewPage, [$gT => $selectGround_typetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'allprod' => $query,'header' => $headers,
-                'sub_path_admin'=>$this->sub_path_admin,]);
+                'sub_path_admin'=>$this->sub_path_admin(),]);
                     }
                 }
             } catch (ValidationException $e) {

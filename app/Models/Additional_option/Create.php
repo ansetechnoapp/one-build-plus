@@ -22,14 +22,14 @@ trait Create
         return $additional_option;
     }
 
-    public function createAdditional_option2($request)
+    public function createAdditional_option2($request,$prod_id) 
     {
         return Additional_option::create([
             'registration_andf' => $request->registration_andf,
             'formality_fees' => $request->formality_fees,
             'notary_fees' => $request->notary_fees,
             'payment_frequency' => $request->payment_frequency,
-            'prod_id' => $request->prod_id,
+            'prod_id' => $prod_id,
             'users_id' => $request->user_id,
         ]);
     }

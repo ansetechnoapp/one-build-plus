@@ -32,7 +32,7 @@
                     </div>
 
                     <form class="ltr:text-left rtl:text-right" method="POST"
-                        action="{{ route('generateDevisForProperty') }}">
+                        action="{{ route('generateDevisForProperty') }}"> 
                         @csrf
                         <div class="grid grid-cols-1">
 

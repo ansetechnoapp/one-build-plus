@@ -54,6 +54,6 @@ class Devis extends Model
         $devis->user()->associate($user);
         $devis->additional_option()->associate($additional_option);
         $devis->save();
-        return $devis;
+        return $devis; 
     }
 }

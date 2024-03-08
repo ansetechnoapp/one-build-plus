@@ -41,8 +41,8 @@ class insert extends Controller
                     $request->validate($rules, $messages);
                     // dd($price,$prod_id,$user_id,$registration_andf,$formality_fees,$notary_fees,$payment_frequency,$montant);
 
-                    $insert =$this->Add_opt->createAdditional_option2($request);
-                    $this->devi->createDevis($request,$prod_id,$insert);
+                    $insert =$this->Add_opt->createAdditional_option2($request,$prod_id);
+                    $this->devi->createDevis($request,$user_id,$insert);
 
                     return redirect()->route('dashboard.home');
                 } catch (ValidationException $e) {

@@ -41,7 +41,7 @@
                                         </div>
                                         @endisset
                                         <form data-bitwarden-watching="1" method="POST"
-                                            action="{{ route('account.security.ChangePassword') }}">
+                                            action="{{ route('admin.account.security.ChangePassword') }}">
                                             @csrf
                                             <!-- Form Group (current password)-->
                                             <div class="mb-3">

@@ -68,8 +68,8 @@ class account extends Controller
         return $this->saveprofilandupdate($request,'dashboard.profil');
     }
 
-    public function ChangePassword(Request $request)
-    {
+    public function ChangePassword(Request $request,$pathView1)
+    { 
 
 
         $oldPassword = $request->oldPassword;
@@ -102,14 +102,14 @@ class account extends Controller
                 if ($currentPasswordStatus) {
                     $this->Users->UpdatePasswordUser(Auth::user()->id, hash::make($newPasswordp));
                     $oldpasswordCorrect = [
-                        'parametre1' => 'Votre mots de passe a été mise a jour',
+                        'parametre1' => 'Votre mots de passe a été mise a jour','sub_path_admin' => $this->sub_path_admin()
                     ];
-                    return view('dashboard.account_security.index', $oldpasswordCorrect);
+                    return view($pathView1, $oldpasswordCorrect);
                 } else {
                     $oldpasswordCorrect = [
-                        'parametre1' => 'Votre mots de passe actuel n\'est pas correct',
+                        'parametre1' => 'Votre mots de passe actuel n\'est pas correct','sub_path_admin' => $this->sub_path_admin()
                     ];
-                    return view('dashboard.account_security.index', $oldpasswordCorrect);
+                    return view($pathView1, $oldpasswordCorrect);
                 }
             } catch (ValidationException $e) {
                 // Gestion de l'exception ValidationException ici (par exemple, affichage des messages d'erreur)
@@ -123,9 +123,9 @@ class account extends Controller
             }
         } else {
             $champVide = [
-                'parametre1' => 'Verifier que tous les champs soit remplir',
+                'parametre1' => 'Verifier que tous les champs soit remplir','sub_path_admin' => $this->sub_path_admin()
             ];
-            return view('dashboard.account_security.index', $champVide);
+            return view($pathView1, $champVide);
         }
     }
     public function userDisable($user_id)

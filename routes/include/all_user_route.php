@@ -11,7 +11,7 @@ Route::middleware(['auth', 'isActive'])->group(function () {
         return view('dashboard.billing_history.index');
     })->name('dashboard.billing.history'); */
     Route::get('/dashboard.account_security',[\App\Http\Controllers\dashboard\account_security\index::class, 'gaccountSecurity2'])->name('dashboard.security');
-    Route::match(array('GET', 'POST'), '/ChangePassword', [\App\Http\Controllers\save\account::class, 'ChangePassword'])->name('account.security.ChangePassword');
+    Route::match(array('GET', 'POST'), '/ChangePassword', [\App\Http\Controllers\dashboard\account_security\index::class, 'UserChangePassword'])->name('account.security.ChangePassword');
     Route::match(array('GET', 'POST'), '/dashboard-payment.{id}.{price}', [\App\Http\Controllers\prod\select::class, 'receptiondata1'])->name('dashboard.paymnt');
     Route::post('/dashboard-paymnt', [\App\Http\Controllers\prod\insert::class, 'generateDevisForProperty'])->name('generateDevisForProperty');
     Route::match(array('GET', 'POST'), '/Logout', [\App\Http\Controllers\Auth\Logout::class, 'logout'])->name('Logout');

@@ -66,4 +66,6 @@ Route::middleware(['auth', 'isActive', 'admin'])->prefix('admin')->name('admin.'
     Route::post('/saveImg', [\App\Http\Controllers\dashboard\admin\profil\index::class, 'adminsaveImage'])->name('save.profil.img');
     Route::post('/saveprofilandupdate', [\App\Http\Controllers\dashboard\admin\profil\index::class, 'adminsaveprofilandupdate'])->name('saveprofilandupdate');
     Route::get('/dashboard_account_security',[\App\Http\Controllers\dashboard\admin\account_security\index::class, 'admingaccountSecurity'])->name('dashboard.security');
+    Route::match(array('GET', 'POST'), '/ChangePassword', [\App\Http\Controllers\dashboard\admin\account_security\index::class, 'adminChangePassword'])->name('account.security.ChangePassword');
+
 });

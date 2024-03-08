@@ -43,7 +43,7 @@ class FormLogin extends Controller
 
     public function isactive($email){
         $isactive = '1';
-        if (!$this->Users->VerifyUserExist($email)) {
+        if ($this->Users->VerifyUserExist($email)) {
             $this->Users-> Update_col_User('email',$email,$isactive,'isactive');
             return redirect()->route('auth-login');
         }

@@ -93,7 +93,7 @@
                                                 <div class="col-xxl-6 col-xl-8">
                                                     {{-- <h3 class="text-primary">Step 1</h3> --}}
                                                     <h1 class="card-title mb-4">Avis client</h1>
-                                                    <form action="{{ route('admin.dashboard.save.commentUser') }}"
+                                                    <form action="{{ route('dashboard.save.commentUser') }}"
                                                         method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="mb-3">

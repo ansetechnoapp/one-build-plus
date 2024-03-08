@@ -94,7 +94,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">Détails du compte</div>
                                     <div class="card-body">
-                                        <form method="POST" action="{{ route('saveprofilandupdate') }}">
+                                        <form method="POST" action="{{ route('admin.saveprofilandupdate') }}">
                                             @csrf
                                             <!-- Form Group (username)-->
                                             <!-- Form Row-->

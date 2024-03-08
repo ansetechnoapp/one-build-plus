@@ -12,23 +12,16 @@ use Illuminate\Validation\ValidationException;
 
 class account extends Controller
 {
-    public function saveprofilandupdate(Request $request)
+    public function saveprofilandupdate(Request $request,$pathRoute1)
     {
 
-        $firstName = $request->firstName;
-        $lastName = $request->lastName;
         $address = $request->address;
         $email = $request->email;
-        $phone = $request->phone;
-        $birthday = $request->birthday;
         $user_id = Auth::user()->id;
         if (isset($email) || isset($address)) {
             // Définition des règles de validation
             $rules = [
-                'firstName' => ['required', 'string', 'max:100', 'min:2'],
-                'lastName' => ['required', 'string', 'max:100', 'min:2'],
                 'address' => ['required', 'string', 'max:100', 'min:2'],
-                'phone' => ['required', 'string', 'max:100', 'min:6'],
                 /*
                 
                 'postalCode' => ['required', 'string', 'max:100', 'min:2'],
@@ -41,13 +34,8 @@ class account extends Controller
             ];
 
             $messages = [
-                'firstName' => "Entrer votre prénom",
-                'lastName' => "Entrer votre nom.",
                 'email' => "L'adresse email n'est pas valide.",
-                'phone' => "S'il vous plaît, entrez votre numéro de téléphone",
             ];
-
-
             // Validation des données envoyées dans la requête
 
             try {
@@ -65,15 +53,21 @@ class account extends Controller
 
             if ($this->Users->VerifyUserExist($request->email)) {
                 $this->Users->UpdateUser($request, $user_id);
-                return redirect()->route('dashboard.profil');
+                return redirect()->route($pathRoute1);
             } else {
-                return redirect()->route('dashboard.profil');
+                return redirect()->route($pathRoute1);
             }
         } else {
 
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
     }
+
+    public function Usersaveprofilandupdate(Request $request)
+    {
+        return $this->saveprofilandupdate($request,'dashboard.profil');
+    }
+
     public function ChangePassword(Request $request)
     {
 
@@ -106,7 +100,7 @@ class account extends Controller
 
                 $currentPasswordStatus = Hash::check($oldPassword, auth()->user()->password);
                 if ($currentPasswordStatus) {
-                    $this->Users->UpdatePasswordUser(Auth::user()->id,hash::make($newPasswordp));
+                    $this->Users->UpdatePasswordUser(Auth::user()->id, hash::make($newPasswordp));
                     $oldpasswordCorrect = [
                         'parametre1' => 'Votre mots de passe a été mise a jour',
                     ];
@@ -137,15 +131,17 @@ class account extends Controller
     public function userDisable($user_id)
     {
         $isactive = '2';
-        $this->Users-> Update_col_User('id',$user_id,$isactive,'isactive');
-        return redirect()->route('admin.list_user',[
-        'sub_path_admin'=>$this->sub_path_admin,]);
+        $this->Users->Update_col_User('id', $user_id, $isactive, 'isactive');
+        return redirect()->route('admin.list_user', [
+            'sub_path_admin' => $this->sub_path_admin(),
+        ]);
     }
     public function userActivate($user_id)
     {
         $isactive = '1';
-        $this->Users-> Update_col_User('id',$user_id,$isactive,'isactive');
-        return redirect()->route('admin.list_user',[
-        'sub_path_admin'=>$this->sub_path_admin,]);
+        $this->Users->Update_col_User('id', $user_id, $isactive, 'isactive');
+        return redirect()->route('admin.list_user', [
+            'sub_path_admin' => $this->sub_path_admin(),
+        ]);
     }
 }

@@ -56,4 +56,5 @@ class index extends Controller
     {
         return $this->saveImage($request,'dashboard.profil',$user);
     }
+    
 }

@@ -62,7 +62,8 @@ Route::middleware(['auth', 'isActive', 'admin'])->prefix('admin')->name('admin.'
     Route::post('/rent_form_save_prod_step2', [\App\Http\Controllers\dashboard\admin\Rental_management\form\step2::class, 'save_or_update_form'])->name('rent.form.save.prod.step2');
     Route::post('/rent_form_save_prod_step3', [\App\Http\Controllers\dashboard\admin\Rental_management\form\step3::class, 'save_or_update_form'])->name('rent.form.save.prod.step3');
 
-    Route::get('/dashboard.account.profil', [\App\Http\Controllers\dashboard\admin\profil\index::class, 'admingetaccountprofil'])->name('dashboard.profil');
-    Route::post('/saveImg', [\App\Http\Controllers\dashboard\profil\index::class, 'adminsaveImage'])->name('save.profil.img');
-    Route::get('/dashboard.account_security',[\App\Http\Controllers\dashboard\admin\account_security\index::class, 'admingaccountSecurity'])->name('dashboard.security');
+    Route::get('/dashboard_account_profil', [\App\Http\Controllers\dashboard\admin\profil\index::class, 'admingetaccountprofil'])->name('dashboard.profil');
+    Route::post('/saveImg', [\App\Http\Controllers\dashboard\admin\profil\index::class, 'adminsaveImage'])->name('save.profil.img');
+    Route::post('/saveprofilandupdate', [\App\Http\Controllers\dashboard\admin\profil\index::class, 'adminsaveprofilandupdate'])->name('saveprofilandupdate');
+    Route::get('/dashboard_account_security',[\App\Http\Controllers\dashboard\admin\account_security\index::class, 'admingaccountSecurity'])->name('dashboard.security');
 });

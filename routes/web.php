@@ -23,7 +23,7 @@ Route::get('/testmodelrequest2', [\App\Http\Controllers\PaymentController::class
 Route::post('/subscribe', [\App\Http\Controllers\Auth\FormRegister::class, 'subscribe'])->name('subscribe');
 Route::get('/all_prod', [\App\Http\Controllers\prod\insert::class, 'show'])->name('all_prod');
 Route::post('/search_info_prod', [\App\Http\Controllers\show_all_product\index::class, 'selectsearch'])->name('search.prod');
-Route::post('/search.info.prod.location', [\App\Http\Controllers\rent\index::class, 'selectsearch'])->name('search_location');
+Route::post('/search_info_prod_location', [\App\Http\Controllers\rent\index::class, 'selectsearch'])->name('search.location');
 
 Route::get('/', [\App\Http\Controllers\home\index::class, 'requestForHome'])->name('home');
 Route::get('/faqs', [\App\Http\Controllers\faqs\index::class, 'show'])->name('faqs');

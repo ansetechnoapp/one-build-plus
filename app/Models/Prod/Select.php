@@ -24,7 +24,7 @@ trait select
     {
         return prod::distinct()->select('department', $this->cM)->where('location', $location)->get();
     }
-    public function select_Commune_locationType()
+    public function select_locationType()
     {
         return prod::distinct()->select('locationType')->get();
     }
@@ -56,51 +56,57 @@ trait select
     {
         return prod::orderBy('id', $orderBy)->take($num)->get();
     }
-    public function select_distinct_groundType_prod($ground_type,$groundType)
+    public function select_distinct_groundType_prod($ground_type,$groundType,$location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
+            ->where('location', $location)
             ->distinct()
             ->get();
     }
-    public function select_distinct_communes_prod($communes)
+    public function select_distinct_communes_prod($communes,$location)
     {
         return prod::select('*')
             ->where($this->cM, $communes)
+            ->where('location', $location)
             ->distinct()
             ->get();
     }
-    public function select_distinct_groundType_communes_prod($ground_type,$groundType, $communes)
-    {
-        return prod::select('*')
-            ->where($ground_type, $groundType)
-            ->where($this->cM, $communes)
-            ->distinct()
-            ->get();
-    }
-    public function select_distinct_groundType_communes_pMax_Egal_0_prod($ground_type,$groundType, $communes, $pMin)
+    public function select_distinct_groundType_communes_prod($ground_type,$groundType, $communes, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
+            ->where('location', $location)
+            ->distinct()
+            ->get();
+    }
+    public function select_distinct_groundType_communes_pMax_Egal_0_prod($ground_type,$groundType, $communes, $pMin, $location)
+    {
+        return prod::select('*')
+            ->where($ground_type, $groundType)
+            ->where($this->cM, $communes)
+            ->where('location', $location)
             ->wherebetween('price', [$pMin, '0'])
             ->distinct()
             ->get();
     }
-    public function select_distinct_groundType_communes_pMin_Egal_0_prod($ground_type,$groundType, $communes, $pMax)
+    public function select_distinct_groundType_communes_pMin_Egal_0_prod($ground_type,$groundType, $communes, $pMax, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
+            ->where('location', $location)
             ->wherebetween('price', ['0', $pMax])
             ->distinct()
             ->get();
     }
-    public function select_distinct_groundType_communes_pMin_pMax_dif_0_prod($ground_type,$groundType, $communes, $pMax, $pMin)
+    public function select_distinct_groundType_communes_pMin_pMax_dif_0_prod($ground_type,$groundType, $communes, $pMax, $pMin, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
+            ->where('location', $location)
             ->wherebetween('price', [$pMin, $pMax])
             ->distinct()
             ->get();

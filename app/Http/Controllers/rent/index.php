@@ -22,32 +22,35 @@ class index extends Controller
             $product->img;
         }
 
-        return view('rent.index', ['locationType' => $selectlocationTypetableProdForHome, 'commune' => $selectCommunetableProdForHome, 'allprod' => $posts, 'posts' => $commune]);
+        return view('rent.index', ['locationType' => $selectlocationTypetableProdForHome, 'communes' => $selectCommunetableProdForHome, 'allprod' => $posts, 'posts' => $commune]);
     }
     public function selectsearch(Request $request)
     {
-        $gT = 'locationType';
-        $groundType = $request->locationType;
+        $gT = 'locationType'; 
+        $locationType = $request->locationType;
         $communes = $request->communes;
         $viewPage = 'show_prod_location.index';
         $pMax = $request->price_max;
         $pMin = $request->price_min;
         $selectCommunetableProdForHome = $this->prod->select_Commune_location_table('oui');
-        $selectlocationTypetableProdForHome = $this->prod->select_Commune_locationType();
+        $selectlocationTypetableProdForHome = $this->prod->select_locationType();
         if ($pMin == null && $pMax == null || $pMin == null && $pMax == '0' || $pMin == '0' && $pMax == null || $pMin == '0' && $pMax == '0') {
             $pMin = '0';
             $pMax = '0';
-            if ($communes == null && $groundType !== null) {
-                $query = $this->prod->select_distinct_groundType_prod($gT, $groundType);
+            if ($communes == null && $locationType !== null) {
+                $query = $this->prod->select_distinct_groundType_prod($gT, $locationType,'oui');
+                // dd($query,'aa5');
                 return view($viewPage, [$gT => $selectlocationTypetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'posts' => $query]);
             }
-            if ($groundType == null && $communes !== null) {
-                $query = $this->prod->select_distinct_communes_prod($communes);
+            if ($locationType == null && $communes !== null) {
+                $query = $this->prod->select_distinct_communes_prod($communes,'oui');
+                // dd($query,'aa4');
                 return view($viewPage, [$gT => $selectlocationTypetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'posts' => $query]);
             }
 
-            if ($communes !== null && $groundType !== null) {
-                $query = $this->prod->select_distinct_groundType_communes_prod($gT, $groundType, $communes);
+            if ($communes !== null && $locationType !== null) {
+                $query = $this->prod->select_distinct_groundType_communes_prod($gT, $locationType, $communes,'oui');
+                // dd($query,'aa3');
                 return view($viewPage, [$gT => $selectlocationTypetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'posts' => $query]);
             }
         } else {
@@ -67,15 +70,18 @@ class index extends Controller
                     return redirect()->back()->withErrors(['comparePrice' => 'Le prix minimum ne peut pas être supérieur au prix maximum.']);
                 } else {
                     if ($pMax == '0' && $pMin !== '0') {
-                        $query = $this->prod->select_distinct_groundType_communes_pMax_Egal_0_prod($gT, $groundType, $communes, $pMin);
+                        $query = $this->prod->select_distinct_groundType_communes_pMax_Egal_0_prod($gT, $locationType, $communes, $pMin,'oui');
+                        // dd($query,'aa2');
                         return view($viewPage, [$gT => $selectlocationTypetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'posts' => $query]);
                     }
                     if ($pMin == '0' && $pMax !== '0') {
-                        $query = $this->prod->select_distinct_groundType_communes_pMin_Egal_0_prod($gT, $groundType, $communes, $pMax);
+                        $query = $this->prod->select_distinct_groundType_communes_pMin_Egal_0_prod($gT, $locationType, $communes, $pMax,'oui');
+                        // dd($query,'aa1');
                         return view($viewPage, [$gT => $selectlocationTypetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'posts' => $query]);
                     }
                     if ($pMin !== '0' && $pMax !== '0') {
-                        $query = $this->prod->select_distinct_groundType_communes_pMin_pMax_dif_0_prod($gT, $groundType, $communes, $pMax, $pMin);
+                        $query = $this->prod->select_distinct_groundType_communes_pMin_pMax_dif_0_prod($gT, $locationType, $communes, $pMax, $pMin,'oui');
+                        // dd($query,'aa');
                         return view($viewPage, [$gT => $selectlocationTypetableProdForHome, $this->cM => $selectCommunetableProdForHome, 'posts' => $query]);
                     }
                 }

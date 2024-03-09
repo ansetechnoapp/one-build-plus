@@ -16,7 +16,7 @@
                     class="p-6 bg-white dark:bg-slate-900 rounded-ss-none rounded-se-none md:rounded-se-xl rounded-xl shadow-md dark:shadow-gray-700">
                     <div class="" id="buy-home" role="tabpanel" aria-labelledby="buy-home-tab">
 
-                        <form method="POST" action="{{ route('search_location') }}">
+                        <form method="POST" action="{{ route('search.location') }}">
                             @csrf
                             <div class="registration-form text-dark text-start">
                                 @if ($errors->has('comparePrice'))
@@ -52,9 +52,10 @@
                     font-weight: bold;
                     border: none;
                     outline: none;">
-                                                @isset($commune)
-                                                    <option value="">selectionnez une commune</option>
-                                                    @foreach ($commune as $result)
+                                                <option value>selectionnez une commune</option>
+                                                @isset($communes)
+
+                                                    @foreach ($communes as $result)
                                                         <option name="{{ $result->communes }}">{{ $result->communes }}
                                                         </option>
                                                     @endforeach
@@ -137,8 +138,8 @@
                     border: none;
                     outline: none;">
 
+                                                <option value>Fait votre choix</option>
                                                 @isset($locationType)
-                                                    <option>Fait votre choix</option>
                                                     @foreach ($locationType as $result)
                                                         <option name="{{ $result->locationType }}">
                                                             {{ $result->locationType }}

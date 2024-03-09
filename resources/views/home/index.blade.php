@@ -73,7 +73,7 @@
                                     class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                     <div class="relative">
                                         @if ($data->img)
-                                            <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                            <img style="height: 265px !important" src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
                                                 alt="Image du produit">
                                         @else
                                             Aucune image disponible
@@ -89,7 +89,8 @@
                                     <div class="p-6">
                                         <div class="pb-6">
                                             <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
-                                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">
+                                                {{ Str::limit($data->address, $limit = 30, $end = '...') }}</a>
                                         </div>
 
                                         <ul
@@ -142,7 +143,7 @@
                                     class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-md dark:hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500 m-3">
                                     <div class="relative">
                                         @if ($data->img)
-                                            <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                            <img style="height: 265px !important" src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
                                                 alt="Image du produit">
                                         @else
                                             Aucune image disponible
@@ -158,7 +159,7 @@
                                     <div class="p-6">
                                         <div class="pb-6">
                                             <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
-                                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                                class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ Str::limit($data->address, $limit = 30, $end = '...') }}</a>
                                         </div>
 
                                         <ul
@@ -221,7 +222,7 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                    <img style="height: 265px !important" src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
                                         alt="Image du produit">
                                 @else
                                     Aucune image disponible
@@ -231,7 +232,7 @@
                             <div class="p-6">
                                 <div class="pb-6">
                                     <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
-                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ Str::limit($data->address, $limit = 30, $end = '...') }}</a>
                                 </div>
 
                                 <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -302,7 +303,7 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                    <img style="height: 265px !important" src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
                                         alt="Image du produit">
                                 @else
                                     Aucune image disponible
@@ -312,7 +313,7 @@
                             <div class="p-6">
                                 <div class="pb-6">
                                     <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
-                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ Str::limit($data->address, $limit = 30, $end = '...') }}</a>
                                 </div>
 
                                 <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -352,7 +353,7 @@
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
                                 @if ($data->img)
-                                    <img src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                    <img style="height: 265px !important" src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
                                         alt="Image du produit">
                                 @else
                                     Aucune image disponible
@@ -361,7 +362,7 @@
                             <div class="p-6">
                                 <div class="pb-6">
                                     <a href="{{ route('property_detail', ['id' => $data->id, 'price' => $data->price]) }}"
-                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $data->address }}</a>
+                                        class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ Str::limit($data->address, $limit = 30, $end = '...') }}</a>
                                 </div>
 
                                 <ul

@@ -122,7 +122,7 @@
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $post->address }}</a>
+                                <a href="property-detail.html" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ Str::limit($post->address, $limit = 30, $end = '...') }}</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">

@@ -78,7 +78,7 @@
 
                                         <div class="mb-5">
                                             <label for="comments" class="font-medium">Votre commentaire : </label>
-                                            <textarea name="comments" id="comments" class="form-input mt-2 textarea" placeholder="Message :"></textarea>
+                                            <textarea name="comments" id="comment" class="form-input mt-2 textarea" placeholder="Message :"></textarea>
                                             @if ($errors->has('comments'))
                                                 <div class="alert alert-danger">{{ $errors->first('comments') }}</div>
                                             @endif
@@ -136,7 +136,7 @@
 
                                         <div class="mb-5">
                                             <label for="comments" class="font-medium">Votre commentaire : </label>
-                                            <textarea name="comments" id="comments" class="form-input mt-2 textarea" placeholder="Message :"></textarea>
+                                            <textarea name="comments" id="comment" class="form-input mt-2 textarea" placeholder="Message :"></textarea>
                                             @if ($errors->has('comments'))
                                                 <div class="alert alert-danger">{{ $errors->first('comments') }}</div>
                                             @endif

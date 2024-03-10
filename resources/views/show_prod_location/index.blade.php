@@ -45,16 +45,22 @@
                     @foreach ($posts as $post)
                     <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
-                            <img src="assets/images/property/1.jpg" alt="">
+                            @if ($post->img)
+                                            <img style="height: 265px !important" src="{{ asset('storage/' . (isset($post->img->main_image) ? $post->img->main_image : '')) }}"
+                                                alt="Image du produit">
+                                        @else
+                                            Aucune image disponible
+                                        @endif
 
-                            <div class="absolute top-4 end-4">
+                            {{-- <div class="absolute top-4 end-4">
                                 <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i class="mdi mdi-heart mdi-18px"></i></a>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="p-6">
                             <div class="pb-6">
-                                <a href="{{ route('property_detail', ['id' => $post->id, 'price' => $post->price]) }}" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">{{ $post->address }}</a>
+                                <a href="{{ route('property_detail', ['id' => $post->id, 'price' => $post->price]) }}" class="text-lg hover:text-green-600 font-medium ease-in-out duration-500">
+                                   {{ Str::limit($post->address, $limit = 30, $end = '...') }}</a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -80,7 +86,7 @@
                                     <p class="text-lg font-medium">{{ $post->price }} fcfa</p>
                                 </li>
 
-                                <li>
+                                {{-- <li>
                                     <span class="text-slate-400">Rating</span>
                                     <ul class="text-lg font-medium text-amber-400 list-none">
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
@@ -90,7 +96,7 @@
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                         <li class="inline text-black dark:text-white">5.0(30)</li> 
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div><!--end property content-->

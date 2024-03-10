@@ -61,6 +61,7 @@ trait select
         return prod::select('*')
             ->where($ground_type, $groundType)
             ->where('location', $location)
+            ->with('img')
             ->distinct()
             ->get();
     }
@@ -69,6 +70,7 @@ trait select
         return prod::select('*')
             ->where($this->cM, $communes)
             ->where('location', $location)
+            ->with('img')
             ->distinct()
             ->get();
     }
@@ -78,6 +80,7 @@ trait select
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
             ->where('location', $location)
+            ->with('img')
             ->distinct()
             ->get();
     }
@@ -88,6 +91,7 @@ trait select
             ->where($this->cM, $communes)
             ->where('location', $location)
             ->wherebetween('price', [$pMin, '0'])
+            ->with('img')
             ->distinct()
             ->get();
     }
@@ -98,6 +102,7 @@ trait select
             ->where($this->cM, $communes)
             ->where('location', $location)
             ->wherebetween('price', ['0', $pMax])
+            ->with('img')
             ->distinct()
             ->get();
     }
@@ -108,6 +113,7 @@ trait select
             ->where($this->cM, $communes)
             ->where('location', $location)
             ->wherebetween('price', [$pMin, $pMax])
+            ->with('img')
             ->distinct()
             ->get();
     }

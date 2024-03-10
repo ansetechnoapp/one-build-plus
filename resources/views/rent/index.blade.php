@@ -63,12 +63,13 @@
                         <div
                             class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                             <div class="relative">
-                                {{-- <img src="{{ $allprod->img->main_image }}" alt=""> --}}
+
                                 @if ($data->img)
-                                    <img src="storage/{{ $data->img->main_image }}" alt="Image du produit">
-                                @else
-                                    Aucune image disponible
-                                @endif
+                                            <img style="height: 265px !important" src="{{ asset('storage/' . (isset($data->img->main_image) ? $data->img->main_image : '')) }}"
+                                                alt="Image du produit">
+                                        @else
+                                            Aucune image disponible
+                                        @endif
 
                                 {{-- <div class="absolute top-4 end-4">
                             <a href="javascript:void(0)"

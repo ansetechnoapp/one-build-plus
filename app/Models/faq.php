@@ -2,16 +2,67 @@
 
 namespace App\Models;
 
-use App\Models\Faq\Create;
-use App\Models\Faq\Delete;
-use App\Models\Faq\Select;
-use App\Models\Faq\Update;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+
+trait CreateFaq
+{
+    
+    public function createFaq($request)
+    {
+        return Faq::create([
+            'title_id' => $request->title_id,
+            'question' => $request->question,
+            'answer' => $request->answer,
+        ]);
+    }
+}
+
+trait DeleteFaq
+{
+
+    public function DeleteFaq($col,$id)
+    {
+        return Faq::where($col, $id)->delete();
+    }
+}
+
+trait SelectFaq
+{
+
+    public function selectFaqTitle($title_id)
+    {
+        return Faq::where('title_id', $title_id)->get();
+    }
+    public function findFaq($col,$data)
+    {
+         return Faq::where($col, $data)->first();
+    }
+    public function getCollectionFaq($col,$data)
+    {
+         return Faq::where($col, $data)->get();
+    }
+}
+
+trait UpdateFaq
+{
+
+    public function UpdateFaq($request)
+    {
+        $prod = $this->findFaq('id', $request->id);
+        $prod->update([
+            'title_id' => $request->title_id,
+            'question' => $request->question,
+            'answer' => $request->answer,
+        ]);
+        return $prod;
+    }
+}
+
 class Faq extends Model
 {
-    use HasFactory,Select,Create,Update,Delete;
+    use HasFactory,CreateFaq,DeleteFaq,SelectFaq,UpdateFaq;
     protected $table = 'faq';
 
 

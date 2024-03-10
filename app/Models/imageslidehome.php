@@ -2,15 +2,32 @@
 
 namespace App\Models;
 
-use App\Models\Imageslidehome\Select;
-use App\Models\Imageslidehome\Update;
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+trait SelectIsh
+{
+
+    public function SelectImageslidehome($col,$value)
+    {
+        return Imageslidehome::where($col, $value)->first();
+        // return Imageslidehome::find(1);
+    }
+}
+
+trait UpdateIsh
+{
+
+    public function UpdateImageslidehome($imgField,$imgPath)
+    {
+        return Imageslidehome::updateOrCreate(['id' => 1], [$imgField => $imgPath]);
+    }
+}
 
 class Imageslidehome extends Model
 {
-    use HasFactory,Select,Update;
+    use HasFactory,SelectIsh,UpdateIsh;
     protected $table = 'imageslidehome';
 
 

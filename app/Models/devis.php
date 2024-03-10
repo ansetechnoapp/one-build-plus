@@ -4,14 +4,48 @@ namespace App\Models;
 
 use App\Models\Prod;
 use App\Models\User;
-use App\Models\Devis\Create;
-use App\Models\Devis\Select;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+trait CreateDevis
+{
+    
+
+    public function createDevis($request,$prod_id,$insert)
+    {
+        $devis = new devis();
+        $devis->price = $request->price;
+        $devis->montant = $request->montant;
+        $devis->prod_id = $prod_id;
+        $devis->users_id = $request->user_id;
+        $devis->dateDevis = now()->format('Y-m-d');
+        $devis->dateExpiration = now()->addDays(7)->format('Y-m-d');
+        $devis->additional_option()->associate($insert); // Associe le modèle additional_option à la relation
+        $devis->save();
+        return $devis;
+    }
+}
+
+trait SelectDevis
+{
+
+    public function findDevis($prod_id,$user_id)
+    {
+        return Devis::where('prod_id', $prod_id)->where('users_id', $user_id)->first();
+    }
+    public function findDevis_withAll_TableForUsers_id($user_id)
+    {
+        return Devis::with('prod', 'additional_option', 'user', 'fedapay')->where('users_id', $user_id)->get();
+    }
+    public function findDevis_withAll_Table()
+    {
+        return Devis::with('prod', 'additional_option', 'user', 'fedapay')->get();
+    }
+}
+
 class Devis extends Model
 {
-    use HasFactory,Create,Select;
+    use HasFactory,CreateDevis,SelectDevis;
     protected $table = 'devis';
 
     /**

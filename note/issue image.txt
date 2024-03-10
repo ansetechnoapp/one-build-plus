@@ -1,0 +1,2 @@
+J'ai eu un problème avec l'affichage de l'image du côté serveur, c'était parce que en local le 
+dossier public est différent de l'emplacement du dossier public sur le serveur.

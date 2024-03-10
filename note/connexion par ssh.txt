@@ -1,0 +1,18 @@
+se connecter par ssh sur hostinger pour installer les dépendances d'une application sans installer une clé SSH:
+-aller sur hostinger et activer l'access ssh
+-ouvrir le terminal
+-tapez les informations de connexion exemple : ssh -p 65002 u212330119@89.117.9.183
+-tapez le mot de passe pour se connecter par ssh: kdkkqqdjq
+-spécifier un chemin pour l'installation de composer :
+Etape:
+>cd domains : ce déplacer dans le dossier domains
+>cd txbest.online/public_html/obp/ : ce déplacer dans le dossier txbest.online/public_html/obp/
+>mkdir OBP : pour vérifier la ou le dossier OBP a été créer sur le serveur
+-tapez composer2 install
+-tapez composer2 update
+
+
+
+info:
+>ls : 	Afficher le contenu du répertoire (lister les noms des fichiers).
+>pwd : Afficher le répertoire actuel (chemin complet vers l'endroit où vous vous trouvez actuellement).

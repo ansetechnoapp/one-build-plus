@@ -1,0 +1,13 @@
+fait corresponde la view et les composant;view correspondant au controller
+correction et optimisation recherche (composant)
+mettre la variable {{$sub_path_admin}} au composant head de toute les pages
+pagination
+un bar de chargement qui s'affiche quand on click sur les formulaires
+vu des articles sur la page property-detail déja fait mais les trois articles doit être présenté selon une séléction au harzard
+installer pint et les différents choses pour la gestion des erreurs (voir la vidéo)
+S'abonner à la newsletter ! (Abonnez-vous pour recevoir les dernières mises à jour et informations.)
+affichage ou remplacement du tableau partout
+aficher les images a la places des inputs pour les mises a jour des images
+php artisan seeder et factory
+portefueil en react
+api pour version mobile

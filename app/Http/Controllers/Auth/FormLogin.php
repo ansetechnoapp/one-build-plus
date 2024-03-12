@@ -36,14 +36,14 @@ class FormLogin extends Controller
     }
 
     public function show_list_user(){
-        $posts = $this->Users->all();
+        $posts = $this->Users->AllInfoUser($this->cache_time());
         return view('dashboard.admin.list_user.index', ['alluser' => $posts,
         'sub_path_admin'=>$this->sub_path_admin(),]);
     }
 
     public function isactive($email){
         $isactive = '1';
-        if ($this->Users->VerifyUserExist($email)) {
+        if ($this->Users->VerifyUserExist($email,$this->cache_time())) {
             $this->Users-> Update_col_User('email',$email,$isactive,'isactive');
             return redirect()->route('auth-login');
         }

@@ -14,7 +14,7 @@ class index extends Controller
 {
     public function getaccountprofil($txt1)
     {
-        $donnees = $this->Users->findUser('email', Auth::user()->email);
+        $donnees = $this->Users->findUser('email', Auth::user()->email,$this->cache_time());
         if ($donnees) {
             return view($txt1, ['donnees' => $donnees, 'sub_path_admin' => $this->sub_path_admin()]);
         } else {

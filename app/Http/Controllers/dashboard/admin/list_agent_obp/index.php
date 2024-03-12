@@ -10,7 +10,7 @@ class index extends Controller
 {
     public function show()
     {
-        return view('dashboard.admin.list_agent_obp.index', ['members' => $this->Users->selectCollection('agentOBP','oui'),
+        return view('dashboard.admin.list_agent_obp.index', ['members' => $this->Users->selectCollection('agentOBP','oui',$this->cache_time()), 
         'sub_path_admin'=>$this->sub_path_admin(),]);
     }
     public function  agentOBP_active($id)

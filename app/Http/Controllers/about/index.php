@@ -14,7 +14,7 @@ class index extends Controller
    {
       return view('about.index', [
          'selectCommment' => $this->Cm->selectCommmentForUserStatutEqualOne(),
-         'membersOBP' => $this->Users->selectCollection('agentOBP','oui'),
+         'membersOBP' => $this->Users->selectCollection('agentOBP','oui',$this->cache_time()),
       ]);
    }
 }

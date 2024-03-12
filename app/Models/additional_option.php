@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Prod;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,14 +37,24 @@ trait CreateA_optn
             'users_id' => $request->user_id,
         ]);
     }
-}
+} 
 
 trait SelectA_optn
 {
 
     public function findAdditional_option($prod_id,$user_id)
     {
-        return Additional_option::where('prod_id', $prod_id)->where('users_id', $user_id)->first();
+        // $minutes = 5; // Cache les données pendant 5 minutes
+        // $minutes = 60; // Cache les données pendant 1 heure
+        // $minutes = 1440; // Cache les données pendant 24 heures (24 heures * 60 minutes)
+        // $minutes = 10080; // Cache les données pendant 7 jours (7 jours * 24 heures * 60 minutes)
+        // $minutes = 43200; // Cache les données pendant 30 jours (30 jours * 24 heures * 60 minutes)
+
+        // $cacheKey = 'first_adp_' . $prod_id . '_' . $user_id;
+
+        // return Cache::remember($cacheKey, $minutes, function () use ($prod_id, $user_id) {
+            return Additional_option::where('prod_id', $prod_id)->where('users_id', $user_id)->first();
+        // });
     }
 }
 

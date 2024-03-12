@@ -51,7 +51,7 @@ class account extends Controller
                     ->withErrors($errors);
             }
 
-            if ($this->Users->VerifyUserExist($request->email)) {
+            if ($this->Users->VerifyUserExist($request->email,$this->cache_time())) {
                 $this->Users->UpdateUser($request, $user_id);
                 return redirect()->route($pathRoute1);
             } else {

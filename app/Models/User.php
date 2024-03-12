@@ -6,6 +6,7 @@ namespace App\Models;
 
 use FedaPay\FedaPay;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 trait CreateUser
 {
-    
+
     public function createUser($request)
     {
         $user = User::create([
@@ -25,70 +26,91 @@ trait CreateUser
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
         ]);
-
+        cache()->forget('all_user');
         return $user;
     }
 }
 trait SelectUser
 {
 
-    public function VerifyUserExist($email)
+    public function VerifyUserExist($email, $cacheminutes)
     {
         if ($email) {
-            return User::where('email', $email)->exists();
+            $cacheKey = 'first_user_' . $email;
+            return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
+                return User::where('email', $email)->exists();
+            });
         } else {
             if (session::get('user_email')) {
                 $email = session::get('user_email');
-                return User::where('email', $email)->exists();
+                $cacheKey = 'first_user_' . $email;
+                return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
+                    return User::where('email', $email)->exists();
+                });
             } else {
-                dd("L'email n'existe pas");
+                echo "L'email n'existe pas";
             }
         }
     }
-    public function AllInfoUser()
+    public function AllInfoUser($cacheminutes)
     {
-        return User::all();
+        $cacheKey = 'all_user';
+        return Cache::remember($cacheKey, $cacheminutes, function () {
+            return User::all();
+        });
     }
-    public function selectCollection($col,$response)
+    public function selectCollection($col, $response, $cacheminutes)
     {
-        return User::where($col, $response)->get();
+
+        $cacheKey = 'get_user_' . $col . '_' . $response;
+
+        return Cache::remember($cacheKey, $cacheminutes, function () use ($col, $response) {
+            return User::where($col, $response)->get();
+        });
     }
-    public function findUser($col,$data)
+    public function findUser($col, $data, $cacheminutes)
     {
-         return User::where($col, $data)->first();
+        $cacheKey = 'first_user_' . $col . '_' . $data;
+
+        return Cache::remember($cacheKey, $cacheminutes, function () use ($col, $data) {
+            return User::where($col, $data)->first();
+        });
     }
 }
 trait UpdateUser
 {
-    
-    public function Update_col_User($col,$props,$isactive,$update)
+
+    public function Update_col_User($col, $props, $isactive, $update)
     {
+        cache()->flush();
         return User::where($col, $props)->update([
             $update => $isactive,
         ]);
-    } 
-    public function UpdateUser($request,$user_id)
-    {
-        return User::where('id', $user_id)
-        ->update([
-            'firstName' => $request->firstName,
-            'lastName' => $request->lastName,
-            'address' => $request->address,
-            'email' => $request->email,
-            'birthday' => $request->birthday,
-            'phone' => $request->phone,
-        ]);
     }
-    public function UpdatePasswordUser($user_id,$res)
+    public function UpdateUser($request, $user_id)
     {
+        cache()->flush();
+        return User::where('id', $user_id)
+            ->update([
+                'firstName' => $request->firstName,
+                'lastName' => $request->lastName,
+                'address' => $request->address,
+                'email' => $request->email,
+                'birthday' => $request->birthday,
+                'phone' => $request->phone,
+            ]);
+    }
+    public function UpdatePasswordUser($user_id, $res)
+    {
+        cache()->flush();
         return User::findOrFail($user_id)->update([
             'password' => $res,
-        ]); 
+        ]);
     }
 }
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory,Notifiable,CanResetPassword,CreateUser,SelectUser,UpdateUser;
+    use HasApiTokens, HasFactory, Notifiable, CanResetPassword, CreateUser, SelectUser, UpdateUser;
 
     protected $table = 'users';
     /**
@@ -133,7 +155,8 @@ class User extends Authenticatable
         $this->notify(new NewResetPasswordNotification($token));
     }
 
-    public function hasRole(){
+    public function hasRole()
+    {
         return $this->role === 'admin';
     }
     public function isAdmin()
@@ -158,4 +181,3 @@ class User extends Authenticatable
         return $this->hasOne(FedaPay::class, 'users_id');
     }
 }
-

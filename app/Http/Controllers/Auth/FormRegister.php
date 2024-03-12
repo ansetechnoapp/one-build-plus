@@ -53,6 +53,7 @@ class FormRegister extends Controller
 
     public function SaveRegister(Request $request)
     {
+        cache()->forget('first_user_' . $request->email);
         $email = Session::get('user_email');
         $password1 = $request->password;
         $password2 = $request->password_confirm;
@@ -62,7 +63,7 @@ class FormRegister extends Controller
             if ($password1 == $password2) {
                 try {
                     $this->validateUserData($request);
-                    if (!$this->Users->VerifyUserExist($request->email)) {
+                    if (!$this->Users->VerifyUserExist($request->email,$this->cache_time())) {
                         $this->Users->createUser($request);
                         Mail::to($email)
                             ->send(new sendregisteruser($request->all()));
@@ -196,6 +197,7 @@ class FormRegister extends Controller
     }
     public function SaveSignupOneStep(Request $request)
     {
+        cache()->forget('first_user_' . $request->email);
         $lastName = $request->lastName;
         $firstName = $request->firstName;
         $email = $request->email;
@@ -215,7 +217,7 @@ class FormRegister extends Controller
 
             try {
                 $request->validate($rules, $messages);
-                if (!$this->Users->VerifyUserExist($request->email)) {
+                if (!$this->Users->VerifyUserExist($request->email,$this->cache_time())) {
                     Session::put('user_lastName', $lastName);
                     Session::put('user_firstName', $firstName);
                     Session::put('user_email', $email);
@@ -241,9 +243,10 @@ class FormRegister extends Controller
     public function SaveRegisterUserAndProd(Request $request)
     {
 
+        cache()->forget('first_user_' . $request->email);
         if ($request->password == $request->password_confirm) {
             $this->validateUserData($request);
-            if (!$this->Users->VerifyUserExist($request->email)) {
+            if (!$this->Users->VerifyUserExist($request->email,$this->cache_time())) {
                 $user = $this->Users->createUser($request);
                 $additional_option = $this->Add_opt->createadditional_option($request, $user);
                 $this->devi->createDevis($request, $user, $additional_option);

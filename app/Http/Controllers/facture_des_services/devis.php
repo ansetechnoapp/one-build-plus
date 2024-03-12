@@ -21,7 +21,7 @@ class devis extends Controller
         $devis_id = $request->devis_id;
         $prod_id = $request->prod_id;
         $user_id = Auth::user()->id;
-        $user = $this->Users->findUser('id',$user_id);
+        $user = $this->Users->findUser('id',$user_id,$this->cache_time());
         if ($user_id !== null && $prod_id !== null) {
             $additionalOption = $this->Add_opt->findAdditional_option($prod_id, $user_id);
             $getDevis = $this->devi->findDevis($prod_id, $user_id);

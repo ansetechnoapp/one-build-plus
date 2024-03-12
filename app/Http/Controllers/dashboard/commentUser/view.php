@@ -14,7 +14,7 @@ class view extends Controller
     public function view()
     {
         $issetcomment =  $this->Cm->selectCommment('users_id',Auth::user()->id);
-        $infoUser =$this->Users->findUser('id',Auth::user()->id);
+        $infoUser =$this->Users->findUser('id',Auth::user()->id,$this->cache_time());
         return view('dashboard.commentUser.view', ['issetcomment' => $issetcomment, 'infoUser' => $infoUser,
         'sub_path_admin'=>$this->sub_path_admin(),]);
     }
@@ -34,7 +34,7 @@ class view extends Controller
             ];
             try {
                 $request->validate($rules, $messages);
-                if ($this->Users->findUser('id',Auth::user()->id) !== null) {
+                if ($this->Users->findUser('id',Auth::user()->id,$this->cache_time()) !== null) {
                     $this->Users-> Update_col_User('id',Auth::user()->id,$profession,'Profession');
                      $this->Cm->createComment($request,Auth::user()->id);
                     return redirect()->route('dashboard.commentUser');

@@ -47,7 +47,7 @@
                                         <tbody>
                                             @isset($members)
 
-                                                @foreach ($members as $post)
+                                                @foreach ($members['collection'] as $post)
                                                     <tr>
                                                         <td>{{ $post->id }}</td>
                                                         <td>{{ $post->lastName }}</td>

@@ -1,4 +1,5 @@
 fait corresponde la view et les composant;view correspondant au controller
+gestion du cache
 correction et optimisation recherche (composant)
 mettre la variable {{$sub_path_admin}} au composant head de toute les pages
 pagination

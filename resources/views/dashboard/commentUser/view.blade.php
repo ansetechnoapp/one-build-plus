@@ -45,7 +45,7 @@
                                             </thead>
                                             <tbody>
 
-                                                <td>{{ $infoUser->Profession }}</td>
+                                                <td>{{ $infoUser['user']->Profession }}</td>
                                                 <td>{{ Auth::user()->lastName }} {{ Auth::user()->firstName }}</td>
                                                 <td>{{ $issetcomment->Message }}</td>
                                                 <td>

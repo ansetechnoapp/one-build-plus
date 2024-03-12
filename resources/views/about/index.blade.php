@@ -98,7 +98,7 @@
             <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px]">
 
                 @isset($membersOBP)
-                    @foreach ($membersOBP as $item)
+                    @foreach ($membersOBP['collection'] as $item)
                         <div class="lg:col-span-3 md:col-span-6">
                             <div class="group text-center">
                                 <div class="relative inline-block mx-auto h-52 w-52 rounded-full overflow-hidden">

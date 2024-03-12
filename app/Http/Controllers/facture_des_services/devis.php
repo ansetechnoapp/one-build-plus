@@ -25,12 +25,12 @@ class devis extends Controller
         if ($user_id !== null && $prod_id !== null) {
             $additionalOption = $this->Add_opt->findAdditional_option($prod_id, $user_id);
             $getDevis = $this->devi->findDevis($prod_id, $user_id);
-            if ($user && $additionalOption && $getDevis) {
+            if ($user['user'] && $additionalOption && $getDevis) {
                 $data = [
                     'numDevis' => $getDevis->id,
-                    'nom' => $user->lastName,
-                    'prenom' => $user->firstName,
-                    'email' => $user->email,
+                    'nom' => $user['user']->lastName,
+                    'prenom' => $user['user']->firstName,
+                    'email' => $user['user']->email,
                     'service' => $additionalOption->registration_andf,
                     'service1' => $additionalOption->formality_fees,
                     'service2' => $additionalOption->notary_fees,

@@ -34,7 +34,8 @@ class view extends Controller
             ];
             try {
                 $request->validate($rules, $messages);
-                if ($this->Users->findUser('id',Auth::user()->id,$this->cache_time()) !== null) {
+                $userData = $this->Users->findUser('id',Auth::user()->id,$this->cache_time());
+                if ($userData['user'] !== null) {
                     $this->Users-> Update_col_User('id',Auth::user()->id,$profession,'Profession');
                      $this->Cm->createComment($request,Auth::user()->id);
                     return redirect()->route('dashboard.commentUser');

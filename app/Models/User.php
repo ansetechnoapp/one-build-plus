@@ -37,16 +37,16 @@ trait SelectUser
     {
         if ($email) {
             $cacheKey = 'first_user_' . $email;
-            return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
-                return User::where('email', $email)->exists();
-            });
+            // return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
+            return User::where('email', $email)->exists();
+            // });
         } else {
             if (session::get('user_email')) {
                 $email = session::get('user_email');
                 $cacheKey = 'first_user_' . $email;
-                return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
-                    return User::where('email', $email)->exists();
-                });
+                // return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
+                return User::where('email', $email)->exists();
+                // });
             } else {
                 echo "L'email n'existe pas";
             }
@@ -54,42 +54,39 @@ trait SelectUser
     }
     public function AllInfoUser($cacheminutes)
     {
-        $cacheKey = 'all_user';
-        return Cache::remember($cacheKey, $cacheminutes, function () {
+        $user = $this->getCachedData('all_user', function () {
             return User::all();
-        });
+        }, $cacheminutes);
+        return $user;
     }
-    public function selectCollection($col, $response, $cacheminutes)
+
+    public function findUser($col, $value1, $cacheminutes)
     {
-
-        $cacheKey = 'get_user_' . $col . '_' . $response;
-
-        return Cache::remember($cacheKey, $cacheminutes, function () use ($col, $response) {
-            return User::where($col, $response)->get();
-        });
-    }
-    public function findUser($col, $data, $cacheminutes)
-    {
-        $cacheKey = 'first_user_' . $col . '_' . $data;
-
-        return Cache::remember($cacheKey, $cacheminutes, function () use ($col, $data) {
-            return User::where($col, $data)->first();
-        });
+        $user = $this->getCachedData('user_' . $col . '_' . $value1, function ($col, $value1) {
+            return [
+                'collection' => User::where($col, $value1)->get(),
+                'user' => User::where($col, $value1)->first(),
+            ];
+        }, $cacheminutes);
+        return $user;
     }
 }
 trait UpdateUser
 {
 
-    public function Update_col_User($col, $props, $isactive, $update)
+    public function Update_col_User($col, $value1, $isactive, $update)
     {
-        cache()->flush();
-        return User::where($col, $props)->update([
+        // cache()->flush();
+        Cache::forget('user_' . $col . '_' . $value1);
+        Cache::forget('all_user');
+        return User::where($col, $value1)->update([
             $update => $isactive,
         ]);
     }
     public function UpdateUser($request, $user_id)
     {
-        cache()->flush();
+        Cache::forget('user_' . 'id' . '_' . $user_id);
+        Cache::forget('all_user');
         return User::where('id', $user_id)
             ->update([
                 'firstName' => $request->firstName,
@@ -102,7 +99,7 @@ trait UpdateUser
     }
     public function UpdatePasswordUser($user_id, $res)
     {
-        cache()->flush();
+        // cache()->flush();
         return User::findOrFail($user_id)->update([
             'password' => $res,
         ]);
@@ -179,5 +176,15 @@ class User extends Authenticatable
     public function FedaPay()
     {
         return $this->hasOne(FedaPay::class, 'users_id');
+    }
+
+    protected function getCachedData($key, $closure, $minutes)
+    {
+        // dd(Cache::has($key));
+        if (Cache::has($key)) {
+            return Cache::get($key);
+        } else {
+            return Cache::remember($key, $minutes, $closure);
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 use function Laravel\Prompts\error;
 
@@ -36,6 +37,7 @@ class FormLogin extends Controller
     }
 
     public function show_list_user(){
+        
         $posts = $this->Users->AllInfoUser($this->cache_time());
         return view('dashboard.admin.list_user.index', ['alluser' => $posts,
         'sub_path_admin'=>$this->sub_path_admin(),]);

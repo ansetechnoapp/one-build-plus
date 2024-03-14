@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use FedaPay\FedaPay;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Cache;
@@ -180,8 +179,9 @@ class User extends Authenticatable
 
     protected function getCachedData($key, $closure, $minutes)
     {
-        // dd(Cache::has($key));
+        // cache::flush();
         if (Cache::has($key)) {
+            // dd(Cache::get($key));
             return Cache::get($key);
         } else {
             return Cache::remember($key, $minutes, $closure);

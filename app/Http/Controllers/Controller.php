@@ -52,7 +52,7 @@ class Controller extends BaseController
     }
     public function cache_time()
     {
-        return 5; // Cache les données pendant 5 minutes
+        return now()->addDays(2); // Cache les données pendant 5 minutes
         //  60; // Cache les données pendant 1 heure
         //  1440; // Cache les données pendant 24 heures (24 heures * 60 minutes)
         //  10080; // Cache les données pendant 7 jours (7 jours * 24 heures * 60 minutes)

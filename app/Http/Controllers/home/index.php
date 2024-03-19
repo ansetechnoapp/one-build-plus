@@ -2,23 +2,14 @@
 
 namespace App\Http\Controllers\home;
 
-use App\Models\prod;
-use App\Models\User;
-use App\Models\comment;
-use Illuminate\Http\Request;
-use App\Models\imageslidehome;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class index extends Controller
 {
     public function requestForHome()
     {   
         return view('home.index', [
-            // 'test1' => User::where('id', '4')->first(),
-            // 'test2' => User::find('4'),
-            'ground_type' => $this->prod->select_Ground_type(),
-            'communes' => $this->prod->select_Commune_table(),
             'selecttableProdForHome' => $this->prod->select_take_location_prod_with_image('non','desc',9),
             'posts1' => $this->prod->select_last_prod(3,'asc'),
             'posts2' => $this->prod->whereNotIn('id', $this->prod->select_last_prod(3,'asc')->pluck('id'))->orderBy('id', 'desc')->take(3)->get(),
@@ -26,7 +17,7 @@ class index extends Controller
             'lastThree_loation' => $this->prod->select_take_location_prod('oui','asc',3),
             'beforeThree_loation' => $this->prod->where('location', 'oui')->whereNotIn('id', $this->prod->select_take_location_prod('oui','asc',3)->pluck('id'))->orderBy('id', 'desc')->take(3)->get(),
             'imgslide' => $this->imgslideHome->SelectImageslidehome('id', '1'),
+            'path_manager' => $this->path_manager(0),
         ]);
     }
 }
- 

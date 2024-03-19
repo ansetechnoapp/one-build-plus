@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-    <x-head></x-head>
+<x-head title="One Build Plus - Dashboard" pathManager='../'></x-head>
     
     <body class="dark:bg-slate-900">
         

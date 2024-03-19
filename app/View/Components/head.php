@@ -11,9 +11,10 @@ class head extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public $title,public $pathManager)
     {
-        //
+        $this->title = $title;
+        $this->pathManager = $pathManager;
     }
 
     /**
@@ -23,4 +24,5 @@ class head extends Component
     {
         return view('components.head');
     }
+
 }

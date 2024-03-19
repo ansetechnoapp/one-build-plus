@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-<x-head></x-head>
+<x-head title="One Build Plus - Dashboard" pathManager={{$path_manager}}></x-head>
 
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
@@ -20,7 +20,7 @@
 
     <!-- Start Hero -->
     <section
-        class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
+        class="relative table w-full py-32 lg:py-36 bg-[url('../../{{$path_manager}}assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
             <div class="grid grid-cols-1 text-center mt-10">
@@ -52,7 +52,7 @@
     <!-- End -->
 
     <!-- Start CTA -->
-    <section class="relative py-24 bg-[url('../../assets/images/bg/01.html')] bg-no-repeat bg-center bg-fixed bg-cover">
+    <section class="relative py-24 bg-[url('../../{{$path_manager}}assets/images/bg/01.html')] bg-no-repeat bg-center bg-fixed bg-cover">
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="container">
             <div class="grid lg:grid-cols-12 grid-cols-1 md:text-left text-center justify-center">
@@ -107,7 +107,7 @@
                                             src="{{ asset('storage/' . (isset($item->img) ? $item->img : '')) }}">
                                     @else
                                         <img 
-                                            src="https://sb-admin-pro.startbootstrap.com/assets/img/illustrations/profiles/profile-1.png">
+                                            src="https://sb-admin-pro.startbootstrap.com/{{$path_manager}}assets/img/illustrations/profiles/profile-1.png">
                                             @endif
                                         <div
                                             class="absolute inset-0 bg-gradient-to-b from-transparent to-black h-52 w-52 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
@@ -166,7 +166,7 @@
                                                 <li class="inline"><i class="mdi mdi-star"></i></li>
                                             </ul> --}}
 
-                                            <img src="assets/images/client/01.jpg"
+                                            <img src="{{$path_manager}}assets/images/client/01.jpg"
                                                 class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
                                                 alt="">
                                             <h6 class="mt-2 fw-semibold">{{ $item->user->lastName }}
@@ -226,11 +226,11 @@
     <!-- Back to top -->
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
-    <script src="assets/libs/tobii/js/tobii.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{{$path_manager}}assets/libs/tiny-slider/min/tiny-slider.js"></script>
+    <script src="{{$path_manager}}assets/libs/tobii/js/tobii.min.js"></script>
+    <script src="{{$path_manager}}assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{$path_manager}}assets/js/plugins.init.js"></script>
+    <script src="{{$path_manager}}assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 

@@ -85,7 +85,7 @@
                 <li class="has-submenu parent-parent-menu-item">
                     <a href="javascript:void(0)">A propos</a><span class="menu-arrow"></span>
                     <ul class="submenu">
-                        <li><a href="aboutus" class="sub-menu-item">A propos de nous</a></li>
+                        <li><a href="{{ route('about') }}" class="sub-menu-item">A propos de nous</a></li>
                         @if (Auth::user() == null)
                             <li><a href="{{ route('faqs') }}" class="sub-menu-item">Faqs</a></li>
                         @else

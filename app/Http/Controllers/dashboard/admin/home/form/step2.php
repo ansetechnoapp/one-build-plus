@@ -13,11 +13,14 @@ class step2 extends Controller
     public function show(Request $request)
     {
         if ($request->id) {
-            return view('dashboard.admin.home.form.step2', ['allprodupdate' => $this->prod->select_prod('id', $request->id),
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return view('dashboard.admin.home.form.step2', [
+                'allprodupdate' => $this->prod->select_prod('id', $request->id),
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         } else {
-            return view('dashboard.admin.home.form.step2',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return view('dashboard.admin.home.form.step2', [
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         }
     }
     public function save_form(Request $request): RedirectResponse
@@ -45,19 +48,21 @@ class step2 extends Controller
         try {
             $request->validate($rules, $messages);
             if ($request->prod_id) {
-                $this->prod->Update_table_prod_step2(
-                    $request,
-                    $request->price,
-                    $request->price_min,
-                    'ground_type',
-                    $request->ground_type,
-                    'number_of_bedrooms',
-                    '0',
-                    'number_of_bathrooms',
-                    '0'
-                );
-                return redirect()->route('admin.form.view.prod.step3', ['id' => $request->prod_id,
-                'sub_path_admin'=>$this->sub_path_admin(),]);
+                $requestData = [
+                    'prod_id' => $request->prod_id,
+                    'borough' => $request->borough,
+                    'price' => $request->price,
+                    'price_min' => $request->price_min,
+                    'description' => $request->description,
+                    'ground_type' => $request->ground_type,
+                    'location' => 'non',
+                    'step' => '2',
+                ];
+                $this->prod->Update_table_prod_step($requestData);
+                return redirect()->route('admin.form.view.prod.step3', [
+                    'id' => $request->prod_id,
+                    'sub_path_admin' => $this->path_manager(1),
+                ]);
             } else {
                 Session::put('stp2_borough', $request->borough);
                 Session::put('stp2_price', $request->price);
@@ -65,8 +70,9 @@ class step2 extends Controller
                 Session::put('stp2_ground_type', $request->ground_type);
                 Session::put('stp2_description', $request->description);
             }
-            return redirect()->route('admin.form.view.prod.step3',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return redirect()->route('admin.form.view.prod.step3', [
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();

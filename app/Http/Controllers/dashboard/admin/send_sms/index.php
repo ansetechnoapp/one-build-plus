@@ -13,7 +13,7 @@ class index extends Controller
         return view(
             'dashboard.admin.send_sms.index',
             [   
-                'sub_path_admin'=>$this->sub_path_admin(),
+                'sub_path_admin'=>$this->path_manager(1),
             ]
         );
     }

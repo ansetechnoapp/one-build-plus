@@ -14,10 +14,10 @@ class step3 extends Controller
     {
         if ($request->id) {
             return view('dashboard.admin.home.form.step3', ['allprodupdate' => $this->prod->select_prod('id', $request->id),
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            'sub_path_admin'=>$this->path_manager(1),]);
         } else {
             return view('dashboard.admin.home.form.step3',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            'sub_path_admin'=>$this->path_manager(1),]);
         }
     }
     public function save_form(Request $request): RedirectResponse
@@ -47,9 +47,23 @@ class step3 extends Controller
             if ($request->prod_id) {
                 $this->Img->Update_table_All_Img($request);
                 return redirect()->route('admin.list_prod',[
-                'sub_path_admin'=>$this->sub_path_admin(),]);
+                'sub_path_admin'=>$this->path_manager(1),]);
             } else {
-                $insert = $this->prod->createProd($request, 'non');
+                $sessionData = [
+                    'landOwner_propertyName' => Session::get('stp1_landOwner_propertyName'),
+                    'address' => Session::get('stp1_address'),
+                    'department' => Session::get('stp1_department'),
+                    'communes' => Session::get('stp1_communes'),
+                    'borough' => Session::get('stp2_borough'),
+                    'area' =>  Session::get('stp1_area'),
+                    'price' => Session::get('stp2_price'),
+                    'price_min' => Session::get('stp2_price_min'),
+                    'description' => Session::get('stp2_description'),
+                    'ground_type' => Session::get('stp2_ground_type'),
+                    'status' => Session::get('stp1_status'),
+                    // Ajoutez d'autres données de session au besoin
+                ];
+                $insert = $this->prod->createProd($request, 'non',$sessionData);
                 $this->Img->createImg($request, $insert);
                 Session::put('stp1_landOwner_propertyName', '');
                 Session::put('stp1_address', '');
@@ -64,7 +78,7 @@ class step3 extends Controller
                 Session::put('stp2_description', '');
             }
             return redirect()->route('admin.list_prod',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            'sub_path_admin'=>$this->path_manager(1),]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();

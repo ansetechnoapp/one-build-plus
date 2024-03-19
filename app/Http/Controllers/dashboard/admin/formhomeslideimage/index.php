@@ -5,7 +5,6 @@ namespace App\Http\Controllers\dashboard\admin\formhomeslideimage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\imageslidehome as img;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
@@ -14,7 +13,7 @@ class index extends Controller
     public function view()
     {
         return view('dashboard.admin.formhomeslideimage.index',[
-        'sub_path_admin'=>$this->sub_path_admin(),]);
+        'sub_path_admin'=>$this->path_manager(1),]);
     }
 
     public function update(Request $request)

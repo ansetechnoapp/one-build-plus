@@ -14,10 +14,10 @@ class step3 extends Controller
     {
         if ($request->id) {
             return view('dashboard.admin.Rental_management.form.step3', ['allprodupdate' => $this->prod->select_prod('id', $request->id),
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            'sub_path_admin'=>$this->path_manager(1),]);
         } else {
             return view('dashboard.admin.Rental_management.form.step3',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            'sub_path_admin'=>$this->path_manager(1),]);
         }
     }
 
@@ -47,9 +47,24 @@ class step3 extends Controller
             if ($request->prod_id) {
                 $this->Img->Update_table_All_Img($request);
                 return redirect()->route('admin.Rental.management.list.prod',[
-                'sub_path_admin'=>$this->sub_path_admin(),]);
+                'sub_path_admin'=>$this->path_manager(1),]);
             } else {
-                $insert = $this->prod->createRentProd($request,'oui');
+                $sessionData = [
+                    'landOwner_propertyName' => Session::get('stp1_landOwner_propertyName'),
+                    'address' => Session::get('stp1_address'),
+                    'department' => Session::get('stp1_department'),
+                    'communes' => Session::get('stp1_communes'),
+                    'borough' => Session::get('stp2_borough'),
+                    'area' => Session::get('stp1_area'),
+                    'price' => Session::get('stp2_price', ''),
+                    'description' => Session::get('stp2_description'),
+                    'status' => Session::get('stp1_status'),
+                    'number_of_bedrooms' => Session::get('stp2_number_of_bedrooms'),
+                    'number_of_bathrooms' => Session::get('stp2_number_of_bathrooms'),
+                    'locationType' => Session::get('stp2_locationType'),
+                    // Ajoutez d'autres données de session au besoin
+                ];
+                $insert = $this->prod->createProd($request,'oui',$sessionData);
                 $this->Img->createImg($request, $insert);
                 Session::put('stp1_landOwner_propertyName', '');
                 Session::put('stp1_address', '');
@@ -65,7 +80,7 @@ class step3 extends Controller
                 Session::put('stp2_number_of_bathrooms', '');
             }
             return redirect()->route('admin.Rental.management.list.prod',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            'sub_path_admin'=>$this->path_manager(1),]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();

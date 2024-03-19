@@ -36,7 +36,7 @@
 
                     <div class="container-xl px-4 mt-n10 mb-4">
                         <nav class="nav nav-borders">
-                            <a class="nav-link active ms-0" href="{{ route('admin.dashboard.admin.commentUser') }}">Avis
+                            <a class="nav-link active ms-0" href="{{ route('admin.dashboard.commentUser') }}">Avis
                                 Client</a>
                         </nav>
                         <hr class="mt-0 mb-4">

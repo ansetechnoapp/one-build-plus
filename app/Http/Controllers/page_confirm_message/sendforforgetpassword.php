@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class sendforforgetpassword extends Controller
 {
     function view() {
-        return view('page_confirm_message.sendforforgetpassword');
+        return view('page_confirm_message.sendforforgetpassword',['path_manager' => $this->path_manager(0),]);
     }
 }

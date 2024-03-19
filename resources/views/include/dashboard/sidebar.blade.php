@@ -47,7 +47,7 @@
             </div>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('admin.dashboard.admin.commentUser') }}">
+            <a class="nav-link" href="{{ route('admin.dashboard.commentUser') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Gestion avis Client</span></a>
         </li>

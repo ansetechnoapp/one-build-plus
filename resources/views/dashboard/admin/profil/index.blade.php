@@ -48,9 +48,9 @@
                                             background-color: black;
                                             width: 100%;">
                                                     Chargement en cours...</div>
-                                                @if ($donnees['user']->img)
+                                                @if ($donnees->img)
                                                     <img id="preview" class="img-account-profile rounded-circle mb-2"
-                                                        style="max-width: 100%;" src="{{ asset('storage/' . (isset($donnees['user']->img) ? $donnees['user']->img : '')) }}">
+                                                        style="max-width: 100%;" src="{{ asset('storage/' . (isset($donnees->img) ? $donnees->img : '')) }}">
                                                 @else
                                                     <img id="preview" class="img-account-profile rounded-circle mb-2"
                                                         style="max-width: 100%;"
@@ -104,7 +104,7 @@
                                                     <label class="small mb-1" for="inputFirstName">Prénom</label>
                                                     <input class="form-control" name="firstName" id="inputFirstName"
                                                         type="text" placeholder="Enter your first name"
-                                                        value="{{ $donnees['user']->firstName }}" required>
+                                                        value="{{ $donnees->firstName }}" required>
                                                     @if ($errors->has('firstName'))
                                                         <div class="alert alert-danger">
                                                             {{ $errors->first('firstName') }}</div>
@@ -116,7 +116,7 @@
                                                         famille</label>
                                                     <input class="form-control" name="lastName" id="inputLastName"
                                                         type="text" placeholder="Enter your last name"
-                                                        value="{{ $donnees['user']->lastName }}" required>
+                                                        value="{{ $donnees->lastName }}" required>
                                                     @if ($errors->has('lastName'))
                                                         <div class="alert alert-danger">
                                                             {{ $errors->first('lastName') }}</div>
@@ -130,7 +130,7 @@
                                                     <label class="small mb-1" for="inputLocation">Localisation</label>
                                                     <input class="form-control" id="inputLocation" name="address"
                                                         type="text" placeholder="Enter your location"
-                                                        value="{{ $donnees['user']->address }}" required>
+                                                        value="{{ $donnees->address }}" required>
                                                     @if ($errors->has('address'))
                                                         <div class="alert alert-danger">
                                                             {{ $errors->first('address') }} </div>
@@ -143,7 +143,7 @@
                                                     électronique</label>
                                                 <input class="form-control" id="inputEmailAddress" name="email"
                                                     type="email" placeholder="Enter your email address"
-                                                    value="{{ $donnees['user']->email }}" required>
+                                                    value="{{ $donnees->email }}" required>
                                                 @if ($errors->has('email'))
                                                     <div class="alert alert-danger">{{ $errors->first('email') }}
                                                     </div>
@@ -157,7 +157,7 @@
                                                         téléphone</label>
                                                     <input class="form-control" id="inputPhone" name="phone"
                                                         type="number" placeholder="Enter your phone number"
-                                                        value="{{ $donnees['user']->phone }}" required>
+                                                        value="{{ $donnees->phone }}" required>
                                                     @if ($errors->has('phone'))
                                                         <div class="alert alert-danger">
                                                             {{ $errors->first('phone') }}</div>
@@ -169,7 +169,7 @@
                                                         naissance</label>
                                                     <input class="form-control" id="inputBirthday" type="date"
                                                         name="birthday" placeholder="Enter your birthday"
-                                                        value="{{ $donnees['user']->birthday }}" required>
+                                                        value="{{ $donnees->birthday }}" required>
                                                     @if ($errors->has('birthday'))
                                                         <div class="alert alert-danger">
                                                             {{ $errors->first('birthday') }}</div>

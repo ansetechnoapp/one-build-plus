@@ -12,3 +12,8 @@ aficher les images a la places des inputs pour les mises a jour des images
 php artisan seeder et factory
 portefueil en react
 api pour version mobile
+formulaire souscription
+
+revoir indexation des colonne de la base de données dans les migrations de la table prod
+Indexation des Colonnes : Assurez-vous que les colonnes utilisées dans vos clauses WHERE, telles que location, ground_type, communes, etc., sont correctement indexées dans votre base de données pour des performances optimales.
+En général, il est recommandé d'indexer sélectivement les colonnes qui sont fréquemment utilisées dans les requêtes de recherche, de tri ou de filtrage, ainsi que les colonnes impliquées dans les jointures. Il est important d'analyser les besoins spécifiques de votre application et de choisir judicieusement les colonnes à indexer pour obtenir un équilibre optimal entre les performances et les ressources utilisées.

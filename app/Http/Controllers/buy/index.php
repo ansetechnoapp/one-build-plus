@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\buy;
 
-use App\Models\Prod;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class index extends Controller
 {
@@ -15,10 +13,9 @@ class index extends Controller
         $posts = $this->prod->select_prod_with_image();
         $commune = $this->prod->all();
         return view('buy.index', [
-            'ground_type' => $this->prod->select_Ground_type(),
-            'communes' =>$this->prod->select_Commune_table(),
             'allprod' => $posts,
-            'posts' => $commune
+            'posts' => $commune,
+            'path_manager' => $this->path_manager(0),
         ]); 
     }
 }

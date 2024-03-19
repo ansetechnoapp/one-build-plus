@@ -71,7 +71,7 @@
                                     </style>
                                     <div class="centered-button">
 
-                                        <a href="{{ route('admin.list_prod', ['num' => $i + '5']) }}" class="btn-act1">Voir
+                                        <a href="{{ route('admin.Rental.management.list.prod', ['num' => $i + '5']) }}" class="btn-act1">Voir
                                             plus</a>
                                     </div>
 

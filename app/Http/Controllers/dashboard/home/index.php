@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\facture_des_services;
+namespace App\Http\Controllers\dashboard\home;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\additional_option;
-use App\Models\devis as getdevis;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View;
-use Illuminate\Validation\ValidationException;
 
-class devis extends Controller
+class index extends Controller
 {
-
-
+    public function listDevisForUser()
+    {
+        $getDevis = $this->devi->findDevis_withAll_TableForUsers_id(Auth::user()->id);
+        return view('dashboard.home.index', ['listDevis' => $getDevis,'sub_path_admin' => $this->path_manager(0)]);
+    }
     public function genererDevis(Request $request)
     {
         $devis_id = $request->devis_id;
@@ -48,11 +46,5 @@ class devis extends Controller
         } else {
             return redirect()->route('home');
         }
-    }
-
-    public function listDevisForUser()
-    {
-        $getDevis = $this->devi->findDevis_withAll_TableForUsers_id(Auth::user()->id);
-        return view('dashboard.home.index', ['listDevis' => $getDevis,'sub_path_admin' =>'']);
     }
 }

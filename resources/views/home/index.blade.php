@@ -1,14 +1,7 @@
-{{-- {{$test1->Message}}
-
- @foreach ($test2 as $item)
- {{$item->Message}}
-@endforeach --}}
-
-{{-- {{$test1->lastName}}
-{{$test2->lastName}} --}}
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
-<x-head></x-head>
+
+<x-head title="One Build Plus - Dashboard" pathManager={{$path_manager}}></x-head>
 
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
@@ -55,7 +48,20 @@
 
     <!-- Start -->
     <section class="relative md:pb-24 pb-16">
-        @include('include.formsearch')
+        <div class="container">
+            <div class="grid grid-cols-1 justify-center">
+                <div class="relative {{-- -mt-32 --}}" style="margin-top: -4rem !important">
+                    <div class="grid grid-cols-1">
+                       
+        <x-researchform></x-researchform>
+        
+        
+                    </div>
+        
+                </div>
+            </div>
+        
+        </div>
         <!--end container-->
         <div class="container lg:mt-24 mt-16">
             <div class="grid grid-cols-1 pb-8 text-center">
@@ -449,7 +455,7 @@
                                                 <li class="inline"><i class="mdi mdi-star"></i></li>
                                             </ul> --}}
 
-                                            <img src="assets/images/client/01.jpg"
+                                            <img src="{{$path_manager}}assets/images/client/01.jpg"
                                                 class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
                                                 alt="">
                                             <h6 class="mt-2 fw-semibold">{{ $item->user->lastName }}
@@ -479,7 +485,7 @@
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                     </ul>
 
-                                    <img src="assets/images/client/02.jpg"
+                                    <img src="{{$path_manager}}assets/images/client/02.jpg"
                                         class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
                                         alt="">
                                     <h6 class="mt-2 fw-semibold">Christa Smith</h6>
@@ -503,7 +509,7 @@
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                     </ul>
 
-                                    <img src="assets/images/client/03.jpg"
+                                    <img src="{{$path_manager}}assets/images/client/03.jpg"
                                         class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
                                         alt="">
                                     <h6 class="mt-2 fw-semibold">Christa Smith</h6>
@@ -526,7 +532,7 @@
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                     </ul>
 
-                                    <img src="assets/images/client/04.jpg"
+                                    <img src="{{$path_manager}}assets/images/client/04.jpg"
                                         class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
                                         alt="">
                                     <h6 class="mt-2 fw-semibold">Christa Smith</h6>
@@ -549,7 +555,7 @@
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                     </ul>
 
-                                    <img src="assets/images/client/05.jpg"
+                                    <img src="{{$path_manager}}assets/images/client/05.jpg"
                                         class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
                                         alt="">
                                     <h6 class="mt-2 fw-semibold">Christa Smith</h6>
@@ -572,7 +578,7 @@
                                         <li class="inline"><i class="mdi mdi-star"></i></li>
                                     </ul>
 
-                                    <img src="assets/images/client/06.jpg"
+                                    <img src="{{$path_manager}}assets/images/client/06.jpg"
                                         class="h-14 w-14 rounded-full shadow-md dark:shadow-gray-700 mx-auto"
                                         alt="">
                                     <h6 class="mt-2 fw-semibold">Christa Smith</h6>
@@ -598,7 +604,16 @@
     <!-- End -->
 
     <!-- Start Footer -->
-    <x-footer></x-footer>
+    <x-footer>
+        <div class="subcribe-form z-1">
+            <x-subscribeform></x-subscribeform>
+            @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+        </div>
+    </x-footer>
     <!--end footer-->
     <!-- End Footer -->
     <!-- Switcher -->

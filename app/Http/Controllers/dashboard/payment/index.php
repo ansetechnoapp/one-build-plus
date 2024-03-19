@@ -1,21 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\prod;
+namespace App\Http\Controllers\dashboard\payment;
 
-use App\Models\img;
-use App\Models\prod;
-use App\Models\devis;
 use Illuminate\Http\Request;
-use App\Models\additional_option;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
-class insert extends Controller
+class index extends Controller
 {
-
     public function generateDevisForProperty(Request $request)
     {
 
@@ -59,14 +52,4 @@ class insert extends Controller
             echo "Entrer un Email correcte et verifier que tous les champs soit remplir ";
         }
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
-        $posts = $this->prod->all();
-        return view('show_all_product.index', ['posts' => $posts]);
-    }
-
 }

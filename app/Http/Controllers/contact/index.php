@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\contact;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\contact\emailcontact;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
-class envoiemail extends Controller
+class index extends Controller
 {
-    public function envoiemail(Request $request)
+    function view() {
+    return view('contact.index',['path_manager' => $this->path_manager(0),]);
+}
+public function envoiemail(Request $request)
     {
         $name = $request->name;
         $email = $request->email;

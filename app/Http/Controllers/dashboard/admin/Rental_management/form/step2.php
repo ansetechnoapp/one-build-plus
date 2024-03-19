@@ -13,11 +13,14 @@ class step2 extends Controller
     public function show(Request $request)
     {
         if ($request->id) {
-            return view('dashboard.admin.Rental_management.form.step2', ['allprodupdate' => $this->prod->select_prod('id', $request->id),
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return view('dashboard.admin.Rental_management.form.step2', [
+                'allprodupdate' => $this->prod->select_prod('id', $request->id),
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         } else {
-            return view('dashboard.admin.Rental_management.form.step2',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return view('dashboard.admin.Rental_management.form.step2', [
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         }
     }
 
@@ -48,19 +51,22 @@ class step2 extends Controller
         try {
             $request->validate($rules, $messages);
             if ($request->prod_id) {
-                $this->prod->Update_table_prod_step2(
-                    $request,
-                    $request->price,
-                    '0',
-                    'locationType',
-                    $request->locationType,
-                    'number_of_bedrooms',
-                    $request->number_of_bedrooms,
-                    'number_of_bathrooms',
-                    $request->number_of_bathrooms
-                );
-                return redirect()->route('admin.rent.form.view.prod.step3', ['id' => $request->prod_id,
-                'sub_path_admin'=>$this->sub_path_admin(),]);
+                $requestData = [
+                    'prod_id' => $request->prod_id,
+                    'borough' => $request->borough,
+                    'price' => $request->price,
+                    'description' => $request->description,
+                    'number_of_bedrooms' => $request->number_of_bedrooms,
+                    'number_of_bathrooms' => $request->number_of_bathrooms,
+                    'locationType' => $request->locationType,
+                    'location' => 'oui',
+                    'step' => '2',
+                ];
+                $this->prod->Update_table_prod_step($requestData);
+                return redirect()->route('admin.rent.form.view.prod.step3', [
+                    'id' => $request->prod_id,
+                    'sub_path_admin' => $this->path_manager(1),
+                ]);
             } else {
                 Session::put('stp2_borough', $request->borough);
                 Session::put('stp2_locationType', $request->locationType);
@@ -69,8 +75,9 @@ class step2 extends Controller
                 Session::put('stp2_number_of_bathrooms', $request->number_of_bathrooms);
                 Session::put('stp2_description', $request->description);
             }
-            return redirect()->route('admin.rent.form.view.prod.step3',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return redirect()->route('admin.rent.form.view.prod.step3', [
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();

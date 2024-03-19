@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\faqs;
 
-use App\Models\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Faq_title;
 
 class index extends Controller
 {
@@ -44,6 +42,6 @@ class index extends Controller
             $html .= '</div>';
             $html .= '</div>';
         }
-        return view('faqs.index', ['listFaq' => $html, 'uniqueTitles' => $uniqueTitles]);
+        return view('faqs.index', ['listFaq' => $html, 'uniqueTitles' => $uniqueTitles,'path_manager' => $this->path_manager(0),]);
     }
 }

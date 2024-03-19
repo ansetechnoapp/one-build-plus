@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-<x-head></x-head>
+<x-head title="One Build Plus - Dashboard" pathManager={{$path_manager}}></x-head>
 
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
@@ -376,10 +376,10 @@
     <!-- Back to top -->
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/tobii/js/tobii.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{{$path_manager}}assets/libs/tobii/js/tobii.min.js"></script>
+    <script src="{{$path_manager}}assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{$path_manager}}assets/js/plugins.init.js"></script>
+    <script src="{{$path_manager}}assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
     
-<x-head></x-head>
+<x-head title="One Build Plus - Dashboard" pathManager={{$path_manager}}></x-head>
     
     <body class="dark:bg-slate-900">
         <!-- Loader Start -->
@@ -19,7 +19,7 @@
         <!-- End Navbar -->
 
         <!-- Start Hero -->
-        <section class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
+        <section class="relative table w-full py-32 lg:py-36 bg-[url('../../{{$path_manager}}assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
             <div class="absolute inset-0 bg-black opacity-80"></div>
             <div class="container">
                 <div class="grid grid-cols-1 text-center mt-10">
@@ -170,10 +170,10 @@
         <!-- Back to top -->
 
         <!-- JAVASCRIPTS -->
-        <script src="assets/libs/tobii/js/tobii.min.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <script src="assets/js/plugins.init.js"></script>
-        <script src="assets/js/app.js"></script>
+        <script src="{{$path_manager}}assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="{{$path_manager}}assets/libs/feather-icons/feather.min.js"></script>
+        <script src="{{$path_manager}}assets/js/plugins.init.js"></script>
+        <script src="{{$path_manager}}assets/js/app.js"></script>
         <!-- JAVASCRIPTS -->
     </body>
 

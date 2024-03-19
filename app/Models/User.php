@@ -61,7 +61,8 @@ trait SelectUser
 
     public function findUser($col, $value1, $cacheminutes)
     {
-        $user = $this->getCachedData('user_' . $col . '_' . $value1, function ($col, $value1) {
+        Cache::forget('user_' . $col . '_' . $value1);
+        $user = $this->getCachedData('user_' . $col . '_' . $value1, function () use ($col, $value1) {
             return [
                 'collection' => User::where($col, $value1)->get(),
                 'user' => User::where($col, $value1)->first(),
@@ -75,8 +76,7 @@ trait UpdateUser
 
     public function Update_col_User($col, $value1, $isactive, $update)
     {
-        // cache()->flush();
-        Cache::forget('user_' . $col . '_' . $value1);
+        Cache::forget('user_' . $update . '_' . $isactive);
         Cache::forget('all_user');
         return User::where($col, $value1)->update([
             $update => $isactive,
@@ -84,6 +84,7 @@ trait UpdateUser
     }
     public function UpdateUser($request, $user_id)
     {
+        // cache()->flush();
         Cache::forget('user_' . 'id' . '_' . $user_id);
         Cache::forget('all_user');
         return User::where('id', $user_id)

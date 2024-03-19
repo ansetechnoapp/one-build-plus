@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers\dashboard\list_payment;
 
-
 use FedaPay\FedaPay;
 use FedaPay\Transaction;
-use FedaPay\FedaPayObject;
 use Illuminate\Http\Request;
-use App\Models\fedapay as feda;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\devis;
 
 class liste extends Controller
 {
-
-    public function test(Request $request)
+    public function show($path)
+    {
+        $getDevis = $this->devi->findDevis_withAll_TableForUsers_id(Auth::user()->id);
+        return view('dashboard.list_payment.liste', ['listDevis' => $getDevis,'sub_path_admin' =>$path]);
+    }
+    public function show2()
+    {
+        return $this->show($this->path_manager(0));
+    }
+    public function payfedapay(Request $request)
     {
         $firstName = $request->firstName;
         $lastName = $request->lastName;
@@ -46,27 +50,6 @@ class liste extends Controller
         $this->fedap->fedapayValidatePay(Auth::user()->id,$transaction->id, $token->url, $devis_id);
         return redirect()->to($token->url);
     }
-
-    public function show()
-    {
-        $getDevis = $this->devi->findDevis_withAll_TableForUsers_id(Auth::user()->id);
-        return view('dashboard.list_payment.liste', ['listDevis' => $getDevis,'sub_path_admin' =>'']);
-    }
-
-    public function view($id)
-    {
-        Fedapay::setEnvironment(env('FEDAPAY_Environment'));
-        Fedapay::setApiKey(env('FEDAPAY_PRIVATE_KEY'));
-
-        /**
-         * @var FedaPayObject
-         */
-        $response = Transaction::search($id);
-        $transactions = $response->transactions;
-        $meta = $response->meta;
-        // return view('dashboard.list_payment.liste');
-    }
-
     public function confirm(Request $request)
     {
         $status = $request->status;
@@ -75,11 +58,21 @@ class liste extends Controller
         if ($status == 'pending') {
             $status = 'en attente';
             $this->fedap->UpdateStatutFedapay($request,$status);
-        } /* else {
-        # code...
-    } */
-
-
-        return redirect()->route('listpaymentpay');
+        } 
+        return $this->show($this->path_manager(1));
     }
+
+    // public function view($id)
+    // {
+    //     Fedapay::setEnvironment(env('FEDAPAY_Environment'));
+    //     Fedapay::setApiKey(env('FEDAPAY_PRIVATE_KEY'));
+
+    //     /**
+    //      * @var FedaPayObject
+    //      */
+    //     $response = Transaction::search($id);
+    //     $transactions = $response->transactions;
+    //     $meta = $response->meta;
+    //     // return view('dashboard.list_payment.liste');
+    // }
 }

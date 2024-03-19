@@ -11,46 +11,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 trait CreateProd
 {
 
-    public function createProd($request, $loc)
+    public function createProd($request, $loc, $sessionData)
     {
         return Prod::create([
-            'landOwner_propertyName' => Session::get('stp1_landOwner_propertyName'),
-            'address' => Session::get('stp1_address'),
-            'department' => Session::get('stp1_department'),
-            'communes' => Session::get('stp1_communes'),
-            'borough' => Session::get('stp2_borough'),
-            'area' =>  Session::get('stp1_area'),
-            'price' => Session::get('stp2_price'),
-            'price_min' => Session::get('stp2_price_min'),
-            'description' => Session::get('stp2_description'),
-            'ground_type' => Session::get('stp2_ground_type'),
-            'status' => Session::get('stp1_status'),
+            'landOwner_propertyName' => $sessionData['landOwner_propertyName'] ?? '',
+            'address' => $sessionData['address'] ?? '',
+            'department' => $sessionData['department'] ?? '',
+            'communes' => $sessionData['communes'],
+            'borough' => $sessionData['borough'] ?? '',
+            'area' =>  $sessionData['area'] ?? '',
+            'price' => $sessionData['price'] ?? '0',
+            'price_min' => $sessionData['price_min'] ?? '0',
+            'description' => $sessionData['description'] ?? '',
+            'ground_type' => $sessionData['ground_type'] ?? '',
+            'status' => $sessionData['status'] ?? '',
             'location' => $loc,
-        ]);
-    }
-    public function createRentProd($request, $loc)
-    {
-        return prod::create([
-            'landOwner_propertyName' => Session::get('stp1_landOwner_propertyName'),
-            'address' => Session::get('stp1_address'),
-            'department' => Session::get('stp1_department'),
-            'communes' => Session::get('stp1_communes'),
-            'borough' => Session::get('stp2_borough'),
-            'area' => Session::get('stp1_area'),
-            'price' => Session::get('stp2_price', ''),
-            'description' => Session::get('stp2_description'),
-            'status' => Session::get('stp1_status'),
-            'number_of_bedrooms' => Session::get('stp2_number_of_bedrooms'),
-            'number_of_bathrooms' => Session::get('stp2_number_of_bathrooms'),
-            'location' => $loc,
-            'locationType' => Session::get('stp2_locationType'),
+            'number_of_bedrooms' => $sessionData['number_of_bedrooms'] ?? '0',
+            'number_of_bathrooms' => $sessionData['number_of_bathrooms'] ?? '0',
+            'locationType' => $sessionData['locationType'] ?? '',
         ]);
     }
 }
 trait selectProd
 {
 
-    public function select_prod($col,$id)
+    public function select_prod($col, $id)
     {
         return Prod::where($col, $id)->first();
         // return Prod::findOrFail($id);
@@ -75,31 +60,31 @@ trait selectProd
     {
         return prod::distinct()->select($this->gT)->whereNotNull('ground_type')->get();
     }
-    public function select_take_location_prod($status,$orderBy,$num)
+    public function select_take_location_prod($status, $orderBy, $num)
     {
         return prod::where('location', $status)->orderBy('id', $orderBy)->take($num)->get();
     }
-    public function select_take_location_prod_with_image($status,$orderBy,$num)
+    public function select_take_location_prod_with_image($status, $orderBy, $num)
     {
         return prod::where('location', $status)->with('img')->orderBy('id', $orderBy)->take($num)->get();
     }
-    public function select_location_prod_with_image($status,$orderBy)
+    public function select_location_prod_with_image($status, $orderBy)
     {
         return prod::where('location', $status)->with('img')->orderBy('id', $orderBy)->get();
     }
-    public function select_location_prod($status,$orderBy)
+    public function select_location_prod($status, $orderBy)
     {
         return prod::where('location', $status)->orderBy('id', $orderBy)->get();
     }
-    public function select_location_paginate_prod($status,$orderBy,$numPage)
+    public function select_location_paginate_prod($status, $orderBy, $numPage)
     {
         return prod::where('location', $status)->orderBy('id', $orderBy)->paginate(perPage: $numPage);
     }
-    public function select_last_prod($num,$orderBy)
+    public function select_last_prod($num, $orderBy)
     {
         return prod::orderBy('id', $orderBy)->take($num)->get();
     }
-    public function select_distinct_groundType_prod($ground_type,$groundType,$location)
+    public function select_distinct_groundType_prod($ground_type, $groundType, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
@@ -108,7 +93,7 @@ trait selectProd
             ->distinct()
             ->get();
     }
-    public function select_distinct_communes_prod($communes,$location)
+    public function select_distinct_communes_prod($communes, $location)
     {
         return prod::select('*')
             ->where($this->cM, $communes)
@@ -117,7 +102,7 @@ trait selectProd
             ->distinct()
             ->get();
     }
-    public function select_distinct_groundType_communes_prod($ground_type,$groundType, $communes, $location)
+    public function select_distinct_groundType_communes_prod($ground_type, $groundType, $communes, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
@@ -127,7 +112,7 @@ trait selectProd
             ->distinct()
             ->get();
     }
-    public function select_distinct_groundType_communes_pMax_Egal_0_prod($ground_type,$groundType, $communes, $pMin, $location)
+    public function select_distinct_groundType_communes_pMax_Egal_0_prod($ground_type, $groundType, $communes, $pMin, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
@@ -138,7 +123,7 @@ trait selectProd
             ->distinct()
             ->get();
     }
-    public function select_distinct_groundType_communes_pMin_Egal_0_prod($ground_type,$groundType, $communes, $pMax, $location)
+    public function select_distinct_groundType_communes_pMin_Egal_0_prod($ground_type, $groundType, $communes, $pMax, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
@@ -149,7 +134,7 @@ trait selectProd
             ->distinct()
             ->get();
     }
-    public function select_distinct_groundType_communes_pMin_pMax_dif_0_prod($ground_type,$groundType, $communes, $pMax, $pMin, $location)
+    public function select_distinct_groundType_communes_pMin_pMax_dif_0_prod($ground_type, $groundType, $communes, $pMax, $pMin, $location)
     {
         return prod::select('*')
             ->where($ground_type, $groundType)
@@ -163,45 +148,42 @@ trait selectProd
 }
 trait UpdateProd
 {
-    public function Update_table_prod_step1($request, $loc)
+    public function Update_table_prod_step($requestData)
     {
-        $product = $this->select_prod('id', $request->prod_id);
-        return $product->update([
-            'landOwner_propertyName' => $request->landOwner_propertyName,
-            'address' => $request->address,
-            'department' => $request->department,
-            'communes' => $request->communes,
-            'area' => $request->area,
-            'status' => $request->status,
-            'location' => $loc,
-        ]);
-    }
-    public function Update_table_prod_step2($request, $price, $price_min, $type, $value_type, $type1, $value_type1, $type2, $value_type2)
-    {
-        $product = $this->select_prod('id', $request->prod_id);
-        return $product->update([
-            'borough' => $request->borough,
-            'price' => $price,
-            'price_min' => $price_min,
-            'description' => $request->description,
-            $type => $value_type,
-            $type1 => $value_type1,
-            $type2 => $value_type2,
-        ]);
+        $product = $this->select_prod('id', $requestData['prod_id']);
+        if ($requestData['step'] == '1') {
+            return $product->update([
+                'landOwner_propertyName' => $requestData['landOwner_propertyName'],
+                'address' => $requestData['address'],
+                'department' => $requestData['department'],
+                'communes' => $requestData['communes'],
+                'area' => $requestData['area'],
+                'status' => $requestData['status'],
+                'location' => $requestData['location'],
+            ]);
+        } elseif ($requestData['step'] == '2') {
+            return $product->update([
+                'borough' => $requestData['borough'] ?? '',
+                'price' => $requestData['price'] ?? '',
+                'price_min' => $requestData['price_min'] ?? '0',
+                'description' => $requestData['description'] ?? '',
+                'ground_type' => $requestData['ground_type'] ?? '',
+                'number_of_bedrooms' => $requestData['number_of_bedrooms'] ?? '0',
+                'number_of_bathrooms' => $requestData['number_of_bathrooms'] ?? '0',
+                'locationType' => $requestData['locationType'] ?? '',
+            ]);
+        } else {
+            return [];
+        }
     }
 }
 class Prod extends Model
 {
-    use HasFactory,CreateProd,SelectProd,UpdateProd;
+    use HasFactory, CreateProd, SelectProd, UpdateProd;
 
     protected $table = 'prod';
     protected $gT = 'ground_type';
     protected $cM = 'communes';
-    // public function __construct(private $gT = 'ground_type', private $cM = 'communes')
-    // {
-    //     $this->$gT = $gT;
-    //     $this->$cM = $cM; 
-    // }
 
     /**
      * The attributes that are mass assignable.

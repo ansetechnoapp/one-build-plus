@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('prod', function (Blueprint $table) {
             $table->id();
             $table->string('landOwner_propertyName')->nullable();
+            // $table->unique('landOwner_propertyName');
             $table->string('address')->nullable(); 
             $table->string('department')->nullable(); 
             $table->string('communes');
@@ -29,6 +30,10 @@ return new class extends Migration
             $table->string('location')->default('non');
             $table->string('locationType')->default('non sanitaire');
             $table->timestamps();
+            // $table->index('location');
+            // $table->index(['communes', 'ground_type']);
+            // $table->index(['department', 'borough', 'location']);
+            
         });
     }
 

@@ -6,3 +6,5 @@ php artisan make:component dashboard/pageheadingdashboard
 php artisan make:component dashboard/head
 php artisan make:component table_head_list
 php artisan make:component table_body_list
+php artisan make:component subscribeform
+php artisan make:component researchform

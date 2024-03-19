@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-<x-head></x-head>
+<x-head title="One Build Plus - Dashboard" pathManager={{$path_manager}}></x-head>
 
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
@@ -21,7 +21,7 @@
 
     <!-- Start Hero -->
     <section
-        class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
+        class="relative table w-full py-32 lg:py-36 bg-[url('../../{{$path_manager}}assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
             <div class="grid grid-cols-1 text-center mt-10">
@@ -251,28 +251,28 @@
                 <div class="lg:col-span-8 md:col-span-7">
                     <div id="myTabContent">
                         <div class="" id="letter" role="tabpanel" aria-labelledby="letter-tab">
-                            <img src="assets/images/svg/Agent_Monochromatic.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/Agent_Monochromatic.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Contactez OBP pour la vente de votre parcelle</h5>
                                 <p class="text-slate-400 mt-3">OBP est là pour faciliter la vente de votre parcelle. Contactez-nous dès maintenant pour discuter des détails de votre propriété. Notre équipe d'experts est prête à vous guider tout au long du processus, vous assurant une expérience transparente et efficace.</p>
                             </div>
                         </div>
                         <div class="hidden " id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
-                            <img src="assets/images/svg/presentation_Flatline.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/presentation_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Planification de visite</h5>
                                 <p class="text-slate-400 mt-3">Une fois que nous avons discuté des détails de votre parcelle, planifions une visite sur place. C'est l'occasion idéale pour nos experts de découvrir les caractéristiques uniques de votre propriété et de répondre à toutes vos questions. Nous cherchons à comprendre chaque aspect pour présenter au mieux votre bien.</p>
                             </div>
                         </div>
                         <div class="hidden " id="offer" role="tabpanel" aria-labelledby="offer-tab">
-                            <img src="assets/images/svg/session_Flatline.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/session_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">OBP peut décider de payer ou non votre parcelle</h5>
                                 <p class="text-slate-400 mt-3">Après la visite, notre équipe évaluera la parcelle en fonction de plusieurs critères. OBP peut décider d'acquérir votre propriété en fonction de sa pertinence pour notre portefeuille immobilier. Soyez assuré que nous traiterons chaque proposition avec professionnalisme et transparence.</p>
                             </div>
                         </div>
                         <div class="hidden " id="inspection" role="tabpanel" aria-labelledby="inspection-tab">
-                            <img src="assets/images/svg/Startup_Flatline.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/Startup_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Paiement de votre domaine</h5>
                                 <p class="text-slate-400 mt-3">Si nous décidons d'acquérir votre parcelle, le processus de paiement sera rapidement mis en place. Nous travaillerons avec vous pour finaliser les détails financiers de manière efficace et sécurisée. Notre engagement est de garantir une transaction fluide et équitable pour toutes les parties impliquées.
@@ -344,10 +344,10 @@
     <!-- Back to top -->
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/tobii/js/tobii.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{{$path_manager}}assets/libs/tobii/js/tobii.min.js"></script>
+    <script src="{{$path_manager}}assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{$path_manager}}assets/js/plugins.init.js"></script>
+    <script src="{{$path_manager}}assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 

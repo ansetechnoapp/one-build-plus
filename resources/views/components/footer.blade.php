@@ -14,17 +14,7 @@
                                 <p class="text-slate-400 max-w-xl mx-auto">Abonnez-vous pour recevoir les dernières mises à jour et informations.</p>
                             </div>
 
-                            <div class="subcribe-form z-1">
-                                <form class="relative max-w-lg md:ms-auto" method="POST" action="{{ route('subscribe') }}">
-                                    <input type="email" id="subcribe" name="emailsubcribe"
-                                        class="rounded-full bg-white dark:bg-slate-900 shadow dark:shadow-gray-700"
-                                        placeholder="Enter your email :">
-                                    <button type="submit" disabled
-                                        class="btn bg-red-600 hover:bg-green-700 text-white rounded-full">S'abonner
-                                    </button>
-                                </form>
-                                <!--end form-->
-                            </div>
+                            {{$slot}}
                         </div>
 
                         <div class="absolute -top-5 -start-5">

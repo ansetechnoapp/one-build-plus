@@ -98,14 +98,22 @@
                                                                 @endif
                                                             </div>
                                                             <div class="col-md-6 mb-md-0">
-                                                                <label class="small mb-1" for="inputprice">Loyer
-                                                                    mensuel</label>
-                                                                <input class="form-control" id="inputprice"
-                                                                    type="text" name="price"
-                                                                    value="{{ $allprodupdate->price }}" required>
-                                                                @if ($errors->has('price'))
+                                                                <label class="small mb-1" for="inputborough">Statut du
+                                                                    produit</label>
+                                                                <select class="form-control" name="status"
+                                                                    id="">
+                                                                    <option
+                                                                        value="{{ $allprodupdate->status }}"selected>
+                                                                        {{ $allprodupdate->status }}</option>
+                                                                    <option value="disponible">Disponible</option>
+                                                                    <option value="loué">loué</option>
+                                                                    <option value="en maintenance">en maintenance
+                                                                    </option>
+                                                                    <option value="vendu">Vendu</option>
+                                                                </select>
+                                                                @if ($errors->has('status'))
                                                                     <div class="alert alert-danger">
-                                                                        {{ $errors->first('price') }}</div>
+                                                                        {{ $errors->first('status') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -164,27 +172,6 @@
                                                                 @endif
                                                             </div>
 
-                                                        </div>
-                                                        <div class="row gx-3">
-                                                            <div class="mb-3 col-md-6">
-                                                                <label class="small mb-1" for="inputborough">Statut du
-                                                                    produit</label>
-                                                                <select class="form-control" name="status"
-                                                                    id="">
-                                                                    <option
-                                                                        value="{{ $allprodupdate->status }}"selected>
-                                                                        {{ $allprodupdate->status }}</option>
-                                                                    <option value="disponible">Disponible</option>
-                                                                    <option value="loué">loué</option>
-                                                                    <option value="en maintenance">en maintenance
-                                                                    </option>
-                                                                    <option value="vendu">Vendu</option>
-                                                                </select>
-                                                                @if ($errors->has('status'))
-                                                                    <div class="alert alert-danger">
-                                                                        {{ $errors->first('status') }}</div>
-                                                                @endif
-                                                            </div>
                                                         </div>
                                                         <hr class="my-4">
                                                         <div class="d-flex justify-content-between">

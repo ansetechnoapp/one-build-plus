@@ -46,16 +46,27 @@ class Controller extends BaseController
         $this->FaqT = $FaqT;
         $this->fedap = $fedap;
     }
-    public function sub_path_admin()
+    public function path_manager($path)
     {
-        return (Auth::check() && Auth::user()->role == 'admin') ? '../' : '';
+        if ($path == '1') {
+            return '../';
+        } elseif ($path == '2') {
+            return '../../';
+        } elseif ($path == '3') {
+            return '../../../';
+        } elseif ($path == '4') {
+            return '../../../../';
+        } elseif ($path == '5') {
+            return '../../../../../';
+        } elseif ($path == '6') {
+            return '../../../../../../';
+        } else {
+            return '';
+        }
     }
     public function cache_time()
     {
-        return now()->addDays(2); // Cache les données pendant 5 minutes
-        //  60; // Cache les données pendant 1 heure
-        //  1440; // Cache les données pendant 24 heures (24 heures * 60 minutes)
-        //  10080; // Cache les données pendant 7 jours (7 jours * 24 heures * 60 minutes)
-        //  43200; // Cache les données pendant 30 jours (30 jours * 24 heures * 60 minutes)
+        
+        return env('CACHE_TIME',now()->addDays(2));
     }
 }

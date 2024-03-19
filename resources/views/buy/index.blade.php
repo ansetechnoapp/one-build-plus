@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
-<x-head></x-head>
+<x-head title="One Build Plus - Dashboard" pathManager={{$path_manager}}></x-head>
 
 <body class="dark:bg-slate-900">
     <!-- Loader Start -->
@@ -21,7 +21,7 @@
 
     <!-- Start Hero -->
     <section
-        class="relative table w-full py-32 lg:py-36 bg-[url('../../assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
+        class="relative table w-full py-32 lg:py-36 bg-[url('../../{{$path_manager}}assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover">
         <div class="absolute inset-0 bg-black opacity-80"></div>
         <div class="container">
             <div class="grid grid-cols-1 text-center mt-10">
@@ -40,8 +40,20 @@
             </svg>
         </div>
     </div>
-
-    @include('include.formsearch')
+    <div class="container">
+        <div class="grid grid-cols-1 justify-center">
+            <div class="relative {{-- -mt-32 --}}" style="margin-top: -4rem !important">
+                <div class="grid grid-cols-1">
+                   
+    <x-researchform></x-researchform>
+    
+    
+                </div>
+    
+            </div>
+        </div>
+    
+    </div>
     <!--end container-->
     <!-- End Hero -->
 
@@ -248,35 +260,35 @@
                 <div class="lg:col-span-8 md:col-span-7">
                     <div id="myTabContent">
                         <div class="" id="letter" role="tabpanel" aria-labelledby="letter-tab">
-                            <img src="assets/images/svg/Agent_Monochromatic.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/Agent_Monochromatic.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Choisir votre parcelle</h5>
                                 <p class="text-slate-400 mt-3">Découvrez un éventail de parcelles exceptionnelles pour concrétiser votre projet immobilier. Explorez nos offres variées et trouvez la parcelle qui correspond parfaitement à vos besoins et à vos rêves.</p>
                             </div>
                         </div>
                         <div class="hidden " id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
-                            <img src="assets/images/svg/presentation_Flatline.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/presentation_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Planification de visite</h5>
                                 <p class="text-slate-400 mt-3">Planifiez votre visite pour découvrir personnellement chaque parcelle. Notre équipe dévouée est prête à vous accompagner, répondre à vos questions et vous offrir une expérience personnalisée pour vous aider à prendre la meilleure décision.</p>
                             </div>
                         </div>
                         <div class="hidden " id="offer" role="tabpanel" aria-labelledby="offer-tab">
-                            <img src="assets/images/svg/session_Flatline.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/session_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Confirmer ou infirmer son choix</h5>
                                 <p class="text-slate-400 mt-3">Après votre visite, prenez le temps de réfléchir. Confirmez votre choix si vous avez trouvé la parcelle de vos rêves, ou prenez le temps nécessaire pour évaluer toutes les options. Notre équipe reste à votre disposition pour discuter de tout aspect supplémentaire.</p>
                             </div>
                         </div>
                         <div class="hidden " id="inspection" role="tabpanel" aria-labelledby="inspection-tab">
-                            <img src="assets/images/svg/Startup_Flatline.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/Startup_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Payer votre domaine</h5>
                                 <p class="text-slate-400 mt-3">Une fois votre choix confirmé, passez à l'étape suivante en finalisant votre acquisition. Notre processus de paiement est simple et sécurisé, vous permettant d'officialiser rapidement l'achat de votre nouvelle parcelle..</p>
                             </div>
                         </div>
                         <div class="hidden " id="appraisal" role="tabpanel" aria-labelledby="appraisal-tab">
-                            <img src="assets/images/svg/team_Flatline.svg" alt="">
+                            <img src="{{$path_manager}}assets/images/svg/team_Flatline.svg" alt="">
                             <div class="mt-6">
                                 <h5 class="font-medium text-xl">Laisser une évaluation</h5>
                                 <p class="text-slate-400 mt-3">Votre avis compte ! Après avoir concrétisé votre achat, partagez votre expérience en laissant une évaluation. Vos commentaires sont précieux et contribuent à améliorer constamment nos services pour mieux servir nos clients dans le futur. Merci de faire partie de notre communauté immobilière.</p>
@@ -347,10 +359,10 @@
     <!-- Back to top -->
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/tobii/js/tobii.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{{$path_manager}}assets/libs/tobii/js/tobii.min.js"></script>
+    <script src="{{$path_manager}}assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{$path_manager}}assets/js/plugins.init.js"></script>
+    <script src="{{$path_manager}}assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 

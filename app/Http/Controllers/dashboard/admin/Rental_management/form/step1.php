@@ -13,11 +13,14 @@ class step1 extends Controller
     public function show(Request $request)
     {
         if ($request->id) {
-            return view('dashboard.admin.Rental_management.form.step1', ['allprodupdate' => $this->prod->select_prod('id', $request->id),
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return view('dashboard.admin.Rental_management.form.step1', [
+                'allprodupdate' => $this->prod->select_prod('id', $request->id),
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         } else {
-            return view('dashboard.admin.Rental_management.form.step1',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return view('dashboard.admin.Rental_management.form.step1', [
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         }
     }
 
@@ -48,11 +51,24 @@ class step1 extends Controller
         try {
             $request->validate($rules, $messages);
             if ($request->prod_id) {
-                $this->prod->Update_table_prod_step1($request,'oui');
+                $requestData = [
+                    'prod_id' => $request->prod_id,
+                    'landOwner_propertyName' => $request->landOwner_propertyName,
+                    'address' => $request->address,
+                    'department' => $request->department,
+                    'communes' => $request->communes,
+                    'area' => $request->area,
+                    'status' => $request->status,
+                    'location' => 'oui',
+                    'step' => '1',
+                ];
+                $this->prod->Update_table_prod_step($requestData);
                 // $this->prod->Update_table_prod_location($request);
                 // $this->Img->Update_table_ImgForRentLoc($request);
-                return redirect()->route('admin.rent.form.view.prod.step2', ['id' => $request->prod_id,
-                'sub_path_admin'=>$this->sub_path_admin(),]);
+                return redirect()->route('admin.rent.form.view.prod.step2', [
+                    'id' => $request->prod_id,
+                    'sub_path_admin' => $this->path_manager(1),
+                ]);
             } else {
                 Session::put('stp1_landOwner_propertyName', $request->landOwner_propertyName);
                 Session::put('stp1_address', $request->address);
@@ -61,8 +77,9 @@ class step1 extends Controller
                 Session::put('stp1_area', $request->area);
                 Session::put('stp1_status', $request->status);
             }
-            return redirect()->route('admin.rent.form.view.prod.step2',[
-            'sub_path_admin'=>$this->sub_path_admin(),]);
+            return redirect()->route('admin.rent.form.view.prod.step2', [
+                'sub_path_admin' => $this->path_manager(1),
+            ]);
         } catch (ValidationException $e) {
             // Gestion de l'exception ValidationException ici
             $errors = $e->validator->errors();
@@ -72,4 +89,3 @@ class step1 extends Controller
         }
     }
 }
-// C:\laragon\www\Projet_PHP\Projet_Laravel\obp\resources\views\dashboard\admin\Rental_management\form\step1.blade.php

@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\auth_login;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 
-use function Laravel\Prompts\error;
-
-class FormLogin extends Controller
+class index extends Controller
 {
-
     public function authenticate(Request $request) 
     {
         $credentials = $request->validate([
@@ -35,14 +31,6 @@ class FormLogin extends Controller
             'email' => 'Entrer votre email',
         ])->onlyInput('email');
     }
-
-    public function show_list_user(){
-        
-        $posts = $this->Users->AllInfoUser($this->cache_time());
-        return view('dashboard.admin.list_user.index', ['alluser' => $posts,
-        'sub_path_admin'=>$this->sub_path_admin(),]);
-    }
-
     public function isactive($email){
         $isactive = '1';
         if ($this->Users->VerifyUserExist($email,$this->cache_time())) {
@@ -50,4 +38,17 @@ class FormLogin extends Controller
             return redirect()->route('auth-login');
         }
     }
+    public function logout(Request $request)
+{
+    Auth::logout();
+ 
+    $request->session()->invalidate();
+ 
+    $request->session()->regenerateToken();
+ 
+    return redirect('/');
+}
+public function show () {
+    return view('auth-login.index',['path_manager' => $this->path_manager(0),]);
+}
 }

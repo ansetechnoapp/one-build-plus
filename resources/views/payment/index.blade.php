@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
     
-<x-head></x-head>
+<x-head title="One Build Plus - Dashboard" pathManager={{$path_manager}}></x-head>
 
     </head>
     
@@ -17,12 +17,12 @@
         </div> -->
         <!-- Loader End -->
         <section class="md:h-screen py-36 flex items-center relative overflow-hidden zoom-image">
-            <div class="absolute inset-0 image-wrap z-1 bg-[url('../../assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover"></div>
+            <div class="absolute inset-0 image-wrap z-1 bg-[url('../../{{$path_manager}}assets/images/bg/01.html')] bg-no-repeat bg-center bg-cover"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-2" id="particles-snow"></div>
             <div class="container z-3">
                 <div class="flex justify-center">
                     <div class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
-                        <a href="{{route('home')}}"><img src="assets/images/logo-dark.png" class="mx-auto" alt=""></a>
+                        <a href="{{route('home')}}"><img src="{{$path_manager}}assets/images/logo-dark.png" class="mx-auto" alt=""></a>
                         
                         <div class="text-center">
                             <h5 class="my-6 text-xl font-semibold">Formulaire paiements</h5>

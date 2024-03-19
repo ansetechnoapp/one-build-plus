@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\dashboard\commentUser;
 
-use App\Models\User;
-use App\Models\comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +14,9 @@ class view extends Controller
         $issetcomment =  $this->Cm->selectCommment('users_id',Auth::user()->id);
         $infoUser =$this->Users->findUser('id',Auth::user()->id,$this->cache_time());
         return view('dashboard.commentUser.view', ['issetcomment' => $issetcomment, 'infoUser' => $infoUser,
-        'sub_path_admin'=>$this->sub_path_admin(),]);
+        'sub_path_admin'=>$this->path_manager(2),]);
     }
-
-    public function saveComment(Request $request)
+    public function SaveOrUpdate(Request $request)
     {
         $profession = $request->profession;
         $message = $request->message;

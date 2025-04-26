@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('devis', function (Blueprint $table) {
+        Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->Integer('price');
-            $table->Integer('montant');
-            $table->date('dateDevis');
-            $table->date('dateExpiration');
-            $table->Integer('prod_id');
-            $table->unsignedBigInteger('additional_option_id'); // Clé étrangère
-            $table->unsignedBigInteger('users_id'); // Clé étrangère
+            $table->decimal('price', 10, 2);
+            $table->decimal('montant', 10, 2);
+            $table->date('quote_date'); // Renommé de dateDevis
+            $table->date('expiration_date'); // Renommé de dateExpiration
+            $table->unsignedBigInteger('product_id'); // Renommé de prod_id
+            $table->unsignedBigInteger('additional_option_id');
+            $table->unsignedBigInteger('users_id');
             $table->timestamps();
 
-            $table->foreign('additional_option_id')->references('id')->on('additional_option');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('additional_option_id')->references('id')->on('additional_options');
             $table->foreign('users_id')->references('id')->on('users');
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('devis');
+        Schema::dropIfExists('quotes');
     }
 };

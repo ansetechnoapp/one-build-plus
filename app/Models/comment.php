@@ -6,57 +6,11 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-trait CreateCommt
-{
-    
-
-    public function createComment($request,$users_id)
-    {
-        if ($this->selectCommment('users_id',$users_id) !== null) {
-            $comment = $this->selectCommment('id',$request->commentId);
-            $comment->Message = $request->message;
-            $comment->save();
-        } else {
-            $comment = new Comment();
-            $comment->Message = $request->message;
-            $comment->users_id = $users_id;
-            $comment->save();
-        }
-    }
-}
-
-trait SelectCommt
-{
-
-    public function selectCommmentForUserStatutEqualOne()
-    { 
-        return Comment::where('Statut', '1')->with('user')->get();
-    }
-    public function selectCommment($col,$id)
-    { 
-        return Comment::where($col, $id)->first();  
-    }
-    public function selectCommmentWithUser()
-    { 
-        return Comment::with('user')->get();  
-    }
-}
-
-trait UpdateCommt
-{
-
-    public function UpdateCommmentForCol($col, $enter, $Statut, $value)
-    {
-        return Comment::where($col, $enter)->update([
-            $Statut => $value,
-        ]);
-    }
-}
-
 class Comment extends Model
 {
-    use HasFactory,CreateCommt,SelectCommt,UpdateCommt;
-    protected $table = 'comment';
+    use HasFactory;
+
+    protected $table = 'comments';
 
     /**
      * The attributes that are mass assignable.
@@ -64,12 +18,78 @@ class Comment extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'Message',
+        'message',
+        'status',
         'users_id',
     ];
 
+    /**
+     * Get the user that owns the comment.
+     */
     public function user()
     {
-        return $this->belongsTo(user::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id');
+    }
+
+    /**
+     * Create or update a comment from request data.
+     */
+    public static function createOrUpdateFromRequest($request, $userId)
+    {
+        $comment = self::where('users_id', $userId)->first();
+
+        if ($comment) {
+            $comment->message = $request->message;
+            $comment->save();
+        } else {
+            $comment = new self();
+            $comment->message = $request->message;
+            $comment->users_id = $userId;
+            $comment->save();
+        }
+
+        return $comment;
+    }
+
+    /**
+     * Get approved comments with user data.
+     */
+    public static function getApprovedWithUser()
+    {
+        return self::where('status', 1)->with('user')->get();
+    }
+
+    /**
+     * Find a comment by column and value.
+     */
+    public static function findByColumn($column, $value)
+    {
+        return self::where($column, $value)->first();
+    }
+
+    /**
+     * Get all comments with user data.
+     */
+    public static function getAllWithUser()
+    {
+        return self::with('user')->get();
+    }
+
+    /**
+     * Update comment status.
+     */
+    public static function updateStatus($column, $value, $status, $newValue)
+    {
+        return self::where($column, $value)->update([
+            $status => $newValue,
+        ]);
+    }
+
+    /**
+     * Get comments with status equal to 1 and include user data.
+     */
+    public function selectCommmentForUserStatutEqualOne()
+    {
+        return $this->where('status', 1)->with('user')->get();
     }
 }

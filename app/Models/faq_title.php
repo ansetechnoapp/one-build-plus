@@ -11,7 +11,7 @@ trait CreateFaqT
     
     public function createFaq_title($request)
     {
-        return faq_title::create([
+        return Faq_title::create([
             'title' => $request->title,
         ]);
     }

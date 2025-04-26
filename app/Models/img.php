@@ -49,7 +49,7 @@ trait SelectImg
 
     public function InfoImg($id)
     {
-        return Img::where('prod_id', $id)->get();
+        return Img::where('product_id', $id)->get();
     }
 }
 
@@ -58,7 +58,7 @@ trait UpdateImg
 
     public function Update_table_Img($prod_id, $imgField, $imgPath)
     {
-        return Img::where('prod_id', $prod_id)
+        return Img::where('product_id', $prod_id)
             ->update([$imgField => $imgPath]);
     }
     public function Update_table_All_Img($request)
@@ -92,7 +92,7 @@ trait UpdateImg
 class Img extends Model
 {
     use HasFactory,CreateImg,SelectImg,UpdateImg;
-    protected $table = 'img';
+    protected $table = 'images';
 
     /**
      * The attributes that are mass assignable.
@@ -105,10 +105,10 @@ class Img extends Model
         'img2',
         'img3',
         'img4',
-        'prod_id',
+        'product_id',
     ];
     public function prod()
     {
-        return $this->belongsTo(Prod::class, 'prod_id');
+        return $this->belongsTo(Prod::class, 'product_id');
     }
 }

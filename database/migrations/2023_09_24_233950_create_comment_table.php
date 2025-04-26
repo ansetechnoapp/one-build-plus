@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comment', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->text('Message')->nullable();
-            $table->integer('Statut')->default('0');
+            $table->text('message')->nullable(); // Minuscule pour suivre les conventions
+            $table->integer('status')->default(0); // Renommé de Statut à status
             $table->unsignedBigInteger('users_id');
             $table->timestamps();
-
 
             $table->foreign('users_id')->references('id')->on('users');
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('comments');
     }
 };

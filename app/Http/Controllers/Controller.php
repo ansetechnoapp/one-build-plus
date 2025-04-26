@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\faq;
-use App\Models\img;
-use App\Models\prod;
+use App\Models\Faq;
+use App\Models\Image;
+use App\Models\Product;
 use App\Models\User;
-use App\Models\devis;
-use App\Models\comment;
-use App\Models\fedapay;
-use App\Models\faq_title;
-use App\Models\imageslidehome;
-use App\Models\additional_option;
+use App\Models\Quote;
+use App\Models\Comment;
+use App\Models\FedapayTransaction;
+use App\Models\FaqCategory;
+use App\Models\HomeSliderImage;
+use App\Models\AdditionalOption;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -24,27 +24,38 @@ class Controller extends BaseController
     protected $cM = 'communes';
 
     public function __construct(
-        protected $Cm = new comment(),
-        protected $Users = new User(),
-        protected $prod = new prod(),
-        protected $Img = new img(),
-        protected $Add_opt = new additional_option(),
-        protected $devi = new devis(),
-        protected $faq = new faq(),
-        protected $imgslideHome = new imageslidehome(),
-        protected $FaqT = new faq_title(),
-        protected $fedap = new fedapay(),
+        protected $comment = new Comment(),
+        protected $user = new User(),
+        protected $product = new Product(),
+        protected $image = new Image(),
+        protected $additionalOption = new AdditionalOption(),
+        protected $quote = new Quote(),
+        protected $faq = new Faq(),
+        protected $homeSliderImage = new HomeSliderImage(),
+        protected $faqCategory = new FaqCategory(),
+        protected $fedapayTransaction = new FedapayTransaction(),
     ) {
-        $this->Cm = $Cm;
-        $this->Users = $Users;
-        $this->prod = $prod;
-        $this->Img = $Img;
-        $this->Add_opt = $Add_opt;
-        $this->devi = $devi;
+        $this->comment = $comment;
+        $this->user = $user;
+        $this->product = $product;
+        $this->image = $image;
+        $this->additionalOption = $additionalOption;
+        $this->quote = $quote;
         $this->faq = $faq;
-        $this->imgslideHome = $imgslideHome;
-        $this->FaqT = $FaqT;
-        $this->fedap = $fedap;
+        $this->homeSliderImage = $homeSliderImage;
+        $this->faqCategory = $faqCategory;
+        $this->fedapayTransaction = $fedapayTransaction;
+
+        // Pour la compatibilité avec le code existant
+        $this->Cm = $this->comment;
+        $this->Users = $this->user;
+        $this->prod = $this->product;
+        $this->Img = $this->image;
+        $this->Add_opt = $this->additionalOption;
+        $this->devi = $this->quote;
+        $this->imgslideHome = $this->homeSliderImage;
+        $this->FaqT = $this->faqCategory;
+        $this->fedap = $this->fedapayTransaction;
     }
     public function path_manager($path)
     {
@@ -66,7 +77,7 @@ class Controller extends BaseController
     }
     public function cache_time()
     {
-        
+
         return env('CACHE_TIME',now()->addDays(2));
     }
 }

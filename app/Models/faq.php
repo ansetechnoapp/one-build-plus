@@ -5,74 +5,90 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
-trait CreateFaq
-{
-    
-    public function createFaq($request)
-    {
-        return Faq::create([
-            'title_id' => $request->title_id,
-            'question' => $request->question,
-            'answer' => $request->answer,
-        ]);
-    }
-}
-
-trait DeleteFaq
-{
-
-    public function DeleteFaq($col,$id)
-    {
-        return Faq::where($col, $id)->delete();
-    }
-}
-
-trait SelectFaq
-{
-
-    public function selectFaqTitle($title_id)
-    {
-        return Faq::where('title_id', $title_id)->get();
-    }
-    public function findFaq($col,$data)
-    {
-         return Faq::where($col, $data)->first();
-    }
-    public function getCollectionFaq($col,$data)
-    {
-         return Faq::where($col, $data)->get();
-    }
-}
-
-trait UpdateFaq
-{
-
-    public function UpdateFaq($request)
-    {
-        $prod = $this->findFaq('id', $request->id);
-        $prod->update([
-            'title_id' => $request->title_id,
-            'question' => $request->question,
-            'answer' => $request->answer,
-        ]);
-        return $prod;
-    }
-}
-
 class Faq extends Model
 {
-    use HasFactory,CreateFaq,DeleteFaq,SelectFaq,UpdateFaq;
-    protected $table = 'faq';
+    use HasFactory;
 
+    protected $table = 'faqs';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'title_id',
         'question',
         'answer',
+        'category_id',
     ];
-    public function faqTitle()
+
+    /**
+     * Get the category that owns the FAQ.
+     */
+    public function category()
     {
-        return $this->belongsTo(Faq_title::class, 'title_id');
+        return $this->belongsTo(FaqCategory::class, 'category_id');
+    }
+
+    /**
+     * Create a new FAQ from request data.
+     */
+    public static function createFromRequest($request)
+    {
+        return self::create([
+            'category_id' => $request->category_id,
+            'question' => $request->question,
+            'answer' => $request->answer,
+        ]);
+    }
+
+    /**
+     * Find FAQs by category ID.
+     */
+    public static function findByCategory($categoryId)
+    {
+        return self::where('category_id', $categoryId)->get();
+    }
+
+    /**
+     * Find a FAQ by column and value.
+     */
+    public static function findByColumn($column, $value)
+    {
+        return self::where($column, $value)->first();
+    }
+
+    /**
+     * Get a collection of FAQs by column and value.
+     */
+    public static function getCollectionByColumn($column, $value)
+    {
+        return self::where($column, $value)->get();
+    }
+
+    /**
+     * Delete a FAQ by column and value.
+     */
+    public static function deleteByColumn($column, $value)
+    {
+        return self::where($column, $value)->delete();
+    }
+
+    /**
+     * Update a FAQ from request data.
+     */
+    public static function updateFromRequest($request)
+    {
+        $faq = self::findByColumn('id', $request->id);
+        
+        if ($faq) {
+            $faq->update([
+                'category_id' => $request->category_id,
+                'question' => $request->question,
+                'answer' => $request->answer,
+            ]);
+        }
+        
+        return $faq;
     }
 }

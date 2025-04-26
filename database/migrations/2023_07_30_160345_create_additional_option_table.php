@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('additional_option', function (Blueprint $table) {
+        Schema::create('additional_options', function (Blueprint $table) {
             $table->id();
-            $table->decimal('registration_andf', 10, 2)->default(0); // Utilisation de décimal
+            $table->decimal('registration_andf', 10, 2)->default(0);
             $table->decimal('formality_fees', 10, 2)->default(0);
             $table->decimal('notary_fees', 10, 2)->default(0);
             $table->string('payment_frequency')->default('cash');
             $table->unsignedBigInteger('users_id'); // Clé étrangère
-            $table->unsignedBigInteger('prod_id'); // Clé étrangère
+            $table->unsignedBigInteger('product_id'); // Clé étrangère renommée
             $table->timestamps();
 
             $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('prod_id')->references('id')->on('prod');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('additional_option');
+        Schema::dropIfExists('additional_options');
     }
 };

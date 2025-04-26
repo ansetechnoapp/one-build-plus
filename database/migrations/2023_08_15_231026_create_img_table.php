@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('img', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('main_image');
             $table->string('img1')->nullable();
             $table->string('img2')->nullable();
             $table->string('img3')->nullable();
             $table->string('img4')->nullable();
-            $table->unsignedBigInteger('prod_id'); // Clé étrangère
+            $table->unsignedBigInteger('product_id'); // Clé étrangère renommée
             $table->timestamps();
-        
-            $table->foreign('prod_id')->references('id')->on('prod');
+
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('img');
+        Schema::dropIfExists('images');
     }
 };

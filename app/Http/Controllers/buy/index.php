@@ -9,13 +9,13 @@ class index extends Controller
 {
     public function showbuyallprod()
     {
-        
-        $posts = $this->prod->select_prod_with_image();
-        $commune = $this->prod->all();
+        // Utilisation du nouveau modèle Product
+        $posts = $this->product->getAllWithImages();
+        $commune = $this->product->all();
         return view('buy.index', [
             'allprod' => $posts,
             'posts' => $commune,
             'path_manager' => $this->path_manager(0),
-        ]); 
+        ]);
     }
 }

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fedapay', function (Blueprint $table) {
+        Schema::create('fedapay_transactions', function (Blueprint $table) {
             $table->id();
-            $table->Integer('fedapayTransactionId');
-            $table->string('fedapayTransactionUrl');
-            $table->string('statut')->default('Non payer');
-            $table->unsignedBigInteger('devis_id');
+            $table->integer('transaction_id'); // Renommé de fedapayTransactionId
+            $table->string('transaction_url'); // Renommé de fedapayTransactionUrl
+            $table->string('status')->default('unpaid'); // Renommé de statut à status
+            $table->unsignedBigInteger('quote_id'); // Renommé de devis_id
             $table->unsignedBigInteger('users_id');
             $table->timestamps();
 
-            $table->foreign('devis_id')->references('id')->on('devis');
+            $table->foreign('quote_id')->references('id')->on('quotes');
             $table->foreign('users_id')->references('id')->on('users');
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fedapay');
+        Schema::dropIfExists('fedapay_transactions');
     }
 };

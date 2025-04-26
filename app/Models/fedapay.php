@@ -76,7 +76,7 @@ class Fedapay extends Model
     ];
     public function devis()
     {
-        return $this->belongsTo(devis::class, 'devis_id');
+        return $this->belongsTo(Devis::class, 'devis_id');
     }
     public function user()
     {

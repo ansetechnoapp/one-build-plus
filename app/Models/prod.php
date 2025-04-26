@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\img;
-use App\Models\additional_option;
+use App\Models\Img;
+use App\Models\Additional_option;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,7 +32,7 @@ trait CreateProd
         ]);
     }
 }
-trait selectProd
+trait SelectProd
 {
 
     public function select_prod($col, $id)
@@ -46,47 +46,50 @@ trait selectProd
     }
     public function select_Commune_table()
     {
-        return prod::distinct()->select('department', $this->cM)->get();
+        // Use Product model to query the correct table
+        return Product::distinct()->select('department', $this->cM)->get();
     }
     public function select_Commune_location_table($location)
     {
-        return prod::distinct()->select('department', $this->cM)->where('location', $location)->get();
+        // Use Product model to query the correct table
+        return Product::distinct()->select('department', $this->cM)->where('location', $location)->get();
     }
     public function select_locationType()
     {
-        return prod::distinct()->select('locationType')->get();
+        return Prod::distinct()->select('locationType')->get();
     }
     public function select_Ground_type()
     {
-        return prod::distinct()->select($this->gT)->whereNotNull('ground_type')->get();
+        // Use the Product model to query the correct table
+        return Product::distinct()->select('ground_type')->whereNotNull('ground_type')->get();
     }
     public function select_take_location_prod($status, $orderBy, $num)
     {
-        return prod::where('location', $status)->orderBy('id', $orderBy)->take($num)->get();
+        return Prod::where('location', $status)->orderBy('id', $orderBy)->take($num)->get();
     }
     public function select_take_location_prod_with_image($status, $orderBy, $num)
     {
-        return prod::where('location', $status)->with('img')->orderBy('id', $orderBy)->take($num)->get();
+        return Prod::where('location', $status)->with('img')->orderBy('id', $orderBy)->take($num)->get();
     }
     public function select_location_prod_with_image($status, $orderBy)
     {
-        return prod::where('location', $status)->with('img')->orderBy('id', $orderBy)->get();
+        return Prod::where('location', $status)->with('img')->orderBy('id', $orderBy)->get();
     }
     public function select_location_prod($status, $orderBy)
     {
-        return prod::where('location', $status)->orderBy('id', $orderBy)->get();
+        return Prod::where('location', $status)->orderBy('id', $orderBy)->get();
     }
     public function select_location_paginate_prod($status, $orderBy, $numPage)
     {
-        return prod::where('location', $status)->orderBy('id', $orderBy)->paginate(perPage: $numPage);
+        return Prod::where('location', $status)->orderBy('id', $orderBy)->paginate(perPage: $numPage);
     }
     public function select_last_prod($num, $orderBy)
     {
-        return prod::orderBy('id', $orderBy)->take($num)->get();
+        return Prod::orderBy('id', $orderBy)->take($num)->get();
     }
     public function select_distinct_groundType_prod($ground_type, $groundType, $location)
     {
-        return prod::select('*')
+        return Prod::select('*')
             ->where($ground_type, $groundType)
             ->where('location', $location)
             ->with('img')
@@ -95,7 +98,7 @@ trait selectProd
     }
     public function select_distinct_communes_prod($communes, $location)
     {
-        return prod::select('*')
+        return Prod::select('*')
             ->where($this->cM, $communes)
             ->where('location', $location)
             ->with('img')
@@ -104,7 +107,7 @@ trait selectProd
     }
     public function select_distinct_groundType_communes_prod($ground_type, $groundType, $communes, $location)
     {
-        return prod::select('*')
+        return Prod::select('*')
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
             ->where('location', $location)
@@ -114,7 +117,7 @@ trait selectProd
     }
     public function select_distinct_groundType_communes_pMax_Egal_0_prod($ground_type, $groundType, $communes, $pMin, $location)
     {
-        return prod::select('*')
+        return Prod::select('*')
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
             ->where('location', $location)
@@ -125,7 +128,7 @@ trait selectProd
     }
     public function select_distinct_groundType_communes_pMin_Egal_0_prod($ground_type, $groundType, $communes, $pMax, $location)
     {
-        return prod::select('*')
+        return Prod::select('*')
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
             ->where('location', $location)
@@ -136,7 +139,7 @@ trait selectProd
     }
     public function select_distinct_groundType_communes_pMin_pMax_dif_0_prod($ground_type, $groundType, $communes, $pMax, $pMin, $location)
     {
-        return prod::select('*')
+        return Prod::select('*')
             ->where($ground_type, $groundType)
             ->where($this->cM, $communes)
             ->where('location', $location)
@@ -181,7 +184,7 @@ class Prod extends Model
 {
     use HasFactory, CreateProd, SelectProd, UpdateProd;
 
-    protected $table = 'prod';
+    protected $table = 'products';
     protected $gT = 'ground_type';
     protected $cM = 'communes';
 
@@ -209,10 +212,10 @@ class Prod extends Model
     ];
     public function img()
     {
-        return $this->hasOne(Img::class, 'prod_id');
+        return $this->hasOne(Img::class, 'product_id');
     }
     public function additional_option()
     {
-        return $this->hasOne(additional_option::class, 'prod_id');
+        return $this->hasOne(Additional_option::class, 'product_id');
     }
 }

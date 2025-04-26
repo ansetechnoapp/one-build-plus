@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('imageslidehome', function (Blueprint $table) {
+        Schema::create('home_slider_images', function (Blueprint $table) {
             $table->id();
-            $table->string('img1')->default('img.png');
-            $table->string('img2')->default('img.png');
-            $table->string('img3')->default('img.png');
+            $table->string('image1')->default('img.png'); // Renommé de img1 à image1
+            $table->string('image2')->default('img.png'); // Renommé de img2 à image2
+            $table->string('image3')->default('img.png'); // Renommé de img3 à image3
+            $table->boolean('active')->default(true); // Ajout d'un champ pour activer/désactiver le slider
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('imageslidehome');
+        Schema::dropIfExists('home_slider_images');
     }
 };

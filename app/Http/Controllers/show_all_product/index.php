@@ -15,7 +15,7 @@ class index extends Controller
         $communes = $request->communes;
         $pMax = $request->price_max;
         $pMin = $request->price_min;
-        $viewPage = 'show_all_product.index'; 
+        $viewPage = 'show_all_product.index';
 
         if ($pMin == null && $pMax == null || $pMin == null && $pMax == '0' || $pMin == '0' && $pMax == null || $pMin == '0' && $pMax == '0') {
             $pMin = '0';
@@ -77,7 +77,8 @@ class index extends Controller
     }
     public function show()
     {
-        $posts = $this->prod->all();
+        // Utilisation du nouveau modèle Product
+        $posts = $this->product->all();
         return view('show_all_product.index', ['posts' => $posts, 'path_manager' => $this->path_manager(0),]);
     }
 }

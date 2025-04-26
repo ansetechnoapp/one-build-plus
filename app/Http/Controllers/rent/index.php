@@ -10,7 +10,7 @@ class index extends Controller
 {
     public function selectsearch(Request $request)
     {
-        $gT = 'locationType'; 
+        $gT = 'locationType';
         $locationType = $request->locationType;
         $communes = $request->communes;
         $viewPage = 'show_prod_location.index';
@@ -79,16 +79,18 @@ class index extends Controller
     }
     public function showrentallprod()
     {
-        $selectCommunetableProdForHome =$this->prod->distinct()->select('department', 'communes')->where('location', 'oui')->get();
-        $selectlocationTypetableProdForHome = $this->prod->distinct()->select('locationType')->get();
-        $commune = $this->prod->all();
-        $posts = $this->prod->select_location_prod_with_image('oui', 'desc');
-        foreach ($posts as $product) {
-            $product->img;
-        }
+        // Utilisation du nouveau modèle Product
+        $selectCommunetableProdForHome = $this->product->where('location', 'oui')->distinct()->select('department', 'communes')->get();
+        $selectlocationTypetableProdForHome = $this->product->distinct()->select('locationType')->get();
+        $commune = $this->product->all();
+        $posts = $this->product->with('image')->where('location', 'oui')->orderBy('id', 'desc')->get();
 
-        return view('rent.index', ['locationType' => $selectlocationTypetableProdForHome, 'communes' => $selectCommunetableProdForHome, 
-        'allprod' => $posts, 'posts' => $commune,
-        'path_manager' => $this->path_manager(0),]);
+        return view('rent.index', [
+            'locationType' => $selectlocationTypetableProdForHome,
+            'communes' => $selectCommunetableProdForHome,
+            'allprod' => $posts,
+            'posts' => $commune,
+            'path_manager' => $this->path_manager(0),
+        ]);
     }
 }

@@ -13,7 +13,7 @@ trait CreateDevis
 
     public function createDevis($request,$prod_id,$insert)
     {
-        $devis = new devis();
+        $devis = new Devis();
         $devis->price = $request->price;
         $devis->montant = $request->montant;
         $devis->prod_id = $prod_id;
@@ -63,23 +63,23 @@ class Devis extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(user::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
     public function additional_option()
     {
-        return $this->belongsTo(user::class, 'additional_option_id');
+        return $this->belongsTo(Additional_option::class, 'additional_option_id');
     }
     public function prod()
     {
-        return $this->belongsTo(prod::class, 'prod_id');
+        return $this->belongsTo(Prod::class, 'prod_id');
     }
     public function fedapay()
     {
-        return $this->hasOne(fedapay::class, 'devis_id');
+        return $this->hasOne(Fedapay::class, 'devis_id');
     }
     public function createDevis($request, $user, $additional_option)
     {
-        $devis = new devis();
+        $devis = new Devis();
         $devis->price = $request->price;
         $devis->montant = $request->montant;
         $devis->prod_id = $request->id;

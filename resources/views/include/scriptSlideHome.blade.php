@@ -1,11 +1,11 @@
 @isset($imgslide)
-    @if ($imgslide->img1)
+    @if ($imgslide->image1)
         <script>
             easy_background("#home", {
                 slide: [
-                    "{{ asset('storage/' . $imgslide->img1) }}",
-                    "{{ asset('storage/' . $imgslide->img2) }}",
-                    "{{ asset('storage/' . $imgslide->img3) }}",
+                    "{{ asset('storage/' . $imgslide->image1) }}",
+                    "{{ asset('storage/' . $imgslide->image2) }}",
+                    "{{ asset('storage/' . $imgslide->image3) }}",
                 ],
                 delay: [4000, 4000, 4000]
             });

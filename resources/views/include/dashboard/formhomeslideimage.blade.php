@@ -14,7 +14,7 @@
         @if ($errors->has('img2'))
             <div class="alert alert-danger">{{ $errors->first('img2') }}</div>
         @endif
-    </div>
+    </div> 
 
     <div class="mb-3">
         <label class="small mb-1" for="inputimage">Inserer une image 3</label>

@@ -7,9 +7,7 @@ use App\Models\User;
 use App\Models\Image;
 use App\Models\Comment;
 use App\Models\Product;
-use App\Models\HomeSliderImage;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -53,6 +51,6 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         // Create home slider images
-        HomeSliderImage::factory()->create();
+        $this->call(HomeSliderImageSeeder::class);
     }
 }

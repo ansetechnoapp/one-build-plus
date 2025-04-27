@@ -17,9 +17,9 @@ class HomeSliderImage extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'img1',
-        'img2',
-        'img3',
+        'image1',
+        'image2',
+        'image3',
         'active',
     ];
 

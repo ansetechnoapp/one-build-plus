@@ -41,7 +41,7 @@
                                                 <h1 class="card-title mb-4">   Mettre a jour images des bannires
                                                 </h1>
                                                 @include('include.dashboard.formhomeslideimage')
-                                            </div>
+                                            </div> 
                                         </div>
                                     </div>
 

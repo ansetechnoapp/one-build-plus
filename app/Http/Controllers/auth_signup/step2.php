@@ -36,33 +36,61 @@ class step2 extends Controller
     public function SaveRegister(Request $request)
     {
         cache()->forget('first_user_' . $request->email);
+
+        // Get data from session and request
+        $lastName = Session::get('user_lastName');
+        $firstName = Session::get('user_firstName');
         $email = Session::get('user_email');
         $password1 = $request->password;
         $password2 = $request->password_confirm;
-        $password = bcrypt($request->password);
 
-        if (isset($email) || isset($password)) {
-            if ($password1 == $password2) {
-                try {
-                    $this->validateUserData($request);
-                    if (!$this->Users->VerifyUserExist($request->email,$this->cache_time())) {
-                        $this->Users->createUser($request);
-                        Mail::to($email)
-                            ->send(new sendregisteruser($request->all()));
-                        Session::flush();
-                        return redirect()->route('url.confirmation.user.registration', ['email' => $email]);
-                    } else {
-                        return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
-                    }
-                } catch (ValidationException $e) {
-                    $errors = $e->validator->errors();
-                    return view('auth-signup.step2', ['errors' => $errors,'path_manager' => $this->path_manager(0),]);
-                }
-            } else {
-                return view('auth-signup.step2', ['comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.','path_manager' => $this->path_manager(0),]);
-            }
-        } else {
-            return view('auth-signup.step2', ['EmailInputNotEmpty' => 'Entrer un Email correcte et verifier que tous les champs soit remplir.','path_manager' => $this->path_manager(0),]);
+        // Make sure we have the required data
+        if (!$email || !$lastName || !$firstName) {
+            return view('auth-signup.step2', [
+                'EmailInputNotEmpty' => 'Informations manquantes. Veuillez remplir tous les champs requis.',
+                'path_manager' => $this->path_manager(0),
+            ]);
         }
+
+        // Validate passwords match
+        if ($password1 != $password2) {
+            return view('auth-signup.step2', [
+                'comparePassword' => 'S\'il vous plaît, les mots de passe ne sont par identique.',
+                'path_manager' => $this->path_manager(0),
+            ]);
+        }
+
+        try {
+            // Validate the request data
+            $this->validateUserData($request);
+
+            // Check if user already exists
+            if (!$this->Users->VerifyUserExist($email, $this->cache_time())) {
+                // Create the user with all required fields
+                $this->Users->createUser($request);
+
+                // Send confirmation email
+                Mail::to($email)->send(new sendregisteruser($request->all()));
+
+                // Clear session
+                Session::flush();
+
+                // Redirect to confirmation page
+                return redirect()->route('url.confirmation.user.registration', ['email' => $email]);
+            } else {
+                return view('emails.emailsendforconfirmationuserregistration', ['email' => $email]);
+            }
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return view('auth-signup.step2', [
+                'errors' => $errors,
+                'path_manager' => $this->path_manager(0),
+            ]);
+        }
+    }
+
+    public function index()
+    {
+        return view('auth-signup.step2', ['path_manager' => $this->path_manager(0)]);
     }
 }

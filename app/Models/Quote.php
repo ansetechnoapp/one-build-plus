@@ -88,7 +88,7 @@ class Quote extends Model
         $quote->expiration_date = now()->addDays(7)->format('Y-m-d');
         $quote->additionalOption()->associate($additionalOption);
         $quote->save();
-        
+
         return $quote;
     }
 
@@ -106,7 +106,7 @@ class Quote extends Model
         $quote->user()->associate($user);
         $quote->additionalOption()->associate($additionalOption);
         $quote->save();
-        
+
         return $quote;
     }
 
@@ -137,5 +137,14 @@ class Quote extends Model
     {
         return self::with(['product', 'additionalOption', 'user', 'fedapayTransaction'])
                   ->get();
+    }
+
+    /**
+     * Find a quote by ID or throw an exception.
+     */
+    public static function findOrFail($id)
+    {
+        return self::with(['product', 'additionalOption', 'user', 'fedapayTransaction'])
+                  ->findOrFail($id);
     }
 }

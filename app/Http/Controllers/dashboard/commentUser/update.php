@@ -11,9 +11,11 @@ class update extends Controller
 {
     public function affichage(Request $request, $id)
     {
-        $issetcomment = $this->Cm->selectCommment('id',$id);
-        return view('dashboard.commentUser.update', ['infoComment' => $issetcomment,
-        'sub_path_admin'=>$this->path_manager(4),]);
+        $issetcomment = $this->Cm->findByColumn('id', $id);
+        return view('dashboard.commentUser.update', [
+            'infoComment' => $issetcomment,
+            'sub_path_admin' => $this->path_manager(4),
+        ]);
     }
     public function SaveOrUpdate(Request $request)
     {

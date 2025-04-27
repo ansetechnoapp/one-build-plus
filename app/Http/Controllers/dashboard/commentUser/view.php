@@ -11,10 +11,13 @@ class view extends Controller
 {
     public function view()
     {
-        $issetcomment =  $this->Cm->selectCommment('users_id',Auth::user()->id);
-        $infoUser =$this->Users->findUser('id',Auth::user()->id,$this->cache_time());
-        return view('dashboard.commentUser.view', ['issetcomment' => $issetcomment, 'infoUser' => $infoUser,
-        'sub_path_admin'=>$this->path_manager(2),]);
+        $issetcomment = $this->Cm->findByColumn('users_id', Auth::user()->id);
+        $infoUser = $this->Users->findUser('id', Auth::user()->id, $this->cache_time());
+        return view('dashboard.commentUser.view', [
+            'issetcomment' => $issetcomment,
+            'infoUser' => $infoUser,
+            'sub_path_admin' => $this->path_manager(2),
+        ]);
     }
     public function SaveOrUpdate(Request $request)
     {

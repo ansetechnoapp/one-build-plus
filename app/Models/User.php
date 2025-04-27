@@ -15,16 +15,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 trait CreateUser
 {
-
     public function createUser($request)
     {
+        // Make sure we have lastName and firstName
+        $lastName = $request->lastName ?? '';
+        $firstName = $request->firstName ?? '';
+
+        // Create the user with all required fields
         $user = User::create([
-            'lastName' => $request->lastName,
-            'firstName' => $request->firstName,
+            'name' => $lastName . ' ' . $firstName,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
         ]);
+
         cache()->forget('all_user');
         return $user;
     }
@@ -34,21 +38,25 @@ trait SelectUser
 
     public function VerifyUserExist($email, $cacheminutes)
     {
-        if ($email) {
-            $cacheKey = 'first_user_' . $email;
-            // return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
-            return User::where('email', $email)->exists();
-            // });
-        } else {
-            if (session::get('user_email')) {
-                $email = session::get('user_email');
+        try {
+            if ($email) {
                 $cacheKey = 'first_user_' . $email;
-                // return Cache::remember($cacheKey, $cacheminutes, function () use ($email) {
-                return User::where('email', $email)->exists();
-                // });
+                // Using parameter binding to ensure proper quoting
+                return User::whereRaw('email = ?', [$email])->exists();
             } else {
-                echo "L'email n'existe pas";
+                if (session::get('user_email')) {
+                    $email = session::get('user_email');
+                    $cacheKey = 'first_user_' . $email;
+                    // Using parameter binding to ensure proper quoting
+                    return User::whereRaw('email = ?', [$email])->exists();
+                } else {
+                    return false;
+                }
             }
+        } catch (\Exception $e) {
+            // Log the error
+            \Log::error('Database connection error: ' . $e->getMessage());
+            return false;
         }
     }
     public function AllInfoUser($cacheminutes)
@@ -116,6 +124,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'lastName',
         'firstName',
         'email',

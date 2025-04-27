@@ -11,18 +11,41 @@ class index extends Controller
 {
     public function listDevisForUser()
     {
-        $getDevis = $this->devi->findDevis_withAll_TableForUsers_id(Auth::user()->id);
-        return view('dashboard.home.index', ['listDevis' => $getDevis,'sub_path_admin' => $this->path_manager(0)]);
+        // Get quotes from the database
+        $quotes = $this->quote->findAllForUserWithRelations(Auth::user()->id);
+
+        // Transform the quotes to match the expected format in the view
+        $transformedQuotes = $quotes->map(function($quote) {
+            $quote->dateDevis = $quote->quote_date;
+            $quote->dateExpiration = $quote->expiration_date;
+            $quote->prod_id = $quote->product_id;
+            $quote->prod = $quote->product;
+            return $quote;
+        });
+
+        return view('dashboard.home.index', [
+            'listDevis' => $transformedQuotes,
+            'sub_path_admin' => $this->path_manager(0)
+        ]);
     }
     public function genererDevis(Request $request)
     {
         $devis_id = $request->devis_id;
-        $prod_id = $request->prod_id;
+        $product_id = $request->prod_id;
         $user_id = Auth::user()->id;
-        $user = $this->Users->findUser('id',$user_id,$this->cache_time());
-        if ($user_id !== null && $prod_id !== null) {
-            $additionalOption = $this->Add_opt->findAdditional_option($prod_id, $user_id);
-            $getDevis = $this->devi->findDevis($prod_id, $user_id);
+        $user = $this->user->findUser('id', $user_id, $this->cache_time());
+
+        if ($user_id !== null && $product_id !== null) {
+            $additionalOption = $this->additionalOption->findByProductAndUser($product_id, $user_id);
+
+            // If we have a specific quote ID, use that
+            if ($devis_id) {
+                $getDevis = $this->quote->findOrFail($devis_id);
+            } else {
+                // Otherwise find by product and user
+                $getDevis = $this->quote->findByProductAndUser($product_id, $user_id);
+            }
+
             if ($user['user'] && $additionalOption && $getDevis) {
                 $data = [
                     'numDevis' => $getDevis->id,
@@ -34,14 +57,14 @@ class index extends Controller
                     'service2' => $additionalOption->notary_fees,
                     'price' => $getDevis->price,
                     'montantTotal' => $getDevis->montant,
-                    'dateDevis' => $getDevis->dateDevis,
-                    'dateExpiration' => $getDevis->dateExpiration,
+                    'dateDevis' => $getDevis->quote_date,
+                    'dateExpiration' => $getDevis->expiration_date,
                 ];
 
                 return Pdf::loadView('devis.index', $data)->setPaper('A4', 'Portrait')->stream();
             } else {
-                // Gérez le cas où les modèles n'ont pas été trouvés
-                // Par exemple, redirigez avec un message d'erreur
+                // Handle case where models were not found
+                return redirect()->route('dashboard')->with('error', 'Quote information not found');
             }
         } else {
             return redirect()->route('home');

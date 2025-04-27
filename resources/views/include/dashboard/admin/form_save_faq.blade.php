@@ -1,7 +1,7 @@
 @if (isset($allprodupdate))
     <form action="{{ route('admin.Updatesavefaqs') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        
+
         <div class="row gx-3">
             <div class="mb-3 col-md-6">
                 <label class="small mb-1" for="inputtitle">Catégories</label>
@@ -42,7 +42,7 @@
 @else
     @if ($listTitleFaq->isEmpty())
         <div class="row gx-3">
-            <p>veuillez inserer un titre <a class="nav-link" href="{{ route('faq_title_form') }}">FORMULAIRE TITRE
+            <p>veuillez inserer un titre <a class="nav-link" href="{{ route('admin.faq_title_form') }}">FORMULAIRE TITRE
                     FAQ</a></p>
         </div>
     @else
